@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>myJoin</title>
+
+    <script src="js/script.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="assets/fonts/fonts.css">
+</head>
+
+<body onload="init()">
+    <div id="startBackground" class="startBackground"></div>
+    <div class="header">
+        <div class="headerLeft"><img id="logo" src="./img/logo.svg" alt="JoinLogo"></div>
+        <div class="headerRight">
+            <span>Not a Join user?</span>
+            <button>Sign up</button>
+        </div>
+    </div>
+    <div class="content">
+        <div class="logIn">
+            <h1>Log in</h1>
+            <div class="blueSeperator"></div>
+            <div>
+                <form onsubmit="">
+                    <div class="inputField">
+                        <input required class="" type="email" placeholder="Email">
+                        <img src="./assets/img/logInSignUp/mail.svg" alt="">
+                    </div>
+                    <div class="inputField">
+                        <input required id="passwordToggle" class="" type="password" placeholder="Password">
+                        <img id="passwordImage" class="passwordImage " src="./assets/img/logInSignUp/lock.svg" alt="" onclick="togglePasswordVisibility()">
+                    </div>
+                    <div class="rememberMeForgetBox">
+                        <div class="checkBoxLogIn">
+                            <img src="assets/img/logInSignUp/checkButton v1.svg" alt="">
+                            <span>Remember me</span>
+                        </div>
+                        <a href="#"> Forget my password</a>
+                    </div>
+            </div>
+            <div class="logInButtonBox"><button class="logInButton">Log in</button>
+                <button class="logInButton">Guest Log in</button>
+            </div>
+            </form>
+        </div>
+    </div>
+    </div>
+</body>
+
+</html>
