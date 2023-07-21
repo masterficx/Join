@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>myJoin</title>
+    <title>Join</title>
 
     <script src="js/index_script.js"></script>
     <link rel="stylesheet" href="css/index_style.css">
@@ -25,25 +25,25 @@
             <h1>Log in</h1>
             <div class="blueSeperator"></div>
             <div>
-                <form onsubmit="">
+                <form onsubmit="test(); return false;">
                     <div class="inputField">
-                        <input required class="" type="email" placeholder="Email">
+                        <input required id="emailInput" class="" type="email" placeholder="Email">
                         <img src="./assets/img/logInSignUp/mail.svg" alt="">
                     </div>
                     <div class="inputField">
-                        <input required id="passwordToggle" class="" type="password" placeholder="Password">
+                        <input required id="passwordInput" class="" type="password" placeholder="Password">
                         <img id="passwordImage" class="passwordImage " src="./assets/img/logInSignUp/lock.svg" alt="" onclick="togglePasswordVisibility()">
                     </div>
                     <div class="rememberMeForgetBox">
                         <div class="checkBoxLogIn">
-                            <img src="assets/img/logInSignUp/checkButton v1.svg" alt="">
+                            <img id="rememberMe" onclick="remember()" src="assets/img/logInSignUp/checkButton.svg" alt="">
                             <span>Remember me</span>
                         </div>
-                        <a href="#"> Forget my password</a>
+                        <a id="fmp" href="#"> Forget my password</a>
                     </div>
             </div>
             <div class="logInButtonBox"><button class="logInButton">Log in</button>
-                <button class="logInButton">Guest Log in</button>
+                <button type="button" onclick="test()" class="logInButton guestLogIn">Guest Log in</button>
             </div>
             </form>
         </div>

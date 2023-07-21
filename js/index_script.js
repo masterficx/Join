@@ -23,15 +23,15 @@ function startAnimation() {
 
 
 function togglePasswordVisibility() {
-    let passwordToggle = document.getElementById('passwordToggle');
+    let passwordInput = document.getElementById('passwordInput');
     let passwordImage = document.getElementById('passwordImage');
 
     if (!passwordImage.src.includes('/assets/img/logInSignUp/lock.svg')) {
-        if (passwordToggle.type === 'password') {
-            passwordToggle.type = 'text'; // Passwort sichtbar machen
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text'; // Passwort sichtbar machen
             passwordImage.src = './assets/img/logInSignUp/eye.svg';
         } else {
-            passwordToggle.type = 'password'; // Passwort verstecken
+            passwordInput.type = 'password'; // Passwort verstecken
             passwordImage.src = './assets/img/logInSignUp/hiddeneye.svg';
         }
     }
@@ -39,26 +39,59 @@ function togglePasswordVisibility() {
 
 
 document.addEventListener('DOMContentLoaded', function() {
-    let passwordToggle = document.getElementById('passwordToggle');
+    let passwordInput = document.getElementById('passwordInput');
     let passwordImage = document.getElementById('passwordImage');
+    let emailInput = document.getElementById('emailInput');
 
-    passwordToggle.addEventListener('focus', function() {
-        if (passwordToggle.value.trim().length > 0 && passwordToggle.type === 'password') {
+    passwordInput.addEventListener('focus', function() {
+        if (passwordInput.value.trim().length > 0 && passwordInput.type === 'password') {
             passwordImage.src = './assets/img/logInSignUp/hiddeneye.svg';
         }
     });
 
-    passwordToggle.addEventListener('input', function() {
-        if (passwordToggle.value.trim().length > 0) {
+    passwordInput.addEventListener('input', function() {
+        if (passwordInput.value.trim().length > 0) {
             passwordImage.src = './assets/img/logInSignUp/hiddeneye.svg';
         } else {
             passwordImage.src = './assets/img/logInSignUp/lock.svg';
         }
     });
 
-    passwordToggle.addEventListener('focusout', function() {
-        if (passwordToggle.value.trim().length === 0) {
+    passwordInput.addEventListener('focusout', function() {
+        if (passwordInput.value.trim().length === 0) {
             passwordImage.src = './assets/img/logInSignUp/lock.svg';
         }
     });
+
+    passwordInput.addEventListener('focus', function(){
+        passwordInput.parentNode.classList.add('inputBlueBorder');
+    });
+
+    passwordInput.addEventListener('focusout', function(){
+        passwordInput.parentNode.classList.remove('inputBlueBorder');
+    });
+
+    emailInput.addEventListener('focus', function(){
+        emailInput.parentNode.classList.add('inputBlueBorder');
+    });
+
+    emailInput.addEventListener('focusout', function(){
+        emailInput.parentNode.classList.remove('inputBlueBorder');
+    });
 });
+
+
+function remember() {
+    let rememberMeImg = document.getElementById('rememberMe');
+
+    if (rememberMeImg.src.includes('uncheckedButton')) {
+        rememberMeImg.src = 'assets/img/logInSignUp/checkButton.svg';
+    } else {
+        rememberMeImg.src = 'assets/img/logInSignUp/uncheckedButton.svg';
+    }
+}
+
+
+function test(){
+    console.log('Passt!')
+}

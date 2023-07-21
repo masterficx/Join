@@ -13,7 +13,6 @@ body {
     margin: 80px 100px;
 }
 
-.headerLeft {}
 
 .headerRight {
     width: 279px;
@@ -32,8 +31,9 @@ button {
     width: 91px;
     font-size: 20px;
     cursor: pointer;
-    transition: 250ms;
     border: none;
+    box-shadow: none;
+    transition: 150ms ease-in-out;
 }
 
 button:hover {
@@ -69,8 +69,6 @@ button:hover {
     flex-direction: column;
     align-items: center;
     gap: 32px;
-    /* Optional - zentriert die Elemente horizontal */
-    /* justify-content: center; Optional - zentriert die Elemente vertikal */
 }
 
 #startBackground {
@@ -98,9 +96,9 @@ button:hover {
 
 
 h1 {
- font-size: 61px;
- font-weight: 700;
- margin-bottom: 0;
+    font-size: 61px;
+    font-weight: 700;
+    margin-bottom: 0;
 }
 
 form {
@@ -116,7 +114,8 @@ form {
     width: 422px;
     height: 48px;
     border-radius: 10px;
-    border: 1px solid #D1D1D1; /* Border mit 1 Pixel Dicke und Farbe #D1D1D1 */
+    border: 1px solid #D1D1D1;
+    /* Border mit 1 Pixel Dicke und Farbe #D1D1D1 */
     padding-left: 21px;
     padding-top: 5px;
     font-size: 20px;
@@ -138,6 +137,11 @@ input::placeholder {
 }
 
 
+.inputBlueBorder {
+    border: 1px solid #29ABE2;
+}
+
+
 .checkBoxLogIn {
     display: flex;
     align-items: center;
@@ -148,6 +152,7 @@ input::placeholder {
 .rememberMeForgetBox {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     gap: 35px;
 }
 
@@ -156,6 +161,11 @@ input::placeholder {
     text-decoration: none;
     font-size: 16px;
     font-weight: 400;
+}
+
+
+#fmp:hover {
+    text-decoration: underline 2px;
 }
 
 
@@ -172,6 +182,27 @@ input::placeholder {
 }
 
 
+.guestLogIn {
+    color: #2A3647;
+    background-color: white;
+    border: 1px solid #2A3647;
+}
+
+
+.guestLogIn:hover {
+    color: #29ABE2;
+    border: 1px solid #29ABE2;
+    background-color: white;
+}
+
+
 .passwordImage {
+    cursor: pointer;
+}
+
+
+#rememberMe {
+    width: 24px;
+    height: 24px;
     cursor: pointer;
 }
