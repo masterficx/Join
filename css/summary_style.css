@@ -15,16 +15,21 @@ body {
     position: relative;
 }
 
-.header:after {
+.middle .headerRight,
+.middle .headerLeft {
+    position: relative;
+    z-index: 7;
+}
+
+.middle .header:before {
     content: "";
-    width: 6000px;
-    height: 96px;
     position: absolute;
-    right: 0px;
-    left: 100%;
-    top: 0px;
+    left: 0;
+    width: 9000px;
+    height: 96px;
     background: #fff;
-    display: inline-block;
+    z-index: 6;
+    box-shadow: 0px 4px 4px 0px #0000001A;
 }
 
 .sidebar {
