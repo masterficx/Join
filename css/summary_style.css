@@ -1,3 +1,49 @@
+
+/*Max width 1440px*/
+
+body {
+    overflow: hidden;
+}
+
+.main-content {
+    max-width: 1440px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.middle .header {
+    position: relative;
+}
+
+.header:after {
+    content: "";
+    width: 6000px;
+    height: 96px;
+    position: absolute;
+    right: 0px;
+    left: 100%;
+    top: 0px;
+    background: #fff;
+    display: inline-block;
+}
+
+.sidebar {
+    position: relative;
+}
+
+.sidebar:before {
+    content: "";
+    width: 6000px;
+    position: absolute;
+    left: -6000px;
+    height: 100%;
+    top: 0px;
+    background: #2a3647;
+    display: inline-block;
+}
+
+/*End max width 1440px */
+
 .main-content {
     display: flex;
     height: 100%;
@@ -17,6 +63,16 @@
     background: #fff;
     margin: 0px;
     width: 100%;
+    justify-content: space-between;
+}
+
+span#slogan {
+    margin-left: 100px;
+}
+
+.middle .headerRight {
+    width: unset;
+    height: unset;
 }
 
 .middle .content {
