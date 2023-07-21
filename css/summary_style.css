@@ -71,6 +71,10 @@ body {
     justify-content: space-between;
 }
 
+a.logo {
+    margin-bottom: 100px;
+}
+
 span#slogan {
     margin-left: 100px;
 }
