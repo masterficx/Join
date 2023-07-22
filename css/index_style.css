@@ -53,13 +53,13 @@ button:hover {
     z-index: 100;
 }
 
-.content {
+.contentbox {
     margin-top: 150px;
     display: flex;
     justify-content: center;
 }
 
-.logIn {
+.content {
     background-color: #FFFFFF;
     width: 652px;
     /* height: 508px; */
@@ -107,6 +107,12 @@ form {
     align-items: center;
     gap: 32px
 }
+.test {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px
+}
 
 
 .inputField {
@@ -137,8 +143,13 @@ input::placeholder {
 }
 
 
-.inputBlueBorder {
+.inputField:focus-within {
     border: 1px solid #29ABE2;
+}
+
+
+.inputBlueBorder {
+    /* border: 1px solid #29ABE2; */
 }
 
 
