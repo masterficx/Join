@@ -4,13 +4,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>myJoin</title>
+    <title>Join</title>
 
     <script src="js/board.js"></script>
+    <script src="js/summary_script.js"></script>
     <link rel="stylesheet" href="css/board.css">
     <link rel="stylesheet" href="assets/fonts/fonts.css">
 </head>
-<body>
-    
+
+<body onload="includeHTML()">
+    <div class="AllMainBoard">
+        <div class="sidebar" w3-include-html="templates/sidebar.html"></div>
+        <div class="mainBoard">
+            <div class="header" w3-include-html="templates/header.html">
+            </div>
+            <div class="headBoard">
+                <h1>Board</h1>
+                <div class="headBoardRight">
+                    <input id="inputSearchBoard" type="text" placeholder="search">
+                    <button class="addTaskButton">Add Task<img src="/assets/img/board/plusWhite.png" alt=""></button>
+                </div>
+            </div>
+            <div class="categoryBoardAll">
+                <div class="categoryBoardHead">
+                    <div class="categoryBoardSub"><span>To do</span>
+                        <div class="headBoardRightImage"><img src="assets/img/board/plusDark.png" alt="add"></div>
+                    </div>
+                    <div class="cardBoard">
+                        <div class="cardBoardInside">
+                            <div class="cardBoardInsideCategory">Kategorie</div>
+                            <div class="cardBoardInsideTitleAndDescrption">
+                                <div class="cardBoardInsideTitle">Title</div>
+                                <div class="cardBoardInsideDescription">Beschreibung des jeweiligen Tasks</div>
+                            </div>
+                            <div class="cardBoardInsideProgress"><img src="/assets/img/board/loadingBar.png" alt="">
+                                <p>1/2 Done</p>
+                            </div>
+                            <div class="cardBoardInsideUserAndPrio">
+                                <p>Users</p><img src="/assets/img/board/PrioHigh.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="categoryBoardHead">
+                    <div class="categoryBoardSub"><span>In Progress</span>
+                        <div class="headBoardRightImage"><img src="assets/img/board/plusDark.png" alt="add"></div>
+                    </div>
+                    <div class="cardBoard">Test Card</div>
+                </div>
+                <div class="categoryBoardHead">
+                    <div class="categoryBoardSub"><span>Awaiting Feedback</span>
+                        <div class="headBoardRightImage"><img src="assets/img/board/plusDark.png" alt="add"></div>
+                    </div>
+                    <div class="cardBoard">Test Card</div>
+                </div>
+                <div class="categoryBoardHead">
+                    <div class="categoryBoardSub"><span>Done</span>
+                        <div class="headBoardRightImageBlind"><img src="assets/img/board/plusDark.png" alt="add"></div>
+                    </div>
+                    <div class="cardBoard">Test Card</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
 </body>
+
 </html>
