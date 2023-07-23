@@ -1,6 +1,9 @@
+//Initialen des eingeloggten Nutzers
 async function includeTemplates() {
     await includeHTML();
-    const userinitials = await currentuser.split(' ').map(userinitials => userinitials[0]).join('');//.split(' ') erstellt ein Array mit den durch ' ' getrennten Wörtern .join('') entfernt die Kommas.
+    //.split(' ') erstellt ein Array mit den durch ' ' getrennten Strings 
+    //.join('') erstellt aus dem Array ein String (und entfernt die Kommas).
+    const userinitials = await currentuser.split(' ').map(userinitials => userinitials[0]).join('');
     let currentUserInitials = await document.getElementById('myaccount');
     currentUserInitials.innerHTML = await `${userinitials}`;
 }
