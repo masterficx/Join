@@ -1,8 +1,10 @@
+// Funktion zum Initialisieren der Seite
 function init() {
     startAnimation();
 }
 
 
+// Funktion zum Starten der Animation
 function startAnimation() {
     setTimeout(function animationCallback() {
         let logo = document.getElementById("logo");
@@ -15,72 +17,85 @@ function startAnimation() {
 
         // Nach der Animation entferne das Bild aus dem DOM
         setTimeout(function removeBackground() {
-            background.parentNode.removeChild(background);
+            if (background && background.parentNode) {
+                background.parentNode.removeChild(background);
+            }
         }, 500); // Warte 0.5 Sekunde (dieselbe Dauer wie die Animation) bevor das Bild entfernt wird
 
     }, 500); // Warte 0.5 Sekunden bevor die Animation startet
 }
 
 
-function togglePasswordVisibility() {
+// Funktion zum Umschalten der Passwortsichtbarkeit
+function togglePasswordVisibility(i) {
     let passwordInput = document.getElementById('passwordInput');
     let passwordImage = document.getElementById('passwordImage');
+    let passwordInput2 = document.getElementById('passwordInput2');
+    let passwordImage2 = document.getElementById('passwordImage2');
 
-    if (!passwordImage.src.includes('/assets/img/logInSignUp/lock.svg')) {
-        if (passwordInput.type === 'password') {
-            passwordInput.type = 'text'; // Passwort sichtbar machen
-            passwordImage.src = './assets/img/logInSignUp/eye.svg';
-        } else {
-            passwordInput.type = 'password'; // Passwort verstecken
-            passwordImage.src = './assets/img/logInSignUp/hiddeneye.svg';
+    if (passwordInput && i === 1) {
+        if (!passwordImage.src.includes('/assets/img/logInSignUp/lock.svg')) {
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text'; // Passwort sichtbar machen
+                passwordImage.src = './assets/img/logInSignUp/eye.svg';
+            } else {
+                passwordInput.type = 'password'; // Passwort verstecken
+                passwordImage.src = './assets/img/logInSignUp/hiddeneye.svg';
+            }
+        }
+    }
+    if (passwordInput2 && i === 2) {
+        if (!passwordImage2.src.includes('/assets/img/logInSignUp/lock.svg')) {
+            if (passwordInput2.type === 'password') {
+                passwordInput2.type = 'text'; // Passwort sichtbar machen
+                passwordImage2.src = './assets/img/logInSignUp/eye.svg';
+            } else {
+                passwordInput2.type = 'password'; // Passwort verstecken
+                passwordImage2.src = './assets/img/logInSignUp/hiddeneye.svg';
+            }
         }
     }
 }
 
 
-document.addEventListener('DOMContentLoaded', function() {
-    let passwordInput = document.getElementById('passwordInput');
-    let passwordImage = document.getElementById('passwordImage');
-    let emailInput = document.getElementById('emailInput');
+// Funktion zum Hinzufügen der Event Listener für das Passwortfeld
+function setupPasswordInputEventListeners() {
+    const passwordInputs = document.querySelectorAll('.passwordInput');
 
-    passwordInput.addEventListener('focus', function() {
-        if (passwordInput.value.trim().length > 0 && passwordInput.type === 'password') {
-            passwordImage.src = './assets/img/logInSignUp/hiddeneye.svg';
-        }
-    });
-
-    passwordInput.addEventListener('input', function() {
-        if (passwordInput.value.trim().length > 0) {
+    function updatePasswordImageSrc(passwordInput, passwordImage) {
+        if (passwordInput.value.trim().length > 0 && passwordInput.type === 'password' || 'text') {
             passwordImage.src = './assets/img/logInSignUp/hiddeneye.svg';
         } else {
             passwordImage.src = './assets/img/logInSignUp/lock.svg';
         }
+    }
+
+
+    passwordInputs.forEach((passwordInput) => {
+        const passwordImage = passwordInput.nextElementSibling;
+
+        passwordInput.addEventListener('focus', function () {
+            updatePasswordImageSrc(passwordInput, passwordImage);
+        });
+
+        passwordInput.addEventListener('input', function () {
+            updatePasswordImageSrc(passwordInput, passwordImage);
+        });
+
+        passwordInput.addEventListener('focusout', function () {
+            updatePasswordImageSrc(passwordInput, passwordImage);
+        });
     });
-
-    passwordInput.addEventListener('focusout', function() {
-        if (passwordInput.value.trim().length === 0) {
-            passwordImage.src = './assets/img/logInSignUp/lock.svg';
-        }
-    });
-
-    passwordInput.addEventListener('focus', function(){
-        passwordInput.parentNode.classList.add('inputBlueBorder');
-    });
-
-    passwordInput.addEventListener('focusout', function(){
-        passwordInput.parentNode.classList.remove('inputBlueBorder');
-    });
-
-    emailInput.addEventListener('focus', function(){
-        emailInput.parentNode.classList.add('inputBlueBorder');
-    });
-
-    emailInput.addEventListener('focusout', function(){
-        emailInput.parentNode.classList.remove('inputBlueBorder');
-    });
-});
+}
 
 
+// Funktion zum Hinzufügen der Event Listener nachdem das DOM geladen wurde
+function setupEventListenersAfterDOMLoaded() {
+    setupPasswordInputEventListeners();
+}
+
+
+// Funktion, die aufgerufen wird, wenn der "Remember Me" Button geklickt wird
 function remember() {
     let rememberMeImg = document.getElementById('rememberMe');
 
@@ -92,6 +107,91 @@ function remember() {
 }
 
 
-function test(){
-    console.log('Passt!')
+// Funktion, die für den Test verwendet wird
+function test() {
+    console.log('Passt!');
 }
+
+
+// Funktion zum Rendern des LogIn-Formulars
+function renderLogIn() {
+    let contentbox = document.getElementById('contentbox');
+
+    contentbox.innerHTML = /* html */ `
+
+<form onsubmit="test(); return false;" class="content">
+    <h1>Log in</h1>
+    <div class="blueSeperator"></div>
+    <div>
+        <div class="test">
+            <div class="inputField">
+                <input required id="emailInput" class="" type="email" placeholder="Email">
+                <img src="./assets/img/logInSignUp/mail.svg" alt="">
+            </div>
+            <div class="inputField">
+                <input required id="passwordInput" class="passwordInput" type="password" placeholder="Password">
+                <img id="passwordImage" class="passwordImage" src="./assets/img/logInSignUp/lock.svg" alt="" onclick="togglePasswordVisibility(1)">
+            </div>
+            <div class="rememberMeForgetBox">
+                <div class="checkBoxLogIn">
+                    <img id="rememberMe" onclick="remember()" src="assets/img/logInSignUp/checkButton.svg" alt="">
+                    <span>Remember me</span>
+                </div>
+                <a id="fmp" href="#"> Forget my password</a>
+            </div>
+</div>
+    </div>
+    <div class="logInButtonBox">
+        <button type="onsubmit" class="logInButton">Log in</button>
+        <button type="button" onclick="test()" class="logInButton guestLogIn">Guest Log in</button>
+    </div>
+</form>
+        `;
+    setupEventListenersAfterDOMLoaded();
+}
+
+
+// Funktion zum Rendern des SignUp-Formulars
+function renderSignUp() {
+    let contentbox = document.getElementById('contentbox');
+
+    contentbox.innerHTML = /* html */ `
+
+<form onsubmit="test(); return false;" class="content">
+    <h1>Log in</h1>
+    <div class="blueSeperator"></div>
+    <div>
+        <div class="test">
+            <div class="inputField">
+                <input required id="emailInput" class="" type="email" placeholder="TEsttttttt">
+                <img src="./assets/img/logInSignUp/mail.svg" alt="">
+            </div>
+            <div class="inputField">
+                <input required id="passwordInput" class="passwordInput" type="password" placeholder="Password">
+                <img id="passwordImage" class="passwordImage" src="./assets/img/logInSignUp/lock.svg" alt="" onclick="togglePasswordVisibility(1)">
+            </div>
+            <div class="inputField">
+                <input required id="passwordInput2" class="passwordInput" type="password" placeholder="Password">
+                <img id="passwordImage2" class="passwordImage" src="./assets/img/logInSignUp/lock.svg" alt="" onclick="togglePasswordVisibility(2)">
+            </div>
+            <div class="rememberMeForgetBox">
+                <div class="checkBoxLogIn">
+                    <img id="rememberMe" onclick="remember()" src="assets/img/logInSignUp/checkButton.svg" alt="">
+                    <span>Remember me</span>
+                </div>
+                <a id="fmp" href="#"> Forget my password</a>
+            </div>
+</div>
+    </div>
+    <div class="logInButtonBox">
+        <button type="onsubmit" class="logInButton">Log in</button>
+        <button type="button" onclick="test()" class="logInButton guestLogIn">Guest Log in</button>
+    </div>
+</form>
+        `;
+    setupEventListenersAfterDOMLoaded();
+}
+
+
+// Event Listener, der init() aufruft, wenn das DOM geladen ist
+document.addEventListener('DOMContentLoaded', init);

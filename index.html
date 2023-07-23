@@ -11,17 +11,17 @@
     <link rel="stylesheet" href="assets/fonts/fonts.css">
 </head>
 
-<body onload="init()">
+<body onload="renderLogIn(), init()">
     <div id="startBackground" class="startBackground"></div>
     <div class="header">
         <div class="headerLeft"><img id="logo" src="./img/logo.svg" alt="JoinLogo"></div>
         <div class="headerRight">
             <span>Not a Join user?</span>
-            <button>Sign up</button>
+            <button onclick="renderSignUp()">Sign up</button>
         </div>
     </div>
-    <div class="content">
-        <div class="logIn">
+    <div id="contentbox" class="contentbox">
+        <!-- <div class="content">
             <h1>Log in</h1>
             <div class="blueSeperator"></div>
             <div>
@@ -32,11 +32,13 @@
                     </div>
                     <div class="inputField">
                         <input required id="passwordInput" class="" type="password" placeholder="Password">
-                        <img id="passwordImage" class="passwordImage " src="./assets/img/logInSignUp/lock.svg" alt="" onclick="togglePasswordVisibility()">
+                        <img id="passwordImage" class="passwordImage " src="./assets/img/logInSignUp/lock.svg" alt=""
+                            onclick="togglePasswordVisibility()">
                     </div>
                     <div class="rememberMeForgetBox">
                         <div class="checkBoxLogIn">
-                            <img id="rememberMe" onclick="remember()" src="assets/img/logInSignUp/checkButton.svg" alt="">
+                            <img id="rememberMe" onclick="remember()" src="assets/img/logInSignUp/checkButton.svg"
+                                alt="">
                             <span>Remember me</span>
                         </div>
                         <a id="fmp" href="#"> Forget my password</a>
@@ -47,7 +49,7 @@
             </div>
             </form>
         </div>
-    </div>
+    </div> -->
     </div>
 </body>
 

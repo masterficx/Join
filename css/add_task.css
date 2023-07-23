@@ -1,0 +1,354 @@
+body {
+    width: 100%;
+    margin: 0;
+    font-family: 'Inter';
+    background: #F6F7F8;
+}
+
+.sidebar {
+    display: flex;
+    width: 232px;
+    height: 1024px;
+    padding: 64px 0px;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.AllMainAddTask {
+    display: flex;
+    flex-direction: row;
+}
+
+.left-right-split {
+    display: flex;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+.headAddTask h1 {
+    width: 466px;
+    height: 78px;
+    color: #000;
+    /* Version 2/t1 */
+    font-family: 'Inter';
+    font-size: 61px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    /* 73.2px */
+}
+
+.description {
+    display: flex;
+    width: 422px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.description h5 {
+    align-self: stretch;
+    color: #000;
+
+    /* Version 2/t6 */
+    font-family: 'Inter';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    /* 24px */
+    margin-top: 22px;
+    margin-bottom: 0;
+    margin-block-start: 22px;
+    margin-block-end: 0;
+}
+
+.description textarea {
+    display: flex;
+    height: 119px;
+    padding: 18px 21px;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 10px;
+    border: 1px solid var(--style, #D1D1D1);
+    background: #FFF;
+}
+
+textarea {
+    font-family: 'Inter';
+}
+
+.separator {
+    width: 4px;
+    height: 551px;
+    flex-shrink: 0;
+    color: gray;
+
+}
+
+.title {
+    display: flex;
+    width: 422px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.title h5 {
+    color: #000;
+
+    /* Version 2/t6 */
+    font-family: 'Inter';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    /* 24px */
+
+    margin: 0;
+}
+
+.title input {
+    display: flex;
+    padding: 13px 21px;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 10px;
+    border: 1px solid var(--style, #D1D1D1);
+    background: #FFF;
+    margin-bottom: 0;
+}
+
+input {
+    font-family: 'Inter';
+}
+
+.category {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.category h5 {
+    color: #000;
+
+    /* Version 2/t6 */
+    font-family: 'Inter';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    /* 24px */
+    margin-top: 22px;
+    margin-bottom: 0;
+    margin-block-start: 22px;
+    margin-block-end: 0;
+}
+
+.category select {
+    display: flex;
+    width: 422px;
+    height: 51px;
+    padding: 18px 21px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    border: 1px solid var(--style, #D1D1D1);
+    background: #FFF;
+
+}
+
+.assignedTo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.assignedTo h5 {
+    color: #000;
+
+    /* Version 2/t6 */
+    font-family: 'Inter';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    /* 24px */
+    margin-top: 22px;
+    margin-bottom: 0;
+    margin-block-start: 22px;
+    margin-block-end: 0;
+}
+
+.assignedTo select {
+    display: flex;
+    width: 422px;
+    height: 51px;
+    padding: 18px 21px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    background: #FFF;
+}
+
+.date {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.date h5 {
+    color: #000;
+
+    /* Version 2/t6 */
+    font-family: 'Inter';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    /* 24px */
+    margin: 0;
+}
+
+.date input {
+    display: flex;
+    width: 380px;
+    height: 42px;
+    padding: 0px 21px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    border: 1px solid var(--style, #D1D1D1);
+    background: #FFF;
+}
+
+.prio {
+    display: flex;
+    height: 113px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.prio h5 {
+    color: #000;
+
+    /* Version 2/t6 */
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    /* 24px */
+    margin-top: 22px;
+    margin-bottom: 0;
+    margin-block-start: 22px;
+    margin-block-end: 0;
+}
+
+.prio p {
+    display: flex;
+    width: 136px;
+    height: 51px;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    background: var(--white, #FFF);
+
+    /* nuevo */
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+}
+
+.addTaskPrios {
+    display: flex;
+    gap: 12px;
+    width: 422px;
+}
+
+.subtask {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.subtask h5 {
+    color: #000;
+
+    /* Version 2/t6 */
+    font-family: 'Inter';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    /* 24px */
+    margin-top: 22px;
+    margin-bottom: 0;
+    margin-block-start: 22px;
+    margin-block-end: 0;
+}
+
+.subtask input {
+    display: flex;
+    width: 386px;
+    height: 51px;
+    padding: 0px 18px;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    border: 1px solid var(--style, #D1D1D1);
+    background: #FFF;
+
+    /* nuevo */
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+}
+
+.checkboxes {
+    display: flex;
+}
+
+.boxes {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.clearCreateButtons {
+    display: flex;
+    justify-content: end;
+    gap: 25px;
+}
+
+.clearBtn {
+    display: flex;
+    width: 116px;
+    height: 19px;
+    padding: 18px 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    border: 1px solid var(--version-2-main-color, #2A3647);
+}
+
+.createBtn {
+    display: flex;
+    height: 19px;
+    padding: 18px 15px;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    border-radius: 10px;
+    background: #2A3647;
+    color: white;
+}
