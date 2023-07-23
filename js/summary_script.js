@@ -1,11 +1,15 @@
+//Conditionen für Mobile-Version
+const mediaQueryMobile = window.matchMedia('(max-width: 992px)');
+
 let currentuser = "Jon Doe";
 
- async function init() {
+async function init() {
     welcomeMsgTime();
     welcomeMsgUser();
+    addClassMobile();
 }
 
-
+//Begrüßung zur aktuellen Tageszeit
 function welcomeMsgTime() {
     const currenttime = new Date().getHours();
     const morningstart = 6;
@@ -34,18 +38,31 @@ function welcomeMsgTime() {
     if (currenttime >= eveningstart && currenttime <= eveningend) {
         messageTime.innerHTML = "Good evening";
     };
-    if ((currenttime >= nightstart && currenttime <= nightend)||(currenttime >= nightstart2 && currenttime <= nightend2)) {
+    if ((currenttime >= nightstart && currenttime <= nightend) || (currenttime >= nightstart2 && currenttime <= nightend2)) {
         messageTime.innerHTML = "Good night";
     };
 }
 
-
-function welcomeMsgUser(){
+//Begrüßung des eingeloggten Nutzers mit Namen
+function welcomeMsgUser() {
     let messageUser = document.getElementById('welcomemsguser');
-    messageUser.innerHTML = `${currentuser}`;    
+    messageUser.innerHTML = `${currentuser}`;
 }
 
 
+//Fügt in der mobilen Version (nach 2 Sekunden) eine Klasse hinzu
+function addClassMobile() {
+    let messageContainer = document.getElementById('welcomemsg');
+    setTimeout(function hideWelcome() {
+        if (mediaQueryMobile.matches) {
+            messageContainer.classList.add('remove');
+        }
+        else {
+            messageContainer.classList.remove('remove');
+        }
+    }, 2000);
+}
 
 
-
+// Prüft bei Veränderung die Media Query Conditions
+  window.addEventListener('resize', addClassMobile);
