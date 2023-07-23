@@ -1,0 +1,89 @@
+.frame-97 {
+    width: 456px;
+    height: 928px;
+    flex-shrink: 0;
+    background: var(--white, #FFF);
+    box-shadow: 4px 0px 6px 0px rgba(0, 0, 0, 0.08);
+    padding-left: 28px;
+    padding-right: 28px;
+}
+
+.contacts-list {
+    display: inline-flex;
+    padding: 32px 24px;
+    flex-direction: column;
+    align-items: center;
+    background: var(--white, #FFF);
+    box-sizing: border-box;
+    height: auto;
+    width: auto;
+}
+
+.contact_name {
+    height: auto;
+    display: flex;
+    width: 352px;
+    padding: 15px 24px;
+    align-items: flex-start;
+    gap: 35px;
+    border-radius: 10px;
+    background: #FFF;
+}
+
+.frame_81 {
+    height: auto;
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+.frame_81 span {
+
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+}
+
+.frame_81 a {
+    margin: 0;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    text-decoration: none;
+}
+
+.frame_79 {
+    width: 42px;
+    height: 42px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.frame_79 p {
+
+    display: flex;
+    width: 28px;
+    height: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    color: #FFF;
+    
+    /* Version 2/t7 */
+    font-family: Inter;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    position:absolute;
+}
