@@ -328,3 +328,27 @@ input {
     justify-content: end;
     gap: 25px;
 }
+
+.clearBtn {
+    display: flex;
+    width: 116px;
+    height: 19px;
+    padding: 18px 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 10px;
+    border: 1px solid var(--version-2-main-color, #2A3647);
+}
+
+.createBtn {
+    display: flex;
+    height: 19px;
+    padding: 18px 15px;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    border-radius: 10px;
+    background: #2A3647;
+    color: white;
+}
