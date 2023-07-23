@@ -113,6 +113,16 @@ function test() {
 }
 
 
+function toggleButtonState() {
+    const myButton = document.getElementById('signUp');
+    if (myButton.disabled) {
+      myButton.removeAttribute('disabled'); // Button aktivieren
+    } else {
+      myButton.setAttribute('disabled', true); // Button deaktivieren
+    }
+  }
+
+
 // Funktion zum Rendern des LogIn-Formulars
 function renderLogIn() {
     let contentbox = document.getElementById('contentbox');
@@ -120,10 +130,12 @@ function renderLogIn() {
     contentbox.innerHTML = /* html */ `
 
 <form onsubmit="test(); return false;" class="content">
+    <div class="headingContainer">
     <h1>Log in</h1>
+    </div>
     <div class="blueSeperator"></div>
     <div>
-        <div class="test">
+        <div class="inputBox">
             <div class="inputField">
                 <input required id="emailInput" class="" type="email" placeholder="Email">
                 <img src="./assets/img/logInSignUp/mail.svg" alt="">
@@ -134,7 +146,7 @@ function renderLogIn() {
             </div>
             <div class="rememberMeForgetBox">
                 <div class="checkBoxLogIn">
-                    <img id="rememberMe" onclick="remember()" src="assets/img/logInSignUp/checkButton.svg" alt="">
+                    <img id="rememberMe" onclick="remember()" src="assets/img/logInSignUp/uncheckButton.svg" alt="">
                     <span>Remember me</span>
                 </div>
                 <a id="fmp" href="#"> Forget my password</a>
@@ -148,6 +160,7 @@ function renderLogIn() {
 </form>
         `;
     setupEventListenersAfterDOMLoaded();
+    document.getElementById('headerRight').classList.remove('d-none');
 }
 
 
@@ -158,12 +171,20 @@ function renderSignUp() {
     contentbox.innerHTML = /* html */ `
 
 <form onsubmit="test(); return false;" class="content">
-    <h1>Log in</h1>
+    <div class="headingContainer">
+    <div onclick="renderLogIn()" class="imgHeadingContainer backArrow"></div>
+    <h1>Sign Up</h1>
+    <div class="imgHeadingContainer"></div>
+    </div>
     <div class="blueSeperator"></div>
     <div>
-        <div class="test">
+        <div class="inputBox">
             <div class="inputField">
-                <input required id="emailInput" class="" type="email" placeholder="TEsttttttt">
+                <input required id="nameInput" class="" type="text" placeholder="Name">
+                <img src="./assets/img/logInSignUp/person.svg" alt="">
+            </div>
+            <div class="inputField">
+                <input required id="emailInput" class="" type="email" placeholder="Email">
                 <img src="./assets/img/logInSignUp/mail.svg" alt="">
             </div>
             <div class="inputField">
@@ -175,21 +196,21 @@ function renderSignUp() {
                 <img id="passwordImage2" class="passwordImage" src="./assets/img/logInSignUp/lock.svg" alt="" onclick="togglePasswordVisibility(2)">
             </div>
             <div class="rememberMeForgetBox">
-                <div class="checkBoxLogIn">
-                    <img id="rememberMe" onclick="remember()" src="assets/img/logInSignUp/checkButton.svg" alt="">
-                    <span>Remember me</span>
+                <div class="checkBoxSignIn">
+                    <img onclick="toggleButtonState()" src="assets/img/logInSignUp/uncheckButton.svg" alt="">
+                    <span>I accept the </span>
                 </div>
-                <a id="fmp" href="#"> Forget my password</a>
+                <a id="fmp" href="#"> Privacy policy</a>
             </div>
 </div>
     </div>
     <div class="logInButtonBox">
-        <button type="onsubmit" class="logInButton">Log in</button>
-        <button type="button" onclick="test()" class="logInButton guestLogIn">Guest Log in</button>
+        <button id="signUp" type="onsubmit" class="logInButton">Sign up</button>
     </div>
 </form>
         `;
     setupEventListenersAfterDOMLoaded();
+    document.getElementById('headerRight').classList.add('d-none');
 }
 
 
