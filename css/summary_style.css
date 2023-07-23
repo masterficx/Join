@@ -11,7 +11,7 @@ body {
     max-width: 1440px;
     margin-right: auto;
     margin-left: auto;
-    box-shadow: -9px 0 10px -7px #0000008a, 9px 0 10px -7px rgb(0 0 0 / 12%);
+    box-shadow: -3px 0 8px 0px rgb(0 0 0 / 43%), 4px 0px 6px 0px rgba(0, 0, 0, 0.08);
 }
 
 .middle .headerRight,
