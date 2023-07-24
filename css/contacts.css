@@ -1,6 +1,6 @@
 .frame-97 {
     width: 456px;
-    height: 928px;
+    height: auto;
     flex-shrink: 0;
     background: var(--white, #FFF);
     box-shadow: 4px 0px 6px 0px rgba(0, 0, 0, 0.08);
@@ -78,12 +78,64 @@
     align-items: center;
     flex-shrink: 0;
     color: #FFF;
-    
+
     /* Version 2/t7 */
     font-family: Inter;
     font-size: 12px;
     font-style: normal;
     font-weight: 400;
     line-height: 120%;
-    position:absolute;
+    position: absolute;
+}
+
+.new-contact {
+    display: flex;
+    width: 352px;
+    height: 53px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border-radius: 10px;
+    border: 1px solid #2A3647;
+    background: #2A3647;
+}
+
+.new-contact :hover {
+
+    cursor: pointer;
+}
+
+.new-contact p {
+
+    color: var(--white, #FFF);
+    font-family: Inter;
+    font-size: 21px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    /* 25.2px */
+}
+
+.frame_112 {
+
+    width: 100%;
+    height: auto;
+    display: flex;
+    padding: 17px 36px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 8px;
+    align-self: stretch;
+}
+
+.frame_112 p {
+
+    color: #000;
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
 }

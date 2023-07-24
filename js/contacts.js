@@ -32,18 +32,45 @@ let Contacts = [
     {
         "firstName": "Emmanuel",
         "lastName": "Mauer",
-        "age": 6789012345,
+        "phone": 6789012345,
         "email": "emmanuelma@gmail.com"
     }
 ]
 
+let firstLetters = [];
+function getFirstLetters() {
+    let allFirstLetters = [];
+    for (let j = 0; j < Contacts.length; j++) {
+        const element = Contacts[j];
+        const firstNameLetter = element['firstName'].charAt(0);
+        allFirstLetters.push(firstNameLetter);
+    }
+    let uniqueChars = allFirstLetters.filter((element, index) => {
+        return allFirstLetters.indexOf(element) === index;
+    });
+
+    console.log(uniqueChars);
+    firstLetters.push(uniqueChars);
+
+}
 function renderContactsList() {
+    getFirstLetters();
     let contactsList = document.getElementById('contacts_list');
+
     for (let i = 0; i < Contacts.length; i++) {
         const element = Contacts[i];
+        const firstLetter = element['firstName'].charAt(0);
         const firstTwoLetters = element['firstName'].charAt(0) + element['lastName'].charAt(0);
-        console.log(firstTwoLetters);
+        const letterTab = document.getElementById(`letter_${firstLetter}`)
+        if (letterTab) {
+            return letterTab
+        } else {
+            contactsList.innerHTML += ` `
+        }
         contactsList.innerHTML += `
+            <div class="frame_112"> 
+                 
+            </div>
             <div class="contact_name"> 
                 <div class="frame_79">
                 <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42" fill="none">
@@ -56,8 +83,7 @@ function renderContactsList() {
                     ${element['firstName']} ${element['lastName']}
                 </span>
                 
-                <a href = "mailto: ${element['email']}">${element['email']}</a>
-                
+                <a href = "mailto: ${element['email']}">${element['email']}</a>   
             </div>
         </div>`
 
