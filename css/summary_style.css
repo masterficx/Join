@@ -77,7 +77,6 @@ span#slogan {
 .title {
     display: flex;
     align-items: center;
-    margin-bottom: 40px;
 }
 
 .title h1 {
@@ -114,6 +113,10 @@ span#slogan {
     display: flex;
     align-items: center;
     gap: 40px;
+}
+
+.mgt-40 {
+    margin-top: 40px;
 }
 
 .summaryboxes {
