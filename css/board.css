@@ -76,7 +76,7 @@ span#slogan {
 .title {
     display: flex;
     align-items: center;
-    margin-bottom: 40px;
+  
 }
 
 .title h1 {
@@ -255,6 +255,7 @@ body {
     justify-content: space-between;
     align-items: center;
     width: 230px;
+    margin-top: 40px;
 }
 
 .categoryBoardSub span {
@@ -276,7 +277,7 @@ body {
     align-items: center;
     gap: 10px;
     flex-shrink: 0;
-    border-radius: 6px;
+    border-radius: px;
     border: 2px solid var(--version-2-main-color, #2A3647);
 }
 
