@@ -6,6 +6,16 @@ async function includeTemplates() {
     const userinitials = await currentuser.split(' ').map(userinitials => userinitials[0]).join('');
     let currentUserInitials = await document.getElementById('myaccount');
     currentUserInitials.innerHTML = await `${userinitials}`;
+    //Klasse "active" dem aktuellen Menüpunkt geben
+    let linkElement = [];
+    linkElement = document.getElementById('menu').getElementsByTagName('a');
+    for (i = 0; i < linkElement.length; i++) {
+        if (document.location.pathname === linkElement[i].getAttribute('href')) {
+            linkElement[i].classList.add("active");
+            
+        }
+    }
+
 }
 
 async function includeHTML() {
