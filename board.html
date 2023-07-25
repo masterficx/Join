@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="assets/fonts/fonts.css">
 </head>
 
-<body onload="includeTemplates();init()">
+<body onload="includeTemplates();init();renderBoardCards()">
     <div w3-include-html="add_task.html" class="d-none" id="addTaskOverlay"></div>
     <div class="AllMainBoard">
         <div class="middle">
@@ -42,7 +42,7 @@
                         <div class="categoryBoardSub"><span>To do</span>
                             <div onclick="openAddTask(ToDo)" class="headBoardRightImage"><img src="assets/img/board/plusDark.png" alt="add"></div>
                         </div>
-                        <div id="cardBoardToDo">
+                        <div class="cardBoardAll" id="cardBoardToDo">
                             <div class="cardBoard">
                                 <div class="cardBoardInside">
                                     <div class="cardBoardInsideCategory">Kategorie</div>
@@ -65,7 +65,7 @@
                         <div class="categoryBoardSub"><span>In Progress</span>
                             <div onclick="openAddTask(InProgress)" class="headBoardRightImage"><img src="assets/img/board/plusDark.png" alt="add"></div>
                         </div>
-                        <div id="cardBoardInProgress">
+                        <div class="cardBoardAll" id="cardBoardInProgress">
                             <div class="cardBoard">Test Card</div>
                         </div>
                     </div>
@@ -73,7 +73,7 @@
                         <div onclick="openAddTask(AwaitingFeedback)" class="categoryBoardSub"><span>Awaiting Feedback</span>
                             <div class="headBoardRightImage"><img src="assets/img/board/plusDark.png" alt="add"></div>
                         </div>
-                        <div id="cardBoardAwaitingfeedback">
+                        <div class="cardBoardAll" id="cardBoardAwaitingfeedback">
                             <div class="cardBoard">Test Card</div>
                         </div>
                     </div>
@@ -82,7 +82,7 @@
                             <div class="headBoardRightImageBlind"><img src="assets/img/board/plusDark.png" alt="add">
                             </div>
                         </div>
-                        <div id="cardBoarDone">
+                        <div class="cardBoardAll" id="cardBoardDone">
                             <div class="cardBoard">Test Card</div>
                         </div>
                     </div>
