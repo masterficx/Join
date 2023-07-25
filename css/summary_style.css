@@ -31,7 +31,7 @@ body {
 }
 
 .middle {
-    display: flex;
+    display: inline-block;
     order: 2;
     flex-direction: column;
     flex: 1;
@@ -50,7 +50,9 @@ body {
 }
 
 a.logo {
+    text-align: center;
     margin-bottom: 100px;
+    padding: 0px 40px;
 }
 
 span#slogan {
@@ -121,6 +123,54 @@ span#slogan {
 
 .summaryboxes {
     flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+
+.boxes-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 25px;
+}
+
+.sum-box {
+    padding: 25px;
+    border-radius: 30px;
+    background: #fff;
+    flex: 1;
+    text-align: center;
+    height: calc(170px - 50px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 0px 4px 0px #0000001A;
+}
+
+.flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.sum-box:hover {
+    cursor: pointer;
+    color: #fff;
+    background: #2A3647;
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+    box-shadow: 0px 2px 8px 0px rgba(61,65,84,0.5);
+}
+
+.boxes-row span.sum-title {
+    font-size: 64px;
+    font-weight: 600;
+}
+
+span.sum-sub-title {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 400;
 }
 
 div#welcomemsg {
@@ -153,26 +203,71 @@ span#welcomemsguser {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: calc(232px - 80px);
+    justify-content: space-between;
+    width: 232px;
     background: #2A3647;
-    padding: 40px;
+    padding: 40px 0px;
+}
+
+.sidebar-top {
+    display: flex;
+    flex-direction: column;
 }
 
 .sidebar a {
-    color: #fff;
+    color: #CDCDCD;
 }
 
 .menu {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 12px;
 }
 
 .menu a {
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    width: calc(232px - 80px);
+    padding: 3px 30px 1px 50px;
 }
 
+.menu a.active {
+    color: #fff;
+    background: #091931;
+}
 
+.menu a:hover {
+    background: #2A3D59;
+}
+
+.menu p {
+    line-height: 1em;
+    width: 37px;
+    margin: 0px;
+    padding: 0px;
+}
+
+p.img-white {
+    display: none;
+}
+
+a.active p.img-white {
+    display: inline-block;
+}
+
+a.active p.img-dark {
+    display: none;
+}
+
+.legal-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 10px;
+    padding: 0px 40px;
+}
 
 @media only screen and (max-width: 992px) {
 
