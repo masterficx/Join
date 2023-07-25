@@ -2,7 +2,10 @@
     height: 928px;
     width: 1208px;
     background-color: #F6F7F8;
+    display: flex;
+    justify-content: space-between;
 }
+
 .frame-97 {
     width: 456px;
     height: 928px;
@@ -26,7 +29,7 @@
 }
 
 .contact_name {
-    height: auto;
+    height: 100%;
     display: flex;
     width: 100%;
     padding: 15px 24px;
@@ -35,6 +38,12 @@
     border-radius: 10px;
     background: #FFF;
     box-sizing: border-box;
+}
+
+.contact_name :hover {
+
+    cursor: pointer;
+    background-color: #F6F7F8;
 }
 
 .frame_81 {
@@ -63,6 +72,7 @@
     font-weight: 400;
     line-height: 120%;
     text-decoration: none;
+    color: #007CEE;
 }
 
 .frame_79 {
@@ -162,6 +172,46 @@
 
 .frame-119 svg {
 
-    align-self: stretch ;
-    
+    align-self: stretch;
+
+}
+
+.frame-40 {
+    width: auto;
+    height: 73px;
+    display: inline-flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 30px;
+    margin-right: 128px;
+    margin-top: 206px;
+    margin-bottom: 745px;
+    box-sizing: border-box;
+}
+
+.contacts-title {
+    color: #000;
+    font-family: Inter;
+    font-size: 61px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+    /* 73.2px */
+}
+
+.contacts-slogan {
+    color: #2A3647;
+    font-family: Inter;
+    font-size: 27px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+}
+
+.background-color-2A3647 {
+    background-color: #2A3647;
+}
+
+.color-FFFFFF {
+    color: #FFFFFF;
 }
