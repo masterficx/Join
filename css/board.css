@@ -75,8 +75,7 @@ span#slogan {
 
 .title {
     display: flex;
-    align-items: center;
-  
+    align-items: start !important;
 }
 
 .title h1 {
@@ -161,7 +160,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 4px 10px;
+    padding: 0px 0px;
     border: 1px solid #a8a8a8;
     border-radius: 10px;
     gap: 10px;
@@ -192,6 +191,7 @@ body {
 
 .addTaskButton {
     display: flex;
+    width: auto;
     height: 55px;
     padding: 18px 10px;
     justify-content: center;
@@ -207,6 +207,7 @@ body {
     font-style: normal;
     font-weight: 700;
     line-height: 120%;
+    cursor: pointer;
     /* 25.2px */
 }
 
@@ -277,27 +278,29 @@ body {
     align-items: center;
     gap: 10px;
     flex-shrink: 0;
-    border-radius: px;
+    border-radius: 6px;
     border: 2px solid var(--version-2-main-color, #2A3647);
+    cursor: pointer;
 }
 
 .headBoardRightImage img {
     width: 8px;
     height: 8px;
     flex-shrink: 0;
+    cursor: pointer;
 }
 
 .headBoardRightImageBlind {
     display: flex;
-    width: 24px;
-    height: 24px;
+    width: 12px;
+    height: 12px;
     padding: 3px;
     justify-content: center;
     align-items: center;
     gap: 10px;
     flex-shrink: 0;
-    border-radius: 8px;
-    border: 2px solid var(--version-2-main-color, #F6F7F8);
+    border-radius: 6px;
+    border: 2px solid var(--version-2-main-color, #f6f7f8);
 }
 
 .headBoardRightImageBlind img {
@@ -421,6 +424,18 @@ body {
     padding: 10px 18px;
 }
 
+.addTaskPopUp {
+    position: absolute;
+    top: 64px;
+    left: 128px;
+    right: 128px;
+    bottom: 64px;
+    z-index: 99;
+}
+
+.d-none {
+    display: none;
+}
 
 
 @media only screen and (max-width: 992px) {
