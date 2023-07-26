@@ -20,27 +20,29 @@
         <div class="middle">
             <div class="header" w3-include-html="templates/header.html">
             </div>
-            <div class="mainBoard">
+            <div class="mainBoard" id="mainBoard">
+
                 <div class="headBoard">
                     <div class="title">
                         <h1>Board</h1>
                     </div>
                     <div class="headBoardRight">
                         <div class="inputSearchBoardContainer">
-                            <input id="inputSearchBoard" type="text" placeholder="Find Task">
-                            <div style="display: flex;">
+                            <input id="inputSearchBoard" autocomplete="off" type="search" placeholder="Find Task">
+                            <div class="searchImage" style="display: flex;" onclick="filterCards()">
                                 <img src="/assets/img/board/searchSeparator.png" alt="">
                                 <img src="/assets/img/board/search.png" alt="">
                             </div>
                         </div>
-                        <button onclick="openAddTask()" class="addTaskButton">Add Task<img src="/assets/img/board/plusWhite.png"
-                                alt=""></button>
+                        <button onclick="openAddTask()" class="addTaskButton">Add Task<img
+                                src="/assets/img/board/plusWhite.png" alt=""></button>
                     </div>
                 </div>
                 <div class="categoryBoardAll">
                     <div class="categoryBoardHead">
                         <div class="categoryBoardSub"><span>To do</span>
-                            <div onclick="openAddTask(ToDo)" class="headBoardRightImage"><img src="assets/img/board/plusDark.png" alt="add"></div>
+                            <div onclick="openAddTask()" class="headBoardRightImage"><img
+                                    src="assets/img/board/plusDark.png" alt="add"></div>
                         </div>
                         <div class="cardBoardAll" id="cardBoardToDo">
                             <div class="cardBoard">
@@ -63,22 +65,24 @@
                     </div>
                     <div class="categoryBoardHead">
                         <div class="categoryBoardSub"><span>In Progress</span>
-                            <div onclick="openAddTask(InProgress)" class="headBoardRightImage"><img src="assets/img/board/plusDark.png" alt="add"></div>
+                            <div onclick="openAddTask()" class="headBoardRightImage"><img
+                                    src="assets/img/board/plusDark.png" alt="add"></div>
                         </div>
                         <div class="cardBoardAll" id="cardBoardInProgress">
                             <div class="cardBoard">Test Card</div>
                         </div>
                     </div>
                     <div class="categoryBoardHead">
-                        <div onclick="openAddTask(AwaitingFeedback)" class="categoryBoardSub"><span>Awaiting Feedback</span>
-                            <div class="headBoardRightImage"><img src="assets/img/board/plusDark.png" alt="add"></div>
+                        <div class="categoryBoardSub"><span>Awaiting
+                                Feedback</span>
+                            <div onclick="openAddTask()" class="headBoardRightImage"><img src="assets/img/board/plusDark.png" alt="add"></div>
                         </div>
                         <div class="cardBoardAll" id="cardBoardAwaitingfeedback">
                             <div class="cardBoard">Test Card</div>
                         </div>
                     </div>
                     <div class="categoryBoardHead">
-                        <div onclick="openAddTask(Done)" class="categoryBoardSub"><span>Done</span>
+                        <div onclick="openAddTask()" class="categoryBoardSub"><span>Done</span>
                             <div class="headBoardRightImageBlind"><img src="assets/img/board/plusDark.png" alt="add">
                             </div>
                         </div>
@@ -91,7 +95,10 @@
         </div>
         <div class="sidebar" w3-include-html="templates/sidebar.html">
         </div>
-    </div>
+        <div class="overlay d-none" id="overlay">
+            <div id="CardContainer">
+            </div>
+        </div>
 </body>
 
 </html>

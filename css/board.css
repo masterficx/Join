@@ -177,6 +177,10 @@ body {
     color: black;
 }
 
+.searchImage {
+    cursor: pointer;    
+}
+
 .headBoard {
     display: flex;
     width: 1056px;
@@ -324,6 +328,7 @@ body {
     margin-bottom: 12px;
     /* shadoe backlog box */
     box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+    cursor: pointer;
 }
 
 .cardBoardInside {
@@ -437,6 +442,25 @@ body {
 
 .d-none {
     display: none;
+}
+
+.overlay {
+position: fixed;
+left: 128px;
+right: 128px;
+top: 64px;
+bottom: 64px;
+height: 100vh;
+width: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.includeTaskForm {
+    z-index: 99;
+    width: 100%;
+    height: 100%;
 }
 
 
