@@ -96,15 +96,20 @@ function setupEventListenersAfterDOMLoaded() {
 
 
 // Funktion, die aufgerufen wird, wenn der "Remember Me" Button geklickt wird
-function remember() {
+function checkBox() {
     let rememberMeImg = document.getElementById('rememberMe');
 
-    if (rememberMeImg.src.includes('uncheckedButton')) {
-        rememberMeImg.src = 'assets/img/logInSignUp/checkButton.svg';
+    if (rememberMeImg.classList.contains('uncheckBox')) {
+        rememberMeImg.classList.remove('uncheckBox');
+        rememberMeImg.classList.add('checkBox');
     } else {
-        rememberMeImg.src = 'assets/img/logInSignUp/uncheckedButton.svg';
+        rememberMeImg.classList.add('uncheckBox');
+        rememberMeImg.classList.remove('checkBox');
     }
 }
+
+
+
 
 
 // Funktion, die für den Test verwendet wird
@@ -146,7 +151,7 @@ function renderLogIn() {
             </div>
             <div class="rememberMeForgetBox">
                 <div class="checkBoxLogIn">
-                    <img id="rememberMe" onclick="remember()" src="assets/img/logInSignUp/uncheckButton.svg" alt="">
+                    <div onclick="checkBox()" id="rememberMe" class="test uncheckBox"></div>
                     <span>Remember me</span>
                 </div>
                 <a id="fmp" href="#"> Forget my password</a>
@@ -197,7 +202,7 @@ function renderSignUp() {
             </div>
             <div class="rememberMeForgetBox">
                 <div class="checkBoxSignIn">
-                    <img onclick="toggleButtonState()" src="assets/img/logInSignUp/uncheckButton.svg" alt="">
+                <input type="checkbox" onclick="checkBox()" id="rememberMe" class="uncheckBox" required>
                     <span>I accept the </span>
                 </div>
                 <a id="fmp" href="#"> Privacy policy</a>

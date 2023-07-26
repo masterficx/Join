@@ -89,8 +89,8 @@ button:hover {
 
 
 .imgHeadingContainer {
-    width: 32px; 
-    height: 32px; 
+    width: 32px;
+    height: 32px;
 }
 
 
@@ -144,6 +144,7 @@ form {
     align-items: center;
     gap: 32px
 }
+
 .inputBox {
     display: flex;
     flex-direction: column;
@@ -186,7 +187,8 @@ input::placeholder {
 
 
 input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 30px white inset; /* Hintergrundfarbe des Autofill-Feldes */
+    -webkit-box-shadow: 0 0 0 30px white inset;
+    /* Hintergrundfarbe des Autofill-Feldes */
 }
 
 
@@ -262,4 +264,63 @@ input:-webkit-autofill {
     width: 24px;
     height: 24px;
     cursor: pointer;
+}
+
+
+.checkBox {
+    background-image: url('../assets/img/logInSignUp/checkedButton.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+.checkBox:hover {
+    background-image: url('../assets/img/logInSignUp/checkedButtonHover.svg');
+}
+
+
+.uncheckBox {
+    background-image: url('../assets/img/logInSignUp/uncheckButton.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+.uncheckBox:hover {
+    background-image: url('../assets/img/logInSignUp/uncheckedButtonHover.svg');
+}
+
+
+input[type="checkbox"] {
+    appearance: none;
+    /* Standard */
+    -moz-appearance: none;
+    /* Firefox */
+    -webkit-appearance: none;
+    /* Safari und Chrome */
+    -o-appearance: none;
+    /* Opera */
+}
+
+/* Styling für die Checkbox hinzu */
+input[type="checkbox"] {
+    background-image: url("../assets/img/logInSignUp/uncheckButton.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+/* Benutzerdefiniertes Styling für die Checkbox, wenn sie ausgewählt ist */
+input[type="checkbox"]:checked {
+    background-image: url("../assets/img/logInSignUp/checkedButton.svg");
+    width: 24px !important;
+    height: 24px !important;
+    background-position: center !important;
+}
+
+
+input[type="checkbox"]:checked:hover {
+    background-image: url('../assets/img/logInSignUp/checkedButtonHover.svg');
 }
