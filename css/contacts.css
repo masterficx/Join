@@ -40,10 +40,8 @@
     box-sizing: border-box;
 }
 
-.contact_name :hover {
-
-    cursor: pointer;
-    background-color: #F6F7F8;
+.contact_name:hover {
+    background: #F6F7F8;
 }
 
 .frame_81 {
@@ -185,7 +183,7 @@
     gap: 30px;
     margin-right: 128px;
     margin-top: 206px;
-    margin-bottom: 745px;
+    margin-bottom: 32px;
     box-sizing: border-box;
 }
 
@@ -214,4 +212,125 @@
 
 .color-FFFFFF {
     color: #FFFFFF;
+}
+
+.pointer-events-none {
+
+    pointer-events: none;
+}
+
+.floating-contact {
+    padding-left: 10px;
+}
+
+.frame_99 {
+    position: relative;
+    width: 120px;
+    height: 120 px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.frame_99 svg {
+    border-radius: 70px;
+    border: 3px solid var(--white, #FFF);
+}
+
+.frame_99 p {
+
+    display: flex;
+    width: 80px;
+    height: 28.571px;
+    flex-direction: column;
+    justify-content: center;
+    flex-shrink: 0;
+
+    color: #FFF;
+    text-align: center;
+    /* Version 2/t2 */
+    font-family: Inter;
+    font-size: 47px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%;
+    /* 56.4px */
+    position: absolute;
+}
+
+.frame-105 {
+
+    display: flex;
+    align-items: center;
+    gap: 54px;
+    box-sizing: border-box;
+}
+
+.frame-37 {
+
+    display: flex;
+    width: 207px;
+    height: 74px;
+    flex-direction: column;
+    justify-content: center;
+    color: #000;
+
+    /* Version 2/t6 */
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    /* 24px */
+}
+
+.frame-204 {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 16px;
+    box-sizing: border-box;
+}
+
+.edit-contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.delete-contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.frame-64 {
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    color: #000;
+
+    /* Version 2/t2 */
+    font-family: Inter;
+    font-size: 47px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%;
+    /* 56.4px */
+    margin: 0;
+}
+
+.frame-64 p {}
+
+.frame-104 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    box-sizing: border-box;
 }
