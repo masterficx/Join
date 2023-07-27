@@ -191,14 +191,19 @@ function showContactDetails(x) {
                                         <div class="frame-204"> 
                                             <div class="edit-contact" onclick="editContact(${x})"> ${editSVG} Edit </div>
                                             <div class="delete-contact" onclick="deleteContact(${x})"> ${deleteSVG} Delete </div>
-                                        </div>
-                                        
-                                    </div>
-                                    <div>
-                                    </div>
-                                        
-                                    
+                                        </div>   
+                                    </div>   
                                 </div>
                                 <div class="frame-37"><span> Contact information </span></div>
+                                <div class="frame-101">
+                                    <div class="frame-102"> 
+                                        <span class="details-title">E-mail</span>
+                                        <span class="details-email">${element['email']}</span>
+                                    </div>
+                                    <div class="frame-102"> 
+                                        <span class="details-title">Phone</span>
+                                        <span class="details-phone">+${element['phone']}</span>
+                                    </div>  
+                                </div>
                         `;
 }
