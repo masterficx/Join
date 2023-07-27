@@ -10,13 +10,14 @@
     <script src="js/board.js"></script>
     <script src="js/summary_script.js"></script>
 
+    <link rel="stylesheet" href="css/add_task.css">
     <link rel="stylesheet" href="css/board.css">
     <link rel="stylesheet" href="assets/fonts/fonts.css">
 </head>
 
 <body onload="includeTemplates();init();renderBoardCards()">
     <div w3-include-html="add_task.html" class="d-none" id="addTaskOverlay"></div>
-    <div class="AllMainBoard">
+    <div class="AllMainBoard" onclick="closeAddTaskOverlay()">
         <div class="middle">
             <div class="header" w3-include-html="templates/header.html">
             </div>

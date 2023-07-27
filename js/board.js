@@ -102,7 +102,6 @@ function clearBoardCards() {
 
 function openAddTask() {
     document.getElementById('overlay').classList.remove('d-none');
-    document.getElementById('mainBoard').classList.add('d-none');
     renderAddTask();
 }
 
@@ -111,7 +110,12 @@ function renderAddTask() {
     document.getElementById('CardContainer').innerHTML =`
     <div class="includeTaskForm" w3-include-html="templates/task_form.html">
     `;
+    includeTemplates();
 }
+
+// function closeAddTaskOverlay() {
+//     document.getElementById('overlay').classList.add('d-none');
+// }
 
 function filterCards() {
     const query = document.getElementById("inputSearchBoard").value.toLowerCase();

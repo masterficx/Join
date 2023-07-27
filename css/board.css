@@ -5,6 +5,7 @@ body {
 }
 
 .AllMainBoard {
+    z-index: 1;
     width: 100%;
     max-width: 1440px;
     margin-right: auto;
@@ -178,10 +179,11 @@ body {
 }
 
 .searchImage {
-    cursor: pointer;    
+    cursor: pointer;
 }
 
 .headBoard {
+    z-index: 2;
     display: flex;
     width: 1056px;
     justify-content: space-between;
@@ -256,6 +258,7 @@ body {
 }
 
 .categoryBoardSub {
+    z-index: 2;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -445,17 +448,34 @@ body {
 }
 
 .overlay {
-position: fixed;
-left: 128px;
-right: 128px;
-top: 64px;
-bottom: 64px;
-height: 100vh;
-width: 100%;
-display: flex;
-justify-content: center;
-align-items: center;
+    position: fixed;
+    left: 128px;
+    right: 128px;
+    top: 64px;
+    bottom: 64px;
+    height: 80vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
+    border-radius: 30px;
+    background: #FFF;
+    animation: slide-in 1s both;
+    /* nuevo */
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+
 }
+
+@keyframes slide-in {
+    from {
+      transform: translateX(100%);
+    }
+    
+    to {
+      transform: translateX(0);
+    }
+  }
 
 .includeTaskForm {
     z-index: 99;
