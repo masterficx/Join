@@ -166,6 +166,13 @@ function renderContactsList() {
     }
 }
 
+function animateContactCard() {
+    let contactCardContainer = document.getElementById('floating_contact');
+    contactCardContainer.classList.remove('floating-contact-animate');
+    void contactCardContainer.offsetWidth;
+    contactCardContainer.classList.add('floating-contact-animate');
+}
+
 function showContactDetails(x) {
     renderContactsList();
     let contact = document.getElementById(`contact_${[x]}`);
@@ -173,37 +180,47 @@ function showContactDetails(x) {
     let contactCardContainer = document.getElementById('floating_contact');
     let element = Contacts[x];
     let firstTwoLetters = element['firstName'].charAt(0) + element['lastName'].charAt(0);
-
     contact.classList.add('background-color-2A3647', 'pointer-events-none');
     contactNameContainer.classList.add('color-FFFFFF');
+    animateContactCard();
+    
     contactCardContainer.innerHTML = "";
-    contactCardContainer.innerHTML += `  
-                        
-                                <div class="frame-105">
-                                    <div class="frame_99">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" fill="none">
-                                        <circle cx="60" cy="60" r="60" fill="${nameTagsColors[x]}"/>
-                                        </svg>
-                                        <p>${firstTwoLetters}</p>
-                                    </div>
-                                    <div class="frame-104">
-                                        <p class="frame-64">${element['firstName']} ${element['lastName']}</p>
-                                        <div class="frame-204"> 
-                                            <div class="edit-contact" onclick="editContact(${x})"> ${editSVG} Edit </div>
-                                            <div class="delete-contact" onclick="deleteContact(${x})"> ${deleteSVG} Delete </div>
-                                        </div>   
-                                    </div>   
-                                </div>
-                                <div class="frame-37"><span> Contact information </span></div>
-                                <div class="frame-101">
-                                    <div class="frame-102"> 
-                                        <span class="details-title">E-mail</span>
-                                        <span class="details-email">${element['email']}</span>
-                                    </div>
-                                    <div class="frame-102"> 
-                                        <span class="details-title">Phone</span>
-                                        <span class="details-phone">+${element['phone']}</span>
-                                    </div>  
-                                </div>
-                        `;
+    
+    
+     contactCardContainer.innerHTML += `  
+            
+        <div class="frame-105">
+            <div class="frame_99">
+                <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" fill="none">
+                <circle cx="60" cy="60" r="60" fill="${nameTagsColors[x]}"/>
+                </svg>
+                <p>${firstTwoLetters}</p>
+            </div>
+            <div class="frame-104">
+                <p class="frame-64">${element['firstName']} ${element['lastName']}</p>
+                <div class="frame-204"> 
+                    <div class="edit-contact" onclick="editContact(${x})"> ${editSVG} Edit </div>
+                    <div class="delete-contact" onclick="deleteContact(${x})"> ${deleteSVG} Delete </div>
+                </div>   
+            </div>   
+        </div>
+        <div class="frame-37"><span> Contact information </span></div>
+        <div class="frame-101">
+            <div class="frame-102"> 
+                <span class="details-title">Email</span>
+                <span class="details-email">${element['email']}</span>
+            </div>
+            <div class="frame-102"> 
+                <span class="details-title">Phone</span>
+                <span class="details-phone">+${element['phone']}</span>
+            </div>  
+        </div>
+            `;                                    
+}
+
+function deleteContact(x){
+
+    Contacts.splice(x, 1);
+    document.getElementById('floating_contact').innerHTML = '';
+    renderContactsList();
 }
