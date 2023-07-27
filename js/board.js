@@ -63,7 +63,7 @@ function renderBoardCards() {
     for (let i = 0; i < cards.length; i++) {
         if (cards[i]['listType'] = 'ToDo') {
             document.getElementById('cardBoardToDo').innerHTML += `
-            <div class="cardBoard">
+            <div class="cardBoard" onclick='openCard(${i})'>
             <div class="cardBoardInside">
                 <div class="cardBoardInsideCategory">${cards[i]['category']}</div>
                 <div class="cardBoardInsideTitleAndDescrption">
@@ -101,6 +101,7 @@ function clearBoardCards() {
 
 
 function openAddTask() {
+    document.getElementById('CardContainer').style="display:block;";
     document.getElementById('overlay').classList.remove('d-none');
     renderAddTask();
 }
@@ -113,9 +114,17 @@ function renderAddTask() {
     includeTemplates();
 }
 
-// function closeAddTaskOverlay() {
-//     document.getElementById('overlay').classList.add('d-none');
-// }
+function closeOverlay() {
+     document.getElementById('overlay').classList.add('d-none');
+     document.getElementById('CardContainer').style="display:none;";
+     document.getElementById('CardContainer').innerHTML = "";
+     document.getElementById('CardDetail').style="display:none;";
+
+}
+
+function doNotClose(event) {
+    event.stopPropagation();
+    }
 
 function filterCards() {
     const query = document.getElementById("inputSearchBoard").value.toLowerCase();
@@ -130,4 +139,14 @@ function filterCards() {
         card.style.display = "none";
       }
     });
+  }
+
+
+  function openCard(i){
+    document.getElementById('overlay').classList.remove('d-none');
+    document.getElementById('CardDetail').style="display:block;";
+    let cardDetailTitle = document.getElementById('cardDetailTitle');
+    cardDetailTitle.innerHTML = `${cards[i]['title']}`;
+    let cardDetailDesc = document.getElementById('cardDetailDesc');
+    cardDetailDesc.innerHTML = `${cards[i]['description']}`;
   }
