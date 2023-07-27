@@ -9,7 +9,7 @@
     <script src="js/include.js"></script>
     <script src="js/board.js"></script>
     <script src="js/summary_script.js"></script>
-
+    <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/add_task.css">
     <link rel="stylesheet" href="css/board.css">
     <link rel="stylesheet" href="assets/fonts/fonts.css">
@@ -17,78 +17,83 @@
 
 <body onload="includeTemplates();init();renderBoardCards()">
     <div w3-include-html="add_task.html" class="d-none" id="addTaskOverlay"></div>
-    <div class="AllMainBoard" onclick="closeAddTaskOverlay()">
+    <div class="AllMainBoard">
         <div class="middle">
             <div class="header" w3-include-html="templates/header.html">
             </div>
-            <div class="mainBoard" id="mainBoard">
+            <div class="content">
+                <div class="mainBoard" id="mainBoard">
 
-                <div class="headBoard">
-                    <div class="title">
-                        <h1>Board</h1>
-                    </div>
-                    <div class="headBoardRight">
-                        <div class="inputSearchBoardContainer">
-                            <input id="inputSearchBoard" autocomplete="off" type="search" placeholder="Find Task">
-                            <div class="searchImage" style="display: flex;" onclick="filterCards()">
-                                <img src="/assets/img/board/searchSeparator.png" alt="">
-                                <img src="/assets/img/board/search.png" alt="">
+                    <div class="headBoard">
+                        <div class="title">
+                            <h1>Board</h1>
+                        </div>
+                        <div class="headBoardRight">
+                            <div class="inputSearchBoardContainer">
+                                <input id="inputSearchBoard" autocomplete="off" type="search" placeholder="Find Task">
+                                <div class="searchImage" style="display: flex;" onclick="filterCards()">
+                                    <img src="/assets/img/board/searchSeparator.png" alt="">
+                                    <img src="/assets/img/board/search.png" alt="">
+                                </div>
                             </div>
+                            <button onclick="openAddTask()" class="addTaskButton">Add Task<img
+                                    src="/assets/img/board/plusWhite.png" alt=""></button>
                         </div>
-                        <button onclick="openAddTask()" class="addTaskButton">Add Task<img
-                                src="/assets/img/board/plusWhite.png" alt=""></button>
                     </div>
-                </div>
-                <div class="categoryBoardAll">
-                    <div class="categoryBoardHead">
-                        <div class="categoryBoardSub"><span>To do</span>
-                            <div onclick="openAddTask()" class="headBoardRightImage"><img
-                                    src="assets/img/board/plusDark.png" alt="add"></div>
-                        </div>
-                        <div class="cardBoardAll" id="cardBoardToDo">
-                            <div class="cardBoard">
-                                <div class="cardBoardInside">
-                                    <div class="cardBoardInsideCategory">Kategorie</div>
-                                    <div class="cardBoardInsideTitleAndDescrption">
-                                        <div class="cardBoardInsideTitle">Title</div>
-                                        <div class="cardBoardInsideDescription">Beschreibung des jeweiligen Tasks</div>
-                                    </div>
-                                    <div class="cardBoardInsideProgress"><img src="/assets/img/board/loadingBar.png"
-                                            alt="">
-                                        <p>1/2 Done</p>
-                                    </div>
-                                    <div class="cardBoardInsideUserAndPrio">
-                                        <p>Users</p><img src="/assets/img/board/PrioHigh.png" alt="">
+                    <div class="categoryBoardAll">
+                        <div class="categoryBoardHead">
+                            <div class="categoryBoardSub"><span>To do</span>
+                                <div onclick="openAddTask()" class="headBoardRightImage"><img
+                                        src="assets/img/board/plusDark.png" alt="add"></div>
+                            </div>
+                            <div class="cardBoardAll" id="cardBoardToDo">
+                                <div class="cardBoard">
+                                    <div class="cardBoardInside">
+                                        <div class="cardBoardInsideCategory">Kategorie</div>
+                                        <div class="cardBoardInsideTitleAndDescrption">
+                                            <div class="cardBoardInsideTitle">Title</div>
+                                            <div class="cardBoardInsideDescription">Beschreibung des jeweiligen Tasks
+                                            </div>
+                                        </div>
+                                        <div class="cardBoardInsideProgress"><img src="/assets/img/board/loadingBar.png"
+                                                alt="">
+                                            <p>1/2 Done</p>
+                                        </div>
+                                        <div class="cardBoardInsideUserAndPrio">
+                                            <p>Users</p><img src="/assets/img/board/PrioHigh.png" alt="">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="categoryBoardHead">
-                        <div class="categoryBoardSub"><span>In Progress</span>
-                            <div onclick="openAddTask()" class="headBoardRightImage"><img
-                                    src="assets/img/board/plusDark.png" alt="add"></div>
-                        </div>
-                        <div class="cardBoardAll" id="cardBoardInProgress">
-                            <div class="cardBoard">Test Card</div>
-                        </div>
-                    </div>
-                    <div class="categoryBoardHead">
-                        <div class="categoryBoardSub"><span>Awaiting
-                                Feedback</span>
-                            <div onclick="openAddTask()" class="headBoardRightImage"><img src="assets/img/board/plusDark.png" alt="add"></div>
-                        </div>
-                        <div class="cardBoardAll" id="cardBoardAwaitingfeedback">
-                            <div class="cardBoard">Test Card</div>
-                        </div>
-                    </div>
-                    <div class="categoryBoardHead">
-                        <div onclick="openAddTask()" class="categoryBoardSub"><span>Done</span>
-                            <div class="headBoardRightImageBlind"><img src="assets/img/board/plusDark.png" alt="add">
+                        <div class="categoryBoardHead">
+                            <div class="categoryBoardSub"><span>In Progress</span>
+                                <div onclick="openAddTask()" class="headBoardRightImage"><img
+                                        src="assets/img/board/plusDark.png" alt="add"></div>
+                            </div>
+                            <div class="cardBoardAll" id="cardBoardInProgress">
+                                <div class="cardBoard">Test Card</div>
                             </div>
                         </div>
-                        <div class="cardBoardAll" id="cardBoardDone">
-                            <div class="cardBoard">Test Card</div>
+                        <div class="categoryBoardHead">
+                            <div class="categoryBoardSub"><span>Awaiting
+                                    Feedback</span>
+                                <div onclick="openAddTask()" class="headBoardRightImage"><img
+                                        src="assets/img/board/plusDark.png" alt="add"></div>
+                            </div>
+                            <div class="cardBoardAll" id="cardBoardAwaitingfeedback">
+                                <div class="cardBoard">Test Card</div>
+                            </div>
+                        </div>
+                        <div class="categoryBoardHead">
+                            <div onclick="openAddTask()" class="categoryBoardSub"><span>Done</span>
+                                <div class="headBoardRightImageBlind"><img src="assets/img/board/plusDark.png"
+                                        alt="add">
+                                </div>
+                            </div>
+                            <div class="cardBoardAll" id="cardBoardDone">
+                                <div class="cardBoard">Test Card</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -96,8 +101,12 @@
         </div>
         <div class="sidebar" w3-include-html="templates/sidebar.html">
         </div>
-        <div class="overlay d-none" id="overlay">
-            <div id="CardContainer">
+        <div class="overlay d-none"  id="overlay" onclick="closeOverlay()">
+            <div id="CardContainer" style="display:none;" onclick="doNotClose(event)">
+            </div>
+            <div id="CardDetail" style="display:none;" onclick="doNotClose(event)">
+                <div class="cardBoardInsideTitle" id="cardDetailTitle"></div>
+                <div class="cardBoardInsideDescription" id="cardDetailDesc">${cards[i]['description']}</div>
             </div>
         </div>
 </body>
