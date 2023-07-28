@@ -215,6 +215,11 @@ input::placeholder {
 }
 
 
+.redInput {
+    border: 1px solid #ff8190;
+}
+
+
 input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 30px white inset;
     /* Hintergrundfarbe des Autofill-Feldes */
@@ -373,4 +378,14 @@ footer a {
 footer a:hover {
     color: rgba(41, 171, 226, 1);
     font-weight: 700;
+}
+
+
+#passwordAlert {
+    color: rgb(255,129,144);
+    margin-top: -30px;
+    margin-right: 190px;
+    margin-bottom: -40px;
+    font-size: 13px;
+    height: 25px;
 }

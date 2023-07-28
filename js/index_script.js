@@ -201,9 +201,10 @@ function renderSignUp() {
                 <input required id="passwordInput2" class="passwordInput" type="password" placeholder="Password">
                 <img id="passwordImage2" class="passwordImage" src="./assets/img/logInSignUp/lock.svg" alt="" onclick="togglePasswordVisibility(2)">
             </div>
+            <div id="passwordAlert"></div>
             <div class="rememberMeForgetBox">
                 <div class="checkBoxSignIn">
-                <input type="checkbox" onclick="checkBox()" id="rememberMe" class="uncheckBox" required>
+                <input type="checkbox" id="rememberMe" class="uncheckBox" required>
                     <span>I accept the </span>
                 </div>
                 <a id="fmp" href="#"> Privacy policy</a>
@@ -217,6 +218,23 @@ function renderSignUp() {
         `;
     setupEventListenersAfterDOMLoaded();
     document.getElementById('headerRight').classList.add('d-none');
+}
+
+
+function signUp() {
+    let password1 = document.getElementById('passwordInput');
+    let password2 = document.getElementById('passwordInput2');
+
+    if (password1.value !== password2.value) {
+        passwordAlert.textContent = "Die Passwörter stimmen nicht überein!";
+        password2.parentElement.classList.add('redInput');
+        setTimeout(function(){
+            passwordAlert.textContent = "";
+            password2.parentElement.classList.remove('redInput');
+        }, 3000);
+    } else {
+        console.log('Passwörter stimmen überein');
+    }
 }
 
 
