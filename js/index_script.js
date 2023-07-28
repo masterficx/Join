@@ -121,11 +121,11 @@ function test() {
 function toggleButtonState() {
     const myButton = document.getElementById('signUp');
     if (myButton.disabled) {
-      myButton.removeAttribute('disabled'); // Button aktivieren
+        myButton.removeAttribute('disabled'); // Button aktivieren
     } else {
-      myButton.setAttribute('disabled', true); // Button deaktivieren
+        myButton.setAttribute('disabled', true); // Button deaktivieren
     }
-  }
+}
 
 
 // Funktion zum Rendern des LogIn-Formulars
@@ -151,10 +151,10 @@ function renderLogIn() {
             </div>
             <div class="rememberMeForgetBox">
                 <div class="checkBoxLogIn">
-                    <div onclick="checkBox()" id="rememberMe" class="test uncheckBox"></div>
+                    <div onclick="checkBox()" id="rememberMe" class="uncheckBox"></div>
                     <span>Remember me</span>
                 </div>
-                <a id="fmp" href="#"> Forget my password</a>
+                <a id="fmp" href="#" onclick="renderForgotPW()"> Forget my password</a>
             </div>
 </div>
     </div>
@@ -166,6 +166,7 @@ function renderLogIn() {
         `;
     setupEventListenersAfterDOMLoaded();
     document.getElementById('headerRight').classList.remove('d-none');
+    document.getElementById('footer').classList.remove('d-none');
 }
 
 
@@ -216,6 +217,37 @@ function renderSignUp() {
         `;
     setupEventListenersAfterDOMLoaded();
     document.getElementById('headerRight').classList.add('d-none');
+}
+
+
+function renderForgotPW() {
+    let contentbox = document.getElementById('contentbox');
+
+    contentbox.innerHTML = /* html */ `
+
+<form onsubmit="test(); return false;" class="content forgotPW">
+    <div class="headingContainer">
+    <div onclick="renderLogIn()" class="imgHeadingContainer backArrow"></div>
+    <h1>I forgot my password</h1>
+    <div class="imgHeadingContainer"></div>
+    </div>
+    <div class="blueSeperator"></div>
+    <h2>Don't worry! We will send you an email with the instructions to reset your password.</h2>
+    <div>
+        <div class="inputBox">
+            <div class="inputField">
+                <input required id="emailInput" class="" type="email" placeholder="Email">
+                <img src="./assets/img/logInSignUp/mail.svg" alt="">
+            </div>
+</div>
+    </div>
+    <div class="logInButtonBox">
+        <button id="signUp" type="onsubmit" class="sendEmailButton">Send me the email</button>
+    </div>
+</form>
+        `;
+    document.getElementById('headerRight').classList.add('d-none');
+    document.getElementById('footer').classList.add('d-none');
 }
 
 

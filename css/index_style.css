@@ -47,6 +47,13 @@ button:hover {
     box-shadow: 0 0 16px rgba(0, 0, 0, 0.3);
 }
 
+
+.sendEmailButton {
+    height: 51px;
+    width: 264px;
+}
+
+
 #logo {
     width: 500px;
     height: 500px;
@@ -60,7 +67,6 @@ button:hover {
 }
 
 .contentbox {
-    margin-top: 150px;
     display: flex;
     justify-content: center;
 }
@@ -77,6 +83,22 @@ button:hover {
     gap: 32px;
 }
 
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    justify-content: space-between;
+    margin-top: 150px;
+    margin-bottom: 50px;
+}
+
+
+.forgotPW {
+    width: 832px !important;
+    margin-top: 80px;
+}
 
 
 .headingContainer {
@@ -136,6 +158,13 @@ h1 {
     font-weight: 700;
     margin-bottom: 0;
     margin-top: 0;
+}
+
+h2 {
+    font-size: 20px;
+    font-weight: 400;
+    width: 86%;
+    text-align: center;
 }
 
 form {
@@ -323,4 +352,25 @@ input[type="checkbox"]:checked {
 
 input[type="checkbox"]:checked:hover {
     background-image: url('../assets/img/logInSignUp/checkedButtonHover.svg');
+}
+
+
+footer {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+
+footer a {
+    font-size: 16px;
+    color: rgb(168, 168, 168);
+    text-decoration: none;
+    font-weight: 400;
+}
+
+
+footer a:hover {
+    color: rgba(41, 171, 226, 1);
+    font-weight: 700;
 }
