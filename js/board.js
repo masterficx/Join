@@ -8,10 +8,10 @@ let cards = [
         "prio": "High",
         "dueDate": "2022-08-14",
         "subtasks": [
-            { name: "Test Subtask 1", status: "AwaitingFeedback"},
-            { name: "Test Subtask 2", status: "InProgress"}
+            { nameSub: "Test Subtask 1", status: "AwaitingFeedback" },
+            { nameSub: "Test Subtask 2", status: "InProgress" }
         ],
-        "listType": "ToDo"
+        "listType": "ToDo",
     },
     {
         "category": "Backoffice",
@@ -22,8 +22,8 @@ let cards = [
         "prio": "Low",
         "dueDate": "2022-08-14",
         "subtasks": [
-            { name: "Test Subtask 1", status: "AwaitingFeedback"},
-            { name: "Test Subtask 2", status: "InProgress"}
+            { nameSub: "Test Subtask 1", status: "AwaitingFeedback" },
+            { nameSub: "Test Subtask 2", status: "InProgress" }
         ],
         "listType": "InProgress"
     },
@@ -36,10 +36,10 @@ let cards = [
         "prio": "Mid",
         "dueDate": "2022-08-14",
         "subtasks": [
-            { name: "Test Subtask 1", status: "AwaitingFeedback"},
-            { name: "Test Subtask 2", status: "InProgress"}
+            { nameSub: "Test Subtask 1", status: "AwaitingFeedback" },
+            { nameSub: "Test Subtask 2", status: "InProgress" }
         ],
-        "listType": "AwaitingFeedback"
+        "listType": "Done"
     },
     {
         "category": "Media",
@@ -50,22 +50,58 @@ let cards = [
         "prio": "High",
         "dueDate": "2022-08-14",
         "subtasks": [
-            { name: "Test Subtask 1", status: "AwaitingFeedback"},
-            { name: "Test Subtask 2", status: "InProgress"}
+            { nameSub: "Test Subtask 1", status: "AwaitingFeedback" },
+            { nameSub: "Test Subtask 2", status: "InProgress" }
         ],
         "listType": "AwaitingFeedback"
+    },
+    {
+        "category": "Media",
+        "title": "Test Title 5",
+        "description": 'Test Card 5',
+        "progress": "1",
+        "assignedUser": [" Rita"],
+        "prio": "Mid",
+        "dueDate": "2022-08-14",
+        "subtasks": [
+            { nameSub: "Test Subtask 1", status: "AwaitingFeedback" },
+            { nameSub: "Test Subtask 2", status: "InProgress" }
+        ],
+        "listType": "InProgress"
     }
-]
+];
+
+let categories = [{
+    name: "Sales",
+    color: "#FC71FF",
+},
+{
+    name: "Backoffice",
+    color: "#1FD7C1",
+},
+{
+    name: "Marketing",
+    color: "#0038FF",
+},
+{
+    name: "Design",
+    color: "#FF7A00",
+},
+{
+    name: "Media",
+    color: "#FF0000",
+},
+];
 
 function renderBoardCards() {
     let cardIndex = 0;
     clearBoardCards();
     for (let i = 0; i < cards.length; i++) {
-        if (cards[i]['listType'] = 'ToDo') {
+        if (cards[i]['listType'] == 'ToDo') {
             document.getElementById('cardBoardToDo').innerHTML += `
             <div class="cardBoard" onclick='openCard(${i})'>
             <div class="cardBoardInside">
-                <div class="cardBoardInsideCategory">${cards[i]['category']}</div>
+                <div class="cardBoardInsideCategory" id="cardBoardInsideCategory${i}">${cards[i]['category']}</div>
                 <div class="cardBoardInsideTitleAndDescrption">
                     <div class="cardBoardInsideTitle">${cards[i]['title']}</div>
                     <div class="cardBoardInsideDescription">${cards[i]['description']}</div>
@@ -79,17 +115,84 @@ function renderBoardCards() {
                 </div>
             </div>
         </div>`;
-
-        } else {
-
-        };
-
-
-
-
-        const element = cards[i];
-
+        } else { renderBoardCardsInProgress(i) };
     }
+}
+
+function renderBoardCardsInProgress(i) {
+    if (cards[i]['listType'] == 'InProgress') {
+        document.getElementById('cardBoardInProgress').innerHTML += `
+        <div class="cardBoard" onclick='openCard(${i})'>
+        <div class="cardBoardInside">
+            <div class="cardBoardInsideCategory" id="cardBoardInsideCategory${i}">${cards[i]['category']}</div>
+            <div class="cardBoardInsideTitleAndDescrption">
+                <div class="cardBoardInsideTitle">${cards[i]['title']}</div>
+                <div class="cardBoardInsideDescription">${cards[i]['description']}</div>
+            </div>
+            <div class="cardBoardInsideProgress"><img src="/assets/img/board/loadingBar.png"
+                    alt="">
+                <p>${cards[i]['progress']}/2 Done</p>
+            </div>
+            <div class="cardBoardInsideUserAndPrio">
+                <p>${cards[i]['assignedUser']}</p><img src="/assets/img/board/${cards[i]['prio']}.svg" alt="">
+            </div>
+        </div>
+    </div>`;
+    } else { renderBoardCardsAwaitingFeedback(i) };
+
+}
+
+function renderBoardCardsAwaitingFeedback(i) {
+    if (cards[i]['listType'] == 'AwaitingFeedback') {
+        document.getElementById('cardBoardAwaitingfeedback').innerHTML += `
+        <div class="cardBoard" onclick='openCard(${i})'>
+        <div class="cardBoardInside">
+            <div class="cardBoardInsideCategory" id="cardBoardInsideCategory${i}">${cards[i]['category']}</div>
+            <div class="cardBoardInsideTitleAndDescrption">
+                <div class="cardBoardInsideTitle">${cards[i]['title']}</div>
+                <div class="cardBoardInsideDescription">${cards[i]['description']}</div>
+            </div>
+            <div class="cardBoardInsideProgress"><img src="/assets/img/board/loadingBar.png"
+                    alt="">
+                <p>${cards[i]['progress']}/2 Done</p>
+            </div>
+            <div class="cardBoardInsideUserAndPrio">
+                <p>${cards[i]['assignedUser']}</p><img src="/assets/img/board/${cards[i]['prio']}.svg" alt="">
+            </div>
+        </div>
+    </div>`;
+    } else {renderBoardCardsDone(i) };
+}
+
+function renderBoardCardsDone(i) {
+    if (cards[i]['listType'] == 'Done') {
+        document.getElementById('cardBoardDone').innerHTML += `
+        <div class="cardBoard" onclick='openCard(${i})'>
+        <div class="cardBoardInside">
+            <div class="cardBoardInsideCategory" style="background-color: ${renderBackgroundColorCategory(i)} ; id="cardBoardInsideCategory${i}">${cards[i]['category']}</div>
+            <div class="cardBoardInsideTitleAndDescrption">
+                <div class="cardBoardInsideTitle">${cards[i]['title']}</div>
+                <div class="cardBoardInsideDescription">${cards[i]['description']}</div>
+            </div>
+            <div class="cardBoardInsideProgress"><img src="/assets/img/board/loadingBar.png"
+                    alt="">
+                <p>${cards[i]['progress']}/2 Done</p>
+            </div>
+            <div class="cardBoardInsideUserAndPrio">
+                <p>${cards[i]['assignedUser']}</p><img src="/assets/img/board/${cards[i]['prio']}.svg" alt="">
+            </div>
+        </div>
+    </div>`;
+    } else {};
+}
+
+function renderBackgroundColorCategory(i) {
+    for (let j = 0; j < categories.length; j++) {
+        let cat = document.getElementById('cardBoardInsideCategory${i}').innerHTML;
+        if (cat == categories[j]['name']) {
+            return categories[j]['color'];
+        } else {};
+    };
 }
 
 function clearBoardCards() {
@@ -101,52 +204,52 @@ function clearBoardCards() {
 
 
 function openAddTask() {
-    document.getElementById('CardContainer').style="display:block;";
+    document.getElementById('CardContainer').style = "display:block;";
     document.getElementById('overlay').classList.remove('d-none');
     renderAddTask();
 }
 
 
 function renderAddTask() {
-    document.getElementById('CardContainer').innerHTML =`
+    document.getElementById('CardContainer').innerHTML = `
     <div class="includeTaskForm" w3-include-html="templates/task_form.html">
     `;
     includeTemplates();
 }
 
 function closeOverlay() {
-     document.getElementById('overlay').classList.add('d-none');
-     document.getElementById('CardContainer').style="display:none;";
-     document.getElementById('CardContainer').innerHTML = "";
-     document.getElementById('CardDetail').style="display:none;";
+    document.getElementById('overlay').classList.add('d-none');
+    document.getElementById('CardContainer').style = "display:none;";
+    document.getElementById('CardContainer').innerHTML = "";
+    document.getElementById('CardDetail').style = "display:none;";
 
 }
 
 function doNotClose(event) {
     event.stopPropagation();
-    }
+}
 
 function filterCards() {
     const query = document.getElementById("inputSearchBoard").value.toLowerCase();
     const cards = document.querySelectorAll(".cardBoard");
-  
+
     cards.forEach((card) => {
-      const title = card.querySelector(".cardBoardInsideTitle").innerHTML.toLowerCase();
-      const description = card.querySelector(".cardBoardInsideDescription").innerHTML.toLowerCase();
-      if (title.includes(query) || description.includes(query)) {
-        card.style.display = "flex";
-      } else {
-        card.style.display = "none";
-      }
+        const title = card.querySelector(".cardBoardInsideTitle").innerHTML.toLowerCase();
+        const description = card.querySelector(".cardBoardInsideDescription").innerHTML.toLowerCase();
+        if (title.includes(query) || description.includes(query)) {
+            card.style.display = "flex";
+        } else {
+            card.style.display = "none";
+        }
     });
-  }
+}
 
 
-  function openCard(i){
+function openCard(i) {
     document.getElementById('overlay').classList.remove('d-none');
-    document.getElementById('CardDetail').style="display:block;";
+    document.getElementById('CardDetail').style = "display:block;";
     let cardDetailTitle = document.getElementById('cardDetailTitle');
     cardDetailTitle.innerHTML = `${cards[i]['title']}`;
     let cardDetailDesc = document.getElementById('cardDetailDesc');
     cardDetailDesc.innerHTML = `${cards[i]['description']}`;
-  }
+}
