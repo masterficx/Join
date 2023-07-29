@@ -5,6 +5,7 @@ body {
     flex-direction: column;
     background-color: #F6F7F8;
     font-family: 'Inter';
+    overflow-y: hidden;
 }
 
 
@@ -165,6 +166,7 @@ h2 {
     font-weight: 400;
     width: 86%;
     text-align: center;
+    margin: 0;
 }
 
 form {
@@ -272,6 +274,13 @@ input:-webkit-autofill {
 .logInButton {
     width: 145px;
     height: 51px;
+}
+
+
+.continueButton {
+    width: 264px;
+    height: 51px;
+    margin-top: 32px;
 }
 
 
@@ -389,3 +398,29 @@ footer a:hover {
     font-size: 13px;
     height: 25px;
 }
+
+
+.banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 312px;
+    height: 74px;
+    background-color: #2A3647;
+    color: white;
+    border-radius: 20px;
+    font-size: 20px;
+    position: absolute;
+    position: absolute;
+    top: calc(50% - 74px/2);
+    left: calc(50% - 312px/2);
+    transform: translateY(52vw);
+}
+
+
+.banner.visible {
+    transform: none;
+    transition: transform 0.5s ease-in-out;
+}
+
+
