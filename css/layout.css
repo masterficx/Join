@@ -221,6 +221,34 @@ a.active p.img-dark {
     background: linear-gradient(0deg, rgba(12, 46, 98, 0.12), rgba(12, 46, 98, 0.12)), linear-gradient(0deg, #FFFFFF, #FFFFFF);
 }
 
+.account .show {
+    background: linear-gradient(0deg, rgba(12, 46, 98, 0.12), rgba(12, 46, 98, 0.12)), linear-gradient(0deg, #FFFFFF, #FFFFFF);
+}
+
+.account {
+    position: relative;
+}
+
+div#headsubmenu {
+    position: absolute;
+    background: #2a3647;
+    top: 76px;
+    right: 0px;
+    padding: 20px;
+    border-radius: 15px 0px 15px 15px;
+}
+
+#headsubmenu a {
+    color: #CDCDCD;
+    text-decoration: none;
+    font-size: 16px;
+    text-align: right;
+}
+
+div#headsubmenu a:first-child {
+    margin-bottom: 10px;
+}
+
 @media only screen and (max-width: 992px) {
 
     
