@@ -216,6 +216,11 @@ a.active p.img-dark {
     border-radius: 100%;
 }
 
+#myaccount:hover {
+    cursor: pointer;
+    background: linear-gradient(0deg, rgba(12, 46, 98, 0.12), rgba(12, 46, 98, 0.12)), linear-gradient(0deg, #FFFFFF, #FFFFFF);
+}
+
 @media only screen and (max-width: 992px) {
 
     
