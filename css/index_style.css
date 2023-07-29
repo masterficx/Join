@@ -84,7 +84,7 @@ button:hover {
 }
 
 
-.main-content {
+.front-main-content {
     display: flex;
     flex-direction: column;
     align-items: center;

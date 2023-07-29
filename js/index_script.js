@@ -114,7 +114,9 @@ function checkBox() {
 
 // Funktion, die für den Test verwendet wird
 function test() {
-    console.log('Passt!');
+    if (signUp()) {
+        console.log('Passt!');
+    }
 }
 
 
@@ -228,12 +230,13 @@ function signUp() {
     if (password1.value !== password2.value) {
         passwordAlert.textContent = "Die Passwörter stimmen nicht überein!";
         password2.parentElement.classList.add('redInput');
-        setTimeout(function(){
+        setTimeout(function () {
             passwordAlert.textContent = "";
             password2.parentElement.classList.remove('redInput');
         }, 3000);
     } else {
         console.log('Passwörter stimmen überein');
+        return true;
     }
 }
 
