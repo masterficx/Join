@@ -1,12 +1,34 @@
-// Function to initialize the page
+let users = [
+    {
+        "name": 'Max Mustermann',
+        "email": 'maxmustermann@test.de',
+        "password": '12345',
+    },
+    {
+        "name": 'Oliver',
+        "email": 'oliver@test.de',
+        "password": '54321',
+    },
+    {
+        "name": 'Tom Riddle',
+        "email": 'lordi@voldi.de',
+        "password": 'harry',
+    },
+]
+
+
+let currentUser = '';
+
+
+/////////////////////// Function to initialize the page ///////////////////////////////////
 function init() {
     startAnimation();
 }
 
 
-// Function to start the animation
+//////////////////////// Function to start the animation //////////////////////////////////
 function startAnimation() {
-    setTimeout(function animationCallback() {
+    setTimeout(() => {
         let logo = document.getElementById("logo");
         let background = document.getElementById('startBackground');
 
@@ -16,7 +38,7 @@ function startAnimation() {
         background.style.backgroundColor = "rgba(246, 247, 248, 0%)";
 
         // Remove the image from the DOM after the animation
-        setTimeout(function removeBackground() {
+        setTimeout(() => {
             if (background && background.parentNode) {
                 background.parentNode.removeChild(background);
             }
@@ -25,7 +47,7 @@ function startAnimation() {
 }
 
 
-// Function to toggle password visibility
+//////////////////////////////////// Function to toggle password visibility ////////////////////////////////
 function togglePasswordVisibility(i) {
     let passwordInput = document.getElementById('passwordInput');
     let passwordImage = document.getElementById('passwordImage');
@@ -35,10 +57,10 @@ function togglePasswordVisibility(i) {
     if (passwordInput && i === 1) {
         if (!passwordImage.src.includes('/assets/img/logInSignUp/lock.svg')) {
             if (passwordInput.type === 'password') {
-                passwordInput.type = 'text'; // Passwort sichtbar machen
+                passwordInput.type = 'text'; // Show password
                 passwordImage.src = './assets/img/logInSignUp/eye.svg';
             } else {
-                passwordInput.type = 'password'; // Passwort verstecken
+                passwordInput.type = 'password'; // Hide password
                 passwordImage.src = './assets/img/logInSignUp/hiddeneye.svg';
             }
         }
@@ -46,10 +68,10 @@ function togglePasswordVisibility(i) {
     if (passwordInput2 && i === 2) {
         if (!passwordImage2.src.includes('/assets/img/logInSignUp/lock.svg')) {
             if (passwordInput2.type === 'password') {
-                passwordInput2.type = 'text'; // Passwort sichtbar machen
+                passwordInput2.type = 'text'; // Show password
                 passwordImage2.src = './assets/img/logInSignUp/eye.svg';
             } else {
-                passwordInput2.type = 'password'; // Passwort verstecken
+                passwordInput2.type = 'password'; // Hide password
                 passwordImage2.src = './assets/img/logInSignUp/hiddeneye.svg';
             }
         }
@@ -57,7 +79,7 @@ function togglePasswordVisibility(i) {
 }
 
 
-// Function to add event listeners for the password field
+/////////////////////////////////// Function to add event listeners for the password field ////////////////////////
 function setupPasswordInputEventListeners() {
     const passwordInputs = document.querySelectorAll('.passwordInput');
 
@@ -68,7 +90,6 @@ function setupPasswordInputEventListeners() {
             passwordImage.src = './assets/img/logInSignUp/lock.svg';
         }
     }
-
 
     passwordInputs.forEach((passwordInput) => {
         const passwordImage = passwordInput.nextElementSibling;
@@ -88,13 +109,13 @@ function setupPasswordInputEventListeners() {
 }
 
 
-// Function to add event listeners after the DOM has loaded
+////////////////////// Function to add event listeners after the DOM has loaded ////////////////////////
 function setupEventListenersAfterDOMLoaded() {
     setupPasswordInputEventListeners();
 }
 
 
-// Function called when the "Remember Me" button is clicked
+///////////////////// Function called when the "Remember Me" button is clicked /////////////////////////
 function checkBox() {
     let rememberMeImg = document.getElementById('rememberMe');
 
@@ -110,9 +131,10 @@ function checkBox() {
 
 // Function used for testing
 function test() {
-        console.log('Passt!');
+    console.log('Passt!');
 }
 
+/////////////////////////////////////////// Log In //////////////////////////////////////////////////
 
 // Function to render the LogIn form
 function renderLogIn() {
@@ -124,6 +146,45 @@ function renderLogIn() {
     document.getElementById('footer').classList.remove('d-none');
 }
 
+
+// Function to check the login credentials
+function checkLogIn() {
+    let emailInput = document.getElementById('emailInput');
+    let passwordInput = document.getElementById('passwordInput');
+
+    let isLoggedIn = false; // Variable to track if the login check was successful
+
+    // Loop through the users array to check the email and password
+    for (let i = 0; i < users.length; i++) {
+        let email = users[i].email;
+        let password = users[i].password;
+
+        // If the email and password match with any user, set isLoggedIn to true
+        if (emailInput.value === email && passwordInput.value === password) {
+            isLoggedIn = true;
+            currentUser = users[i].name;
+            break; // Exit the loop since no further checking is needed
+        }
+    }
+
+    // If the login check is successful, call the function test()
+    if (isLoggedIn) {
+        test();
+    } else {
+        // If the login check fails, display an error message and highlight the password input field
+        passwordAlert.textContent = "Wrong password Ups! Try again";
+        passwordInput.parentElement.classList.add('redInput');
+        
+        // Clear the error message and remove the red highlight after 3 seconds
+        setTimeout(() => {
+            passwordAlert.textContent = "";
+            passwordInput.parentElement.classList.remove('redInput');
+        }, 3000);
+    }
+}
+
+
+/////////////////////////////////////////// Sign Up //////////////////////////////////////////////////
 
 // Function to render the SignUp form
 function renderSignUp() {
@@ -138,12 +199,12 @@ function renderSignUp() {
 
 // Function to handle SignUp form submission
 function signUpForm() {
-    signUp();
+    checkSamePasswort();
 }
 
 
 // Function to handle SignUp
-function signUp() {
+function checkSamePasswort() {
     let password1 = document.getElementById('passwordInput');
     let password2 = document.getElementById('passwordInput2');
 
@@ -159,6 +220,7 @@ function signUp() {
     }
 }
 
+/////////////////////////////////////////// Forgot Password //////////////////////////////////////////////////
 
 // Function to render the Forgot Password form
 function renderForgotPW() {
@@ -184,7 +246,6 @@ function show() {
 
     banner.classList.add("visible");
     setTimeout(() => {
-        renderSignUp();
         banner.classList.remove("visible");
     }, 2000)
 }
@@ -194,12 +255,12 @@ function show() {
 document.addEventListener('DOMContentLoaded', init);
 
 
-///////////////////////////////////////////////return HTML////////////////////////////////////////////////////////////
+/////////////////////////////////////////////// return HTML ////////////////////////////////////////////////////////////
 
 
 function returnLogInHTML() {
     return /* html */ `
-        <form onsubmit="test(); return false;" class="content">
+        <form onsubmit="checkLogIn(); return false;" class="content">
             <div class="headingContainer">
                 <h1>Log in</h1>
             </div>
