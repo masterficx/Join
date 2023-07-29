@@ -52,6 +52,14 @@ img.hov-icon {
     display: block;
 }
 
+a.help:hover img.def-icon {
+    display: none;
+}
+
+a.help:hover img.hov-icon {
+    display: block;
+}
+
 .box-left {
     display: flex;
     align-items: center;
