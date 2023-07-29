@@ -169,7 +169,7 @@ function renderBoardCardsDone(i) {
         document.getElementById('cardBoardDone').innerHTML += `
         <div class="cardBoard" onclick='openCard(${i})'>
         <div class="cardBoardInside">
-            <div class="cardBoardInsideCategory" style="background-color: ${renderBackgroundColorCategory(i)} ; id="cardBoardInsideCategory${i}">${cards[i]['category']}</div>
+            <div class="cardBoardInsideCategory"; id="cardBoardInsideCategory${i}">${cards[i]['category']}</div>
             <div class="cardBoardInsideTitleAndDescrption">
                 <div class="cardBoardInsideTitle">${cards[i]['title']}</div>
                 <div class="cardBoardInsideDescription">${cards[i]['description']}</div>
@@ -184,13 +184,15 @@ function renderBoardCardsDone(i) {
         </div>
     </div>`;
     } else {};
+    renderBackgroundColorCategory(i);
 }
 
 function renderBackgroundColorCategory(i) {
     for (let j = 0; j < categories.length; j++) {
-        let cat = document.getElementById('cardBoardInsideCategory${i}').innerHTML;
+        let cat = document.getElementById(`cardBoardInsideCategory${i}`).innerHTML;
+        let catClass = document.getElementById(`cardBoardInsideCategory${i}`);
         if (cat == categories[j]['name']) {
-            return categories[j]['color'];
+            catClass.classList.style['background-color'] = categories[j]['color'];
         } else {};
     };
 }
