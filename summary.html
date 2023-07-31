@@ -7,9 +7,10 @@
     <title>Summary | myJoin</title>
 
     <script src="js/include.js"></script>
-    <script src="js/summary_script.js"></script>
     <script src="js/board.js"></script>
+    <script src="js/summary_script.js"></script>
     <link rel="stylesheet" href="css/index_style.css">
+    <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/summary_style.css">
     <link rel="stylesheet" href="assets/fonts/fonts.css">
 </head>
@@ -30,40 +31,40 @@
                                 <div class="flex-col"><span class="sum-title" id="sum-1"></span><span
                                         class="sum-sub-title">Tasks in Board</span></div>
                             </a>
-                            <div id="sum-box-2" class="sum-box">
+                            <a href="board.html" id="sum-box-2" class="sum-box">
                                 <div class="flex-col"><span class="sum-title" id="sum-2"></span><span
                                         class="sum-sub-title">Tasks in Progress</span></div>
-                            </div>
-                            <div id="sum-box-3" class="sum-box">
-                                <div class="flex-col"><span class="sum-title" id="sum-3">2</span><span
+                                </a>
+                                <a href="board.html" id="sum-box-3" class="sum-box">
+                                <div class="flex-col"><span class="sum-title" id="sum-3"></span><span
                                         class="sum-sub-title">Awaiting Feedback</span></div>
-                            </div>
+                                </a>
                         </div>
                         <div class="boxes-row">
-                            <div id="sum-box-4" class="sum-box">
+                            <a href="board.html" id="sum-box-4" class="sum-box">
                                 <div class="box-left">
                                     <div class="box-left-img"><img src="assets/img/summary/urgent-icon.svg"></div>
                                     <div class="flex-col">
-                                        <span class="sum-title" id="sum-4">1</span>
+                                        <span class="sum-title" id="sum-4"></span>
                                         <span class="sum-sub-title">Urgent</span>
                                     </div>
                                 </div>
-                                <div class="box-right">Datum</div>
-                            </div>
+                                <div class="box-right"><span id="upcomingDeadline"></span>Upcoming Deadline</div>
+                            </a>
                         </div>
                         <div class="boxes-row">
-                            <div id="sum-box-5" class="sum-box">
+                            <a href="board.html" id="sum-box-5" class="sum-box">
                                 <div><img src="assets/img/summary/to-do-icon-dark.svg" class="def-icon"><img
                                         src="assets/img/summary/to-do-icon-w.svg" class="hov-icon"></div>
-                                <div class="flex-col"><span class="sum-title" id="sum-5">1</span><span
+                                <div class="flex-col"><span class="sum-title" id="sum-5"></span><span
                                         class="sum-sub-title">To-do</span></div>
-                            </div>
-                            <div id="sum-box-6" class="sum-box">
+                                </a>
+                                <a href="board.html" id="sum-box-6" class="sum-box">
                                 <div><img src="assets/img/summary/done-icon-dark.svg" class="def-icon"><img
                                         src="assets/img/summary/done-icon-w.svg" class="hov-icon"></div>
-                                <div class="flex-col"><span class="sum-title" id="sum-6">1</span><span
+                                <div class="flex-col"><span class="sum-title" id="sum-6"></span><span
                                         class="sum-sub-title">Done</span></div>
-                            </div>
+                                </a>
                         </div>
                     </div>
                     <div id="welcomemsg">
