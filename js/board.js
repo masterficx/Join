@@ -233,6 +233,7 @@ function closeOverlay() {
     document.getElementById('CardDetail').style = "display:none;";
     document.getElementById('CardEditForm').style = "display:none;";
     renderBoardCards();
+    renderBackgroundColorCategory();
 
 }
 
