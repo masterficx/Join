@@ -49,7 +49,7 @@ let Contacts = [
     }
 ]
 
-let nameTagsColors = ['#FF7A00', '#9327FF', '#29ABE2', '#FC71FF', '#02CF2F', '#AF1616', '#462F8A', '#FFC700', '#FF7A00', '#9327FF', '#29ABE2', '#FC71FF', '#02CF2F', '#AF1616', '#462F8A', '#FFC700',];
+let nameTagsColors = ['#FF7A00', '#9327FF', '#29ABE2', '#FC71FF', '#02CF2F', '#AF1616', '#462F8A', '#FFC700', '#FF7A00', '#9327FF', '#29ABE2', '#FC71FF', '#02CF2F', '#AF1616', '#462F8A', '#FFC700'];
 let firstLetters = [];
 let editSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 <mask id="mask0_73072_5024" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
@@ -150,7 +150,7 @@ function getFirstLetters() {
 
 }
 function renderContactsList() {
-    getFirstLetters();
+    // getFirstLetters();
     let contactsList = document.getElementById('contacts_list');
     contactsList.innerHTML = "";
     contactsList.innerHTML += `
@@ -213,7 +213,7 @@ function renderContactsList() {
             <div class="contact_name" id="contact_${[i]}" onclick="showContactDetails(${[i]})"> 
                 <div class="frame_79">
                 <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42" fill="none">
-                <circle cx="21" cy="21" r="20.5" fill="#9327FF" stroke="white"/>
+                <circle cx="21" cy="21" r="20.5" fill="${nameTagsColors[i]}" stroke="white"/>
                 </svg>
                 <p>${firstTwoLetters}</p>
             </div>
@@ -314,19 +314,19 @@ function renderAddNewContact() {
                                             <div class="add-contact-text-main">
                                                 <div class="frame-14"> 
                                                     <div class="frame-157">
-                                                        <input type="text" placeholder="Name">
+                                                        <input type="text" id="add_contact_name" placeholder="Name" onkeydown="return /[a-z, ]/i.test(event.key)">
                                                         ${personSmallSVG}
                                                     </div>
                                                 </div>
                                                 <div class="frame-14"> 
                                                     <div class="frame-157">
-                                                        <input type="text" placeholder="Email">
+                                                        <input type="email" id="add_contact_email" placeholder="Email">
                                                         ${emailSmallSVG}
                                                     </div>
                                                 </div>
                                                 <div class="frame-14"> 
                                                     <div class="frame-157">
-                                                        <input type="text" placeholder="Phone">
+                                                        <input type="tel" id="add_contact_phone" placeholder="Phone" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
                                                         ${phoneSmallSVG}
                                                     </div>
                                                 </div>
@@ -349,6 +349,9 @@ function renderAddNewContact() {
 }
 
 function closeNewContact() {
+    document.getElementById('add_contact_name').value="";
+    document.getElementById('add_contact_phone').value="";
+    document.getElementById('add_contact_email').value="";
     let newContactOverlayDiv = document.getElementById('overlay_new_contact');
     let newContactMainDiv = document.getElementById('new_contact_main');
     newContactMainDiv.classList.add('close-new-contact-animate');
@@ -357,10 +360,71 @@ function closeNewContact() {
         void newContactOverlayDiv.offsetWidth;
         newContactOverlayDiv.classList.add('d-none');
         newContactMainDiv.classList.remove('close-new-contact-animate')
-      }, "220");
-      
+    }, "220");
+
 }
 
 function doNotClose(event) {
     event.stopPropagation();
+}
+
+function createNewContact() {
+
+    let nameInput = document.getElementById('add_contact_name').value;
+    let nameArray = nameInput.split(' ');
+    let firstName = nameArray[0];
+    let lastName = nameArray[1];
+    let emailInput = document.getElementById('add_contact_email').value;
+    let phoneInput = document.getElementById('add_contact_phone').value;
+    let newContact = {
+                    "firstName":  firstName ,
+                    "lastName":  lastName ,
+                    "phone":  phoneInput,
+                    "email":  emailInput ,
+                    };
+
+    Contacts.push(newContact);
+    sortContactsAlphabetically(Contacts);
+    closeNewContact();
+    renderContactsList();
+    let theNewId = findContactIdByEmail(Contacts, emailInput);
+    target = document.getElementById(`contact_${theNewId}`);
+    setTimeout(() => {
+        scrollToNewContact('contacts_list', `contact_${theNewId}`);
+        setTimeout(() => {
+            target.click();
+        }, "550");
+    }, "550");
+}  
+                
+function sortContactsAlphabetically(contacts) {
+    contacts.sort((a, b) => {
+        const nameA = a.firstName.toLowerCase();
+        const nameB = b.firstName.toLowerCase();
+        if (nameA < nameB) {
+            return -1;
+        }
+        if (nameA > nameB) {
+            return 1;
+        }
+        return 0;
+    });
+}
+
+function findContactIdByEmail(contacts, emailToBeFound) {
+    for (let i = 0; i < contacts.length; i++) {
+        if (contacts[i].email === emailToBeFound) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+function scrollToNewContact(parentId, childId) {
+    const parentElement = document.getElementById(parentId);
+    const childElement = document.getElementById(childId);
+
+    if (parentElement && childElement) {
+        childElement.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+    }
 }
