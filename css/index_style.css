@@ -413,6 +413,15 @@ footer a:hover {
     height: 25px;
 }
 
+#emailAlert{
+    color: rgb(255, 129, 144);
+    margin-top: -30px;
+    margin-right: 240px;
+    margin-bottom: -40px;
+    font-size: 13px;
+    height: 25px;
+}
+
 
 
 
@@ -420,7 +429,7 @@ footer a:hover {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 312px;
+    width: 345px;
     height: 74px;
     background-color: #2A3647;
     color: white;
@@ -429,8 +438,9 @@ footer a:hover {
     position: absolute;
     position: absolute;
     top: calc(50% - 74px/2);
-    left: calc(50% - 312px/2);
+    left: calc(50% - 345px/2);
     transform: translateY(1000px);
+    gap: 5px;
 }
 
 

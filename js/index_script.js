@@ -28,15 +28,15 @@ function init() {
 
 //////////////////////// Function to start the animation //////////////////////////////////
 function startAnimation() {
-    if(window.innerWidth < 510) {
+    if (window.innerWidth < 510) {
         logo.src = "../img/joinlogomobil.png";
     }
     setTimeout(() => {
         let logo = document.getElementById("logo");
         let background = document.getElementById('startBackground');
 
-        setTimeout(() => {logo.src = "../img/joinlogo.png";}, 80)
-        
+        setTimeout(() => { logo.src = "../img/joinlogo.png"; }, 80)
+
         logo.classList.add('imgLogo');
 
         // Fades out the startBackground div gradually
@@ -48,7 +48,7 @@ function startAnimation() {
                 background.parentNode.removeChild(background);
             }
         }, 500); // Wait for 0.5 seconds (same duration as the animation) before removing the image
-        handleMaxWidthChange(); 
+        handleMaxWidthChange();
     }, 500); // Wait for 0.5 seconds before starting the animation
 }
 
@@ -160,12 +160,10 @@ function checkLogIn() {
 
     let isLoggedIn = false; // Variable to track if the login check was successful
 
-    // Loop through the users array to check the email and password
     for (let i = 0; i < users.length; i++) {
         let email = users[i].email;
         let password = users[i].password;
 
-        // If the email and password match with any user, set isLoggedIn to true
         if (emailInput.value === email && passwordInput.value === password) {
             isLoggedIn = true;
             currentUser = users[i].name;
@@ -173,16 +171,14 @@ function checkLogIn() {
         }
     }
 
-    // If the login check is successful, call the function test()
-    if (isLoggedIn) {
+    if (isLoggedIn) { // If the login check is successful, call the function test()
         test();
-    } else {
-        // If the login check fails, display an error message and highlight the password input field
+    } else { // If the login check fails, display an error message and highlight the password input field
         passwordAlert.textContent = "Wrong password Ups! Try again";
         passwordInput.parentElement.classList.add('redInput');
 
-        // Clear the error message and remove the red highlight after 3 seconds
-        setTimeout(() => {
+
+        setTimeout(() => { // Clear the error message and remove the red highlight after 3 seconds
             passwordAlert.textContent = "";
             passwordInput.parentElement.classList.remove('redInput');
         }, 3000);
@@ -205,24 +201,58 @@ function renderSignUp() {
 
 // Function to handle SignUp form submission
 function signUpForm() {
-    checkSamePasswort();
+    let name = document.getElementById('nameInput');
+    let email = document.getElementById('emailInput');
+    let password1 = document.getElementById('passwordInput');
+    let password2 = document.getElementById('passwordInput2');
+
+    if (checkSamePasswort(password1, password2) && checkEmail(email)) {
+        let user = {
+            "name": name.value,
+            "email": email.value,
+            "password": password1.value,
+        }
+        users.push(user);
+        resetInputField(name, email, password1, password2);
+        show();
+        setTimeout(() => { renderLogIn() }, 2000)
+    }
+}
+
+function resetInputField(name, email, password1, password2) {
+    name.value = '';
+    email.value = '';
+    password1.value = '';
+    password2.value = '';
 }
 
 
-// Function to handle SignUp
-function checkSamePasswort() {
-    let password1 = document.getElementById('passwordInput');
-    let password2 = document.getElementById('passwordInput2');
+function checkEmail(email) { // check if an email exists
+    for (let i = 0; i < users.length; i++) {
+        let userEmail = users[i].email;
+        if (email.value === userEmail) {
+            emailAlert.textContent = "E-Mail bereits vorhanden";
+            email.parentElement.classList.add('redInput');
+            setTimeout(() => { emailAlert.textContent = ""; email.parentElement.classList.remove('redInput'); }, 3000)
+            return false;
+        }
+    }
+    return true;
+}
+
+
+function checkSamePasswort(password1, password2) {
 
     if (password1.value !== password2.value) {
         passwordAlert.textContent = "Die Passwörter stimmen nicht überein!";
         password2.parentElement.classList.add('redInput');
-        setTimeout(function () {
+        setTimeout(() => {
             passwordAlert.textContent = "";
             password2.parentElement.classList.remove('redInput');
         }, 3000);
     } else {
-        console.log('Passwörter stimmen überein');
+        console.log('Benutzer wurde angelegt');
+        return true;
     }
 }
 
@@ -235,6 +265,7 @@ function renderForgotPW() {
     contentbox.innerHTML = returnForgotPWHTML();
     document.getElementById('headerRight').classList.add('d-none');
     document.getElementById('footer').classList.add('d-none');
+    document.getElementById('banner').innerHTML = '<img style="width: 32px" src="../assets/img/logInSignUp/sendCheck.svg">An E-Mail has been sent to you';
 }
 
 // Function to render the Reset Password form
@@ -244,6 +275,8 @@ function renderResetPassword() {
     contentbox.innerHTML = returnResetPasswordHTML();
     document.getElementById('headerRight').classList.add('d-none');
     document.getElementById('footer').classList.add('d-none');
+    document.getElementById('banner').innerHTML = 'You reset your password';
+
 }
 
 // Function to show a banner
@@ -268,7 +301,7 @@ document.addEventListener('DOMContentLoaded', handleMaxWidthChange);
 function moveElementToNewPosition(newParent) {
     let elementToMove = document.getElementById('headerRight');
     let footerElement = document.getElementById('footer');
-    
+
     if (elementToMove && newParent && footerElement) {
         newParent.insertAdjacentElement('beforebegin', elementToMove);
     }
@@ -283,9 +316,9 @@ function handleMaxWidthChange() {
         moveElementToNewPosition(document.getElementById('footer'));
         // logo.src = "../img/joinlogomobil.png"; // for startAnimation on mobil
     } else {
-        if(moveBack && elementToMove)
-        // moveElementToNewPosition(document.getElementById('front-main-content'));
-        moveBack.appendChild(elementToMove);
+        if (moveBack && elementToMove)
+            // moveElementToNewPosition(document.getElementById('front-main-content'));
+            moveBack.appendChild(elementToMove);
         // logo.src = "../img/joinlogo.png";
     }
 }
@@ -352,6 +385,7 @@ function returnSignUpHTML() {
                         <input required id="emailInput" class="" type="email" placeholder="Email">
                         <img src="./assets/img/logInSignUp/mail.svg" alt="">
                     </div>
+                    <div id="emailAlert"></div>
                     <div class="inputField">
                         <input required id="passwordInput" class="passwordInput" type="password" placeholder="Password">
                         <img id="passwordImage" class="passwordImage" src="./assets/img/logInSignUp/lock.svg" alt="" onclick="togglePasswordVisibility(1)">
