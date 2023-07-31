@@ -250,8 +250,29 @@ function filterCards() {
 function openCard(i) {
     document.getElementById('overlay').classList.remove('d-none');
     document.getElementById('CardDetail').style = "display:block;";
+    let cardDetailCat = document.getElementById('cardDetailCat');
+    cardDetailCat.innerHTML = `${cards[i]['category']}`;
     let cardDetailTitle = document.getElementById('cardDetailTitle');
     cardDetailTitle.innerHTML = `${cards[i]['title']}`;
     let cardDetailDesc = document.getElementById('cardDetailDesc');
     cardDetailDesc.innerHTML = `${cards[i]['description']}`;
+    let cardDetailDueDate = document.getElementById('cardDetailDueDate');
+    cardDetailDueDate.innerHTML = `<span class="detlabel">Due date:</span>${cards[i]['dueDate']}`;
+    let cardDetailPrio = document.getElementById('cardDetailPrio');
+    cardDetailPrio.innerHTML = `<span class="detlabel">Priority:</span>${cards[i]['prio']}`;
+    let cardDetailAssignedUser = document.getElementById('cardDetailAssignedUser');
+    cardDetailAssignedUser.innerHTML = `${cards[i]['assignedUser']}`;
+    let cardDetailDelete = document.getElementById('deleteCard');
+    cardDetailDelete.innerHTML = `<div onclick='deleteCard(${[i]})'>Delete`;
+    let cardDetailEdit = document.getElementById('editCard');
+    cardDetailEdit.innerHTML = `<div onclick='editCard(${[i]})'>Edit`;
+}
+
+
+function deleteCard(i) {
+console.log('deleted', i);
+}
+
+function editCard(i) {
+    console.log('edited', i);
 }
