@@ -8,7 +8,7 @@ let cards = [
         "prio": "High",
         "dueDate": "2022-08-14",
         "subtasks": [
-            { nameSub: "Test Subtask 1", status: "AwaitingFeedback" },
+            { nameSub: "Test Subtask 1", status: "Awaitingfeedback" },
             { nameSub: "Test Subtask 2", status: "InProgress" }
         ],
         "listType": "ToDo",
@@ -22,7 +22,7 @@ let cards = [
         "prio": "Low",
         "dueDate": "2022-08-14",
         "subtasks": [
-            { nameSub: "Test Subtask 1", status: "AwaitingFeedback" },
+            { nameSub: "Test Subtask 1", status: "Awaitingfeedback" },
             { nameSub: "Test Subtask 2", status: "InProgress" }
         ],
         "listType": "InProgress"
@@ -36,7 +36,7 @@ let cards = [
         "prio": "Mid",
         "dueDate": "2022-08-14",
         "subtasks": [
-            { nameSub: "Test Subtask 1", status: "AwaitingFeedback" },
+            { nameSub: "Test Subtask 1", status: "Awaitingfeedback" },
             { nameSub: "Test Subtask 2", status: "InProgress" }
         ],
         "listType": "Done"
@@ -50,10 +50,10 @@ let cards = [
         "prio": "High",
         "dueDate": "2022-08-14",
         "subtasks": [
-            { nameSub: "Test Subtask 1", status: "AwaitingFeedback" },
+            { nameSub: "Test Subtask 1", status: "Awaitingfeedback" },
             { nameSub: "Test Subtask 2", status: "InProgress" }
         ],
-        "listType": "AwaitingFeedback"
+        "listType": "Awaitingfeedback"
     },
     {
         "category": "Media",
@@ -93,13 +93,20 @@ let categories = [{
 },
 ];
 
+let currentDraggedElement;
+
+function renderBoard() {
+    renderBoardCards();
+    setTimeout(renderBackgroundColorCategory(), 500);
+}
+
 function renderBoardCards() {
     let cardIndex = 0;
     clearBoardCards();
     for (let i = 0; i < cards.length; i++) {
         if (cards[i]['listType'] == 'ToDo') {
             document.getElementById('cardBoardToDo').innerHTML += `
-            <div class="cardBoard" onclick='openCard(${i})'>
+            <div class="cardBoard" draggable="true" ondragstart="startDragging(${i})" onclick='openCard(${i})'>
             <div class="cardBoardInside">
                 <div class="cardBoardInsideCategory" id="cardBoardInsideCategory${i}">${cards[i]['category']}</div>
                 <div class="cardBoardInsideTitleAndDescrption">
@@ -122,7 +129,7 @@ function renderBoardCards() {
 function renderBoardCardsInProgress(i) {
     if (cards[i]['listType'] == 'InProgress') {
         document.getElementById('cardBoardInProgress').innerHTML += `
-        <div class="cardBoard" onclick='openCard(${i})'>
+        <div class="cardBoard" draggable="true" ondragstart="startDragging(${i})" onclick='openCard(${i})'>
         <div class="cardBoardInside">
             <div class="cardBoardInsideCategory" id="cardBoardInsideCategory${i}">${cards[i]['category']}</div>
             <div class="cardBoardInsideTitleAndDescrption">
@@ -139,13 +146,12 @@ function renderBoardCardsInProgress(i) {
         </div>
     </div>`;
     } else { renderBoardCardsAwaitingFeedback(i) };
-
 }
 
 function renderBoardCardsAwaitingFeedback(i) {
-    if (cards[i]['listType'] == 'AwaitingFeedback') {
+    if (cards[i]['listType'] == 'Awaitingfeedback') {
         document.getElementById('cardBoardAwaitingfeedback').innerHTML += `
-        <div class="cardBoard" onclick='openCard(${i})'>
+        <div class="cardBoard" draggable="true" ondragstart="startDragging(${i})" onclick='openCard(${i})'>
         <div class="cardBoardInside">
             <div class="cardBoardInsideCategory" id="cardBoardInsideCategory${i}">${cards[i]['category']}</div>
             <div class="cardBoardInsideTitleAndDescrption">
@@ -161,13 +167,13 @@ function renderBoardCardsAwaitingFeedback(i) {
             </div>
         </div>
     </div>`;
-    } else {renderBoardCardsDone(i) };
+    } else { renderBoardCardsDone(i) };
 }
 
 function renderBoardCardsDone(i) {
     if (cards[i]['listType'] == 'Done') {
         document.getElementById('cardBoardDone').innerHTML += `
-        <div class="cardBoard" onclick='openCard(${i})'>
+        <div class="cardBoard" draggable="true" ondragstart="startDragging(${i})" onclick='openCard(${i})'>
         <div class="cardBoardInside">
             <div class="cardBoardInsideCategory"; id="cardBoardInsideCategory${i}">${cards[i]['category']}</div>
             <div class="cardBoardInsideTitleAndDescrption">
@@ -183,17 +189,18 @@ function renderBoardCardsDone(i) {
             </div>
         </div>
     </div>`;
-    } else {};
-    renderBackgroundColorCategory(i);
+    } else { };
 }
 
-function renderBackgroundColorCategory(i) {
-    for (let j = 0; j < categories.length; j++) {
-        let cat = document.getElementById(`cardBoardInsideCategory${i}`).innerHTML;
-        let catClass = document.getElementById(`cardBoardInsideCategory${i}`);
-        if (cat == categories[j]['name']) {
-            catClass.classList.style['background-color'] = categories[j]['color'];
-        } else {};
+function renderBackgroundColorCategory() {
+    for (let j = 0; j < cards.length; j++) {
+        let cat = cards[j]['category'];
+        let catClass = document.getElementById(`cardBoardInsideCategory${j}`);
+        for (let k = 0; k < categories.length; k++) {
+            if (cat == categories[k]['name']) {
+                catClass.style['background-color'] = categories[j]['color'];
+            } else { };
+        };
     };
 }
 
@@ -224,8 +231,6 @@ function closeOverlay() {
     document.getElementById('CardContainer').style = "display:none;";
     document.getElementById('CardContainer').innerHTML = "";
     document.getElementById('CardDetail').style = "display:none;";
-    document.getElementById('CardEditForm').style = "display:none;";
-    renderBoardCards();
 
 }
 
@@ -252,49 +257,41 @@ function filterCards() {
 function openCard(i) {
     document.getElementById('overlay').classList.remove('d-none');
     document.getElementById('CardDetail').style = "display:block;";
-    let cardDetailCat = document.getElementById('cardDetailCat');
-    cardDetailCat.innerHTML = `${cards[i]['category']}`;
     let cardDetailTitle = document.getElementById('cardDetailTitle');
     cardDetailTitle.innerHTML = `${cards[i]['title']}`;
     let cardDetailDesc = document.getElementById('cardDetailDesc');
     cardDetailDesc.innerHTML = `${cards[i]['description']}`;
-    let cardDetailDueDate = document.getElementById('cardDetailDueDate');
-    cardDetailDueDate.innerHTML = `<span class="detlabel">Due date:</span>${cards[i]['dueDate']}`;
-    let cardDetailPrio = document.getElementById('cardDetailPrio');
-    cardDetailPrio.innerHTML = `<span class="detlabel">Priority:</span>${cards[i]['prio']}`;
-    let cardDetailAssignedUser = document.getElementById('cardDetailAssignedUser');
-    cardDetailAssignedUser.innerHTML = `${cards[i]['assignedUser']}`;
-    let cardDetailDelete = document.getElementById('deleteCard');
-    cardDetailDelete.innerHTML = `<div onclick='deleteCard(${[i]})'>Delete`;
-    let cardDetailEdit = document.getElementById('editCard');
-    cardDetailEdit.innerHTML = `<div onclick='editCard(${[i]})'>Edit`;
 }
 
+// function countDoneSubtasks(i) {
+//     let doneSubtasks = remoteTasksAsJSON[i]["subtasks"].filter(
+//       (subtask) => subtask.status === "done"
+//     );
+//     let doneSubtasksCount = doneSubtasks.length;
+//     return doneSubtasksCount;
+//   }
+  
+//   function renderProgress(i) {
+//     let doneCount = countDoneSubtasks(i);
+//     let subtaskLength = remoteTasksAsJSON[i]["subtasks"].length;
+//     let percentage = (doneCount / subtaskLength) * 100;
+//     if (subtaskLength == 0) {
+//       return 0;
+//     } else {
+//       return percentage;
+//     }
+//   }
 
-function deleteCard(i) {
-console.log('deleted', i);
+
+function startDragging(i) {
+    currentDraggedElement = i;
 }
 
-function editCard(i) {
-    console.log('edited', i);
-    document.getElementById('CardDetail').style = "display:none;";
-    document.getElementById('CardEditForm').style = "display:block;";
-    document.getElementById('editCardTitle').value = `${cards[i]['title']}`;
-    document.getElementById('editCardDescription').value = `${cards[i]['description']}`;
-    document.getElementById('editCardDueDate').value = `${cards[i]['dueDate']}`;
-    document.getElementById('editCardPrio').value = `${cards[i]['prio']}`;
-    document.getElementById('editCardAssignedTo').value = `${cards[i]['assignedUser']}`;
-    let editCardSave = document.getElementById('editCardSave');
-    editCardSave.innerHTML = `<div onclick='saveEditedCard(${[i]})'>Ok`;
+function allowDrop(ev) {
+    ev.preventDefault();
 }
 
-function saveEditedCard(i){
-    cards[i]['title'] = document.getElementById('editCardTitle').value;
-    cards[i]['description'] = document.getElementById('editCardDescription').value;
-    cards[i]['dueDate'] = document.getElementById('editCardDueDate').value;
-    cards[i]['prio'] = document.getElementById('editCardPrio').value;
-    cards[i]['assignedUser'] = document.getElementById('editCardAssignedTo').value;
-    cards.push();
-    openCard(i);
-    document.getElementById('CardEditForm').style = "display:none;";
+function moveTo(listType) {
+    cards[currentDraggedElement]['listType'] = listType.slice(9);
+    renderBoard();
 }

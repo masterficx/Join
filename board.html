@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="assets/fonts/fonts.css">
 </head>
 
-<body onload="includeTemplates();init();renderBoardCards()">
+<body onload="includeTemplates();init();renderBoard()">
     <div w3-include-html="add_task.html" class="d-none" id="addTaskOverlay"></div>
     <div class="AllMainBoard">
         <div class="middle">
@@ -46,7 +46,7 @@
                                 <div onclick="openAddTask()" class="headBoardRightImage"><img
                                         src="assets/img/board/plusDark.png" alt="add"></div>
                             </div>
-                            <div class="cardBoardAll" id="cardBoardToDo">
+                            <div class="cardBoardAll drag-area" ondrop="moveTo('cardBoardToDo')" ondragover="allowDrop(event)" id="cardBoardToDo">
                                 <div class="cardBoard">
                                     <div class="cardBoardInside">
                                         <div class="cardBoardInsideCategory">Kategorie</div>
@@ -71,7 +71,7 @@
                                 <div onclick="openAddTask()" class="headBoardRightImage"><img
                                         src="assets/img/board/plusDark.png" alt="add"></div>
                             </div>
-                            <div class="cardBoardAll" id="cardBoardInProgress">
+                            <div class="cardBoardAll drag-area" ondrop="moveTo('cardBoardInProgress')" ondragover="allowDrop(event)" id="cardBoardInProgress">
                                 <div class="cardBoard">Test Card</div>
                             </div>
                         </div>
@@ -81,7 +81,7 @@
                                 <div onclick="openAddTask()" class="headBoardRightImage"><img
                                         src="assets/img/board/plusDark.png" alt="add"></div>
                             </div>
-                            <div class="cardBoardAll" id="cardBoardAwaitingfeedback">
+                            <div class="cardBoardAll drag-area" ondrop="moveTo('cardBoardAwaitingfeedback')" ondragover="allowDrop(event)" id="cardBoardAwaitingfeedback">
                                 <div class="cardBoard">Test Card</div>
                             </div>
                         </div>
@@ -91,7 +91,7 @@
                                         alt="add">
                                 </div>
                             </div>
-                            <div class="cardBoardAll" id="cardBoardDone">
+                            <div class="cardBoardAll drag-area" ondrop="moveTo('cardBoardDone')" ondragover="allowDrop(event)" id="cardBoardDone">
                                 <div class="cardBoard">Test Card</div>
                             </div>
                         </div>
@@ -101,35 +101,13 @@
         </div>
         <div class="sidebar" w3-include-html="templates/sidebar.html">
         </div>
-        <div class="overlay d-none" id="overlay" onclick="closeOverlay()">
+        <div class="overlay d-none"  id="overlay" onclick="closeOverlay()">
             <div id="CardContainer" style="display:none;" onclick="doNotClose(event)">
             </div>
-            <div id="CardDetail" class="carddetail" style="display:none;" onclick="doNotClose(event)">
-                <div class="cardBoardInsideCat" id="cardDetailCat"></div>
+            <div id="CardDetail" style="display:none;" onclick="doNotClose(event)">
                 <div class="cardBoardInsideTitle" id="cardDetailTitle"></div>
-                <div class="cardBoardInsideDescription" id="cardDetailDesc"></div>
-                <div class="cardBoardInsideDueDate" id="cardDetailDueDate"></div>
-                <div class="cardBoardInsidePrio" id="cardDetailPrio"></div>
-                <div class="detlabel">Assigned To:</div>
-                <div class="cardBoardInsideAssignedUser" id="cardDetailAssignedUser"></div>
-                <div class="cartdetailaction">
-                    <div id="deleteCard">Delete</div>
-                    <div id="editCard">Edit</div>
-                </div>
+                <div class="cardBoardInsideDescription" id="cardDetailDesc">${cards[i]['description']}</div>
             </div>
-
-            <div id="CardEditForm" class="carddetail" style="display:none;" onclick="doNotClose(event)">
-                <div class="cardBoardInsideCatEdit" id="cardDetailCatEdit"><span class="editlabel">Title</span><input type="text" id="editCardTitle"></div>
-                <div class="cardBoardInsideCatEdit" id="cardDetailCatEdit"><span class="editlabel">Description</span><input type="text" id="editCardDescription"></div>
-                <div class="cardBoardInsideCatEdit" id="cardDetailCatEdit"><span class="editlabel">Due date</span><input type="text" id="editCardDueDate"></div>
-                <div class="cardBoardInsideCatEdit" id="cardDetailCatEdit"><span class="editlabel">Prio</span><input type="text" id="editCardPrio"></div>
-                <div class="cardBoardInsideCatEdit" id="cardDetailCatEdit"><span class="editlabel">Assigned to</span><input type="text" id="editCardAssignedTo"></div>
-                <div class="cartdetailaction">
-                    <div id="editCardSave">Ok</div>
-                </div>
-            </div>
-
-
         </div>
 </body>
 
