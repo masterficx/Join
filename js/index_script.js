@@ -28,10 +28,15 @@ function init() {
 
 //////////////////////// Function to start the animation //////////////////////////////////
 function startAnimation() {
+    if(window.innerWidth < 510) {
+        logo.src = "../img/joinlogomobil.png";
+    }
     setTimeout(() => {
         let logo = document.getElementById("logo");
         let background = document.getElementById('startBackground');
 
+        setTimeout(() => {logo.src = "../img/joinlogo.png";}, 80)
+        
         logo.classList.add('imgLogo');
 
         // Fades out the startBackground div gradually
@@ -254,14 +259,15 @@ function show() {
 
 // Event listener that calls init() when the DOM is loaded
 document.addEventListener('DOMContentLoaded', init);
+document.addEventListener('DOMContentLoaded', handleMaxWidthChange);
 
 
 /////////////////////////////////////// moveElementbyMedia max-width 510px for SignUp Button ///////////////////////////
 
 
 function moveElementToNewPosition(newParent) {
-    const elementToMove = document.getElementById('headerRight');
-    const footerElement = document.getElementById('footer');
+    let elementToMove = document.getElementById('headerRight');
+    let footerElement = document.getElementById('footer');
     
     if (elementToMove && newParent && footerElement) {
         newParent.insertAdjacentElement('beforebegin', elementToMove);
@@ -269,20 +275,23 @@ function moveElementToNewPosition(newParent) {
 }
 
 function handleMaxWidthChange() {
-    const moveBack = document.getElementById('header');
-    const elementToMove = document.getElementById('headerRight');
+    let moveBack = document.getElementById('header');
+    let elementToMove = document.getElementById('headerRight');
+    let logo = document.getElementById('logo');
 
     if (window.innerWidth < 510) {
         moveElementToNewPosition(document.getElementById('footer'));
+        // logo.src = "../img/joinlogomobil.png"; // for startAnimation on mobil
     } else {
         if(moveBack && elementToMove)
         // moveElementToNewPosition(document.getElementById('front-main-content'));
         moveBack.appendChild(elementToMove);
+        // logo.src = "../img/joinlogo.png";
     }
 }
 
 window.addEventListener('resize', handleMaxWidthChange);
-handleMaxWidthChange();
+// handleMaxWidthChange();
 
 
 /////////////////////////////////////////////// return HTML //////////////////////////////////////////////////

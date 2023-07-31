@@ -21,6 +21,17 @@ body {
 }
 
 
+/* .headerLeft {
+    background-image: url('../img/joinlogo.png');
+    position: absolute;
+    top: 80px !important;
+    left: 100px !important;
+    transform: none !important;
+    width: 100px !important;
+    height: 122px !important;
+} */
+
+
 .headerRight {
     width: 279px;
     height: 51px;
@@ -55,7 +66,7 @@ button:hover {
 }
 
 
-#logo {
+.logo {
     width: 500px;
     height: 500px;
     position: absolute;
@@ -66,6 +77,17 @@ button:hover {
     /* Übergangseffekt für die Animation */
     z-index: 100;
 }
+
+
+
+.imgLogo {
+    top: 80px !important;
+    left: 100px !important;
+    transform: none !important;
+    width: 100px !important;
+    height: 122px !important;
+}
+
 
 .contentbox {
     display: flex;
@@ -136,14 +158,6 @@ button:hover {
     width: 100%;
     background-color: #F6F7F8;
     transition: 500ms;
-}
-
-.imgLogo {
-    top: 80px !important;
-    left: 100px !important;
-    transform: none !important;
-    width: 100px !important;
-    height: 122px !important;
 }
 
 
@@ -451,7 +465,7 @@ footer a:hover {
     }
 }
 
-/* max-width: 510px */
+/* max-width: 680px */
 
 @media(max-width: 680px) {
     .headingContainer {
@@ -470,7 +484,8 @@ footer a:hover {
 
     .imgLogo {
         width: 64px !important;
-        top: 0px !important;
+        height: 78px !important;
+        top: 16px !important;
         left: 38px !important;
     }
 
