@@ -224,6 +224,8 @@ function closeOverlay() {
     document.getElementById('CardContainer').style = "display:none;";
     document.getElementById('CardContainer').innerHTML = "";
     document.getElementById('CardDetail').style = "display:none;";
+    document.getElementById('CardEditForm').style = "display:none;";
+    renderBoardCards();
 
 }
 
@@ -275,4 +277,24 @@ console.log('deleted', i);
 
 function editCard(i) {
     console.log('edited', i);
+    document.getElementById('CardDetail').style = "display:none;";
+    document.getElementById('CardEditForm').style = "display:block;";
+    document.getElementById('editCardTitle').value = `${cards[i]['title']}`;
+    document.getElementById('editCardDescription').value = `${cards[i]['description']}`;
+    document.getElementById('editCardDueDate').value = `${cards[i]['dueDate']}`;
+    document.getElementById('editCardPrio').value = `${cards[i]['prio']}`;
+    document.getElementById('editCardAssignedTo').value = `${cards[i]['assignedUser']}`;
+    let editCardSave = document.getElementById('editCardSave');
+    editCardSave.innerHTML = `<div onclick='saveEditedCard(${[i]})'>Ok`;
+}
+
+function saveEditedCard(i){
+    cards[i]['title'] = document.getElementById('editCardTitle').value;
+    cards[i]['description'] = document.getElementById('editCardDescription').value;
+    cards[i]['dueDate'] = document.getElementById('editCardDueDate').value;
+    cards[i]['prio'] = document.getElementById('editCardPrio').value;
+    cards[i]['assignedUser'] = document.getElementById('editCardAssignedTo').value;
+    cards.push();
+    openCard(i);
+    document.getElementById('CardEditForm').style = "display:none;";
 }
