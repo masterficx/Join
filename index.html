@@ -11,16 +11,16 @@
     <link rel="stylesheet" href="assets/fonts/fonts.css">
 </head>
 
-<body onload="renderLogIn(), init()">
+<body id="body" onload="renderLogIn(), init()">
     <div id="startBackground" class="startBackground"></div>
-    <div class="header">
+    <div id="header" class="header">
         <div class="headerLeft"><img id="logo" src="./img/logo.svg" alt="JoinLogo"></div>
         <div id="headerRight" class="headerRight">
             <span>Not a Join user?</span>
             <button onclick="renderSignUp()">Sign up</button>
         </div>
     </div>
-    <div class="front-main-content">
+    <div id="front-main-content" class="front-main-content">
         <div id="contentbox" class="contentbox">
         </div>
         <footer id="footer">

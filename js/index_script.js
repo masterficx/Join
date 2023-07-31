@@ -43,6 +43,7 @@ function startAnimation() {
                 background.parentNode.removeChild(background);
             }
         }, 500); // Wait for 0.5 seconds (same duration as the animation) before removing the image
+        handleMaxWidthChange(); 
     }, 500); // Wait for 0.5 seconds before starting the animation
 }
 
@@ -174,7 +175,7 @@ function checkLogIn() {
         // If the login check fails, display an error message and highlight the password input field
         passwordAlert.textContent = "Wrong password Ups! Try again";
         passwordInput.parentElement.classList.add('redInput');
-        
+
         // Clear the error message and remove the red highlight after 3 seconds
         setTimeout(() => {
             passwordAlert.textContent = "";
@@ -255,7 +256,36 @@ function show() {
 document.addEventListener('DOMContentLoaded', init);
 
 
-/////////////////////////////////////////////// return HTML ////////////////////////////////////////////////////////////
+/////////////////////////////////////// moveElementbyMedia max-width 510px for SignUp Button ///////////////////////////
+
+
+function moveElementToNewPosition(newParent) {
+    const elementToMove = document.getElementById('headerRight');
+    const footerElement = document.getElementById('footer');
+    
+    if (elementToMove && newParent && footerElement) {
+        newParent.insertAdjacentElement('beforebegin', elementToMove);
+    }
+}
+
+function handleMaxWidthChange() {
+    const moveBack = document.getElementById('header');
+    const elementToMove = document.getElementById('headerRight');
+
+    if (window.innerWidth < 510) {
+        moveElementToNewPosition(document.getElementById('footer'));
+    } else {
+        if(moveBack && elementToMove)
+        // moveElementToNewPosition(document.getElementById('front-main-content'));
+        moveBack.appendChild(elementToMove);
+    }
+}
+
+window.addEventListener('resize', handleMaxWidthChange);
+handleMaxWidthChange();
+
+
+/////////////////////////////////////////////// return HTML //////////////////////////////////////////////////
 
 
 function returnLogInHTML() {
@@ -276,7 +306,7 @@ function returnLogInHTML() {
                         <img id="passwordImage" class="passwordImage" src="./assets/img/logInSignUp/lock.svg" alt="" onclick="togglePasswordVisibility(1)">
                     </div>
                     <div id="passwordAlert"></div>
-                    <div class="rememberMeForgetBox">
+                    <div class="rememberMeForgetBox mobilView">
                         <div class="checkBoxLogIn">
                             <div onclick="checkBox()" id="rememberMe" class="uncheckBox"></div>
                             <span>Remember me</span>

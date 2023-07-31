@@ -391,13 +391,15 @@ footer a:hover {
 
 
 #passwordAlert {
-    color: rgb(255,129,144);
+    color: rgb(255, 129, 144);
     margin-top: -30px;
     margin-right: 190px;
     margin-bottom: -40px;
     font-size: 13px;
     height: 25px;
 }
+
+
 
 
 .banner {
@@ -424,3 +426,165 @@ footer a:hover {
 }
 
 
+@media(max-width: 870px) {
+    .forgotPW {
+        width: 600px !important;
+        text-align: center;
+    }
+}
+
+
+/* max-width: 680px */
+
+@media(max-width: 680px) {
+    .content {
+        width: 500px;
+        gap: 20px;
+    }
+
+    .headerRight {
+        width: 250px;
+    }
+
+    .forgotPW {
+        width: 396px !important;
+    }
+}
+
+/* max-width: 510px */
+
+@media(max-width: 680px) {
+    .headingContainer {
+        width: 85%;
+    }
+
+    .content {
+        width: 396px;
+    }
+
+    .contentbox {
+        flex-direction: column;
+        align-items: center;
+        gap: 45px;
+    }
+
+    .imgLogo {
+        width: 64px !important;
+        top: 0px !important;
+        left: 38px !important;
+    }
+
+    .inputField {
+        width: 346px;
+
+    }
+
+    input {
+        width: 300px;
+    }
+
+    h1 {
+        font-size: 47px;
+    }
+
+    .blueSeperator {
+        width: 88px;
+    }
+
+    .mobilView {
+        flex-direction: column-reverse;
+        gap: 16px;
+        margin-right: 170px;
+        align-items: start;
+    }
+
+    .logInButtonBox {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .logInButton {
+        width: 180px;
+    }
+
+    button {
+        font-size: 16px;
+    }
+
+    .header {
+        margin: 0;
+    }
+
+    .headerRight {
+        width: 279px;
+    }
+
+    #logo {
+        width: 100px;
+        height: 122px;
+        /* background-image: url('../img/joinlogomobil.png') !important; */
+    }
+
+    #startBackground {
+        background-color: #2A3647;
+    }
+
+    #passwordAlert {
+        margin-right: 120px;
+    }
+}
+
+/* max-height: 870px */
+
+@media(max-height: 870px) {
+    .front-main-content {
+        margin-top: 115px;
+    }
+
+    .contentbox {
+        gap: 8px;
+    }
+}
+
+/* max-height: 700px */
+
+
+@media(max-height: 700px) {
+    .front-main-content {
+        margin-top: 80px;
+    }
+
+    .imgLogo {
+        width: 50px !important;
+        height: 80px !important;
+    }
+
+    .logInButtonBox {
+        gap: 10px;
+    }
+
+    .logInButton {
+        height: 40px;
+    }
+
+    .content {
+        height: 496px;
+        width: 345px;
+    }
+
+    button {
+        height: 70%;
+    }
+
+    .headerRight {
+        font-size: 16px;
+    }
+
+    .inputField {
+        width: 305px;
+    }
+
+    input {
+        width: 270px;
+    }
+}
