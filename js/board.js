@@ -231,6 +231,8 @@ function closeOverlay() {
     document.getElementById('CardContainer').style = "display:none;";
     document.getElementById('CardContainer').innerHTML = "";
     document.getElementById('CardDetail').style = "display:none;";
+    document.getElementById('CardEditForm').style = "display:none;";
+    renderBoardCards();
 
 }
 
@@ -254,13 +256,55 @@ function filterCards() {
 }
 
 
+
 function openCard(i) {
     document.getElementById('overlay').classList.remove('d-none');
     document.getElementById('CardDetail').style = "display:block;";
+    let cardDetailCat = document.getElementById('cardDetailCat');
+    cardDetailCat.innerHTML = `${cards[i]['category']}`;
     let cardDetailTitle = document.getElementById('cardDetailTitle');
     cardDetailTitle.innerHTML = `${cards[i]['title']}`;
     let cardDetailDesc = document.getElementById('cardDetailDesc');
     cardDetailDesc.innerHTML = `${cards[i]['description']}`;
+    let cardDetailDueDate = document.getElementById('cardDetailDueDate');
+    cardDetailDueDate.innerHTML = `<span class="detlabel">Due date:</span>${cards[i]['dueDate']}`;
+    let cardDetailPrio = document.getElementById('cardDetailPrio');
+    cardDetailPrio.innerHTML = `<span class="detlabel">Priority:</span>${cards[i]['prio']}`;
+    let cardDetailAssignedUser = document.getElementById('cardDetailAssignedUser');
+    cardDetailAssignedUser.innerHTML = `${cards[i]['assignedUser']}`;
+    let cardDetailDelete = document.getElementById('deleteCard');
+    cardDetailDelete.innerHTML = `<div onclick='deleteCard(${[i]})'>Delete`;
+    let cardDetailEdit = document.getElementById('editCard');
+    cardDetailEdit.innerHTML = `<div onclick='editCard(${[i]})'>Edit`;
+}
+
+
+function deleteCard(i) {
+console.log('deleted', i);
+}
+
+function editCard(i) {
+    console.log('edited', i);
+    document.getElementById('CardDetail').style = "display:none;";
+    document.getElementById('CardEditForm').style = "display:block;";
+    document.getElementById('editCardTitle').value = `${cards[i]['title']}`;
+    document.getElementById('editCardDescription').value = `${cards[i]['description']}`;
+    document.getElementById('editCardDueDate').value = `${cards[i]['dueDate']}`;
+    document.getElementById('editCardPrio').value = `${cards[i]['prio']}`;
+    document.getElementById('editCardAssignedTo').value = `${cards[i]['assignedUser']}`;
+    let editCardSave = document.getElementById('editCardSave');
+    editCardSave.innerHTML = `<div onclick='saveEditedCard(${[i]})'>Ok`;
+}
+
+function saveEditedCard(i){
+    cards[i]['title'] = document.getElementById('editCardTitle').value;
+    cards[i]['description'] = document.getElementById('editCardDescription').value;
+    cards[i]['dueDate'] = document.getElementById('editCardDueDate').value;
+    cards[i]['prio'] = document.getElementById('editCardPrio').value;
+    cards[i]['assignedUser'] = document.getElementById('editCardAssignedTo').value;
+    cards.push();
+    openCard(i);
+    document.getElementById('CardEditForm').style = "display:none;";
 }
 
 // function countDoneSubtasks(i) {
