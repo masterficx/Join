@@ -104,9 +104,29 @@
         <div class="overlay d-none"  id="overlay" onclick="closeOverlay()">
             <div id="CardContainer" style="display:none;" onclick="doNotClose(event)">
             </div>
-            <div id="CardDetail" style="display:none;" onclick="doNotClose(event)">
+            <div id="CardDetail" class="carddetail" style="display:none;" onclick="doNotClose(event)">
+                <div class="cardBoardInsideCat" id="cardDetailCat"></div>
                 <div class="cardBoardInsideTitle" id="cardDetailTitle"></div>
-                <div class="cardBoardInsideDescription" id="cardDetailDesc">${cards[i]['description']}</div>
+                <div class="cardBoardInsideDescription" id="cardDetailDesc"></div>
+                <div class="cardBoardInsideDueDate" id="cardDetailDueDate"></div>
+                <div class="cardBoardInsidePrio" id="cardDetailPrio"></div>
+                <div class="detlabel">Assigned To:</div>
+                <div class="cardBoardInsideAssignedUser" id="cardDetailAssignedUser"></div>
+                <div class="cartdetailaction">
+                    <div id="deleteCard">Delete</div>
+                    <div id="editCard">Edit</div>
+                </div>
+            </div>
+
+            <div id="CardEditForm" class="carddetail" style="display:none;" onclick="doNotClose(event)">
+                <div class="cardBoardInsideCatEdit" id="cardDetailCatEdit"><span class="editlabel">Title</span><input type="text" id="editCardTitle"></div>
+                <div class="cardBoardInsideCatEdit" id="cardDetailCatEdit"><span class="editlabel">Description</span><input type="text" id="editCardDescription"></div>
+                <div class="cardBoardInsideCatEdit" id="cardDetailCatEdit"><span class="editlabel">Due date</span><input type="text" id="editCardDueDate"></div>
+                <div class="cardBoardInsideCatEdit" id="cardDetailCatEdit"><span class="editlabel">Prio</span><input type="text" id="editCardPrio"></div>
+                <div class="cardBoardInsideCatEdit" id="cardDetailCatEdit"><span class="editlabel">Assigned to</span><input type="text" id="editCardAssignedTo"></div>
+                <div class="cartdetailaction">
+                    <div id="editCardSave">Ok</div>
+                </div>
             </div>
         </div>
 </body>
