@@ -66,6 +66,16 @@ a.help:hover img.hov-icon {
     gap: 20px;
 }
 
+span#upcomingDeadline {
+    font-weight: bold;
+}
+
+a#sum-box-4 .box-right {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 .boxes-row .sum-box {
     display: flex;
     gap: 20px;
