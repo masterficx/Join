@@ -473,6 +473,36 @@ div#deleteCard:hover img.hover{
 div#deleteCard:hover img.default{
     display: none;
 }
+
+input#editCardTitle {
+    padding: 12px 21px 12px 21px;
+    border-radius: 10px;
+    border: 1px solid #d1d1d1;
+    color: #000;
+    margin-bottom: 10px;
+    min-width: 100;
+    width: 100%;
+    max-width: 100;
+    display:inline-block;
+}
+
+textarea#editCardDescription {
+    padding: 12px 21px 12px 21px;
+    border-radius: 10px;
+    border: 1px solid #d1d1d1;
+    color: #000;
+    margin-bottom: 10px;
+    min-width: calc(100% - 44px);
+    width: calc(100% - 44px);
+    max-width: calc(100% - 44px);
+    min-height: 80px;
+    font-size: 20px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+}
+
 @keyframes slide-in {
     from {
         transform: translateX(100%);
