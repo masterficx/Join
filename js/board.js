@@ -274,9 +274,9 @@ function openCard(i) {
     let cardDetailAssignedUser = document.getElementById('cardDetailAssignedUser');
     cardDetailAssignedUser.innerHTML = `${cards[i]['assignedUser']}`;
     let cardDetailDelete = document.getElementById('deleteCard');
-    cardDetailDelete.innerHTML = `<div onclick='deleteCard(${[i]})'>Delete`;
+    cardDetailDelete.innerHTML = `<div onclick='deleteCard(${[i]})'><img src="assets/img/board/delete.svg" class="default"><img src="assets/img/board/delete-blue.svg" class="hover">`;
     let cardDetailEdit = document.getElementById('editCard');
-    cardDetailEdit.innerHTML = `<div onclick='editCard(${[i]})'>Edit`;
+    cardDetailEdit.innerHTML = `<div onclick='editCard(${[i]})'><img src="assets/img/board/edit.svg">`;
 }
 
 
@@ -340,3 +340,5 @@ function moveTo(listType) {
     cards[currentDraggedElement]['listType'] = listType.slice(9);
     renderBoard();
 }
+
+
