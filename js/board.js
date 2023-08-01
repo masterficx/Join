@@ -4,12 +4,13 @@ let cards = [
         "title": "Test Title 1",
         "description": 'Test Card 3',
         "progress": "0",
-        "assignedUser": [" Paul", " Rita"],
+        "assignedUser": [Contacts[0]['firstName'] + Contacts[0]['lastName'], Contacts[1]['firstName'] + Contacts[1]['lastName'], Contacts[4]['firstName'] + Contacts[4]['lastName']],
         "prio": "High",
         "dueDate": "2022-08-14",
         "subtasks": [
             { nameSub: "Test Subtask 1", status: "Awaitingfeedback" },
-            { nameSub: "Test Subtask 2", status: "InProgress" }
+            { nameSub: "Test Subtask 2", status: "InProgress" },
+            { nameSub: "Test Subtask 3", status: "InProgress" }
         ],
         "listType": "ToDo",
     },
@@ -18,7 +19,7 @@ let cards = [
         "title": "Test Title 2",
         "description": 'Test Card 3 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod temporinvidunt utlabore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duodolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sitamet.',
         "progress": "1",
-        "assignedUser": ["Sara", " Mike"],
+        "assignedUser": [Contacts[3]['firstName'] + Contacts[3]['lastName'], Contacts[4]['firstName'] + Contacts[4]['lastName']],
         "prio": "Low",
         "dueDate": "2022-08-14",
         "subtasks": [
@@ -32,7 +33,7 @@ let cards = [
         "title": "Test Title 3",
         "description": 'Test Card 3',
         "progress": "2",
-        "assignedUser": ["Klaus", " Paul", " Rita"],
+        "assignedUser": [Contacts[0]['firstName'].charAt(0) + Contacts[0]['lastName'].charAt(0)], 
         "prio": "Mid",
         "dueDate": "2022-08-14",
         "subtasks": [
@@ -46,12 +47,13 @@ let cards = [
         "title": "Test Title 4",
         "description": 'Test Card 4',
         "progress": "1",
-        "assignedUser": ["Klaus", " Rita"],
+        "assignedUser": [Contacts[3]['firstName'] + Contacts[3]['lastName'], Contacts[5]['firstName'] + Contacts[5]['lastName']],
         "prio": "High",
         "dueDate": "2022-08-14",
         "subtasks": [
             { nameSub: "Test Subtask 1", status: "Awaitingfeedback" },
-            { nameSub: "Test Subtask 2", status: "InProgress" }
+            { nameSub: "Test Subtask 2", status: "InProgress" },
+            { nameSub: "Test Subtask 3", status: "InProgress" }
         ],
         "listType": "Awaitingfeedback"
     },
@@ -60,7 +62,7 @@ let cards = [
         "title": "Test Title 5",
         "description": 'Test Card 5',
         "progress": "1",
-        "assignedUser": [" Rita"],
+        "assignedUser": [Contacts[2]['firstName'] + Contacts[2]['lastName'], Contacts[4]['firstName'] + Contacts[4]['lastName']],
         "prio": "Mid",
         "dueDate": "2022-08-14",
         "subtasks": [
@@ -101,7 +103,6 @@ function renderBoard() {
 }
 
 function renderBoardCards() {
-    let cardIndex = 0;
     clearBoardCards();
     for (let i = 0; i < cards.length; i++) {
         if (cards[i]['listType'] == 'ToDo') {
@@ -113,15 +114,15 @@ function renderBoardCards() {
                     <div class="cardBoardInsideTitle">${cards[i]['title']}</div>
                     <div class="cardBoardInsideDescription">${cards[i]['description']}</div>
                 </div>
-                <div class="cardBoardInsideProgress"><img src="/assets/img/board/loadingBar.png"
-                        alt="">
-                    <p>${cards[i]['progress']}/2 Done</p>
+                <div class="cardBoardInsideProgress"><div class="progressBar"><div class="progress" id="progressBar${i}"></div></div>
+                    <div><p>${cards[i]['progress']}/${cards[i]['subtasks'].length} Done</p></div>
                 </div>
                 <div class="cardBoardInsideUserAndPrio">
-                    <p>${cards[i]['assignedUser']}</p><img src="/assets/img/board/${cards[i]['prio']}.svg" alt="">
+                    <div class="InsideUser">${cards[i]['assignedUser']}</div><img src="/assets/img/board/${cards[i]['prio']}.svg" alt="">
                 </div>
             </div>
         </div>`;
+        renderProgressBar(i);
         } else { renderBoardCardsInProgress(i) };
     }
 }
@@ -136,15 +137,15 @@ function renderBoardCardsInProgress(i) {
                 <div class="cardBoardInsideTitle">${cards[i]['title']}</div>
                 <div class="cardBoardInsideDescription">${cards[i]['description']}</div>
             </div>
-            <div class="cardBoardInsideProgress"><img src="/assets/img/board/loadingBar.png"
-                    alt="">
-                <p>${cards[i]['progress']}/2 Done</p>
+            <div class="cardBoardInsideProgress"><div class="progressBar"><div class="progress" id="progressBar${i}"></div></div>
+            <div><p>${cards[i]['progress']}/${cards[i]['subtasks'].length} Done</p></div>
             </div>
             <div class="cardBoardInsideUserAndPrio">
-                <p>${cards[i]['assignedUser']}</p><img src="/assets/img/board/${cards[i]['prio']}.svg" alt="">
+            <div class="InsideUser">${cards[i]['assignedUser']}</div><img src="/assets/img/board/${cards[i]['prio']}.svg" alt="">
             </div>
         </div>
     </div>`;
+    renderProgressBar(i);
     } else { renderBoardCardsAwaitingFeedback(i) };
 }
 
@@ -158,15 +159,15 @@ function renderBoardCardsAwaitingFeedback(i) {
                 <div class="cardBoardInsideTitle">${cards[i]['title']}</div>
                 <div class="cardBoardInsideDescription">${cards[i]['description']}</div>
             </div>
-            <div class="cardBoardInsideProgress"><img src="/assets/img/board/loadingBar.png"
-                    alt="">
-                <p>${cards[i]['progress']}/2 Done</p>
+            <div class="cardBoardInsideProgress"><div class="progressBar"><div class="progress" id="progressBar${i}"></div></div>
+            <div><p>${cards[i]['progress']}/${cards[i]['subtasks'].length} Done</p></div>
             </div>
             <div class="cardBoardInsideUserAndPrio">
-                <p>${cards[i]['assignedUser']}</p><img src="/assets/img/board/${cards[i]['prio']}.svg" alt="">
+            <div class="InsideUser">${cards[i]['assignedUser']}</div><img src="/assets/img/board/${cards[i]['prio']}.svg" alt="">
             </div>
         </div>
     </div>`;
+    renderProgressBar(i);
     } else { renderBoardCardsDone(i) };
 }
 
@@ -180,15 +181,16 @@ function renderBoardCardsDone(i) {
                 <div class="cardBoardInsideTitle">${cards[i]['title']}</div>
                 <div class="cardBoardInsideDescription">${cards[i]['description']}</div>
             </div>
-            <div class="cardBoardInsideProgress"><img src="/assets/img/board/loadingBar.png"
-                    alt="">
-                <p>${cards[i]['progress']}/2 Done</p>
+            <div class="cardBoardInsideProgress"><div class="progressBar"><div class="progress" id="progressBar${i}"></div></div>
+            <div><p>${cards[i]['progress']}/${cards[i]['subtasks'].length} Done</p></div>
             </div>
             <div class="cardBoardInsideUserAndPrio">
-                <p>${cards[i]['assignedUser']}</p><img src="/assets/img/board/${cards[i]['prio']}.svg" alt="">
+            <div id="InsideUser"></div><img src="/assets/img/board/${cards[i]['prio']}.svg" alt="">
             </div>
         </div>
     </div>`;
+    renderProgressBar(i);
+    renderAssignedUserInBoard(i);
     } else { };
 }
 
@@ -202,6 +204,20 @@ function renderBackgroundColorCategory() {
             } else { };
         };
     };
+}
+
+function renderProgressBar(i) {
+    let progressValue = cards[i]['progress']*100/cards[i]['subtasks'].length;
+    let progressBar = document.getElementById(`progressBar${i}`);
+    progressBar.style.width = progressValue + '%';
+}
+
+function renderAssignedUserInBoard(i) {
+    	for (let j = 0; j < cards[i]['assignedUser'].length; j++) {
+            document.getElementById('InsideUser').innerHTML += `
+            <div class="label-card" style="background-color:#FF5C00">${cards[i]['assignedUser']}</div>
+            `;
+        }
 }
 
 function clearBoardCards() {
@@ -307,26 +323,6 @@ function saveEditedCard(i){
     openCard(i);
     document.getElementById('CardEditForm').style = "display:none;";
 }
-
-// function countDoneSubtasks(i) {
-//     let doneSubtasks = remoteTasksAsJSON[i]["subtasks"].filter(
-//       (subtask) => subtask.status === "done"
-//     );
-//     let doneSubtasksCount = doneSubtasks.length;
-//     return doneSubtasksCount;
-//   }
-  
-//   function renderProgress(i) {
-//     let doneCount = countDoneSubtasks(i);
-//     let subtaskLength = remoteTasksAsJSON[i]["subtasks"].length;
-//     let percentage = (doneCount / subtaskLength) * 100;
-//     if (subtaskLength == 0) {
-//       return 0;
-//     } else {
-//       return percentage;
-//     }
-//   }
-
 
 function startDragging(i) {
     currentDraggedElement = i;
