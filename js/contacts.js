@@ -264,7 +264,7 @@ function showContactDetails(x) {
             <div class="frame-104">
                 <p class="frame-64">${element['firstName']} ${element['lastName']}</p>
                 <div class="frame-204"> 
-                    <div class="edit-contact" onclick="editContact(${x})"> ${editSVG} Edit </div>
+                    <div class="edit-contact" onclick="renderEditContact(${x})"> ${editSVG} Edit </div>
                     <div class="delete-contact" onclick="deleteContact(${x})"> ${deleteSVG} Delete </div>
                 </div>   
             </div>   
@@ -349,9 +349,6 @@ function renderAddNewContact() {
 }
 
 function closeNewContact() {
-    document.getElementById('add_contact_name').value="";
-    document.getElementById('add_contact_phone').value="";
-    document.getElementById('add_contact_email').value="";
     let newContactOverlayDiv = document.getElementById('overlay_new_contact');
     let newContactMainDiv = document.getElementById('new_contact_main');
     newContactMainDiv.classList.add('close-new-contact-animate');
@@ -427,4 +424,97 @@ function scrollToNewContact(parentId, childId) {
     if (parentElement && childElement) {
         childElement.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
     }
+}
+
+function renderEditContact(x) {
+    let element = Contacts[x];
+    let firstTwoLetters = element['firstName'].charAt(0) + element['lastName'].charAt(0);
+    let overlayNewContact = document.getElementById('overlay_new_contact');
+    overlayNewContact.classList.remove('d-none');
+    overlayNewContact.innerHTML = `<div class="new-contact-main new-contact-main-animate" onclick="doNotClose(event)" id="new_contact_main">
+                                        <div class="frame-194">
+                                            <div class="capa2">${capa2}</div>
+                                            <div class="frame-210">
+                                                <div class="frame-211">Edit contact</div>
+                                                <div class="vector-5">${vector5}</div>
+                                            </div>
+                                        </div>
+
+                                        <div class="frame-79">
+                                            <div class="group-9">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" fill="none">
+                                            <circle cx="60" cy="60" r="60" fill="${nameTagsColors[x]}"/>
+                                            </svg>
+                                            <p>${firstTwoLetters}</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="frame-215">
+                                            <div class="add-contact-text-main">
+                                                <div class="frame-14"> 
+                                                    <div class="frame-157">
+                                                        <input type="text" id="edit_name" placeholder="Name" onkeydown="return /[a-z, ]/i.test(event.key)">
+                                                        ${personSmallSVG}
+                                                    </div>
+                                                </div>
+                                                <div class="frame-14"> 
+                                                    <div class="frame-157">
+                                                        <input type="email" id="edit_email" placeholder="Email">
+                                                        ${emailSmallSVG}
+                                                    </div>
+                                                </div>
+                                                <div class="frame-14"> 
+                                                    <div class="frame-157">
+                                                        <input type="tel" id="edit_phone" placeholder="Phone" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
+                                                        ${phoneSmallSVG}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="add-contact-buttons-main">                                                
+                                                    <div class="add-contact-cancel" onclick="deleteContactFromEdit(${x})">
+                                                        <span>Delete</span> 
+                                                    </div>
+                                                    <div class="add-contact-create" onclick="editContact(${x})"> 
+                                                        <span> Save </span>
+                                                        ${checkSmallSVG}
+                                                    </div>
+                                                
+                                            </div>
+                                        </div>
+    
+                                    </div>`;
+
+document.getElementById('edit_name').value = element['firstName'] + " " + element['lastName'];
+document.getElementById('edit_email').value = element['email'];
+document.getElementById('edit_phone').value = element['phone'];
+
+}
+
+function deleteContactFromEdit(x){
+    deleteContact(x);
+    closeNewContact();
+
+}
+
+function editContact(x){
+    let nameInput = document.getElementById('edit_name').value;
+    let nameArray = nameInput.split(' ');
+    let newFirstName = nameArray[0];
+    let newLastName = nameArray[1];
+    let newEmail = document.getElementById('edit_email').value;
+    let newPhone = document.getElementById('edit_phone').value;
+    let element = Contacts[x];
+
+    element.firstName = newFirstName;
+    element.lastName = newLastName;
+    element.email = newEmail;
+    element.phone = newPhone;
+    closeNewContact();
+    renderContactsList();
+    document.getElementById('floating_contact').innerHTML = "";
+    setTimeout(() => {
+        showContactDetails(x)
+    }, 500);
+    
+
 }
