@@ -333,6 +333,7 @@ div#CardContainer {
 }
 
 .carddetail {
+    font-size: 20px;
     display: flex;
     width: 100%;
     max-width: 525px;
@@ -347,6 +348,7 @@ div#cardDetailTitle {
     font-weight: 700;
     line-height: 73px;
     letter-spacing: 0em;
+    margin: 10px 0px;
 }
 
 div#cardDetailDesc {
@@ -357,17 +359,89 @@ div#cardDetailDesc {
     color: #000;
     letter-spacing: 0em;
     text-align: left;
+    margin-bottom: 10px;
 }
 
-span.detlabel {
+div#cardDetailPrio,
+div#cardDetailDueDate {
+    margin-bottom: 10px;
+}
+
+.detlabel {
     font-family: Inter;
     font-size: 21px;
     font-weight: 700;
     line-height: 25px;
     letter-spacing: 0em;
     text-align: left;
+    margin-right: 20px;
 }
 
+.cartdetailaction {
+    display: flex;
+    justify-content: flex-end;
+}
+
+div#deleteCard {
+    border: 1px solid;
+    border-radius: 10px 0px 0px 10px;
+    padding: 0px;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div#editCard {
+    border: 1px solid #2A3647;
+    border-radius: 0px 10px 10px 0px;
+    padding: 0px;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #2A3647;
+}
+
+div#editCard:hover {
+    background: #29abe2;
+    border-color: #29abe2;
+}
+
+.cartdetailaction div:hover {
+    cursor: pointer;
+}
+
+.cartdetailaction div {
+    line-height: 1em!important;
+    margin: 0px!important;
+    padding: 0px!important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+}
+
+div#deleteCard:hover {
+    border-color: #29abe2;
+}
+
+img.hover {
+    width: 32px;
+    height: auto;
+    display: none;
+}
+
+div#deleteCard:hover img.hover{
+    display: block;
+}
+
+div#deleteCard:hover img.default{
+    display: none;
+}
 @keyframes slide-in {
     from {
       transform: translateX(100%);
