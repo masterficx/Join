@@ -119,7 +119,7 @@ function renderBoardCards() {
                     <div><p>${cards[i]['progress']}/${cards[i]['subtasks'].length} Done</p></div>
                 </div>
                 <div class="cardBoardInsideUserAndPrio">
-                    <p>${cards[i]['assignedUser']}</p><img src="/assets/img/board/${cards[i]['prio']}.svg" alt="">
+                    <div class="InsideUser">${cards[i]['assignedUser']}</div><img src="/assets/img/board/${cards[i]['prio']}.svg" alt="">
                 </div>
             </div>
         </div>`;
@@ -142,7 +142,7 @@ function renderBoardCardsInProgress(i) {
             <div><p>${cards[i]['progress']}/${cards[i]['subtasks'].length} Done</p></div>
             </div>
             <div class="cardBoardInsideUserAndPrio">
-                <p>${cards[i]['assignedUser']}</p><img src="/assets/img/board/${cards[i]['prio']}.svg" alt="">
+            <div class="InsideUser">${cards[i]['assignedUser']}</div><img src="/assets/img/board/${cards[i]['prio']}.svg" alt="">
             </div>
         </div>
     </div>`;
@@ -164,7 +164,7 @@ function renderBoardCardsAwaitingFeedback(i) {
             <div><p>${cards[i]['progress']}/${cards[i]['subtasks'].length} Done</p></div>
             </div>
             <div class="cardBoardInsideUserAndPrio">
-                <p>${cards[i]['assignedUser']}</p><img src="/assets/img/board/${cards[i]['prio']}.svg" alt="">
+            <div class="InsideUser">${cards[i]['assignedUser']}</div><img src="/assets/img/board/${cards[i]['prio']}.svg" alt="">
             </div>
         </div>
     </div>`;
@@ -186,7 +186,7 @@ function renderBoardCardsDone(i) {
             <div><p>${cards[i]['progress']}/${cards[i]['subtasks'].length} Done</p></div>
             </div>
             <div class="cardBoardInsideUserAndPrio">
-                <p>${cards[i]['assignedUser']}</p><img src="/assets/img/board/${cards[i]['prio']}.svg" alt="">
+            <div class="InsideUser">${cards[i]['assignedUser']}</div><img src="/assets/img/board/${cards[i]['prio']}.svg" alt="">
             </div>
         </div>
     </div>`;
@@ -210,6 +210,10 @@ function renderProgressBar(i) {
     let progressValue = cards[i]['progress']*100/cards[i]['subtasks'].length;
     let progressBar = document.getElementById(`progressBar${i}`);
     progressBar.style.width = progressValue + '%';
+}
+
+function renderAssignedUserInBoard() {
+
 }
 
 function clearBoardCards() {
@@ -315,26 +319,6 @@ function saveEditedCard(i){
     openCard(i);
     document.getElementById('CardEditForm').style = "display:none;";
 }
-
-// function countDoneSubtasks(i) {
-//     let doneSubtasks = remoteTasksAsJSON[i]["subtasks"].filter(
-//       (subtask) => subtask.status === "done"
-//     );
-//     let doneSubtasksCount = doneSubtasks.length;
-//     return doneSubtasksCount;
-//   }
-  
-//   function renderProgress(i) {
-//     let doneCount = countDoneSubtasks(i);
-//     let subtaskLength = remoteTasksAsJSON[i]["subtasks"].length;
-//     let percentage = (doneCount / subtaskLength) * 100;
-//     if (subtaskLength == 0) {
-//       return 0;
-//     } else {
-//       return percentage;
-//     }
-//   }
-
 
 function startDragging(i) {
     currentDraggedElement = i;

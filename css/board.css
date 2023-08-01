@@ -289,7 +289,7 @@ body {
     gap: 83px;
 }
 
-.cardBoardInsideUserAndPrio p {
+.InsideUser {
     display: flex;
     justify-content: start;
     align-items: center;
