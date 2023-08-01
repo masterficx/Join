@@ -9,7 +9,8 @@ let cards = [
         "dueDate": "2022-08-14",
         "subtasks": [
             { nameSub: "Test Subtask 1", status: "Awaitingfeedback" },
-            { nameSub: "Test Subtask 2", status: "InProgress" }
+            { nameSub: "Test Subtask 2", status: "InProgress" },
+            { nameSub: "Test Subtask 3", status: "InProgress" }
         ],
         "listType": "ToDo",
     },
@@ -51,7 +52,8 @@ let cards = [
         "dueDate": "2022-08-14",
         "subtasks": [
             { nameSub: "Test Subtask 1", status: "Awaitingfeedback" },
-            { nameSub: "Test Subtask 2", status: "InProgress" }
+            { nameSub: "Test Subtask 2", status: "InProgress" },
+            { nameSub: "Test Subtask 3", status: "InProgress" }
         ],
         "listType": "Awaitingfeedback"
     },
@@ -113,15 +115,15 @@ function renderBoardCards() {
                     <div class="cardBoardInsideTitle">${cards[i]['title']}</div>
                     <div class="cardBoardInsideDescription">${cards[i]['description']}</div>
                 </div>
-                <div class="cardBoardInsideProgress"><img src="/assets/img/board/loadingBar.png"
-                        alt="">
-                    <p>${cards[i]['progress']}/2 Done</p>
+                <div class="cardBoardInsideProgress"><div class="progressBar"><div class="progress" id="progressBar${i}"></div></div>
+                    <div><p>${cards[i]['progress']}/${cards[i]['subtasks'].length} Done</p></div>
                 </div>
                 <div class="cardBoardInsideUserAndPrio">
                     <p>${cards[i]['assignedUser']}</p><img src="/assets/img/board/${cards[i]['prio']}.svg" alt="">
                 </div>
             </div>
         </div>`;
+        renderProgressBar(i);
         } else { renderBoardCardsInProgress(i) };
     }
 }
@@ -136,15 +138,15 @@ function renderBoardCardsInProgress(i) {
                 <div class="cardBoardInsideTitle">${cards[i]['title']}</div>
                 <div class="cardBoardInsideDescription">${cards[i]['description']}</div>
             </div>
-            <div class="cardBoardInsideProgress"><img src="/assets/img/board/loadingBar.png"
-                    alt="">
-                <p>${cards[i]['progress']}/2 Done</p>
+            <div class="cardBoardInsideProgress"><div class="progressBar"><div class="progress" id="progressBar${i}"></div></div>
+            <div><p>${cards[i]['progress']}/${cards[i]['subtasks'].length} Done</p></div>
             </div>
             <div class="cardBoardInsideUserAndPrio">
                 <p>${cards[i]['assignedUser']}</p><img src="/assets/img/board/${cards[i]['prio']}.svg" alt="">
             </div>
         </div>
     </div>`;
+    renderProgressBar(i);
     } else { renderBoardCardsAwaitingFeedback(i) };
 }
 
@@ -158,15 +160,15 @@ function renderBoardCardsAwaitingFeedback(i) {
                 <div class="cardBoardInsideTitle">${cards[i]['title']}</div>
                 <div class="cardBoardInsideDescription">${cards[i]['description']}</div>
             </div>
-            <div class="cardBoardInsideProgress"><img src="/assets/img/board/loadingBar.png"
-                    alt="">
-                <p>${cards[i]['progress']}/2 Done</p>
+            <div class="cardBoardInsideProgress"><div class="progressBar"><div class="progress" id="progressBar${i}"></div></div>
+            <div><p>${cards[i]['progress']}/${cards[i]['subtasks'].length} Done</p></div>
             </div>
             <div class="cardBoardInsideUserAndPrio">
                 <p>${cards[i]['assignedUser']}</p><img src="/assets/img/board/${cards[i]['prio']}.svg" alt="">
             </div>
         </div>
     </div>`;
+    renderProgressBar(i);
     } else { renderBoardCardsDone(i) };
 }
 
@@ -180,15 +182,15 @@ function renderBoardCardsDone(i) {
                 <div class="cardBoardInsideTitle">${cards[i]['title']}</div>
                 <div class="cardBoardInsideDescription">${cards[i]['description']}</div>
             </div>
-            <div class="cardBoardInsideProgress"><img src="/assets/img/board/loadingBar.png"
-                    alt="">
-                <p>${cards[i]['progress']}/2 Done</p>
+            <div class="cardBoardInsideProgress"><div class="progressBar"><div class="progress" id="progressBar${i}"></div></div>
+            <div><p>${cards[i]['progress']}/${cards[i]['subtasks'].length} Done</p></div>
             </div>
             <div class="cardBoardInsideUserAndPrio">
                 <p>${cards[i]['assignedUser']}</p><img src="/assets/img/board/${cards[i]['prio']}.svg" alt="">
             </div>
         </div>
     </div>`;
+    renderProgressBar(i);
     } else { };
 }
 
@@ -202,6 +204,12 @@ function renderBackgroundColorCategory() {
             } else { };
         };
     };
+}
+
+function renderProgressBar(i) {
+    let progressValue = cards[i]['progress']*100/cards[i]['subtasks'].length;
+    let progressBar = document.getElementById(`progressBar${i}`);
+    progressBar.style.width = progressValue + '%';
 }
 
 function clearBoardCards() {

@@ -259,14 +259,25 @@ body {
 
 .cardBoardInsideProgress p {
     color: #000;
-
-    /* Version 2/t7 */
     font-family: Inter;
     font-size: 12px;
     font-style: normal;
     font-weight: 400;
     line-height: 120%;
-    /* 14.4px */
+    margin: 0;
+}
+
+.progressBar {
+    width: 138px;
+    height: 8px;
+    border-radius: 2px;
+    background: #F4F4F4;
+    overflow: hidden; 
+}
+
+.progress {
+    height: 100%;
+    background: #29ABE2; 
 }
 
 .cardBoardInsideUserAndPrio {
