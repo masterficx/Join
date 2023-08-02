@@ -389,9 +389,10 @@ div#CardContainer {
 div#cardDetailTitle {
     font-size: 61px;
     font-weight: 700;
-    line-height: 73px;
+    line-height: 65px;
     letter-spacing: 0em;
-    margin: 10px 0px;
+    margin: 10px 0px 20px 0px;
+    max-height: unset;
 }
 
 div#cardDetailDesc {
@@ -403,6 +404,7 @@ div#cardDetailDesc {
     letter-spacing: 0em;
     text-align: left;
     margin-bottom: 10px;
+    max-height: unset;
 }
 
 div#cardDetailPrio,
@@ -486,16 +488,36 @@ div#deleteCard:hover img.default{
     display: none;
 }
 
+div#editCardSave {
+    width: 87px;
+}
+
+div#editCardSave div:hover {
+    background: #29abe2;
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+div#editCardSave div {
+    background: #2A3647;
+    width: 87px;
+    height: 50px;
+    border-radius: 10px;
+    gap: 5px;
+    font-size: 21px;
+    font-weight: 700;
+    color: #fff;
+}
+
 input#editCardTitle {
     padding: 12px 21px 12px 21px;
     border-radius: 10px;
     border: 1px solid #d1d1d1;
     color: #000;
-    margin-bottom: 10px;
-    min-width: 100;
+    margin-top: 7px;
+    margin-bottom: 20px;
     width: 100%;
-    max-width: 100;
-    display:inline-block;
+    max-width: 422px;
+    display: block;
 }
 
 textarea#editCardDescription {
@@ -503,10 +525,10 @@ textarea#editCardDescription {
     border-radius: 10px;
     border: 1px solid #d1d1d1;
     color: #000;
-    margin-bottom: 10px;
-    min-width: calc(100% - 44px);
-    width: calc(100% - 44px);
-    max-width: calc(100% - 44px);
+    margin-top: 7px;
+    margin-bottom: 20px;
+    width: 100%!important;
+    max-width: 380px;
     min-height: 80px;
     font-size: 20px;
     font-family: 'Inter';
