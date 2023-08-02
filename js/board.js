@@ -1,39 +1,39 @@
 let cards = [
     {
         "category": "Design",
-        "title": "Test Title 1",
-        "description": 'Test Card 3',
+        "title": "Update Website Mainpage",
+        "description": 'Rework the general design and functions for better user experience. Optimize the buttons and links.',
         "progress": "0",
-        "assignedUser": [Contacts[0]['firstName'].charAt(0) + Contacts[0]['lastName'].charAt(0), Contacts[1]['firstName'].charAt(0) + Contacts[1]['lastName'].charAt(0), Contacts[4]['firstName'].charAt(0) + Contacts[4]['lastName'].charAt(0)],
+        "assignedUser": [Contacts[0]['firstLetters'], Contacts[1]['firstLetters'], Contacts[4]['firstLetters']],
         "prio": "High",
         "dueDate": "2022-08-14",
         "subtasks": [
-            { nameSub: "Test Subtask 1", status: "Awaitingfeedback" },
-            { nameSub: "Test Subtask 2", status: "InProgress" },
-            { nameSub: "Test Subtask 3", status: "InProgress" }
+            { nameSub: "General Design", status: "Awaitingfeedback" },
+            { nameSub: "Functions", status: "InProgress" },
+            { nameSub: "Buttons and Links", status: "InProgress" }
         ],
         "listType": "ToDo",
     },
     {
         "category": "Backoffice",
-        "title": "Test Title 2",
-        "description": 'Test Card 3 Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod temporinvidunt utlabore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duodolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sitamet.',
+        "title": "Organize Financial Records",
+        "description": 'Review and organize financial records, including invoices, receipts, and expense reports, to ensure accurate bookkeeping and easy retrieval for auditing purposes.',
         "progress": "1",
-        "assignedUser": [Contacts[3]['firstName'].charAt(0) + Contacts[3]['lastName'].charAt(0), Contacts[4]['firstName'].charAt(0) + Contacts[4]['lastName'].charAt(0)],
+        "assignedUser": [Contacts[3]['firstLetters'], Contacts[4]['firstLetters']],
         "prio": "Low",
         "dueDate": "2022-08-14",
         "subtasks": [
-            { nameSub: "Test Subtask 1", status: "Awaitingfeedback" },
-            { nameSub: "Test Subtask 2", status: "InProgress" }
+            { nameSub: "Invoices, receipts, expense reports", status: "Awaitingfeedback" },
+            { nameSub: "General bookkeeping", status: "InProgress" }
         ],
         "listType": "InProgress"
     },
     {
         "category": "Marketing",
-        "title": "Test Title 3",
-        "description": 'Test Card 3',
+        "title": "Review project proposal",
+        "description": 'Thoroughly review the project proposal and provide feedback on its feasibility, strategic alignment, and potential impact. Assess the proposed budget, timeline, and resource allocation. Identify any areas of improvement or concerns and communicate them to the project team.',
         "progress": "2",
-        "assignedUser": [Contacts[0]['firstName'].charAt(0) + Contacts[0]['lastName'].charAt(0)], 
+        "assignedUser": [Contacts[0]['firstLetters']], 
         "prio": "Mid",
         "dueDate": "2022-08-14",
         "subtasks": [
@@ -44,32 +44,45 @@ let cards = [
     },
     {
         "category": "Media",
-        "title": "Test Title 4",
-        "description": 'Test Card 4',
+        "title": "Video cut",
+        "description": 'Edit latest company video and review further clips',
         "progress": "1",
-        "assignedUser": [Contacts[3]['firstName'].charAt(0) + Contacts[3]['lastName'].charAt(0), Contacts[5]['firstName'].charAt(0) + Contacts[5]['lastName'].charAt(0)],
+        "assignedUser": [Contacts[3]['firstLetters'], Contacts[5]['firstLetters']],
         "prio": "High",
         "dueDate": "2022-08-14",
         "subtasks": [
-            { nameSub: "Test Subtask 1", status: "Awaitingfeedback" },
-            { nameSub: "Test Subtask 2", status: "InProgress" },
-            { nameSub: "Test Subtask 3", status: "InProgress" }
+            { nameSub: "Edit video", status: "Awaitingfeedback" },
+            { nameSub: "Review clips", status: "InProgress" },
         ],
         "listType": "Awaitingfeedback"
     },
     {
-        "category": "Media",
-        "title": "Test Title 5",
-        "description": 'Test Card 5',
+        "category": "Backoffice",
+        "title": "Prepare quarterly report",
+        "description": 'Compile financial data and analysis to create a comprehensive quarterly report for the management team. Include key performance indicators, budget analysis, and recommendations for improvement.',
         "progress": "1",
-        "assignedUser": [Contacts[2]['firstName'].charAt(0) + Contacts[2]['lastName'].charAt(0), Contacts[4]['firstName'].charAt(0) + Contacts[4]['lastName'].charAt(0)],
+        "assignedUser": [Contacts[2]['firstLetters'], Contacts[4]['firstLetters']],
         "prio": "Mid",
         "dueDate": "2022-08-14",
         "subtasks": [
-            { nameSub: "Test Subtask 1", status: "AwaitingFeedback" },
-            { nameSub: "Test Subtask 2", status: "InProgress" }
+            { nameSub: "Compile Data", status: "AwaitingFeedback" },
+            { nameSub: "Key performance indicators", status: "InProgress" }
         ],
         "listType": "InProgress"
+    },
+    {
+        "category": "Sales",
+        "title": "Call potential clients",
+        "description": 'Create product presentation and general portfolio.',
+        "progress": "1",
+        "assignedUser": [Contacts[2]['firstLetters'], Contacts[4]['firstLetters']],
+        "prio": "Mid",
+        "dueDate": "2022-08-14",
+        "subtasks": [
+            { nameSub: "Presentation", status: "AwaitingFeedback" },
+            { nameSub: "Portfolio", status: "InProgress" }
+        ],
+        "listType": "ToDo"
     }
 ];
 
@@ -92,6 +105,10 @@ let categories = [{
 {
     name: "Media",
     color: "#FF0000",
+},
+{
+    name: "Sales",
+    color: "#FFC701",
 },
 ];
 
