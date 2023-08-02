@@ -424,7 +424,7 @@ body {
 }
 
 .d-none {
-    display: none;
+    display: none !important;
 }
 
 .overlay-new-contact {
@@ -440,6 +440,7 @@ body {
     align-items: center;
     z-index: 99;
     background: rgb(0 0 0 / 39%);
+    
 }
 
 .new-contact-main {
