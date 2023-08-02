@@ -515,6 +515,18 @@ textarea#editCardDescription {
     line-height: 120%;
 }
 
+input#editCardDueDate {
+    padding: 11px 21px 11px 21px;
+    border-radius: 10px;
+    border: 1px solid #d1d1d1;
+    color: #000;
+    margin-top: 7px;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 422px;
+    display: block;
+}
+
 @keyframes slide-in {
     from {
         transform: translateX(100%);
