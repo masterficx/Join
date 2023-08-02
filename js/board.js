@@ -33,7 +33,7 @@ let cards = [
         "title": "Review project proposal",
         "description": 'Thoroughly review the project proposal and provide feedback on its feasibility, strategic alignment, and potential impact. Assess the proposed budget, timeline, and resource allocation. Identify any areas of improvement or concerns and communicate them to the project team.',
         "progress": "2",
-        "assignedUser": [Contacts[0]['firstLetters']], 
+        "assignedUser": [Contacts[0]['firstLetters']],
         "prio": "Mid",
         "dueDate": "2022-08-14",
         "subtasks": [
@@ -74,7 +74,7 @@ let cards = [
         "category": "Sales",
         "title": "Call potential clients",
         "description": 'Create product presentation and general portfolio.',
-        "progress": "1",
+        "progress": "0",
         "assignedUser": [Contacts[2]['firstLetters'], Contacts[4]['firstLetters']],
         "prio": "Mid",
         "dueDate": "2022-08-14",
@@ -88,7 +88,7 @@ let cards = [
 
 let categories = [{
     name: "Sales",
-    color: "#FC71FF",
+    color: "#FFC701",
 },
 {
     name: "Backoffice",
@@ -106,17 +106,12 @@ let categories = [{
     name: "Media",
     color: "#FF0000",
 },
-{
-    name: "Sales",
-    color: "#FFC701",
-},
 ];
 
 let currentDraggedElement;
 
 function renderBoard() {
     renderBoardCards();
-    setTimeout(renderBackgroundColorCategory(), 500);
 }
 
 function renderBoardCards() {
@@ -139,8 +134,9 @@ function renderBoardCards() {
                 </div>
             </div>
         </div>`;
-        renderProgressBar(i);
-        renderAssignedUserInBoard(i);
+            renderProgressBar(i);
+            renderAssignedUserInBoard(i);
+            renderBackgroundColorCategory(i);
         } else { renderBoardCardsInProgress(i) };
     }
 }
@@ -163,8 +159,9 @@ function renderBoardCardsInProgress(i) {
             </div>
         </div>
     </div>`;
-    renderProgressBar(i);
-    renderAssignedUserInBoard(i);
+        renderProgressBar(i);
+        renderAssignedUserInBoard(i);
+        renderBackgroundColorCategory(i);
     } else { renderBoardCardsAwaitingFeedback(i) };
 }
 
@@ -186,8 +183,9 @@ function renderBoardCardsAwaitingFeedback(i) {
             </div>
         </div>
     </div>`;
-    renderProgressBar(i);
-    renderAssignedUserInBoard(i);
+        renderProgressBar(i);
+        renderAssignedUserInBoard(i);
+        renderBackgroundColorCategory(i);
     } else { renderBoardCardsDone(i) };
 }
 
@@ -209,42 +207,41 @@ function renderBoardCardsDone(i) {
             </div>
         </div>
     </div>`;
-    renderProgressBar(i);
-    renderAssignedUserInBoard(i);
+        renderProgressBar(i);
+        renderAssignedUserInBoard(i);
+        renderBackgroundColorCategory(i);
     } else { };
 }
 
-function renderBackgroundColorCategory() {
-    for (let j = 0; j < cards.length; j++) {
-        let cat = cards[j]['category'];
-        let catClass = document.getElementById(`cardBoardInsideCategory${j}`);
-        for (let k = 0; k < categories.length; k++) {
-            if (cat == categories[k]['name']) {
-                catClass.style['background-color'] = categories[j]['color'];
-            } else { };
-        };
+function renderBackgroundColorCategory(i) {
+    let cat = cards[i]['category'];
+    let catClass = document.getElementById(`cardBoardInsideCategory${i}`);
+    for (let k = 0; k < categories.length; k++) {
+        if (cat == categories[k]['name']) {
+            catClass.style['background-color'] = categories[k]['color'];
+        } else { }
     };
 }
 
 function renderProgressBar(i) {
-    let progressValue = cards[i]['progress']*100/cards[i]['subtasks'].length;
+    let progressValue = cards[i]['progress'] * 100 / cards[i]['subtasks'].length;
     let progressBar = document.getElementById(`progressBar${i}`);
     progressBar.style.width = progressValue + '%';
 }
 
 function renderAssignedUserInBoard(i) {
-    	for (let j = 0; j < cards[i]['assignedUser'].length; j++) {
-            document.getElementById(`InsideUser${i}`).innerHTML += `
+    for (let j = 0; j < cards[i]['assignedUser'].length; j++) {
+        document.getElementById(`InsideUser${i}`).innerHTML += `
             <div class="label-card" style="background-color:${findUserColor(i, j)}">${cards[i]['assignedUser'][j]}</div>
             `;
-        }
+    }
 }
 
 function findUserColor(i, j) {
     for (let k = 0; k < Contacts.length; k++) {
         if (Contacts[k]['firstLetters'] == cards[i]['assignedUser'][j]) {
             return `${Contacts[k]['color']}`;
-        } else {}                
+        } else { }
     }
 }
 
@@ -325,7 +322,7 @@ function openCard(i) {
 
 
 function deleteCard(i) {
-console.log('deleted', i);
+    console.log('deleted', i);
 }
 
 function editCard(i) {
@@ -341,7 +338,7 @@ function editCard(i) {
     editCardSave.innerHTML = `<div onclick='saveEditedCard(${[i]})'>Ok`;
 }
 
-function saveEditedCard(i){
+function saveEditedCard(i) {
     cards[i]['title'] = document.getElementById('editCardTitle').value;
     cards[i]['description'] = document.getElementById('editCardDescription').value;
     cards[i]['dueDate'] = document.getElementById('editCardDueDate').value;
