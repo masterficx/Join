@@ -26,6 +26,7 @@ body {
 
 .main-content {
     display: flex;
+    height: 100vH;
 }
 
 .middle {
