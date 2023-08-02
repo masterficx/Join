@@ -21,17 +21,6 @@ body {
 }
 
 
-/* .headerLeft {
-    background-image: url('../img/joinlogo.png');
-    position: absolute;
-    top: 80px !important;
-    left: 100px !important;
-    transform: none !important;
-    width: 100px !important;
-    height: 122px !important;
-} */
-
-
 .headerRight {
     width: 279px;
     height: 51px;
@@ -40,6 +29,7 @@ body {
     justify-content: space-between;
     align-items: center;
 }
+
 
 button {
     background-color: rgb(42, 54, 71);
@@ -53,6 +43,7 @@ button {
     box-shadow: none;
     transition: 150ms ease-in-out;
 }
+
 
 button:hover {
     background-color: #29ABE2;
@@ -74,10 +65,8 @@ button:hover {
     left: 50%;
     transform: translate(-50%, -50%);
     transition: 500ms;
-    /* Übergangseffekt für die Animation */
     z-index: 100;
 }
-
 
 
 .imgLogo {
@@ -94,10 +83,10 @@ button:hover {
     justify-content: center;
 }
 
+
 .content {
     background-color: #FFFFFF;
     width: 652px;
-    /* height: 508px; */
     border-radius: 30px;
     box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
     display: flex;
@@ -175,6 +164,7 @@ h1 {
     margin-top: 0;
 }
 
+
 h2 {
     font-size: 20px;
     font-weight: 400;
@@ -183,12 +173,14 @@ h2 {
     margin: 0;
 }
 
+
 form {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 32px
 }
+
 
 .inputBox {
     display: flex;
@@ -204,7 +196,6 @@ form {
     height: 48px;
     border-radius: 10px;
     border: 1px solid #D1D1D1;
-    /* Border mit 1 Pixel Dicke und Farbe #D1D1D1 */
     padding-left: 21px;
     padding-top: 5px;
     font-size: 20px;
@@ -238,7 +229,6 @@ input::placeholder {
 
 input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 30px white inset;
-    /* Hintergrundfarbe des Autofill-Feldes */
 }
 
 
@@ -359,6 +349,7 @@ input[type="checkbox"] {
     /* Opera */
 }
 
+
 /* Styling für die Checkbox hinzu */
 input[type="checkbox"] {
     background-image: url("../assets/img/logInSignUp/uncheckButton.svg");
@@ -368,6 +359,7 @@ input[type="checkbox"] {
     height: 24px;
     cursor: pointer;
 }
+
 
 /* Benutzerdefiniertes Styling für die Checkbox, wenn sie ausgewählt ist */
 input[type="checkbox"]:checked {
@@ -413,16 +405,15 @@ footer a:hover {
     height: 25px;
 }
 
-#emailAlert{
+
+#emailAlert {
     color: rgb(255, 129, 144);
     margin-top: -30px;
-    margin-right: 240px;
+    margin-right: 270px;
     margin-bottom: -40px;
     font-size: 13px;
     height: 25px;
 }
-
-
 
 
 .banner {
@@ -450,6 +441,8 @@ footer a:hover {
 }
 
 
+/* max-width: 810px */
+
 @media(max-width: 870px) {
     .forgotPW {
         width: 600px !important;
@@ -461,29 +454,17 @@ footer a:hover {
 /* max-width: 680px */
 
 @media(max-width: 680px) {
-    .content {
-        width: 500px;
-        gap: 20px;
-    }
-
-    .headerRight {
-        width: 250px;
-    }
-
-    .forgotPW {
-        width: 396px !important;
-    }
-}
-
-/* max-width: 680px */
-
-@media(max-width: 680px) {
     .headingContainer {
         width: 85%;
     }
 
     .content {
         width: 396px;
+        gap: 20px;
+    }
+
+    .forgotPW {
+        width: 396px !important;
     }
 
     .contentbox {
@@ -537,7 +518,7 @@ footer a:hover {
     }
 
     .header {
-        margin: 0;
+        margin: 40px 50px;
     }
 
     .headerRight {
@@ -547,7 +528,6 @@ footer a:hover {
     #logo {
         width: 100px;
         height: 122px;
-        /* background-image: url('../img/joinlogomobil.png') !important; */
     }
 
     #startBackground {
@@ -559,22 +539,28 @@ footer a:hover {
     }
 }
 
+
 /* max-height: 870px */
 
 @media(max-height: 870px) {
     .front-main-content {
         margin-top: 115px;
+        margin-bottom: 25px;
     }
 
     .contentbox {
         gap: 8px;
     }
+
+    .forgotPW {
+        margin-top: 0;
+    }
 }
 
-/* max-height: 700px */
 
+/* max-height: 830px */
 
-@media(max-height: 700px) {
+@media(max-height: 860px) {
     .front-main-content {
         margin-top: 80px;
     }
@@ -611,5 +597,12 @@ footer a:hover {
 
     input {
         width: 270px;
+    }
+}
+
+
+@media(max-height: 930px) {
+    .front-main-content {
+        margin-top: 100px;
     }
 }

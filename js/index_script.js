@@ -17,7 +17,7 @@ let users = [
 ]
 
 
-let currentUser = '';
+let currentUser;
 
 
 /////////////////////// Function to initialize the page ///////////////////////////////////
@@ -251,7 +251,6 @@ function checkSamePasswort(password1, password2) {
             password2.parentElement.classList.remove('redInput');
         }, 3000);
     } else {
-        console.log('Benutzer wurde angelegt');
         return true;
     }
 }
@@ -310,21 +309,17 @@ function moveElementToNewPosition(newParent) {
 function handleMaxWidthChange() {
     let moveBack = document.getElementById('header');
     let elementToMove = document.getElementById('headerRight');
-    let logo = document.getElementById('logo');
 
     if (window.innerWidth < 510) {
         moveElementToNewPosition(document.getElementById('footer'));
-        // logo.src = "../img/joinlogomobil.png"; // for startAnimation on mobil
     } else {
         if (moveBack && elementToMove)
             // moveElementToNewPosition(document.getElementById('front-main-content'));
             moveBack.appendChild(elementToMove);
-        // logo.src = "../img/joinlogo.png";
     }
 }
 
 window.addEventListener('resize', handleMaxWidthChange);
-// handleMaxWidthChange();
 
 
 /////////////////////////////////////////////// return HTML //////////////////////////////////////////////////
