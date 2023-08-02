@@ -3,49 +3,65 @@ let Contacts = [
         "firstName": "Anja",
         "lastName": "Schulz",
         "phone": 1234567890001,
-        "email": "schulz@hotmail.com"
+        "email": "schulz@hotmail.com",
+        "color": "#02CF2F",
+        "firstLetters": "AS",
     },
     {
         "firstName": "Anton",
         "lastName": "Mayer",
         "phone": 987654321,
-        "email": "antom@gmail.com"
+        "email": "antom@gmail.com",
+        "color": "#9327FF",
+        "firstLetters": "AM",
     },
     {
         "firstName": "Benedikt",
         "lastName": "Ziegler",
         "phone": 5432167890,
-        "email": "benedikt@gmail.com"
+        "email": "benedikt@gmail.com",
+        "color": "#0190E0",
+        "firstLetters": "BZ",
     },
     {
         "firstName": "David",
         "lastName": "Eisenberg",
         "phone": 6789054321,
-        "email": "davidberg@gmail.com"
+        "email": "davidberg@gmail.com",
+        "color": "#FF5C00",
+        "firstLetters": "DE",
     },
     {
         "firstName": "Eva",
         "lastName": "Fischer",
         "phone": 5432109876,
-        "email": "evag@gmail.com"
+        "email": "evag@gmail.com",
+        "color": "#EE00D6",
+        "firstLetters": "EF",
     },
     {
         "firstName": "Emmanuel",
         "lastName": "Mauer",
         "phone": 6789012345,
-        "email": "emmanuelma@gmail.com"
+        "email": "emmanuelma@gmail.com",
+        "color": "#32DAFF",
+        "firstLetters": "EM",
     },
     {
         "firstName": "Marcel",
         "lastName": "Bauer",
         "phone": 1597532846,
-        "email": "bauer@gmail.com"
+        "email": "bauer@gmail.com",
+        "color": "#EE00D6",
+        "firstLetters": "MB",
     },
     {
         "firstName": "Tatjana",
         "lastName": "Wolf",
         "phone": 3579513264,
-        "email": "wolf@gmail.com"
+        "email": "wolf@gmail.com",
+        "color": "#CB02CF",
+        "firstLetters": "TW",
     }
 ]
 
