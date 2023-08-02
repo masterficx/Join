@@ -60,6 +60,10 @@ span#slogan {
     margin-left: 100px;
 }
 
+.headerRight {
+    display: flex;
+}
+
 .middle .headerRight {
     width: unset;
     height: unset;
