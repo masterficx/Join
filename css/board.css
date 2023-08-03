@@ -43,6 +43,7 @@ html::-webkit-scrollbar {
     font-weight: 400;
     line-height: 120%;
     color: black;
+    outline: none;
 }
 
 .searchImage {
