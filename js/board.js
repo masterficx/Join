@@ -75,7 +75,7 @@ let cards = [
         "title": "Call potential clients",
         "description": 'Create product presentation and general portfolio.',
         "progress": "0",
-        "assignedUser": [Contacts[2]['firstLetters'], Contacts[4]['firstLetters'], Contacts[0]['firstLetters']],
+        "assignedUser": [Contacts[2]['firstLetters'], Contacts[5]['firstLetters'], Contacts[0]['firstLetters'], Contacts[3]['firstLetters']],
         "prio": "Mid",
         "dueDate": "2022-08-14",
         "subtasks": [
