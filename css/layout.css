@@ -293,18 +293,31 @@ div#headsubmenu a:first-child {
 .sidebar {
     order: 2;
     width: calc(100% - 40px);
-    padding: 40px 20px;
+    padding: 5px 20px;
     position: relative;
+    height: unset;
 }
 
 .sidebar a.logo {
     display: none;
 }
 
-.flex-align-center {
+.menu {
+    flex-direction: row;
+}
+
+.menu a {
+    width: auto;
     flex-direction: column;
 }
 
+.legal-links {
+    display: none;
+}
+
+.flex-align-center {
+    flex-direction: column;
+}
 
 .title {
     flex-direction: column;
