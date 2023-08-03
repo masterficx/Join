@@ -8,9 +8,9 @@ let cards = [
         "prio": "High",
         "dueDate": "2022-08-14",
         "subtasks": [
-            { nameSub: "General Design", status: "Awaitingfeedback" },
-            { nameSub: "Functions", status: "InProgress" },
-            { nameSub: "Buttons and Links", status: "InProgress" }
+            { nameSub: "General Design", status: "unchecked" },
+            { nameSub: "Functions", status: "unchecked" },
+            { nameSub: "Buttons and Links", status: "unchecked" }
         ],
         "listType": "ToDo",
     },
@@ -23,8 +23,8 @@ let cards = [
         "prio": "Low",
         "dueDate": "2022-08-14",
         "subtasks": [
-            { nameSub: "Invoices, receipts, expense reports", status: "Awaitingfeedback" },
-            { nameSub: "General bookkeeping", status: "InProgress" }
+            { nameSub: "Invoices, receipts, expense reports", status: "checked" },
+            { nameSub: "General bookkeeping", status: "unchecked" }
         ],
         "listType": "InProgress"
     },
@@ -37,8 +37,8 @@ let cards = [
         "prio": "Mid",
         "dueDate": "2022-08-14",
         "subtasks": [
-            { nameSub: "Test Subtask 1", status: "Awaitingfeedback" },
-            { nameSub: "Test Subtask 2", status: "InProgress" }
+            { nameSub: "Test Subtask 1", status: "checked" },
+            { nameSub: "Test Subtask 2", status: "checked" }
         ],
         "listType": "Done"
     },
@@ -51,8 +51,8 @@ let cards = [
         "prio": "High",
         "dueDate": "2022-08-14",
         "subtasks": [
-            { nameSub: "Edit video", status: "Awaitingfeedback" },
-            { nameSub: "Review clips", status: "InProgress" },
+            { nameSub: "Edit video", status: "checked" },
+            { nameSub: "Review clips", status: "unchecked" },
         ],
         "listType": "Awaitingfeedback"
     },
@@ -61,12 +61,12 @@ let cards = [
         "title": "Prepare quarterly report",
         "description": 'Compile financial data and analysis to create a comprehensive quarterly report for the management team. Include key performance indicators, budget analysis, and recommendations for improvement.',
         "progress": "1",
-        "assignedUser": [Contacts[2]['firstLetters'], Contacts[4]['firstLetters']],
+        "assignedUser": [Contacts[1]['firstLetters'], Contacts[4]['firstLetters']],
         "prio": "Mid",
         "dueDate": "2022-08-14",
         "subtasks": [
-            { nameSub: "Compile Data", status: "AwaitingFeedback" },
-            { nameSub: "Key performance indicators", status: "InProgress" }
+            { nameSub: "Compile Data", status: "checked" },
+            { nameSub: "Key performance indicators", status: "unchecked" }
         ],
         "listType": "InProgress"
     },
@@ -75,14 +75,25 @@ let cards = [
         "title": "Call potential clients",
         "description": 'Create product presentation and general portfolio.',
         "progress": "0",
-        "assignedUser": [Contacts[2]['firstLetters'], Contacts[4]['firstLetters']],
+        "assignedUser": [Contacts[2]['firstLetters'], Contacts[4]['firstLetters'], Contacts[0]['firstLetters']],
         "prio": "Mid",
         "dueDate": "2022-08-14",
         "subtasks": [
-            { nameSub: "Presentation", status: "AwaitingFeedback" },
-            { nameSub: "Portfolio", status: "InProgress" }
+            { nameSub: "Presentation", status: "unchecked" },
+            { nameSub: "Portfolio", status: "unchecked" }
         ],
         "listType": "ToDo"
+    },
+    {
+        "category": "Marketing",
+        "title": "Create advertising material for latest product linups",
+        "description": 'Create powerpoint presentation as well as flyer for all new products.',
+        "progress": "0",
+        "assignedUser": [Contacts[4]['firstLetters'], Contacts[5]['firstLetters'], Contacts[0]['firstLetters']],
+        "prio": "Mid",
+        "dueDate": "2022-08-14",
+        "subtasks": [],
+        "listType": "InProgress"
     }
 ];
 
@@ -274,8 +285,6 @@ function closeOverlay() {
     document.getElementById('CardDetail').style = "display:none;";
     document.getElementById('CardEditForm').style = "display:none;";
     renderBoardCards();
-    renderBackgroundColorCategory();
-
 }
 
 function doNotClose(event) {

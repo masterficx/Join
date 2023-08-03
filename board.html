@@ -31,7 +31,7 @@
                         </div>
                         <div class="headBoardRight">
                             <div class="inputSearchBoardContainer">
-                                <input id="inputSearchBoard" autocomplete="off" type="search" placeholder="Find Task">
+                                <input id="inputSearchBoard" onkeydown="filterCards()" autocomplete="off" type="search" placeholder="Find Task">
                                 <div class="searchImage" style="display: flex;" onclick="filterCards()">
                                     <img src="/assets/img/board/searchSeparator.png" alt="">
                                     <img src="/assets/img/board/search.png" alt="">
@@ -87,7 +87,7 @@
                             </div>
                         </div>
                         <div class="categoryBoardHead">
-                            <div onclick="openAddTask()" class="categoryBoardSub"><span>Done</span>
+                            <div class="categoryBoardSub"><span>Done</span>
                                 <div class="headBoardRightImageBlind"><img src="assets/img/board/plusDark.png"
                                         alt="add">
                                 </div>
