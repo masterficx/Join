@@ -5,10 +5,6 @@ body {
     overflow: auto;
 }
 
-.middle .content {
-    height: 100% !important;
-}
-
 html::-webkit-scrollbar {
     width: 0px;
 }
@@ -96,7 +92,6 @@ html::-webkit-scrollbar {
 
 .categoryBoardAll {
     display: inline-flex;
-    height: 661px;
     justify-content: center;
     align-items: flex-start;
     gap: 26px;
@@ -608,10 +603,6 @@ input#editCardDueDate {
         flex-wrap: wrap;
     }
 
-    .middle .content {
-        height: 100% !important;
-    }
-
     .cardBoardAllDone {
         margin-bottom: 32px !important;
     }
@@ -643,8 +634,8 @@ input#editCardDueDate {
 @media(max-width: 992px) {
     .categoryBoardAll {
         gap: 96px;
-        padding-left: 16px;
-        padding-right: 16px;
+        padding-left: 32px;
+        padding-right: 32px;
     }
 
     .headBoard {
@@ -662,6 +653,11 @@ input#editCardDueDate {
 
     .content {
         padding-left: 0px !important;
+        padding-right: 0px !important;
+    }
+    .middle .content{
+        margin-right: 0 !important;
+        width: 100% !important;
     }
 } 
 
@@ -681,6 +677,10 @@ input#editCardDueDate {
     .headBoard {
         display: flex;
         flex-direction: column;
+    }
+
+    .headBoard h1 {
+        font-size: 40px !important;
     }
 
     .headBoardRight {
@@ -716,11 +716,12 @@ input#editCardDueDate {
     .headBoardRight {
         display: flex;
         flex-direction: column;
+        gap: 8px;
     }
 
     .headBoard {
         width: 100%;
-        gap: 16px;
+        gap: 8px;
         align-items: center;
         margin: 0;
         padding-top: 16px !important;
