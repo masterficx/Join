@@ -149,4 +149,26 @@ div#welcomemsg {
     transition: opacity 0.5s linear;
 }
 
+.sum-box {
+    padding: 14px;
+    border-radius: 20px;
+}
+
+.boxes-row img {
+    max-width: 40px;
+}
+
+.summaryboxes {
+    width: 100%;
+}
+
+.boxes-row span.sum-title {
+    font-size: 47px;
+}
+
+span.sum-sub-title {
+    font-size: 14px;
+    line-height: 17px;
+}
+
 }
