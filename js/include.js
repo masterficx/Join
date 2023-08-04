@@ -1,3 +1,5 @@
+let currentuser = "Jon Doe";
+
 //Initialen des eingeloggten Nutzers
 async function includeTemplates() {
     await includeHTML();
@@ -32,3 +34,16 @@ async function includeHTML() {
     }
 }
 
+// Klick im Header auf "My account" zeigt das Menü
+function showMenu(){
+    let myAccountMenu = document.getElementById('myaccount');
+    let subMenu = document.getElementById('headsubmenu');
+    if(subMenu.style.display == "none"){
+    subMenu.style = "display: block;";
+    myAccountMenu.classList.add('show');
+    }
+    else{
+        subMenu.style = "display: none;";
+        myAccountMenu.classList.remove('show');   
+    };
+    }
