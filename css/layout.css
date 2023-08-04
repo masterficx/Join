@@ -303,6 +303,7 @@ div#headsubmenu a:first-child {
     position: fixed;
     height: unset;
     bottom: 0;
+    z-index: 777;
 }
 
 .sidebar a.logo {
@@ -314,8 +315,20 @@ div#headsubmenu a:first-child {
 }
 
 .menu a {
-    width: auto;
+    font-size: 14px;
     flex-direction: column;
+    padding: 0px;
+    width: 76px;
+    height: 80px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.menu p {
+    height: 24px;
+    width: auto;
+    margin-bottom: 2px;
 }
 
 .legal-links {
@@ -339,6 +352,14 @@ div#headsubmenu a:first-child {
 .title span:before {
     width: 60px;
     height: 3px;
+}
+
+.title h1 {
+    font-size: 47px;
+}
+
+.title span {
+    font-size: 20px;
 }
 
 }
