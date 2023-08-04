@@ -58,9 +58,15 @@ function addClassMobile() {
     setTimeout(function hideWelcome() {
         if (mediaQueryMobile.matches) {
             messageContainer.classList.add('remove');
+            setTimeout(
+                function hideContainer(){
+                    console.log('hide container');
+                    messageContainer.style.display = "none";
+                },1000);
         }
         else {
             messageContainer.classList.remove('remove');
+            messageContainer.style.display = 'flex';
         }
     }, 2000);
 }
