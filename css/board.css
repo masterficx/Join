@@ -33,6 +33,7 @@ html::-webkit-scrollbar {
 .cardBoardAll {
     min-height: 240px;
     min-width: 12vw;
+    margin-bottom: 0px;
 }
 
 #inputSearchBoard {
@@ -611,6 +612,10 @@ input#editCardDueDate {
         height: 100% !important;
     }
 
+    .cardBoardAllDone {
+        margin-bottom: 32px !important;
+    }
+
 }
 
 @media(max-width: 1240px) {
@@ -636,5 +641,121 @@ input#editCardDueDate {
 }
 
 @media(max-width: 992px) {
+    .categoryBoardAll {
+        gap: 96px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
 
+    .headBoard {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .cardBoardAllDone {
+        margin-bottom: 128px;
+    }
+
+    .cardBoardAllAWFB {
+        margin-bottom: 128px;
+    }
+
+    .content {
+        padding-left: 0px !important;
+    }
 } 
+
+@media(max-width: 716px) {
+    .categoryBoardAll {
+        gap: 32px;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+
+    .content {
+        padding-left: 0px !important;
+    }
+}
+
+@media(max-width: 630px) {
+    .headBoard {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .headBoardRight {
+        gap: 32px;
+    }
+
+    .middle .content {
+        width: 100% !important;
+    }
+
+    .content {
+        padding-left: 0px !important;
+    }
+
+    .cardBoardAllDone {
+        margin-bottom: 128px;
+    }
+
+    .cardBoardAllAWFB {
+        margin-bottom: 128px;
+    }
+}
+
+@media(max-width: 585px) {
+    .categoryBoardAll {
+        gap: 32px;
+        padding-left: 0px;
+        padding-right: 0px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .headBoardRight {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .headBoard {
+        width: 100%;
+        gap: 16px;
+        align-items: center;
+        margin: 0;
+        padding-top: 16px !important;
+    }
+
+    .cardBoardAllDone {
+        margin-bottom: 128px;
+    }
+
+    .cardBoardAllAWFB {
+        margin-bottom: 128px;
+    }
+
+    .inputSearchBoardContainer {
+        width: 290px;
+    }
+
+    .content {
+        padding: 0px !important;
+        margin-right: 0px !important;
+    }
+
+    .middle .content {
+        width: 100% !important;
+    }
+}
+
+@media(max-width: 550px) {
+    .categoryBoardAll {
+        gap: 32px;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .cardBoardAllDone {
+        margin-bottom: 128px !important;
+    }
+}
