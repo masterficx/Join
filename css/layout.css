@@ -269,97 +269,111 @@ div#headsubmenu a:first-child {
 
 @media only screen and (max-width: 992px) {
 
-.main-content {
-    flex-direction: column;
-    height: 100%;
-    box-shadow: unset;
-}
+    #myaccount {
+        width: 40px;
+        height: 40px;
+    }
 
-.middle .header {
-    width: 100%;
-}
+    a#help {
+        display: none;
+    }
 
-.middle {
-    order: 1;
-    width: 100%;
-    padding-right: 0px;
-    padding-bottom: 70px;
-    padding-left: 0px;
-    margin-left: 0px;
-}
+    span#slogan {
+        display: none;
+    }
 
-.middle .content {
-    position: relative;
-    width: calc(100% - 40px);
-    height: calc(100% - 146px);
-    margin: 96px 0px 0px 0px;
-    padding: 25px 20px 25px 20px;
-}
+    .main-content {
+        flex-direction: column;
+        height: 100%;
+        box-shadow: unset;
+    }
 
-.sidebar {
-    order: 2;
-    width: calc(100% - 40px);
-    padding: 5px 20px;
-    position: fixed;
-    height: unset;
-    bottom: 0;
-    z-index: 777;
-}
+    .middle .header {
+        width: 100%;
+        height: 80px;
+    }
 
-.sidebar a.logo {
-    display: none;
-}
+    .middle {
+        order: 1;
+        width: 100%;
+        padding-right: 0px;
+        padding-bottom: 120px;
+        padding-left: 0px;
+        margin-left: 0px;
+    }
 
-.menu {
-    flex-direction: row;
-}
+    .middle .content {
+        position: relative;
+        width: calc(100% - 40px);
+        height: calc(100% - 146px);
+        margin: 96px 0px 0px 0px;
+        padding: 25px 20px 25px 20px;
+    }
 
-.menu a {
-    font-size: 14px;
-    flex-direction: column;
-    padding: 0px;
-    width: 76px;
-    height: 80px;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-}
+    .sidebar {
+        order: 2;
+        width: calc(100% - 40px);
+        padding: 5px 20px;
+        position: fixed;
+        height: unset;
+        bottom: 0;
+        z-index: 777;
+    }
 
-.menu p {
-    height: 24px;
-    width: auto;
-    margin-bottom: 2px;
-}
+    .sidebar a.logo {
+        display: none;
+    }
 
-.legal-links {
-    display: none;
-}
+    .menu {
+        flex-direction: row;
+    }
 
-.flex-align-center {
-    flex-direction: column;
-}
+    .menu a {
+        font-size: 14px;
+        flex-direction: column;
+        padding: 0px;
+        width: 76px;
+        height: 80px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+    }
 
-.title {
-    flex-direction: column;
-    align-items: flex-start;
-}
+    .menu p {
+        height: 24px;
+        width: auto;
+        margin-bottom: 2px;
+    }
 
-.title span {
-    margin-left: 0px;
-    padding-left: 0px;
-}
+    .legal-links {
+        display: none;
+    }
 
-.title span:before {
-    width: 60px;
-    height: 3px;
-}
+    .flex-align-center {
+        flex-direction: column;
+    }
 
-.title h1 {
-    font-size: 47px;
-}
+    .title {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
-.title span {
-    font-size: 20px;
-}
+    .title span {
+        margin-left: 0px;
+        padding-left: 0px;
+    }
+
+    .title span:before {
+        width: 60px;
+        height: 3px;
+    }
+
+    .title h1 {
+        font-size: 47px;
+    }
+
+    .title span {
+        font-size: 20px;
+    }
 
 }
