@@ -265,9 +265,14 @@ div#headsubmenu a:first-child {
 
 @media only screen and (max-width: 992px) {
 
-    
+html {
+        background: #f6f7f8;
+}
+
 .main-content {
     flex-direction: column;
+    height: 100%;
+    box-shadow: unset;
 }
 
 .middle .header {
@@ -278,6 +283,7 @@ div#headsubmenu a:first-child {
     order: 1;
     width: 100%;
     padding-right: 0px;
+    padding-bottom: 70px;
     padding-left: 0px;
     margin-left: 0px;
 }
@@ -294,8 +300,9 @@ div#headsubmenu a:first-child {
     order: 2;
     width: calc(100% - 40px);
     padding: 5px 20px;
-    position: relative;
+    position: fixed;
     height: unset;
+    bottom: 0;
 }
 
 .sidebar a.logo {
