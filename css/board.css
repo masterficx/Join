@@ -759,4 +759,15 @@ input#editCardDueDate {
     .cardBoardAllDone {
         margin-bottom: 128px !important;
     }
+
+    .headBoard h1 {
+        font-size: 32px !important;
+    }
+
+    .headBoard {
+        padding-top: 0px !important;
+    }
+    .categoryBoardSub {
+        margin-top: 16px !important;
+    }
 }
