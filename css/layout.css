@@ -285,8 +285,8 @@ div#headsubmenu a:first-child {
 .middle .content {
     position: relative;
     width: calc(100% - 40px);
-    height: 100%;
-    margin: 0px;
+    height: calc(100% - 146px);
+    margin: 96px 0px 0px 0px;
     padding: 25px 20px 25px 20px;
 }
 
