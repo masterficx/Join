@@ -22,10 +22,7 @@ let cards = [
         "assignedUser": [Contacts[3]['firstLetters'], Contacts[4]['firstLetters']],
         "prio": "Low",
         "dueDate": "2022-08-14",
-        "subtasks": [
-            { nameSub: "Invoices, receipts, expense reports", status: "checked" },
-            { nameSub: "General bookkeeping", status: "unchecked" }
-        ],
+        "subtasks": [],
         "listType": "InProgress"
     },
     {
@@ -137,7 +134,7 @@ function renderBoardCards() {
                     <div class="cardBoardInsideTitle">${cards[i]['title']}</div>
                     <div class="cardBoardInsideDescription">${cards[i]['description']}</div>
                 </div>
-                <div class="cardBoardInsideProgress"><div class="progressBar"><div class="progress" id="progressBar${i}"></div></div>
+                <div class="cardBoardInsideProgress" id="cardBoardInsideProgress${i}"><div class="progressBar"><div class="progress" id="progressBar${i}"></div></div>
                     <div><p>${cards[i]['progress']}/${cards[i]['subtasks'].length} Done</p></div>
                 </div>
                 <div class="cardBoardInsideUserAndPrio">
@@ -162,7 +159,7 @@ function renderBoardCardsInProgress(i) {
                 <div class="cardBoardInsideTitle">${cards[i]['title']}</div>
                 <div class="cardBoardInsideDescription">${cards[i]['description']}</div>
             </div>
-            <div class="cardBoardInsideProgress"><div class="progressBar"><div class="progress" id="progressBar${i}"></div></div>
+            <div class="cardBoardInsideProgress" id="cardBoardInsideProgress${i}"><div class="progressBar"><div class="progress" id="progressBar${i}"></div></div>
             <div><p>${cards[i]['progress']}/${cards[i]['subtasks'].length} Done</p></div>
             </div>
             <div class="cardBoardInsideUserAndPrio">
@@ -186,7 +183,7 @@ function renderBoardCardsAwaitingFeedback(i) {
                 <div class="cardBoardInsideTitle">${cards[i]['title']}</div>
                 <div class="cardBoardInsideDescription">${cards[i]['description']}</div>
             </div>
-            <div class="cardBoardInsideProgress"><div class="progressBar"><div class="progress" id="progressBar${i}"></div></div>
+            <div class="cardBoardInsideProgress" id="cardBoardInsideProgress${i}"><div class="progressBar"><div class="progress" id="progressBar${i}"></div></div>
             <div><p>${cards[i]['progress']}/${cards[i]['subtasks'].length} Done</p></div>
             </div>
             <div class="cardBoardInsideUserAndPrio">
@@ -210,7 +207,7 @@ function renderBoardCardsDone(i) {
                 <div class="cardBoardInsideTitle">${cards[i]['title']}</div>
                 <div class="cardBoardInsideDescription">${cards[i]['description']}</div>
             </div>
-            <div class="cardBoardInsideProgress"><div class="progressBar"><div class="progress" id="progressBar${i}"></div></div>
+            <div class="cardBoardInsideProgress" id="cardBoardInsideProgress${i}"><div class="progressBar"><div class="progress" id="progressBar${i}"></div></div>
             <div><p>${cards[i]['progress']}/${cards[i]['subtasks'].length} Done</p></div>
             </div>
             <div class="cardBoardInsideUserAndPrio">
@@ -237,7 +234,11 @@ function renderBackgroundColorCategory(i) {
 function renderProgressBar(i) {
     let progressValue = cards[i]['progress'] * 100 / cards[i]['subtasks'].length;
     let progressBar = document.getElementById(`progressBar${i}`);
-    progressBar.style.width = progressValue + '%';
+    if (cards[i]['subtasks'].length == 0) {
+        document.getElementById(`cardBoardInsideProgress${i}`).classList.add("d-none");
+    } else {
+        progressBar.style.width = progressValue + '%';
+    }
 }
 
 function renderAssignedUserInBoard(i) {
