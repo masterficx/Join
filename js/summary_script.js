@@ -1,7 +1,7 @@
 //Conditionen für Mobile-Version
 const mediaQueryMobile = window.matchMedia('(max-width: 992px)');
 
-let currentuser = "Jon Doe";
+
 
 async function init() {
     welcomeMsgTime();
@@ -120,16 +120,4 @@ function sortCardsPrioHigh(){
 }
 
 
-// Klick im Header auf "My account" zeigt das Menü
-function showMenu(){
-let myAccountMenu = document.getElementById('myaccount');
-let subMenu = document.getElementById('headsubmenu');
-if(subMenu.style.display == "none"){
-subMenu.style = "display: block;";
-myAccountMenu.classList.add('show');
-}
-else{
-    subMenu.style = "display: none;";
-    myAccountMenu.classList.remove('show');   
-};
-}
+
