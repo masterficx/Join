@@ -267,15 +267,49 @@ function renderForgotPW() {
     document.getElementById('banner').innerHTML = '<img style="width: 32px" src="../assets/img/logInSignUp/sendCheck.svg">An E-Mail has been sent to you';
 }
 
+// Function to check which user Password to reset
+function checkResetpassword() {
+    let emailInput = document.getElementById('emailInput');
+    let emailFound = false;
+
+    for (let i = 0; i < users.length; i++) {
+        let userEmail = users[i].email;
+        if (emailInput.value === userEmail) {
+            renderResetPassword(i);
+            emailFound = true;
+            break;
+        }
+    } if (emailFound) {
+        console.log('YOOOO wurde mindestens einmal ausgeführt!');
+    } else {
+        emailAlert.textContent = "E-Mail nicht vorhanden";
+        emailInput.parentElement.classList.add('redInput');
+        setTimeout(() => { emailAlert.textContent = ""; emailInput.parentElement.classList.remove('redInput'); }, 3000);
+    }
+}
+
 // Function to render the Reset Password form
-function renderResetPassword() {
+function renderResetPassword(i) {
     let contentbox = document.getElementById('contentbox');
 
-    contentbox.innerHTML = returnResetPasswordHTML();
+    contentbox.innerHTML = returnResetPasswordHTML(i);
     document.getElementById('headerRight').classList.add('d-none');
     document.getElementById('footer').classList.add('d-none');
     document.getElementById('banner').innerHTML = 'You reset your password';
+    setupPasswordInputEventListeners();
+}
 
+// Funktion for set new Password
+function setNewPassword(i) {
+    let user = users[i];
+    let password1 = document.getElementById('passwordInput');
+    let password2 = document.getElementById('passwordInput2');
+
+    if(checkSamePasswort(password1, password2)) {
+        user.password = password1.value;
+        show();
+        setTimeout(()=> {renderLogIn()}, 2000);
+    }
 }
 
 // Function to show a banner
@@ -409,7 +443,7 @@ function returnSignUpHTML() {
 
 function returnForgotPWHTML() {
     return /* html */ `
-        <form onsubmit="test(); return false;" class="content forgotPW">
+        <form onsubmit="checkResetpassword(); return false;" class="content forgotPW">
             <div class="headingContainer">
                 <div onclick="renderLogIn()" class="imgHeadingContainer backArrow"></div>
                 <h1>I forgot my password</h1>
@@ -423,6 +457,7 @@ function returnForgotPWHTML() {
                         <input required id="emailInput" class="" type="email" placeholder="Email">
                         <img src="./assets/img/logInSignUp/mail.svg" alt="">
                     </div>
+                    <div id="emailAlert"></div>
                 </div>
             </div>
             <div class="logInButtonBox">
@@ -433,9 +468,9 @@ function returnForgotPWHTML() {
 }
 
 
-function returnResetPasswordHTML() {
+function returnResetPasswordHTML(i) {
     return /* html */ `
-        <form onsubmit="test(); return false;" class="content forgotPW">
+        <form onsubmit="setNewPassword('${i}'); return false;" class="content forgotPW">
             <div class="headingContainer">
                 <div onclick="renderLogIn()" class="imgHeadingContainer backArrow"></div>
                 <h1>Reset your password</h1>
