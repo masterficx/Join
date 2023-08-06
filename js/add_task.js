@@ -30,6 +30,7 @@ function main() {
 };
 
 function addTaskToBoard() {
+    checkForInput();
     let inputTitle = document.getElementById('addTaskTitle').value;
     let description = document.getElementById('descriptionTextArea').value;
     let dueDate = document.getElementById('date').value;
@@ -37,11 +38,12 @@ function addTaskToBoard() {
     for (let t = 0; t < addedIds.length; t++) {
         const element = addedIds[t];
         let addedUser = Contacts[element]['firstLetters'];
-        addedUsers.push(addedUser);    
+        addedUsers.push(addedUser);
     };
-    if (priority == '0') {window.prio = "Urgent" };
-    if (priority == '1') {window.prio = "Medium" };
-    if (priority == '2') {window.prio = "Low" };
+    if (priority == '0') { window.prio = "Urgent" };
+    if (priority == '1') { window.prio = "Medium" };
+    if (priority == '2') { window.prio = "Low" };
+    if (addedSubtasks.length == '0') { subtasks = ['0'] }
     let theNewTask = {
         "category": `${categories[theChosenCategory]['name']}`,
         "title": inputTitle,
@@ -56,6 +58,37 @@ function addTaskToBoard() {
 
     cards.push(theNewTask);
     console.log(cards);
+}
+
+function checkForInput() {
+    let inputTitle = document.getElementById('addTaskTitle').value;
+    let description = document.getElementById('descriptionTextArea').value;
+    let dueDate = document.getElementById('date').value;
+    if (!inputTitle) {
+        alert("Please input title");
+        return 0;
+    }
+    if (!description) {
+        alert("Please input description");
+        return 0;
+    }
+    if (!dueDate) {
+        alert("Please set due date");
+        return 0;
+    }
+    if (typeof theChosenCategory == 'undefined') {
+        alert("Please select category");
+        return 0;
+    }
+    if (typeof addedIds == 'undefined') {
+        alert("Please add contacts");
+        return 0;
+    }
+    if (typeof priority == 'undefined') {
+        alert("Please select priority");
+        return 0;
+    }
+
 }
 
 function openCategoryDropDown() {
