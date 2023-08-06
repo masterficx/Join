@@ -246,3 +246,17 @@ function selectedContact(y){
     let checkBox = document.getElementById(`checkBox_${y}`);
     checkBox.click();
 }
+
+// Add active state prio options
+function addActiveState(j) {
+    let btnsTip = document.getElementById('prioButtons').getElementsByClassName('SubTaskPrios');
+    if (btnsTip[j].classList.contains('active-state')) {
+        btnsTip[j].classList.remove('active-state');
+    }
+    else {
+        for (i = 0; i < btnsTip.length; i++) {
+            btnsTip[i].classList.remove('active-state');
+        };
+        btnsTip[j].classList.add('active-state');
+    }
+};
