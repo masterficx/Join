@@ -272,7 +272,7 @@ div#headsubmenu a:last-child {
     margin-bottom: 0px;
 }
 
-a.onlymob {
+.onlymob {
     display: none;
 }
 
@@ -287,7 +287,11 @@ a.onlymob {
         font-size: 15px;
     }
 
-    a.onlymob {
+    img.onlymob.logo-mob {
+        margin-left: 25px;
+    }
+    
+    .onlymob {
         display: block;
     }
 
