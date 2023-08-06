@@ -317,10 +317,11 @@ function filterCards() {
 
 
 function openCard(i) {
+
     document.getElementById('overlay').classList.remove('d-none');
     document.getElementById('CardDetail').style = "display:block;";
     let cardDetailCat = document.getElementById('cardDetailCat');
-    cardDetailCat.innerHTML = `${cards[i]['category']}`;
+    cardDetailCat.innerHTML = `<div class="cardBoardInsideCategory" id="cardBoardInsideCategory${i}">${cards[i]['category']}</div>`;
     let cardDetailTitle = document.getElementById('cardDetailTitle');
     cardDetailTitle.innerHTML = `${cards[i]['title']}`;
     let cardDetailDesc = document.getElementById('cardDetailDesc');
@@ -328,15 +329,40 @@ function openCard(i) {
     let cardDetailDueDate = document.getElementById('cardDetailDueDate');
     cardDetailDueDate.innerHTML = `<span class="detlabel">Due date:</span>${cards[i]['dueDate']}`;
     let cardDetailPrio = document.getElementById('cardDetailPrio');
-    cardDetailPrio.innerHTML = `<span class="detlabel">Priority:</span>${cards[i]['prio']}`;
+    cardDetailPrio.innerHTML = `<span class="detlabel">Priority:</span><div id="priobtndetail">${cards[i]['prio']}<img id="prioImg" src=""></div>`;
     let cardDetailAssignedUser = document.getElementById('cardDetailAssignedUser');
     cardDetailAssignedUser.innerHTML = `${cards[i]['assignedUser']}`;
     let cardDetailDelete = document.getElementById('deleteCard');
     cardDetailDelete.innerHTML = `<div onclick='deleteCard(${[i]})'><img src="assets/img/board/delete.svg" class="default"><img src="assets/img/board/delete-blue.svg" class="hover">`;
     let cardDetailEdit = document.getElementById('editCard');
     cardDetailEdit.innerHTML = `<div onclick='editCard(${[i]})'><img src="assets/img/board/edit.svg">`;
+    renderBackgroundColorCategory(i);
+    prioButtonStyle(i);
 }
 
+function prioButtonStyle(i){
+let prioBtnDetail = document.getElementById('priobtndetail');
+let prioBtnDetailImg = document.getElementById('prioImg');
+for(y=0; y<cards.length; y++){
+    prioBtnDetail.classList.remove('prio-high-btn');
+    prioBtnDetail.classList.remove('prio-med-btn');
+    prioBtnDetail.classList.remove('prio-low-btn');
+    prioBtnDetailImg.src = "";
+};
+if(cards[i]['prio'] == "High"){
+    prioBtnDetail.classList.add('prio-high-btn');
+    prioBtnDetailImg.src = "assets/img/addtask/prio-high-w.svg";
+
+} else 
+if(cards[i]['prio'] == "Medium"){
+    prioBtnDetail.classList.add('prio-med-btn');
+    prioBtnDetailImg.src = "assets/img/addtask/prio-medium-w.svg";
+} else
+if(cards[i]['prio'] == "Low"){
+    prioBtnDetail.classList.add('prio-low-btn');
+    prioBtnDetailImg.src = "assets/img/addtask/prio-low-w.svg";
+}
+}
 
 function deleteCard(i) {
     console.log('deleted', i);
