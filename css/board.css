@@ -372,7 +372,7 @@ html::-webkit-scrollbar {
     background: rgb(0 0 0 / 39%);
 }
 
-div#CardContainer {
+.mainAddTask {
     background: #fff;
     padding: 40px 60px;
     border-radius: 40px;
