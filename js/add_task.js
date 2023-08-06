@@ -3,7 +3,7 @@ let checkedSmallSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height
 <rect y="0.5" width="24" height="24" fill="#D9D9D9"/>
 </mask>
 <g mask="url(#mask0_75029_4578)">
-<path d="M9.54996 15.65L18.025 7.175C18.225 6.975 18.4625 6.875 18.7375 6.875C19.0125 6.875 19.25 6.975 19.45 7.175C19.65 7.375 19.75 7.6125 19.75 7.8875C19.75 8.1625 19.65 8.4 19.45 8.6L10.25 17.8C10.05 18 9.81663 18.1 9.54996 18.1C9.2833 18.1 9.04996 18 8.84996 17.8L4.54996 13.5C4.34996 13.3 4.25413 13.0625 4.26246 12.7875C4.2708 12.5125 4.37496 12.275 4.57496 12.075C4.77496 11.875 5.01246 11.775 5.28746 11.775C5.56246 11.775 5.79996 11.875 5.99996 12.075L9.54996 15.65Z" fill="white"/>
+<path d="M9.54996 15.65L18.025 7.175C18.225 6.975 18.4625 6.875 18.7375 6.875C19.0125 6.875 19.25 6.975 19.45 7.175C19.65 7.375 19.75 7.6125 19.75 7.8875C19.75 8.1625 19.65 8.4 19.45 8.6L10.25 17.8C10.05 18 9.81663 18.1 9.54996 18.1C9.2833 18.1 9.04996 18 8.84996 17.8L4.54996 13.5C4.34996 13.3 4.25413 13.0625 4.26246 12.7875C4.2708 12.5125 4.37496 12.275 4.57496 12.075C4.77496 11.875 5.01246 11.775 5.28746 11.775C5.56246 11.775 5.79996 11.875 5.99996 12.075L9.54996 15.65Z" fill="#2A3647"/>
 </g>
 </svg>`;
 
@@ -73,9 +73,12 @@ function openCategoryInput() {
     categoryMainContainer.innerHTML = `
     <h5>Category</h5>
     <div class="add-category-container">
-    <input id="added_category_name" type="text" placeholder="New category name">
-    <button onclick="closeCategoryInput()">${smallXSVG}</button>
-    <button onclick="addCategory()">${checkedSmallSVG}</button>
+    <input class="added-category-name" id="added_category_name" type="text" placeholder="New category name">
+    <button class="close-category-input-btn" onclick="closeCategoryInput()">${smallXSVG}</button>
+    <svg height="40" width="3">
+        <line x1="2" y1="8" x2="2" y2="32" style="stroke:#d1d1d1;stroke-width:2" />
+    </svg>
+    <button class="add-category-btn" onclick="addCategory()">${checkedSmallSVG}</button>
     </div>
     <div class="selectable-category-colors" id="selectable_category_colors">
     

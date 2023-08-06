@@ -317,8 +317,37 @@ button.SubTaskPrios:hover {
     border: none;
 }
 
+.added-category-name:focus{
+    border-radius: 0;
+    color:black;
+    outline:0;
+
+}
+
+.close-category-input-btn {
+    background-color: white;
+    border: none;
+}
+.close-category-input-btn:hover{
+    cursor: pointer;
+}
+
+.add-category-btn {
+    background-color: white;
+    border: none;
+    border-radius: 0 10px 10px 0;
+}
+.add-category-btn:hover{
+    cursor: pointer;
+}
+
 .add-category-container {
+    align-items: center;
     display: flex;
+    background-color: white;
+    border-radius: 10px;
+    height: 50px;
+    border: 1px solid #d1d1d1;
 }
 
 .add-task-contact {
