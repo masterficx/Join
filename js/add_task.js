@@ -10,7 +10,7 @@ let checkedSmallSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height
 let smallXSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
 <path d="M12.001 12.5001L17.244 17.7431M6.758 17.7431L12.001 12.5001L6.758 17.7431ZM17.244 7.25708L12 12.5001L17.244 7.25708ZM12 12.5001L6.758 7.25708L12 12.5001Z" stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>`;
-// let addedContacts = [];
+let addedSubtasks = [];
 function main(){
     let contactsInTask = [];
     for (let j = 0; j < Contacts.length; j++) {
@@ -263,3 +263,68 @@ function addActiveState(j) {
         btnsTip[j].classList.add('active-state');
     }
 };
+
+function getDueDate(){
+    let dueDateInput = document.getElementById('date').value;
+    console.log(dueDateInput); 
+}
+
+// function getTaskTitle(){
+    
+// }
+
+function createTask(){
+    getDueDate();
+}
+
+function openSubtaskInput(){
+        let addSubtaskContainer = document.getElementById('addNewSubtask');
+        addSubtaskContainer.innerHTML = "";
+        addSubtaskContainer.innerHTML += `
+        
+        <input type="text" placeholder="New subtask" id="added_subtask">
+        <button class="close-category-input-btn" onclick="cancelSubtaskInput()">${smallXSVG}</button>
+        <svg height="40" width="3">
+            <line x1="2" y1="8" x2="2" y2="32" style="stroke:#d1d1d1;stroke-width:2" />
+        </svg>
+        <button class="add-category-btn" onclick="addSubtask()">${checkedSmallSVG}</button>
+        
+        `;
+        
+}
+
+function cancelSubtaskInput(){
+    let addSubtaskContainer = document.getElementById('addNewSubtask');
+    addSubtaskContainer.innerHTML = "";
+    addSubtaskContainer.innerHTML = `<p>Add new subtask</p>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" onclick="openSubtaskInput()">
+        <path d="M12.0011 12.0002L12.0018 19.4149M4.58641 12.0008L12.0011 12.0002L4.58641 12.0008ZM19.4159 11.9995L12.0004 11.9995L19.4159 11.9995ZM12.0004 11.9995L12.0005 4.58545L12.0004 11.9995Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>`;
+}
+
+function addSubtask(){
+    let subtaskMain = document.getElementById('subtask_main');
+    let addSubtaskContainer = document.getElementById('addNewSubtask');
+    let addedSubtask = document.getElementById('added_subtask').value;
+    addSubtaskContainer.innerHTML = "";
+    addSubtaskContainer.innerHTML = `<p>Add new subtask</p>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" onclick="openSubtaskInput()">
+        <path d="M12.0011 12.0002L12.0018 19.4149M4.58641 12.0008L12.0011 12.0002L4.58641 12.0008ZM19.4159 11.9995L12.0004 11.9995L19.4159 11.9995ZM12.0004 11.9995L12.0005 4.58545L12.0004 11.9995Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>`;
+    subtaskMain.innerHTML += `<div class="boxes">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+        viewBox="0 0 18 17" fill="none">
+        <rect x="1" y="0.5" width="16" height="16" rx="3"
+            fill="url(#paint0_linear_71853_3184)" stroke="black" />
+        <defs>
+            <linearGradient id="paint0_linear_71853_3184" x1="9" y1="0.5" x2="9"
+                y2="16.5" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#F9F9F9" />
+                <stop offset="1" stop-color="#F0F0F0" />
+            </linearGradient>
+        </defs>
+    </svg>${addedSubtask}
+</div>`
+    addedSubtasks.push(addedSubtask);
+    console.log(addedSubtasks)
+}

@@ -149,15 +149,32 @@ input {
 }
 
 #addNewSubtask {
-    box-sizing: border-box;
     width: 100%;
-    border-radius: 10px;
-    padding: 8px;
+    height: 50px;
     padding-left: 21px;
-    border: 1px solid var(--grey);
-    font-size: 18px;
+    padding-right: 21px;
+    border-radius: 10px;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
+    background-color: white;
+    align-items: center;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    box-sizing: border-box;
+    font-size: 20px;
+    border: 1px solid #d1d1d1;
+
+}
+
+#addNewSubtask input{
+    outline: 0;
+    padding: 0;
+    color: black;
+    border-radius: 0;
+}
+
+#addNewSubtask svg:hover{
+    cursor: pointer;
 }
 
 .checkboxes {
@@ -375,6 +392,24 @@ button.SubTaskPrios:hover {
     margin: 0;
     position: absolute;
     top: 7px;
+}
+
+#subtask_input{
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 10px;
+    padding-left: 21px !important;
+    padding: 8px;
+    border: 1px solid var(--grey);
+    font-size: 18px;
+    display: flex;
+    justify-content: flex-start;
+    color: var(--style, #D1D1D1);
+    font-family: 'Inter';
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
 }
 @media only screen and (max-width: 992px) {
 

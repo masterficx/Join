@@ -74,31 +74,22 @@
                                         src="/assets/img/addtask/prio-low-w.svg" alt="" class="active"></button>
                                 </div>
                             </div>
-                            <div class="subtask">
+                            <div class="subtask" id="subtask_main">
                                 <h5>Subtasks</h5>
-                                <input placeholder="Add new subtask" type="text" id="addNewSubtask">
-                                <div class="checkboxes">
-                                    <div class="boxes">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                            viewBox="0 0 18 17" fill="none">
-                                            <rect x="1" y="0.5" width="16" height="16" rx="3"
-                                                fill="url(#paint0_linear_71853_3184)" stroke="black" />
-                                            <defs>
-                                                <linearGradient id="paint0_linear_71853_3184" x1="9" y1="0.5" x2="9"
-                                                    y2="16.5" gradientUnits="userSpaceOnUse">
-                                                    <stop stop-color="#F9F9F9" />
-                                                    <stop offset="1" stop-color="#F0F0F0" />
-                                                </linearGradient>
-                                            </defs>
-                                        </svg>Subtask 1
-                                    </div>
+                                <div id="addNewSubtask" class="subtask-input">
+                                    <p>Add new subtask</p>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" onclick="openSubtaskInput()">
+                                        <path d="M12.0011 12.0002L12.0018 19.4149M4.58641 12.0008L12.0011 12.0002L4.58641 12.0008ZM19.4159 11.9995L12.0004 11.9995L19.4159 11.9995ZM12.0004 11.9995L12.0005 4.58545L12.0004 11.9995Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </div>
+                                <div class="checkboxes" id="added_subtasks_main">
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="clearCreateButtons">
                         <button class="clearBtn"><div>Clear</div><img src="/assets/img/board/clear-black.svg" class="default" alt=""><img src="/assets/img/board/clear-blue.svg" class="hover" alt=""></button>
-                        <button class="createBtn"><div>Create Task</div><img src="/assets/img/board/create.png" alt=""></button>
+                        <button class="createBtn" onclick="createTask()"><div>Create Task</div><img src="/assets/img/board/create.png" alt=""></button>
                     </div>
                 </div>
             </div>
