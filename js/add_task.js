@@ -11,40 +11,51 @@ let smallXSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="25" 
 <path d="M12.001 12.5001L17.244 17.7431M6.758 17.7431L12.001 12.5001L6.758 17.7431ZM17.244 7.25708L12 12.5001L17.244 7.25708ZM12 12.5001L6.758 7.25708L12 12.5001Z" stroke="#2A3647" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>`;
 let addedSubtasks = [];
-function main(){
+function main() {
     let contactsInTask = [];
     for (let j = 0; j < Contacts.length; j++) {
         const contact = Contacts[j];
         let addedContactFirstName = contact['firstName'];
-            let addedContactLastName = contact['lastName'];
-            let added = 'no';
+        let addedContactLastName = contact['lastName'];
+        let added = 'no';
         let addedContactToTask = {
-            "firsName":  addedContactFirstName ,
-            "lastName":  addedContactLastName ,
-            "added":  added,
-            };
-            
-            contactsInTask.push(addedContactToTask);
-}
-window.addedContacts = contactsInTask;
+            "firsName": addedContactFirstName,
+            "lastName": addedContactLastName,
+            "added": added,
+        };
+
+        contactsInTask.push(addedContactToTask);
+    }
+    window.addedContacts = contactsInTask;
 };
 
 function addTaskToBoard() {
     let inputTitle = document.getElementById('addTaskTitle').value;
-    cards.push({
-        "category": ``,
-        "title": `${inputTitle}`,
-        "description": ``,
-        "progress": ``,
-        "assignedUser": [" Paul", " Rita"],
-        "prio": ``,
-        "dueDate": ``,
-        "subtasks": [
-            { nameSub: "Test Subtask 1", status: "AwaitingFeedback" },
-            { nameSub: "Test Subtask 2", status: "InProgress" }
-        ],
-        "listType": ``,
-    });
+    let description = document.getElementById('descriptionTextArea').value;
+    let dueDate = document.getElementById('date').value;
+    let addedUsers = [];
+    for (let t = 0; t < addedIds.length; t++) {
+        const element = addedIds[t];
+        let addedUser = Contacts[element]['firstLetters'];
+        addedUsers.push(addedUser);    
+    };
+    if (priority == '0') {window.prio = "Urgent" };
+    if (priority == '1') {window.prio = "Medium" };
+    if (priority == '2') {window.prio = "Low" };
+    let theNewTask = {
+        "category": `${categories[theChosenCategory]['name']}`,
+        "title": inputTitle,
+        "description": description,
+        "progress": "0",
+        "assignedUser": addedUsers,
+        "prio": prio,
+        "dueDate": dueDate,
+        "subtasks": subtasks,
+        "listType": "ToDo",
+    }
+
+    cards.push(theNewTask);
+    console.log(cards);
 }
 
 function openCategoryDropDown() {
@@ -85,11 +96,11 @@ function openCategoryInput() {
     </div>
     `;
     renderSelectableCategoryColors();
-    
+
 }
 
-function closeCategoryInput(){
-    document.getElementById('category').innerHTML ="";
+function closeCategoryInput() {
+    document.getElementById('category').innerHTML = "";
     document.getElementById('category').innerHTML = `<h5>Category</h5><div class="selectContainer" id="addCategory" onclick="openCategoryDropDown()">Select task category</div>`;
 }
 
@@ -105,7 +116,7 @@ function selectedCategory(x) {
             </svg>
         </div>
     </div>`;
-window.theChosenCategory = x;
+    window.theChosenCategory = x;
 }
 
 function renderSelectableCategoryColors() {
@@ -146,7 +157,7 @@ function addCategory() {
     openCategoryDropDown();
 }
 
-function openDropdownContact(){
+function openDropdownContact() {
     let addContactMainContainer = document.getElementById('assigned_to');
     addContactMainContainer.innerHTML = "";
     addContactMainContainer.innerHTML += `<h5>Assigned to</h5>
@@ -156,8 +167,8 @@ function openDropdownContact(){
     let addContactContainer = document.getElementById('addContact');
     addContactContainer.innerHTML = "";
     addContactContainer.innerHTML += '<div onclick="closeDropdownContact()">Select contacts to assign</div>';
-    
-    
+
+
     for (let j = 0; j < Contacts.length; j++) {
         const element = Contacts[j];
         const element2 = addedContacts[j];
@@ -169,50 +180,54 @@ function openDropdownContact(){
             <div class="add-task-contact-checkbox"><input type="checkbox" id="checkBox_${j}" onclick="selectedContact(${j})" checked></div>
         </div>`;
         }
-        else{
-        addContactContainer.innerHTML += `
+        else {
+            addContactContainer.innerHTML += `
         <div class="add-task-contact" id="addTaskContact_${j}" onclick="selectedContact(${j})">
             <div class="add-task-contact-name">${element['firstName']} ${element['lastName']}</div>
             <div class="add-task-contact-checkbox"><input type="checkbox" id="checkBox_${j}" onclick="selectedContact(${j})"></div>
-        </div>`;    
+        </div>`;
+        }
     }
-}
 }
 
 function addContactToTask() {
     let addedContactsToTask = [];
+    let addedIdsToTask = [];
     for (let z = 0; z < Contacts.length; z++) {
-        const checkbox = document.getElementById("checkBox_"+z);
+        const checkbox = document.getElementById("checkBox_" + z);
         const contact = Contacts[z];
-        if(checkbox.checked){
+        if (checkbox.checked) {
             let addedContactFirstName = contact['firstName'];
             let addedContactLastName = contact['lastName'];
             let added = 'yes';
             let addedContactToTask = {
-                "firstName":  addedContactFirstName ,
-                "lastName":  addedContactLastName ,
-                "added":  added,
-                };
+                "firstName": addedContactFirstName,
+                "lastName": addedContactLastName,
+                "added": added,
+            };
             addedContactsToTask.push(addedContactToTask);
-            
+            addedIdsToTask.push(z);
+
         }
-        else{
+        else {
             let addedContactFirstName = contact['firstName'];
             let addedContactLastName = contact['lastName'];
             let added = 'no';
             let addedContactToTask = {
-                "firstName":  addedContactFirstName ,
-                "lastName":  addedContactLastName ,
-                "added":  added,
-                };
+                "firstName": addedContactFirstName,
+                "lastName": addedContactLastName,
+                "added": added,
+            };
             addedContactsToTask.push(addedContactToTask);
         }
     }
     window.addedContacts = addedContactsToTask;
+    window.addedIds = addedIdsToTask;
     console.log(addedContacts);
+    console.log(addedIds);
 }
 
-function closeDropdownContact(){
+function closeDropdownContact() {
     addContactToTask();
     let addContactMainContainer = document.getElementById('assigned_to');
     addContactMainContainer.innerHTML = "";
@@ -220,32 +235,32 @@ function closeDropdownContact(){
     <div class="selectContainer" id="addContact" onclick="openDropdownContact()">
         Select contacts to assign
         </div>`;
-        renderAddedContactLabels();
-    
+    renderAddedContactLabels();
+
 }
 
-function renderAddedContactLabels(){
+function renderAddedContactLabels() {
     let addContactMainContainer = document.getElementById('assigned_to');
     addContactMainContainer.innerHTML += `<div class="added-contacts-name-tags-main" id="added_contacts_name_tags_main"> </div>`;
     for (let p = 0; p < addedContacts.length; p++) {
-    const element = addedContacts[p];
-    let firstTwoLetters = element['firstName'].charAt(0) + element['lastName'].charAt(0);
-    let addedContactsNameTagsMain = document.getElementById('added_contacts_name_tags_main');
-    if(element['added'] == 'yes'){
-        addedContactsNameTagsMain.innerHTML += `
+        const element = addedContacts[p];
+        let firstTwoLetters = element['firstName'].charAt(0) + element['lastName'].charAt(0);
+        let addedContactsNameTagsMain = document.getElementById('added_contacts_name_tags_main');
+        if (element['added'] == 'yes') {
+            addedContactsNameTagsMain.innerHTML += `
         <div class="added-contact-name-tag">
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 120 120" fill="none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 120 120" fill="none">
                 <circle cx="60" cy="60" r="60" fill="${nameTagsColors[p]}"/>
                 </svg>
                 <p>${firstTwoLetters}</p>
         </div>
-        ` 
-    }
-    
-}
-}   
+        `
+        }
 
-function selectedContact(y){
+    }
+}
+
+function selectedContact(y) {
     let checkBox = document.getElementById(`checkBox_${y}`);
     checkBox.click();
 }
@@ -262,25 +277,25 @@ function addActiveState(j) {
         };
         btnsTip[j].classList.add('active-state');
     }
+    let priorityNumber = j;
+    window.priority = priorityNumber;
+
 };
 
-function getDueDate(){
+function getDueDate() {
     let dueDateInput = document.getElementById('date').value;
-    console.log(dueDateInput); 
+    console.log(dueDateInput);
 }
 
-// function getTaskTitle(){
-    
-// }
 
-function createTask(){
+function createTask() {
     getDueDate();
 }
 
-function openSubtaskInput(){
-        let addSubtaskContainer = document.getElementById('addNewSubtask');
-        addSubtaskContainer.innerHTML = "";
-        addSubtaskContainer.innerHTML += `
+function openSubtaskInput() {
+    let addSubtaskContainer = document.getElementById('addNewSubtask');
+    addSubtaskContainer.innerHTML = "";
+    addSubtaskContainer.innerHTML += `
         
         <input type="text" placeholder="New subtask" id="added_subtask">
         <button class="close-category-input-btn" onclick="cancelSubtaskInput()">${smallXSVG}</button>
@@ -290,10 +305,10 @@ function openSubtaskInput(){
         <button class="add-category-btn" onclick="addSubtask()">${checkedSmallSVG}</button>
         
         `;
-        
+
 }
 
-function cancelSubtaskInput(){
+function cancelSubtaskInput() {
     let addSubtaskContainer = document.getElementById('addNewSubtask');
     addSubtaskContainer.innerHTML = "";
     addSubtaskContainer.innerHTML = `<p>Add new subtask</p>
@@ -302,7 +317,7 @@ function cancelSubtaskInput(){
     </svg>`;
 }
 
-function addSubtask(){
+function addSubtask() {
     let subtaskMain = document.getElementById('subtask_main');
     let addSubtaskContainer = document.getElementById('addNewSubtask');
     let addedSubtask = document.getElementById('added_subtask').value;
@@ -327,4 +342,5 @@ function addSubtask(){
 </div>`
     addedSubtasks.push(addedSubtask);
     console.log(addedSubtasks)
+    window.subtasks = addedSubtasks;
 }
