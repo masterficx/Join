@@ -237,6 +237,48 @@ button.clearBtn:hover img.default {
     display: none;
 }
 
+button.SubTaskPrios {
+    font-size: 21px;
+    font-weight: 700;
+    border-radius: 10px;
+    border: 0px;
+}
+
+.red.active-state {
+    background: #FF3D00;
+}
+
+.yellow.active-state {
+    background: #FFA800;
+}
+
+.green.active-state {
+    background: #7AE229;
+}
+
+img.active {
+    display: none;
+}
+
+.active-state img.active {
+    display: block;
+}
+
+.active-state img.default {
+    display: none;
+}
+
+.active-state {
+    box-shadow: 0px 4px 4px 0px #00000040;
+    color: #fff;
+}
+
+button.SubTaskPrios:hover {
+    box-shadow: 0px 4px 4px 0px #00000040;
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
 .category-selection {
 
     display: flex;
