@@ -391,6 +391,10 @@ div#CardContainer {
     border-radius: 30px;
 }
 
+.carddetail .cardBoardInsideCategory {
+    display: inline-block;
+}
+
 div#cardDetailTitle {
     font-size: 61px;
     font-weight: 700;
@@ -415,6 +419,39 @@ div#cardDetailDesc {
 div#cardDetailPrio,
 div#cardDetailDueDate {
     margin-bottom: 10px;
+}
+
+div#cardDetailPrio {
+    display: flex;
+    align-items: center;
+}
+
+#priobtndetail {
+    font-size: 21px;
+    color: #fff;
+    display: flex;
+    gap: 10px;
+    padding: 4px 10px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 4px 0px #0000001A;
+    border-radius: 10px;
+}
+
+.prio-high-btn {
+    background: #FF3D00;
+    width: 131px;
+}
+
+.prio-med-btn {
+    background: #FFA800;
+    width: 139px;
+}
+
+.prio-low-btn {
+    background: #7AE229;
+    width: 105px;
 }
 
 .detlabel {
