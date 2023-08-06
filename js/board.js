@@ -97,24 +97,31 @@ let cards = [
 let categories = [{
     name: "Sales",
     color: "#FFC701",
+    value: "sales",
 },
 {
     name: "Backoffice",
     color: "#1FD7C1",
+    value: "backoffice",
 },
 {
     name: "Marketing",
     color: "#0038FF",
+    value: "marketing",
 },
 {
     name: "Design",
     color: "#FF7A00",
+    value: "design",
 },
 {
     name: "Media",
     color: "#FF0000",
+    value: "media",
 },
 ];
+
+let categoryColors = ['#FFC701','#1FD7C1','#0038FF','#FF7A00','#FF0000','#E200BE'];
 
 let currentDraggedElement;
 
