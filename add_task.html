@@ -8,14 +8,15 @@
     <script src="js/include.js"></script>
     <script src="js/summary_script.js"></script>
     <script src="js/add_task.js"></script>
-    <!-- <link rel="stylesheet" href="css/index_style.css"> -->
+    <script src="js/contacts.js"></script>
+    <script src="js/board.js"></script>
     <link rel="stylesheet" href="css/summary_style.css">
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/add_task.css">
     <link rel="stylesheet" href="assets/fonts/fonts.css">
 </head>
 
-<body onload="includeTemplates()">
+<body onload="includeTemplates(), main()">
     <div class="main-content">
         <div class="sidebar" w3-include-html="templates/sidebar.html">
 
@@ -40,13 +41,13 @@
                                 <h5>Description</h5>
                                 <textarea required name="" id="descriptionTextarea" cols="30" rows="4" style="resize: none;" placeholder="Enter a Description"></textarea>
                             </div>
-                            <div class="category">
+                            <div class="category" id="category">
                                 <h5>Category</h5>
-                                <div class="selectContainer" id="addCategory" onclick="openDropdownCategory()">
-                                    Select Task Category
+                                <div class="selectContainer" id="addCategory" onclick="openCategoryDropDown()">
+                                    <div>Select Task Category</div>
                                 </div>
                             </div>
-                            <div class="assignedTo">
+                            <div class="assignedTo" id="assigned_to">
                                 <h5>Assigned to</h5>
                                 <div class="selectContainer" id="addContact" onclick="openDropdownContact()">
                                     Select Contacts to assign
@@ -61,10 +62,16 @@
                             </div>
                             <div class="prio">
                                 <h5>Prio</h5>
-                                <div class="addTaskPrios">
-                                    <p class="SubTaskPrios">Urgent<img src="/assets/img/board/PrioHigh.png" alt=""></p>
-                                    <p class="SubTaskPrios">Medium<img src="/assets/img/board/PrioMid.png" alt=""></p>
-                                    <p class="SubTaskPrios">Low<img src="/assets/img/board/PrioLow.png" alt=""></p>
+                                <div class="addTaskPrios" id="prioButtons">
+                                    <button class="SubTaskPrios red" onclick="addActiveState(0)">Urgent<img
+                                            src="/assets/img/addtask/prio-high.svg" alt="" class="default"><img
+                                            src="/assets/img/addtask/prio-high-w.svg" alt="" class="active"></button>
+                                    <button class="SubTaskPrios yellow" onclick="addActiveState(1)">Medium<img
+                                        src="/assets/img/addtask/prio-medium.svg" alt="" class="default"><img
+                                        src="/assets/img/addtask/prio-medium-w.svg" alt="" class="active"></button>
+                                    <button class="SubTaskPrios green" onclick="addActiveState(2)">Low<img
+                                        src="/assets/img/addtask/prio-low.svg" alt="" class="default"><img
+                                        src="/assets/img/addtask/prio-low-w.svg" alt="" class="active"></button>
                                 </div>
                             </div>
                             <div class="subtask">
