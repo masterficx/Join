@@ -186,7 +186,7 @@ function addContactToTask() {
             let addedContactLastName = contact['lastName'];
             let added = 'yes';
             let addedContactToTask = {
-                "firsName":  addedContactFirstName ,
+                "firstName":  addedContactFirstName ,
                 "lastName":  addedContactLastName ,
                 "added":  added,
                 };
@@ -198,7 +198,7 @@ function addContactToTask() {
             let addedContactLastName = contact['lastName'];
             let added = 'no';
             let addedContactToTask = {
-                "firsName":  addedContactFirstName ,
+                "firstName":  addedContactFirstName ,
                 "lastName":  addedContactLastName ,
                 "added":  added,
                 };
@@ -210,7 +210,6 @@ function addContactToTask() {
 }
 
 function closeDropdownContact(){
-    renderAddedContactLabels();
     addContactToTask();
     let addContactMainContainer = document.getElementById('assigned_to');
     addContactMainContainer.innerHTML = "";
@@ -218,26 +217,30 @@ function closeDropdownContact(){
     <div class="selectContainer" id="addContact" onclick="openDropdownContact()">
         Select contacts to assign
         </div>`;
-        
+        renderAddedContactLabels();
     
 }
 
 function renderAddedContactLabels(){
-    
-}   for (let p = 0; p < addedContacts.length; p++) {
     let addContactMainContainer = document.getElementById('assigned_to');
+    addContactMainContainer.innerHTML += `<div class="added-contacts-name-tags-main" id="added_contacts_name_tags_main"> </div>`;
+    for (let p = 0; p < addedContacts.length; p++) {
     const element = addedContacts[p];
     let firstTwoLetters = element['firstName'].charAt(0) + element['lastName'].charAt(0);
+    let addedContactsNameTagsMain = document.getElementById('added_contacts_name_tags_main');
     if(element['added'] == 'yes'){
-        addContactMainContainer.innerHTML += `
-        <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" fill="none">
+        addedContactsNameTagsMain.innerHTML += `
+        <div class="added-contact-name-tag">
+                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 120 120" fill="none">
                 <circle cx="60" cy="60" r="60" fill="${nameTagsColors[p]}"/>
                 </svg>
                 <p>${firstTwoLetters}</p>
+        </div>
         ` 
     }
     
 }
+}   
 
 function selectedContact(y){
     let checkBox = document.getElementById(`checkBox_${y}`);

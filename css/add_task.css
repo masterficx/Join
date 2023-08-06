@@ -288,7 +288,23 @@ button.clearBtn:hover img.default {
     width: 100%;
 }
 
+.added-contacts-name-tags-main {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    margin-top: 15px;
+}
 
+.added-contact-name-tag {
+    position:relative
+}
+
+.added-contact-name-tag p{
+    box-sizing: border-box;
+    margin: 0;
+    position: absolute;
+    top: 7px;
+}
 @media only screen and (max-width: 992px) {
 
 .left-right-split {
