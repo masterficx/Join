@@ -54,7 +54,7 @@ h5 {
     border: 1px solid #d1d1d1;
 }
 
-#descriptionTextarea {
+#descriptionTextArea {
     box-sizing: border-box;
     width: 100%;
     min-height: 112px;
