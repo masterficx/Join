@@ -276,6 +276,27 @@ div#headsubmenu a:last-child {
     display: none;
 }
 
+.static-content {
+    max-width: 1000px;
+}
+
+.static-content .title {
+    margin-bottom: 35px;
+}
+
+.static-content ol li h3 {
+    padding-bottom: 0px;
+    margin-bottom: 5px;
+}
+
+.static-content ol li p {
+    margin-top: 0px;
+}
+
+.static-content ol {
+    padding-left: 20px;
+}
+
 @media only screen and (max-width: 992px) {
 
     div#headsubmenu {
