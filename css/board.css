@@ -503,6 +503,23 @@ div#editCard {
     background: #2A3647;
 }
 
+div#CardDetail .label-card {
+    font-size: 12px;
+    margin-left: 0px;
+}
+
+div#CardDetail .cardBoardInsideUserAndPrio {
+    height: unset;
+}
+
+div#CardDetail .InsideUser {
+    flex-direction: column;
+    min-width: unset;
+    align-items: flex-start;
+    height: unset;
+    max-width: unset;
+}
+
 div#editCard:hover {
     background: #29abe2;
     border-color: #29abe2;
