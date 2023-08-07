@@ -395,7 +395,7 @@ function editCard(i) {
     document.getElementById('editCardTitle').value = `${cards[i]['title']}`;
     document.getElementById('editCardDescription').value = `${cards[i]['description']}`;
     document.getElementById('editCardDueDate').value = `${cards[i]['dueDate']}`;
-    document.getElementById('editCardPrio').value = `
+    document.getElementById('editCardPrio').innerHTML = `
     <div class="addTaskPrios" id="prioButtons">
                                     <button class="SubTaskPrios red" onclick="addActiveState(0)">Urgent<img
                                             src="/assets/img/addtask/prio-high.svg" alt="" class="default"><img
