@@ -327,7 +327,7 @@ function openCard(i) {
     let cardDetailAssignedUser = document.getElementById('cardDetailAssignedUser');
     let cardDetailDelete = document.getElementById('deleteCard');
     let cardDetailEdit = document.getElementById('editCard');
-    cardDetailCat.innerHTML = `<div class="cardBoardInsideCategory" id="cardBoardInsideCategory${i}">${cards[i]['category']}</div>`;
+    cardDetailCat.innerHTML = `<div class="cardBoardInsideCategory" id="cardBoardInsideCategoryDetail${i}">${cards[i]['category']}</div>`;
     cardDetailTitle.innerHTML = `${cards[i]['title']}`;
     cardDetailDesc.innerHTML = `${cards[i]['description']}`;
     cardDetailDueDate.innerHTML = `<span class="detlabel">Due date:</span>${cards[i]['dueDate']}`;
@@ -335,10 +335,22 @@ function openCard(i) {
     cardDetailAssignedUser.innerHTML = `<div class="cardBoardInsideUserAndPrio"><div class="InsideUser" id="InsideUserDetail${i}"></div></div>`;
     cardDetailDelete.innerHTML = `<div onclick='deleteCard(${[i]})'><img src="assets/img/board/delete.svg" class="default"><img src="assets/img/board/delete-blue.svg" class="hover">`;
     cardDetailEdit.innerHTML = `<div onclick='editCard(${[i]})'><img src="assets/img/board/edit.svg">`;
-    renderBackgroundColorCategory(i);
+    renderBackgroundColorCategoryDetail(i);
     renderAssignedUserInBoardDetail(i);
     prioButtonStyle(i);
 }
+
+
+function renderBackgroundColorCategoryDetail(i) {
+    let cat = cards[i]['category'];
+    let catClassDet = document.getElementById(`cardBoardInsideCategoryDetail${i}`);
+    for (let k = 0; k < categories.length; k++) {
+        if (cat == categories[k]['name']) {
+            catClassDet.style['background-color'] = categories[k]['color'];
+        } else { }
+    };
+}
+
 
 function renderAssignedUserInBoardDetail(i) {
     for (let j = 0; j < cards[i]['assignedUser'].length; j++) {
