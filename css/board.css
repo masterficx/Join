@@ -423,13 +423,13 @@ div#cardDetailDesc {
     color: #000;
     letter-spacing: 0em;
     text-align: left;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     max-height: unset;
 }
 
 div#cardDetailPrio,
 div#cardDetailDueDate {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 div#cardDetailPrio {
