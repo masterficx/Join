@@ -395,7 +395,18 @@ function editCard(i) {
     document.getElementById('editCardTitle').value = `${cards[i]['title']}`;
     document.getElementById('editCardDescription').value = `${cards[i]['description']}`;
     document.getElementById('editCardDueDate').value = `${cards[i]['dueDate']}`;
-    document.getElementById('editCardPrio').value = `${cards[i]['prio']}`;
+    document.getElementById('editCardPrio').value = `
+    <div class="addTaskPrios" id="prioButtons">
+                                    <button class="SubTaskPrios red" onclick="addActiveState(0)">Urgent<img
+                                            src="/assets/img/addtask/prio-high.svg" alt="" class="default"><img
+                                            src="/assets/img/addtask/prio-high-w.svg" alt="" class="active"></button>
+                                    <button class="SubTaskPrios yellow" onclick="addActiveState(1)">Medium<img
+                                        src="/assets/img/addtask/prio-medium.svg" alt="" class="default"><img
+                                        src="/assets/img/addtask/prio-medium-w.svg" alt="" class="active"></button>
+                                    <button class="SubTaskPrios green" onclick="addActiveState(2)">Low<img
+                                        src="/assets/img/addtask/prio-low.svg" alt="" class="default"><img
+                                        src="/assets/img/addtask/prio-low-w.svg" alt="" class="active"></button>
+                                </div>`;
     document.getElementById('editCardAssignedTo').value = `${cards[i]['assignedUser']}`;
     let editCardSave = document.getElementById('editCardSave');
     editCardSave.innerHTML = `<div onclick='saveEditedCard(${[i]})'>Ok`;
