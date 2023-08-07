@@ -386,6 +386,8 @@ if(cards[i]['prio'] == "Low"){
 
 function deleteCard(i) {
     console.log('deleted', i);
+    cards.splice(i,1);
+    closeOverlay();
 }
 
 function editCard(i) {
