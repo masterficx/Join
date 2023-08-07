@@ -332,12 +332,20 @@ function openCard(i) {
     cardDetailDesc.innerHTML = `${cards[i]['description']}`;
     cardDetailDueDate.innerHTML = `<span class="detlabel">Due date:</span>${cards[i]['dueDate']}`;
     cardDetailPrio.innerHTML = `<span class="detlabel">Priority:</span><div id="priobtndetail">${cards[i]['prio']}<img id="prioImg" src=""></div>`;
-    cardDetailAssignedUser.innerHTML = `<div class="cardBoardInsideUserAndPrio"><div class="InsideUser" id="InsideUser${i}"></div></div>`;
+    cardDetailAssignedUser.innerHTML = `<div class="cardBoardInsideUserAndPrio"><div class="InsideUser" id="InsideUserDetail${i}"></div></div>`;
     cardDetailDelete.innerHTML = `<div onclick='deleteCard(${[i]})'><img src="assets/img/board/delete.svg" class="default"><img src="assets/img/board/delete-blue.svg" class="hover">`;
     cardDetailEdit.innerHTML = `<div onclick='editCard(${[i]})'><img src="assets/img/board/edit.svg">`;
     renderBackgroundColorCategory(i);
-    renderAssignedUserInBoard(i);
+    renderAssignedUserInBoardDetail(i);
     prioButtonStyle(i);
+}
+
+function renderAssignedUserInBoardDetail(i) {
+    for (let j = 0; j < cards[i]['assignedUser'].length; j++) {
+        document.getElementById(`InsideUserDetail${i}`).innerHTML += `
+            <div class="label-card" style="background-color:${findUserColor(i, j)}">${cards[i]['assignedUser'][j]}</div>
+            `;
+    }
 }
 
 function prioButtonStyle(i){
