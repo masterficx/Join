@@ -443,14 +443,27 @@ function addActiveState2(j) {
     }
     let priorityNumber = j;
     window.priority = priorityNumber;
+    prioValueForSaving(j);
+}
 
-};
+let prioValue;
+function prioValueForSaving(h){
+    if(h = 0){
+        prioValue = "Low";
+    } else 
+    if(h = 1){
+        prioValue = "Medium";
+    } else
+    if(h = 2){
+        prioValue = "High";
+    }
+}
 
 function saveEditedCard(i) {
     cards[i]['title'] = document.getElementById('editCardTitle').value;
     cards[i]['description'] = document.getElementById('editCardDescription').value;
     cards[i]['dueDate'] = document.getElementById('editCardDueDate').value;
-    cards[i]['prio'] = document.getElementById('editCardPrio').value;
+    cards[i]['prio'] = prioValue;
     cards[i]['assignedUser'] = document.getElementById('editCardAssignedTo').value;
     cards.push();
     openCard(i);
@@ -469,5 +482,3 @@ function moveTo(listType) {
     cards[currentDraggedElement]['listType'] = listType.slice(9);
     renderBoard();
 }
-
-
