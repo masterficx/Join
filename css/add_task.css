@@ -131,6 +131,7 @@ input {
     flex-shrink: 0;
 }
 
+.SubTaskPrios2,
 .SubTaskPrios {
     display: flex;
     width: auto;
@@ -253,11 +254,17 @@ button.clearBtn:hover img.default {
     display: none;
 }
 
+button.SubTaskPrios2,
 button.SubTaskPrios {
     font-size: 21px;
     font-weight: 700;
     border-radius: 10px;
     border: 0px;
+}
+
+div#editCardPrio {
+    display: flex;
+    margin: 10px 0px 25px 0px;
 }
 
 .red.active-state {
@@ -289,6 +296,7 @@ img.active {
     color: #fff;
 }
 
+button.SubTaskPrios2:hover,
 button.SubTaskPrios:hover {
     box-shadow: 0px 4px 4px 0px #00000040;
     cursor: pointer;
