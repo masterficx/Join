@@ -5,6 +5,7 @@ let cards = [
         "description": 'Rework the general design and functions for better user experience. Optimize the buttons and links.',
         "progress": "0",
         "assignedUser": [Contacts[0]['firstLetters'], Contacts[1]['firstLetters'], Contacts[4]['firstLetters']],
+        "assignedUserFullName": [Contacts[0]['name'], Contacts[1]['name'], Contacts[4]['name']],
         "prio": "High",
         "dueDate": "2022-08-14",
         "subtasks": [
@@ -20,6 +21,7 @@ let cards = [
         "description": 'Review and organize financial records, including invoices, receipts, and expense reports, to ensure accurate bookkeeping and easy retrieval for auditing purposes.',
         "progress": "1",
         "assignedUser": [Contacts[3]['firstLetters'], Contacts[4]['firstLetters']],
+        "assignedUserFullName": [Contacts[3]['name'], Contacts[4]['name']],
         "prio": "Low",
         "dueDate": "2022-08-14",
         "subtasks": [],
@@ -31,6 +33,7 @@ let cards = [
         "description": 'Thoroughly review the project proposal and provide feedback on its feasibility, strategic alignment, and potential impact. Assess the proposed budget, timeline, and resource allocation. Identify any areas of improvement or concerns and communicate them to the project team.',
         "progress": "2",
         "assignedUser": [Contacts[0]['firstLetters']],
+        "assignedUserFullName": [Contacts[0]['name']],
         "prio": "Mid",
         "dueDate": "2022-08-14",
         "subtasks": [
@@ -45,6 +48,7 @@ let cards = [
         "description": 'Edit latest company video and review further clips',
         "progress": "1",
         "assignedUser": [Contacts[3]['firstLetters'], Contacts[5]['firstLetters']],
+        "assignedUserFullName": [Contacts[3]['name'], Contacts[5]['name']],
         "prio": "High",
         "dueDate": "2022-08-14",
         "subtasks": [
@@ -59,6 +63,7 @@ let cards = [
         "description": 'Compile financial data and analysis to create a comprehensive quarterly report for the management team. Include key performance indicators, budget analysis, and recommendations for improvement.',
         "progress": "1",
         "assignedUser": [Contacts[1]['firstLetters'], Contacts[4]['firstLetters']],
+        "assignedUserFullName": [Contacts[1]['name'], Contacts[4]['name']],
         "prio": "Mid",
         "dueDate": "2022-08-14",
         "subtasks": [
@@ -73,6 +78,7 @@ let cards = [
         "description": 'Create product presentation and general portfolio.',
         "progress": "0",
         "assignedUser": [Contacts[2]['firstLetters'], Contacts[5]['firstLetters'], Contacts[0]['firstLetters'], Contacts[3]['firstLetters']],
+        "assignedUserFullName": [Contacts[2]['name'], Contacts[5]['name'], Contacts[0]['name'], Contacts[3]['name']],
         "prio": "Mid",
         "dueDate": "2022-08-14",
         "subtasks": [
@@ -87,6 +93,7 @@ let cards = [
         "description": 'Create powerpoint presentation as well as flyer for all new products.',
         "progress": "0",
         "assignedUser": [Contacts[4]['firstLetters'], Contacts[5]['firstLetters'], Contacts[0]['firstLetters']],
+        "assignedUserFullName": [Contacts[4]['name'], Contacts[5]['name'], Contacts[0]['name']],
         "prio": "Mid",
         "dueDate": "2022-08-14",
         "subtasks": [],
@@ -258,7 +265,7 @@ function renderAssignedUserInBoard(i) {
 
 function findUserColor(i, j) {
     for (let k = 0; k < Contacts.length; k++) {
-        if (Contacts[k]['firstLetters'] == cards[i]['assignedUser'][j]) {
+        if (Contacts[k]['name'] == cards[i]['assignedUserFullName'][j]) {
             return `${Contacts[k]['color']}`;
         } else { }
     }

@@ -855,3 +855,10 @@ input#editCardDueDate {
         margin-top: 16px !important;
     }
 }
+
+@media(min-width: 2050px) {
+    .content {
+        padding-left: 100px !important;
+        padding-right: 0px !important;
+    }
+}
