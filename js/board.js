@@ -448,15 +448,16 @@ function addActiveState2(j) {
 
 let prioValue;
 function prioValueForSaving(h){
-    if(h = 0){
-        prioValue = "Low";
+    if(h == 0){
+        prioValue = "High";
     } else 
-    if(h = 1){
+    if(h == 1){
         prioValue = "Medium";
     } else
-    if(h = 2){
-        prioValue = "High";
+    if(h == 2){
+        prioValue = "Low";
     }
+    console.log(prioValue);
 }
 
 function saveEditedCard(i) {
