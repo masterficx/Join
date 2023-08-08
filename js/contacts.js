@@ -6,6 +6,7 @@ let Contacts = [
         "email": "schulz@hotmail.com",
         "color": "#02CF2F",
         "firstLetters": "AS",
+        "name": "Anja Schulz"
     },
     {
         "firstName": "Anton",
@@ -14,6 +15,7 @@ let Contacts = [
         "email": "antom@gmail.com",
         "color": "#9327FF",
         "firstLetters": "AM",
+        "name": "Anton Mayer"
     },
     {
         "firstName": "Benedikt",
@@ -22,6 +24,7 @@ let Contacts = [
         "email": "benedikt@gmail.com",
         "color": "#0190E0",
         "firstLetters": "BZ",
+        "name": "Benedikt Ziegler"
     },
     {
         "firstName": "David",
@@ -30,6 +33,7 @@ let Contacts = [
         "email": "davidberg@gmail.com",
         "color": "#FF5C00",
         "firstLetters": "DE",
+        "name": "David Eisenberg"
     },
     {
         "firstName": "Eva",
@@ -38,6 +42,7 @@ let Contacts = [
         "email": "evag@gmail.com",
         "color": "#EE00D6",
         "firstLetters": "EF",
+        "name": "Eva Fischer"
     },
     {
         "firstName": "Emmanuel",
@@ -46,6 +51,7 @@ let Contacts = [
         "email": "emmanuelma@gmail.com",
         "color": "#32DAFF",
         "firstLetters": "EM",
+        "name": "Emmanuel Mauer"
     },
     {
         "firstName": "Marcel",
@@ -54,6 +60,7 @@ let Contacts = [
         "email": "bauer@gmail.com",
         "color": "#EE00D6",
         "firstLetters": "MB",
+        "name": "Marcel Bauer"
     },
     {
         "firstName": "Tatjana",
@@ -62,6 +69,7 @@ let Contacts = [
         "email": "wolf@gmail.com",
         "color": "#CB02CF",
         "firstLetters": "TW",
+        "name": "Tatjana Wolf"
     }
 ]
 

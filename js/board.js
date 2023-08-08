@@ -3,8 +3,9 @@ let cards = [
         "category": "Design",
         "title": "Update Website Mainpage",
         "description": 'Rework the general design and functions for better user experience. Optimize the buttons and links.',
-        "progress": "0",
+        "progress": 0,
         "assignedUser": [Contacts[0]['firstLetters'], Contacts[1]['firstLetters'], Contacts[4]['firstLetters']],
+        "assignedUserFullName": [Contacts[0]['name'], Contacts[1]['name'], Contacts[4]['name']],
         "prio": "High",
         "dueDate": "2022-08-14",
         "subtasks": [
@@ -18,8 +19,9 @@ let cards = [
         "category": "Backoffice",
         "title": "Organize Financial Records",
         "description": 'Review and organize financial records, including invoices, receipts, and expense reports, to ensure accurate bookkeeping and easy retrieval for auditing purposes.',
-        "progress": "1",
+        "progress": 1,
         "assignedUser": [Contacts[3]['firstLetters'], Contacts[4]['firstLetters']],
+        "assignedUserFullName": [Contacts[3]['name'], Contacts[4]['name']],
         "prio": "Low",
         "dueDate": "2022-08-14",
         "subtasks": [],
@@ -29,8 +31,9 @@ let cards = [
         "category": "Marketing",
         "title": "Review project proposal",
         "description": 'Thoroughly review the project proposal and provide feedback on its feasibility, strategic alignment, and potential impact. Assess the proposed budget, timeline, and resource allocation. Identify any areas of improvement or concerns and communicate them to the project team.',
-        "progress": "2",
+        "progress": 2,
         "assignedUser": [Contacts[0]['firstLetters']],
+        "assignedUserFullName": [Contacts[0]['name']],
         "prio": "Mid",
         "dueDate": "2022-08-14",
         "subtasks": [
@@ -43,8 +46,9 @@ let cards = [
         "category": "Media",
         "title": "Video cut",
         "description": 'Edit latest company video and review further clips',
-        "progress": "1",
+        "progress": 1,
         "assignedUser": [Contacts[3]['firstLetters'], Contacts[5]['firstLetters']],
+        "assignedUserFullName": [Contacts[3]['name'], Contacts[5]['name']],
         "prio": "High",
         "dueDate": "2022-08-14",
         "subtasks": [
@@ -57,8 +61,9 @@ let cards = [
         "category": "Backoffice",
         "title": "Prepare quarterly report",
         "description": 'Compile financial data and analysis to create a comprehensive quarterly report for the management team. Include key performance indicators, budget analysis, and recommendations for improvement.',
-        "progress": "1",
+        "progress": 1,
         "assignedUser": [Contacts[1]['firstLetters'], Contacts[4]['firstLetters']],
+        "assignedUserFullName": [Contacts[1]['name'], Contacts[4]['name']],
         "prio": "Mid",
         "dueDate": "2022-08-14",
         "subtasks": [
@@ -71,8 +76,9 @@ let cards = [
         "category": "Sales",
         "title": "Call potential clients",
         "description": 'Create product presentation and general portfolio.',
-        "progress": "0",
+        "progress": 0,
         "assignedUser": [Contacts[2]['firstLetters'], Contacts[5]['firstLetters'], Contacts[0]['firstLetters'], Contacts[3]['firstLetters']],
+        "assignedUserFullName": [Contacts[2]['name'], Contacts[5]['name'], Contacts[0]['name'], Contacts[3]['name']],
         "prio": "Mid",
         "dueDate": "2022-08-14",
         "subtasks": [
@@ -85,8 +91,9 @@ let cards = [
         "category": "Marketing",
         "title": "Create advertising material for latest product linups",
         "description": 'Create powerpoint presentation as well as flyer for all new products.',
-        "progress": "0",
+        "progress": 0,
         "assignedUser": [Contacts[4]['firstLetters'], Contacts[5]['firstLetters'], Contacts[0]['firstLetters']],
+        "assignedUserFullName": [Contacts[4]['name'], Contacts[5]['name'], Contacts[0]['name']],
         "prio": "Mid",
         "dueDate": "2022-08-14",
         "subtasks": [],
@@ -256,9 +263,17 @@ function renderAssignedUserInBoard(i) {
     }
 }
 
+function renderAssignedUserFullName(i) {
+    for (let j = 0; j < cards[i]['assignedUserFullName'].length; j++) {
+        document.getElementById(`InsideUserFullName${i}`).innerHTML += `
+            <div class="label-name">${cards[i]['assignedUserFullName'][j]}</div>
+            `;
+    }
+}
+
 function findUserColor(i, j) {
     for (let k = 0; k < Contacts.length; k++) {
-        if (Contacts[k]['firstLetters'] == cards[i]['assignedUser'][j]) {
+        if (Contacts[k]['name'] == cards[i]['assignedUserFullName'][j]) {
             return `${Contacts[k]['color']}`;
         } else { }
     }
@@ -332,11 +347,12 @@ function openCard(i) {
     cardDetailDesc.innerHTML = `${cards[i]['description']}`;
     cardDetailDueDate.innerHTML = `<span class="detlabel">Due date:</span>${cards[i]['dueDate']}`;
     cardDetailPrio.innerHTML = `<span class="detlabel">Priority:</span><div id="priobtndetail">${cards[i]['prio']}<img id="prioImg" src=""></div>`;
-    cardDetailAssignedUser.innerHTML = `<div class="cardBoardInsideUserAndPrio"><div class="InsideUser" id="InsideUserDetail${i}"></div></div>`;
+    cardDetailAssignedUser.innerHTML = `<div class="cardBoardInsideUserAndPrio FullNameSplit"><div class="InsideUser" id="InsideUserDetail${i}"></div><div id=InsideUserFullName${i}></div></div>`;
     cardDetailDelete.innerHTML = `<div onclick='deleteCard(${[i]})'><img src="assets/img/board/delete.svg" class="default"><img src="assets/img/board/delete-blue.svg" class="hover">`;
     cardDetailEdit.innerHTML = `<div onclick='editCard(${[i]})'><img src="assets/img/board/edit.svg">`;
     renderBackgroundColorCategoryDetail(i);
     renderAssignedUserInBoardDetail(i);
+    renderAssignedUserFullName(i);
     prioButtonStyle(i);
 }
 
