@@ -413,15 +413,15 @@ function editCard(i) {
     document.getElementById('editCardTitle').value = `${cards[i]['title']}`;
     document.getElementById('editCardDescription').value = `${cards[i]['description']}`;
     document.getElementById('editCardDueDate').value = `${cards[i]['dueDate']}`;
-    document.getElementById('editCardPrio').innerHTML = `
-    <div class="addTaskPrios" id="prioButtons">
-                                    <button class="SubTaskPrios red" onclick="addActiveState(0)">Urgent<img
+    document.getElementById('editCardPrio2').innerHTML = `
+    <div class="addTaskPrios" id="prioButtons2">
+                                    <button class="SubTaskPrios2 red" onclick="addActiveState2(0)">Urgent<img
                                             src="/assets/img/addtask/prio-high.svg" alt="" class="default"><img
                                             src="/assets/img/addtask/prio-high-w.svg" alt="" class="active"></button>
-                                    <button class="SubTaskPrios yellow" onclick="addActiveState(1)">Medium<img
+                                    <button class="SubTaskPrios2 yellow" onclick="addActiveState2(1)">Medium<img
                                         src="/assets/img/addtask/prio-medium.svg" alt="" class="default"><img
                                         src="/assets/img/addtask/prio-medium-w.svg" alt="" class="active"></button>
-                                    <button class="SubTaskPrios green" onclick="addActiveState(2)">Low<img
+                                    <button class="SubTaskPrios2 green" onclick="addActiveState2(2)">Low<img
                                         src="/assets/img/addtask/prio-low.svg" alt="" class="default"><img
                                         src="/assets/img/addtask/prio-low-w.svg" alt="" class="active"></button>
                                 </div>`;
@@ -429,6 +429,22 @@ function editCard(i) {
     let editCardSave = document.getElementById('editCardSave');
     editCardSave.innerHTML = `<div onclick='saveEditedCard(${[i]})'>Ok`;
 }
+
+function addActiveState2(j) {
+    let btnsTip = document.getElementById('prioButtons2').getElementsByClassName('SubTaskPrios2');
+    if (btnsTip[j].classList.contains('active-state')) {
+        btnsTip[j].classList.remove('active-state');
+    }
+    else {
+        for (i = 0; i < btnsTip.length; i++) {
+            btnsTip[i].classList.remove('active-state');
+        };
+        btnsTip[j].classList.add('active-state');
+    }
+    let priorityNumber = j;
+    window.priority = priorityNumber;
+
+};
 
 function saveEditedCard(i) {
     cards[i]['title'] = document.getElementById('editCardTitle').value;
