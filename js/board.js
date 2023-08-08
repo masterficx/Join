@@ -263,6 +263,14 @@ function renderAssignedUserInBoard(i) {
     }
 }
 
+function renderAssignedUserFullName(i) {
+    for (let j = 0; j < cards[i]['assignedUserFullName'].length; j++) {
+        document.getElementById(`InsideUserFullName${i}`).innerHTML += `
+            <div class="label-name">${cards[i]['assignedUserFullName'][j]}</div>
+            `;
+    }
+}
+
 function findUserColor(i, j) {
     for (let k = 0; k < Contacts.length; k++) {
         if (Contacts[k]['name'] == cards[i]['assignedUserFullName'][j]) {
@@ -339,11 +347,12 @@ function openCard(i) {
     cardDetailDesc.innerHTML = `${cards[i]['description']}`;
     cardDetailDueDate.innerHTML = `<span class="detlabel">Due date:</span>${cards[i]['dueDate']}`;
     cardDetailPrio.innerHTML = `<span class="detlabel">Priority:</span><div id="priobtndetail">${cards[i]['prio']}<img id="prioImg" src=""></div>`;
-    cardDetailAssignedUser.innerHTML = `<div class="cardBoardInsideUserAndPrio"><div class="InsideUser" id="InsideUserDetail${i}"></div></div>`;
+    cardDetailAssignedUser.innerHTML = `<div class="cardBoardInsideUserAndPrio FullNameSplit"><div class="InsideUser" id="InsideUserDetail${i}"></div><div id=InsideUserFullName${i}></div></div>`;
     cardDetailDelete.innerHTML = `<div onclick='deleteCard(${[i]})'><img src="assets/img/board/delete.svg" class="default"><img src="assets/img/board/delete-blue.svg" class="hover">`;
     cardDetailEdit.innerHTML = `<div onclick='editCard(${[i]})'><img src="assets/img/board/edit.svg">`;
     renderBackgroundColorCategoryDetail(i);
     renderAssignedUserInBoardDetail(i);
+    renderAssignedUserFullName(i);
     prioButtonStyle(i);
 }
 
