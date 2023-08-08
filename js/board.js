@@ -415,19 +415,37 @@ function editCard(i) {
     document.getElementById('editCardDueDate').value = `${cards[i]['dueDate']}`;
     document.getElementById('editCardPrio2').innerHTML = `
     <div class="addTaskPrios" id="prioButtons2">
-                                    <button class="SubTaskPrios2 red" onclick="addActiveState2(0)">Urgent<img
+                                    <button class="SubTaskPrios2 red" id="prioSelect0" onclick="addActiveState2(0)">Urgent<img
                                             src="/assets/img/addtask/prio-high.svg" alt="" class="default"><img
                                             src="/assets/img/addtask/prio-high-w.svg" alt="" class="active"></button>
-                                    <button class="SubTaskPrios2 yellow" onclick="addActiveState2(1)">Medium<img
+                                    <button class="SubTaskPrios2 yellow" id="prioSelect1" onclick="addActiveState2(1)">Medium<img
                                         src="/assets/img/addtask/prio-medium.svg" alt="" class="default"><img
                                         src="/assets/img/addtask/prio-medium-w.svg" alt="" class="active"></button>
-                                    <button class="SubTaskPrios2 green" onclick="addActiveState2(2)">Low<img
+                                    <button class="SubTaskPrios2 green" id="prioSelect2" onclick="addActiveState2(2)">Low<img
                                         src="/assets/img/addtask/prio-low.svg" alt="" class="default"><img
                                         src="/assets/img/addtask/prio-low-w.svg" alt="" class="active"></button>
                                 </div>`;
     document.getElementById('editCardAssignedTo').value = `${cards[i]['assignedUser']}`;
     let editCardSave = document.getElementById('editCardSave');
     editCardSave.innerHTML = `<div onclick='saveEditedCard(${[i]})'>Ok`;
+    loadActiveStatePrio(i);
+}
+
+function loadActiveStatePrio(i){
+let currentPrioSelection = cards[i]['prio'];
+if(currentPrioSelection == "High"){
+    let prioSelect0 = document.getElementById('prioSelect0');
+    prioSelect0.classList.add('active-state');
+} else
+if(currentPrioSelection == "Mid" || currentPrioSelection == "Medium"){
+    let prioSelect1 = document.getElementById('prioSelect1');
+    prioSelect1.classList.add('active-state');
+} else
+if(currentPrioSelection == "Low"){
+    let prioSelect2 = document.getElementById('prioSelect2');
+    prioSelect2.classList.add('active-state');
+} 
+console.log(currentPrioSelection);
 }
 
 function addActiveState2(j) {
