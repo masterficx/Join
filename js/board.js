@@ -128,7 +128,7 @@ let categories = [{
 },
 ];
 
-let categoryColors = ['#FFC701','#1FD7C1','#0038FF','#FF7A00','#FF0000','#E200BE'];
+let categoryColors = ['#FFC701', '#1FD7C1', '#0038FF', '#FF7A00', '#FF0000', '#E200BE'];
 
 let currentDraggedElement;
 
@@ -140,99 +140,59 @@ function renderBoardCards() {
     clearBoardCards();
     for (let i = 0; i < cards.length; i++) {
         if (cards[i]['listType'] == 'ToDo') {
-            document.getElementById('cardBoardToDo').innerHTML += `
-            <div class="cardBoard" draggable="true" ondragstart="startDragging(${i})" onclick='openCard(${i})'>
-            <div class="cardBoardInside">
-                <div class="cardBoardInsideCategory" id="cardBoardInsideCategory${i}">${cards[i]['category']}</div>
-                <div class="cardBoardInsideTitleAndDescrption">
-                    <div class="cardBoardInsideTitle">${cards[i]['title']}</div>
-                    <div class="cardBoardInsideDescription">${cards[i]['description']}</div>
-                </div>
-                <div class="cardBoardInsideProgress" id="cardBoardInsideProgress${i}"><div class="progressBar"><div class="progress" id="progressBar${i}"></div></div>
-                    <div><p>${cards[i]['progress']}/${cards[i]['subtasks'].length} Done</p></div>
-                </div>
-                <div class="cardBoardInsideUserAndPrio">
-                    <div class="InsideUser" id="InsideUser${i}"></div><img src="/assets/img/board/${cards[i]['prio']}.svg" alt="">
-                </div>
-            </div>
-        </div>`;
-            renderProgressBar(i);
-            renderAssignedUserInBoard(i);
-            renderBackgroundColorCategory(i);
+            document.getElementById('cardBoardToDo').innerHTML +=
+                renderBoardTemplate(i);
+            renderBoardFunctionsTemplate(i);
         } else { renderBoardCardsInProgress(i) };
     }
 }
 
 function renderBoardCardsInProgress(i) {
     if (cards[i]['listType'] == 'InProgress') {
-        document.getElementById('cardBoardInProgress').innerHTML += `
-        <div class="cardBoard" draggable="true" ondragstart="startDragging(${i})" onclick='openCard(${i})'>
-        <div class="cardBoardInside">
-            <div class="cardBoardInsideCategory" id="cardBoardInsideCategory${i}">${cards[i]['category']}</div>
-            <div class="cardBoardInsideTitleAndDescrption">
-                <div class="cardBoardInsideTitle">${cards[i]['title']}</div>
-                <div class="cardBoardInsideDescription">${cards[i]['description']}</div>
-            </div>
-            <div class="cardBoardInsideProgress" id="cardBoardInsideProgress${i}"><div class="progressBar"><div class="progress" id="progressBar${i}"></div></div>
-            <div><p>${cards[i]['progress']}/${cards[i]['subtasks'].length} Done</p></div>
-            </div>
-            <div class="cardBoardInsideUserAndPrio">
-            <div class="InsideUser" id="InsideUser${i}"></div><img src="/assets/img/board/${cards[i]['prio']}.svg" alt="">
-            </div>
-        </div>
-    </div>`;
-        renderProgressBar(i);
-        renderAssignedUserInBoard(i);
-        renderBackgroundColorCategory(i);
+        document.getElementById('cardBoardInProgress').innerHTML +=
+            renderBoardTemplate(i);
+        renderBoardFunctionsTemplate(i);
     } else { renderBoardCardsAwaitingFeedback(i) };
 }
 
 function renderBoardCardsAwaitingFeedback(i) {
     if (cards[i]['listType'] == 'Awaitingfeedback') {
-        document.getElementById('cardBoardAwaitingfeedback').innerHTML += `
-        <div class="cardBoard" draggable="true" ondragstart="startDragging(${i})" onclick='openCard(${i})'>
-        <div class="cardBoardInside">
-            <div class="cardBoardInsideCategory" id="cardBoardInsideCategory${i}">${cards[i]['category']}</div>
-            <div class="cardBoardInsideTitleAndDescrption">
-                <div class="cardBoardInsideTitle">${cards[i]['title']}</div>
-                <div class="cardBoardInsideDescription">${cards[i]['description']}</div>
-            </div>
-            <div class="cardBoardInsideProgress" id="cardBoardInsideProgress${i}"><div class="progressBar"><div class="progress" id="progressBar${i}"></div></div>
-            <div><p>${cards[i]['progress']}/${cards[i]['subtasks'].length} Done</p></div>
-            </div>
-            <div class="cardBoardInsideUserAndPrio">
-            <div class="InsideUser" id="InsideUser${i}"></div><img src="/assets/img/board/${cards[i]['prio']}.svg" alt="">
-            </div>
-        </div>
-    </div>`;
-        renderProgressBar(i);
-        renderAssignedUserInBoard(i);
-        renderBackgroundColorCategory(i);
+        document.getElementById('cardBoardAwaitingfeedback').innerHTML +=
+            renderBoardTemplate(i);
+        renderBoardFunctionsTemplate(i);
     } else { renderBoardCardsDone(i) };
 }
 
 function renderBoardCardsDone(i) {
     if (cards[i]['listType'] == 'Done') {
-        document.getElementById('cardBoardDone').innerHTML += `
-        <div class="cardBoard" draggable="true" ondragstart="startDragging(${i})" onclick='openCard(${i})'>
-        <div class="cardBoardInside">
-            <div class="cardBoardInsideCategory"; id="cardBoardInsideCategory${i}">${cards[i]['category']}</div>
-            <div class="cardBoardInsideTitleAndDescrption">
-                <div class="cardBoardInsideTitle">${cards[i]['title']}</div>
-                <div class="cardBoardInsideDescription">${cards[i]['description']}</div>
-            </div>
-            <div class="cardBoardInsideProgress" id="cardBoardInsideProgress${i}"><div class="progressBar"><div class="progress" id="progressBar${i}"></div></div>
-            <div><p>${cards[i]['progress']}/${cards[i]['subtasks'].length} Done</p></div>
-            </div>
-            <div class="cardBoardInsideUserAndPrio">
-            <div class="InsideUser" id="InsideUser${i}"></div><img src="/assets/img/board/${cards[i]['prio']}.svg" alt="">
-            </div>
-        </div>
-    </div>`;
-        renderProgressBar(i);
-        renderAssignedUserInBoard(i);
-        renderBackgroundColorCategory(i);
+        document.getElementById('cardBoardDone').innerHTML +=
+            renderBoardTemplate(i);
     } else { };
+    renderBoardFunctionsTemplate(i)
+}
+
+function renderBoardTemplate(i) {
+    return `<div class="cardBoard" draggable="true" ondragstart="startDragging(${i})" onclick='openCard(${i})'>
+    <div class="cardBoardInside">
+        <div class="cardBoardInsideCategory"; id="cardBoardInsideCategory${i}">${cards[i]['category']}</div>
+        <div class="cardBoardInsideTitleAndDescrption">
+            <div class="cardBoardInsideTitle">${cards[i]['title']}</div>
+            <div class="cardBoardInsideDescription">${cards[i]['description']}</div>
+        </div>
+        <div class="cardBoardInsideProgress" id="cardBoardInsideProgress${i}"><div class="progressBar"><div class="progress" id="progressBar${i}"></div></div>
+        <div><p>${cards[i]['progress']}/${cards[i]['subtasks'].length} Done</p></div>
+        </div>
+        <div class="cardBoardInsideUserAndPrio">
+        <div class="InsideUser" id="InsideUser${i}"></div><img src="/assets/img/board/${cards[i]['prio']}.svg" alt="">
+        </div>
+    </div>
+</div>`;
+}
+
+function renderBoardFunctionsTemplate(i) {
+    renderProgressBar(i);
+    renderAssignedUserInBoard(i);
+    renderBackgroundColorCategory(i);
 }
 
 function renderBackgroundColorCategory(i) {
@@ -278,6 +238,13 @@ function findUserColor(i, j) {
         } else { }
     }
 }
+
+// function renderNoCardsInCardBoard() {
+//     for (let k = 0; k < cards.length; k++) {
+
+
+//     }
+// }
 
 function clearBoardCards() {
     document.getElementById('cardBoardToDo').innerHTML = '';
@@ -376,33 +343,33 @@ function renderAssignedUserInBoardDetail(i) {
     }
 }
 
-function prioButtonStyle(i){
-let prioBtnDetail = document.getElementById('priobtndetail');
-let prioBtnDetailImg = document.getElementById('prioImg');
-for(y=0; y<cards.length; y++){
-    prioBtnDetail.classList.remove('prio-high-btn');
-    prioBtnDetail.classList.remove('prio-med-btn');
-    prioBtnDetail.classList.remove('prio-low-btn');
-    prioBtnDetailImg.src = "";
-};
-if(cards[i]['prio'] == "High"){
-    prioBtnDetail.classList.add('prio-high-btn');
-    prioBtnDetailImg.src = "assets/img/addtask/prio-high-w.svg";
+function prioButtonStyle(i) {
+    let prioBtnDetail = document.getElementById('priobtndetail');
+    let prioBtnDetailImg = document.getElementById('prioImg');
+    for (y = 0; y < cards.length; y++) {
+        prioBtnDetail.classList.remove('prio-high-btn');
+        prioBtnDetail.classList.remove('prio-med-btn');
+        prioBtnDetail.classList.remove('prio-low-btn');
+        prioBtnDetailImg.src = "";
+    };
+    if (cards[i]['prio'] == "High") {
+        prioBtnDetail.classList.add('prio-high-btn');
+        prioBtnDetailImg.src = "assets/img/addtask/prio-high-w.svg";
 
-} else 
-if(cards[i]['prio'] == "Medium" || cards[i]['prio'] == "Mid"){
-    prioBtnDetail.classList.add('prio-med-btn');
-    prioBtnDetailImg.src = "assets/img/addtask/prio-medium-w.svg";
-} else
-if(cards[i]['prio'] == "Low"){
-    prioBtnDetail.classList.add('prio-low-btn');
-    prioBtnDetailImg.src = "assets/img/addtask/prio-low-w.svg";
-}
+    } else
+        if (cards[i]['prio'] == "Medium" || cards[i]['prio'] == "Mid") {
+            prioBtnDetail.classList.add('prio-med-btn');
+            prioBtnDetailImg.src = "assets/img/addtask/prio-medium-w.svg";
+        } else
+            if (cards[i]['prio'] == "Low") {
+                prioBtnDetail.classList.add('prio-low-btn');
+                prioBtnDetailImg.src = "assets/img/addtask/prio-low-w.svg";
+            }
 }
 
 function deleteCard(i) {
     console.log('deleted', i);
-    cards.splice(i,1);
+    cards.splice(i, 1);
     closeOverlay();
 }
 
@@ -431,21 +398,21 @@ function editCard(i) {
     loadActiveStatePrio(i);
 }
 
-function loadActiveStatePrio(i){
-let currentPrioSelection = cards[i]['prio'];
-if(currentPrioSelection == "High"){
-    let prioSelect0 = document.getElementById('prioSelect0');
-    prioSelect0.classList.add('active-state');
-} else
-if(currentPrioSelection == "Mid" || currentPrioSelection == "Medium"){
-    let prioSelect1 = document.getElementById('prioSelect1');
-    prioSelect1.classList.add('active-state');
-} else
-if(currentPrioSelection == "Low"){
-    let prioSelect2 = document.getElementById('prioSelect2');
-    prioSelect2.classList.add('active-state');
-} 
-console.log(currentPrioSelection);
+function loadActiveStatePrio(i) {
+    let currentPrioSelection = cards[i]['prio'];
+    if (currentPrioSelection == "High") {
+        let prioSelect0 = document.getElementById('prioSelect0');
+        prioSelect0.classList.add('active-state');
+    } else
+        if (currentPrioSelection == "Mid" || currentPrioSelection == "Medium") {
+            let prioSelect1 = document.getElementById('prioSelect1');
+            prioSelect1.classList.add('active-state');
+        } else
+            if (currentPrioSelection == "Low") {
+                let prioSelect2 = document.getElementById('prioSelect2');
+                prioSelect2.classList.add('active-state');
+            }
+    console.log(currentPrioSelection);
 }
 
 function addActiveState2(j) {
@@ -465,16 +432,16 @@ function addActiveState2(j) {
 }
 
 let prioValue;
-function prioValueForSaving(h){
-    if(h == 0){
+function prioValueForSaving(h) {
+    if (h == 0) {
         prioValue = "High";
-    } else 
-    if(h == 1){
-        prioValue = "Medium";
     } else
-    if(h == 2){
-        prioValue = "Low";
-    }
+        if (h == 1) {
+            prioValue = "Medium";
+        } else
+            if (h == 2) {
+                prioValue = "Low";
+            }
     console.log(prioValue);
 }
 
