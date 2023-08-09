@@ -130,9 +130,28 @@ let categories = [{
 
 let categoryColors = ['#FFC701', '#1FD7C1', '#0038FF', '#FF7A00', '#FF0000', '#E200BE'];
 
+let listTypes = [{
+    name: "ToDo",
+    amount: 0,
+},
+{
+    name: "InProgress",
+    amount: 0,
+},
+{
+    name: "Awaitingfeedback",
+    amount: 0,
+},
+{
+    name: "Done",
+    amount: 0,
+}
+];
+
 let currentDraggedElement;
 
 function renderBoard() {
+    clearAllListTypesAmount();
     renderBoardCards();
 }
 
@@ -140,15 +159,19 @@ function renderBoardCards() {
     clearBoardCards();
     for (let i = 0; i < cards.length; i++) {
         if (cards[i]['listType'] == 'ToDo') {
+            listTypes[0]['amount']++;
             document.getElementById('cardBoardToDo').innerHTML +=
                 renderBoardTemplate(i);
             renderBoardFunctionsTemplate(i);
-        } else { renderBoardCardsInProgress(i) };
-    }
+        } else {
+            renderBoardCardsInProgress(i)
+        };
+    } renderNoCardsInCardBoard();
 }
 
 function renderBoardCardsInProgress(i) {
     if (cards[i]['listType'] == 'InProgress') {
+        listTypes[1]['amount']++;
         document.getElementById('cardBoardInProgress').innerHTML +=
             renderBoardTemplate(i);
         renderBoardFunctionsTemplate(i);
@@ -157,6 +180,7 @@ function renderBoardCardsInProgress(i) {
 
 function renderBoardCardsAwaitingFeedback(i) {
     if (cards[i]['listType'] == 'Awaitingfeedback') {
+        listTypes[2]['amount']++;
         document.getElementById('cardBoardAwaitingfeedback').innerHTML +=
             renderBoardTemplate(i);
         renderBoardFunctionsTemplate(i);
@@ -165,10 +189,11 @@ function renderBoardCardsAwaitingFeedback(i) {
 
 function renderBoardCardsDone(i) {
     if (cards[i]['listType'] == 'Done') {
+        listTypes[3]['amount']++;
         document.getElementById('cardBoardDone').innerHTML +=
             renderBoardTemplate(i);
     } else { };
-    renderBoardFunctionsTemplate(i)
+    renderBoardFunctionsTemplate(i);
 }
 
 function renderBoardTemplate(i) {
@@ -239,12 +264,21 @@ function findUserColor(i, j) {
     }
 }
 
-// function renderNoCardsInCardBoard() {
-//     for (let k = 0; k < cards.length; k++) {
+function clearAllListTypesAmount() {
+    for (let k = 0; k < listTypes.length; k++) {
+        listTypes[k]['amount'] = 0;
+    }
+}
 
-
-//     }
-// }
+function renderNoCardsInCardBoard() {
+    for (let k = 0; k < listTypes.length; k++) {
+        if (listTypes[k]['amount'] == 0) {
+            document.getElementById(`cardBoard${listTypes[k]['name']}`).innerHTML += `
+            <div class="NoCardsInBoardPlaceholder">No tasks in ${listTypes[k]['name']}</div>
+            `;
+        } else { }
+    }
+}
 
 function clearBoardCards() {
     document.getElementById('cardBoardToDo').innerHTML = '';

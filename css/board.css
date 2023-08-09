@@ -530,9 +530,9 @@ div#editCard:hover {
 }
 
 .cartdetailaction div {
-    line-height: 1em!important;
-    margin: 0px!important;
-    padding: 0px!important;
+    line-height: 1em !important;
+    margin: 0px !important;
+    padding: 0px !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -550,11 +550,11 @@ img.hover {
     display: none;
 }
 
-div#deleteCard:hover img.hover{
+div#deleteCard:hover img.hover {
     display: block;
 }
 
-div#deleteCard:hover img.default{
+div#deleteCard:hover img.default {
     display: none;
 }
 
@@ -597,7 +597,7 @@ textarea#editCardDescription {
     color: #000;
     margin-top: 7px;
     margin-bottom: 20px;
-    width: calc(100% - 42px)!important;
+    width: calc(100% - 42px) !important;
     max-width: 380px;
     min-height: 80px;
     font-size: 20px;
@@ -648,6 +648,28 @@ input#editCardDueDate {
     border-radius: 58px;
     border: 1px solid var(--white, #FFF);
     font-family: 'Inter' !important;
+}
+
+.NoCardsInBoardPlaceholder {
+    width: 212px;
+    color: #a29191;
+    font-family: Open Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    display: flex;
+    height: 48px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 10px;
+    border: 3px dashed #E7E7E7;
+    background: #e6dddd;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
+    margin-bottom: 12px;    
 }
 
 @keyframes slide-in {
@@ -702,9 +724,11 @@ input#editCardDueDate {
         gap: 8px;
         width: 600px;
     }
+
     .headBoardRight {
         gap: 2px;
     }
+
     .addTaskButton {
         font-size: 16px;
     }
@@ -734,7 +758,8 @@ input#editCardDueDate {
         padding-left: 0px !important;
         padding-right: 0px !important;
     }
-    .middle .content{
+
+    .middle .content {
         margin-right: 0 !important;
         width: 100% !important;
     }
@@ -748,6 +773,7 @@ input#editCardDueDate {
         font-size: 16px;
         line-height: 1.2em;
     }
+
     .carddetail {
         padding: 30px 20px;
     }
@@ -757,7 +783,7 @@ input#editCardDueDate {
         right: 15px;
         top: 20px;
     }
-} 
+}
 
 @media(max-width: 716px) {
     .categoryBoardAll {
@@ -865,6 +891,7 @@ input#editCardDueDate {
     .headBoard {
         padding-top: 0px !important;
     }
+
     .categoryBoardSub {
         margin-top: 16px !important;
     }
