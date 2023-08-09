@@ -1,12 +1,23 @@
 let Contacts = [
     {
+        "firstName": "Guest",
+        "lastName": "Guest",
+        "phone": 1234567890001,
+        "email": "guest@hotmail.com",
+        "color": "#02CF2F",
+        "firstLetters": "AS",
+        "name": "Guest",
+        "password": "1234",
+    },
+    {
         "firstName": "Anja",
         "lastName": "Schulz",
         "phone": 1234567890001,
         "email": "schulz@hotmail.com",
         "color": "#02CF2F",
         "firstLetters": "AS",
-        "name": "Anja Schulz"
+        "name": "Anja Schulz",
+        "password": "1234",
     },
     {
         "firstName": "Anton",
@@ -15,7 +26,8 @@ let Contacts = [
         "email": "antom@gmail.com",
         "color": "#9327FF",
         "firstLetters": "AM",
-        "name": "Anton Mayer"
+        "name": "Anton Mayer",
+        "password": "1234",
     },
     {
         "firstName": "Benedikt",
@@ -24,7 +36,8 @@ let Contacts = [
         "email": "benedikt@gmail.com",
         "color": "#0190E0",
         "firstLetters": "BZ",
-        "name": "Benedikt Ziegler"
+        "name": "Benedikt Ziegler",
+        "password": "1234",
     },
     {
         "firstName": "David",
@@ -33,7 +46,8 @@ let Contacts = [
         "email": "davidberg@gmail.com",
         "color": "#FF5C00",
         "firstLetters": "DE",
-        "name": "David Eisenberg"
+        "name": "David Eisenberg",
+        "password": "1234",
     },
     {
         "firstName": "Eva",
@@ -42,7 +56,8 @@ let Contacts = [
         "email": "evag@gmail.com",
         "color": "#EE00D6",
         "firstLetters": "EF",
-        "name": "Eva Fischer"
+        "name": "Eva Fischer",
+        "password": "1234",
     },
     {
         "firstName": "Emmanuel",
@@ -51,7 +66,8 @@ let Contacts = [
         "email": "emmanuelma@gmail.com",
         "color": "#32DAFF",
         "firstLetters": "EM",
-        "name": "Emmanuel Mauer"
+        "name": "Emmanuel Mauer",
+        "password": "1234",
     },
     {
         "firstName": "Marcel",
@@ -60,7 +76,8 @@ let Contacts = [
         "email": "bauer@gmail.com",
         "color": "#EE00D6",
         "firstLetters": "MB",
-        "name": "Marcel Bauer"
+        "name": "Marcel Bauer",
+        "password": "1234",
     },
     {
         "firstName": "Tatjana",
@@ -69,7 +86,8 @@ let Contacts = [
         "email": "wolf@gmail.com",
         "color": "#CB02CF",
         "firstLetters": "TW",
-        "name": "Tatjana Wolf"
+        "name": "Tatjana Wolf",
+        "password": "1234",
     }
 ]
 

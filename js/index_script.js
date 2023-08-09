@@ -17,9 +17,6 @@ let users = [
 ]
 
 
-let currentUser;
-
-
 /////////////////////// Function to initialize the page ///////////////////////////////////
 function init() {
     startAnimation();
@@ -153,37 +150,7 @@ function renderLogIn() {
 }
 
 
-// Function to check the login credentials
-function checkLogIn() {
-    let emailInput = document.getElementById('emailInput');
-    let passwordInput = document.getElementById('passwordInput');
 
-    let isLoggedIn = false; // Variable to track if the login check was successful
-
-    for (let i = 0; i < users.length; i++) {
-        let email = users[i].email;
-        let password = users[i].password;
-
-        if (emailInput.value === email && passwordInput.value === password) {
-            isLoggedIn = true;
-            currentUser = users[i].name;
-            break; // Exit the loop since no further checking is needed
-        }
-    }
-
-    if (isLoggedIn) { // If the login check is successful, call the function test()
-        test();
-    } else { // If the login check fails, display an error message and highlight the password input field
-        passwordAlert.textContent = "Wrong password Ups! Try again";
-        passwordInput.parentElement.classList.add('redInput');
-
-
-        setTimeout(() => { // Clear the error message and remove the red highlight after 3 seconds
-            passwordAlert.textContent = "";
-            passwordInput.parentElement.classList.remove('redInput');
-        }, 3000);
-    }
-}
 
 
 /////////////////////////////////////////// Sign Up //////////////////////////////////////////////////

@@ -2,13 +2,12 @@
 const mediaQueryMobile = window.matchMedia('(max-width: 992px)');
 
 
-
 async function init() {
     welcomeMsgTime();
     welcomeMsgUser();
     addClassMobile();
     summaryTasks();
-    filterCardsPrioHigh();
+    filterCardsPrioHigh(); 
 }
 
 //Begrüßung zur aktuellen Tageszeit
@@ -48,7 +47,12 @@ function welcomeMsgTime() {
 //Begrüßung des eingeloggten Nutzers mit Namen
 function welcomeMsgUser() {
     let messageUser = document.getElementById('welcomemsguser');
-    messageUser.innerHTML = `${currentuser}`;
+    if(currentUser) {
+    let user = Contacts[currentUser].name;   
+    messageUser.innerHTML = user;
+    } else {
+        messageUser.innerHTML = 'John Doe';
+    }
 }
 
 
