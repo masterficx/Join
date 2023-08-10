@@ -348,7 +348,7 @@ function openCard(i) {
     cardDetailDesc.innerHTML = `${cards[i]['description']}`;
     cardDetailDueDate.innerHTML = `<span class="detlabel">Due date:</span>${cards[i]['dueDate']}`;
     cardDetailPrio.innerHTML = `<span class="detlabel">Priority:</span><div id="priobtndetail">${cards[i]['prio']}<img id="prioImg" src=""></div>`;
-    cardDetailAssignedUser.innerHTML = `<div class="cardBoardInsideUserAndPrio FullNameSplit"><div class="InsideUser" id="InsideUserDetail${i}"></div><div id=InsideUserFullName${i}></div></div><div class="cardDetailSubtasksAll"><div class="detlabel">Subtasks:</div><div class="cardDetailSubTasks" id="cardDetailSubTasks${i}"></div></div>`;
+    cardDetailAssignedUser.innerHTML = `<div class="cardBoardInsideUserAndPrio FullNameSplit"><div class="InsideUser" id="InsideUserDetail${i}"></div><div id=InsideUserFullName${i}></div></div><div class="cardDetailSubtasksAll"><div class="detlabel" id="SubtaskHead${i}">Subtasks:</div><div class="cardDetailSubTasks" id="cardDetailSubTasks${i}"></div></div>`;
     cardDetailDelete.innerHTML = `<div onclick='deleteCard(${[i]})'><img src="assets/img/board/delete.svg" class="default"><img src="assets/img/board/delete-blue.svg" class="hover">`;
     cardDetailEdit.innerHTML = `<div onclick='editCard(${[i]})'><img src="assets/img/board/edit.svg">`;
     renderBackgroundColorCategoryDetail(i);
@@ -379,19 +379,24 @@ function renderAssignedUserInBoardDetail(i) {
 }
 
 function renderSubtasksInBoardDetail(i) {
-    for (let j = 0; j < cards[i]['subtasks'].length; j++) {
-        document.getElementById(`cardDetailSubTasks${i}`).innerHTML += `
-            <div id="SubTaskHead${j}" class="subtaskAndCheckbox"><input class="SubTaskCheckbox" id="SubTaskCheckbox${j}" ${cards[i]['subtasks'][j]['status']} type="checkbox" onclick="ChangeCheckboxSubtasks(${i, j})"><div class="label-subtask">${cards[i]['subtasks'][j]['nameSub']}</div></div>
-            `;
+    if (cards[i]['subtasks'].length > 0) {
+        for (let j = 0; j < cards[i]['subtasks'].length; j++) {
+            document.getElementById(`cardDetailSubTasks${i}`).innerHTML += `
+                <div id="SubTaskHead${j}" class="subtaskAndCheckbox"><input class="SubTaskCheckbox" id="SubTaskCheckbox${i},${j}" ${cards[i]['subtasks'][j]['status']} type="checkbox" onclick="ChangeCheckboxSubtasks(${i},${j})"><div class="label-subtask">${cards[i]['subtasks'][j]['nameSub']}</div></div>
+                `;
+        }
+    } else {
+        subHead = document.getElementById(`SubtaskHead${i}`);
+        subHead.classList.add('d-none');
     }
 }
 
-function ChangeCheckboxSubtasks(i, j) {
-    if (cards[i]['subtasks'][j]['status'] = "unchecked") {
-        cards[i]['subtasks'][j]['status'] = "checked";
+function ChangeCheckboxSubtasks(i,j) {
+    if (cards[i]['subtasks'][j]['status'] = "checked") {
+        cards[i]['subtasks'][j]['status'] = "unchecked";
     } else {
-        if (cards[i]['subtasks'][j]['status'] = "checked") {
-            cards[i]['subtasks'][j]['status'] = "unchecked";
+        if (cards[i]['subtasks'][j]['status'] = "unchecked") {
+            cards[i]['subtasks'][j]['status'] = "checked";
         }
     }
 }
