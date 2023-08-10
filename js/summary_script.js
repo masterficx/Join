@@ -47,12 +47,12 @@ function welcomeMsgTime() {
 //Begrüßung des eingeloggten Nutzers mit Namen
 function welcomeMsgUser() {
     let messageUser = document.getElementById('welcomemsguser');
-    if(currentUser) {
-    let user = Contacts[currentUser].name;   
+    let user = Contacts[currentUser].name; 
+    if(currentUser) {  
     messageUser.innerHTML = user;
     } else {
         messageUser.innerHTML = '';
-    }
+    } 
 }
 
 

@@ -355,7 +355,7 @@ function returnLogInHTML() {
             </div>
             <div class="logInButtonBox">
                 <button type="onsubmit" class="logInButton">Log in</button>
-                <button type="button" onclick="test()" class="logInButton guestLogIn">Guest Log in</button>
+                <button type="button" onclick="guestLogIn()" class="logInButton guestLogIn">Guest Log in</button>
             </div>
         </form>
     `;

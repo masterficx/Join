@@ -43,3 +43,9 @@ function loadcurrentUser() {
         console.log(currentUser);
     }
 }
+
+
+function guestLogIn() {
+    localStorage.setItem('currentUser', 0);
+    window.location.href ='summary.html';
+}
