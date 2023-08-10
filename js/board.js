@@ -381,24 +381,19 @@ function renderAssignedUserInBoardDetail(i) {
 function renderSubtasksInBoardDetail(i) {
     for (let j = 0; j < cards[i]['subtasks'].length; j++) {
         document.getElementById(`cardDetailSubTasks${i}`).innerHTML += `
-            <div class="subtaskAndCheckbox"><input class="SubTaskCheckbox" id="SubTaskCheckbox${j}" checked type="checkbox" onclick="ChangeCheckboxSubtasks(${i, j})"><div class="label-subtask">${cards[i]['subtasks'][j]['nameSub']}</div></div>
+            <div id="SubTaskHead${j}" class="subtaskAndCheckbox"><input class="SubTaskCheckbox" id="SubTaskCheckbox${j}" ${cards[i]['subtasks'][j]['status']} type="checkbox" onclick="ChangeCheckboxSubtasks(${i, j})"><div class="label-subtask">${cards[i]['subtasks'][j]['nameSub']}</div></div>
             `;
-        CurrentCheckboxSubtasks(i, j);
-    }
-}
-
-function CurrentCheckboxSubtasks(i, j) {
-    if (cards[i]['subtasks'][j]['status'] == "checked") {
-        document.getElementById(`SubTaskCheckbox${j}`).checked = true;
-    } else {
-        if (cards[i]['subtasks'][j]['status'] == "unchecked") {
-            document.getElementById(`SubTaskCheckbox${j}`).checked = false;
-        }
     }
 }
 
 function ChangeCheckboxSubtasks(i, j) {
-    //placeholder
+    if (cards[i]['subtasks'][j]['status'] = "unchecked") {
+        cards[i]['subtasks'][j]['status'] = "checked";
+    } else {
+        if (cards[i]['subtasks'][j]['status'] = "checked") {
+            cards[i]['subtasks'][j]['status'] = "unchecked";
+        }
+    }
 }
 
 function prioButtonStyle(i) {
