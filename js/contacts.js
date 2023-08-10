@@ -5,7 +5,7 @@ let Contacts = [
         "phone": 1234567890001,
         "email": "guest@hotmail.com",
         "color": "#02CF2F",
-        "firstLetters": "AS",
+        "firstLetters": "GG",
         "name": "Guest",
         "password": "1234",
     },
