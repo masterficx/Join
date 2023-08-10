@@ -1,22 +1,3 @@
-let users = [
-    {
-        "name": 'Max Mustermann',
-        "email": 'maxmustermann@test.de',
-        "password": '12345',
-    },
-    {
-        "name": 'Oliver',
-        "email": 'oliver@test.de',
-        "password": '54321',
-    },
-    {
-        "name": 'Tom Riddle',
-        "email": 'lordi@voldi.de',
-        "password": 'harry',
-    },
-]
-
-
 /////////////////////// Function to initialize the page ///////////////////////////////////
 function init() {
     startAnimation();
