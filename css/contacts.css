@@ -23,6 +23,36 @@ body {
     box-sizing: border-box;
 }
 
+.frame-97::-webkit-scrollbar{
+    background: transparent;
+}
+
+.frame-97::-webkit-scrollbar-thumb {
+    background: url('/assets/img/contacts/scrollbar_thumb.svg');
+    background-repeat: no-repeat; 
+    background-position-x: center;
+}
+
+
+
+
+.frame-97::-webkit-scrollbar-button:vertical:decrement{
+
+    background: url('/assets/img/contacts/scrollbar_button_decrement.svg') no-repeat;
+    background-position: center;
+    height: 20px;
+    margin: top 20px;
+    
+}
+.frame-97::-webkit-scrollbar-button:vertical:increment{
+
+    background: url('/assets/img/contacts/scrollbar_button_increment.svg') no-repeat;
+    background-position: center;
+    height: 20px;
+    margin: top 20px;
+    
+}
+
 .contacts-list {
     display: inline-flex;
     padding: 32px 24px;

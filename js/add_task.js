@@ -65,11 +65,11 @@ function checkForInput() {
     let description = document.getElementById('descriptionTextArea').value;
     let dueDate = document.getElementById('date').value;
     if (!inputTitle) {
-        alert("Please input title");
+        alert("Please enter a title");
         return 0;
     }
     if (!description) {
-        alert("Please input description");
+        alert("Please enter a description");
         return 0;
     }
     if (!dueDate) {

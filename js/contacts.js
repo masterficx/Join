@@ -192,7 +192,7 @@ function getFirstLetters() {
 
 }
 function renderContactsList() {
-    // getFirstLetters();
+    sortContactsAlphabetically(Contacts)
     let contactsList = document.getElementById('contacts_list');
     contactsList.innerHTML = "";
     contactsList.innerHTML += `
