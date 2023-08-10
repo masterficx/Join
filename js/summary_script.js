@@ -51,7 +51,7 @@ function welcomeMsgUser() {
     let user = Contacts[currentUser].name;   
     messageUser.innerHTML = user;
     } else {
-        messageUser.innerHTML = 'John Doe';
+        messageUser.innerHTML = '';
     }
 }
 

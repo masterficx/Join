@@ -3,11 +3,13 @@ let currentuser = "Jon Doe";
 //Initialen des eingeloggten Nutzers
 async function includeTemplates() {
     await includeHTML();
-    //.split(' ') erstellt ein Array mit den durch ' ' getrennten Strings 
-    //.join('') erstellt aus dem Array ein String (und entfernt die Kommas).
-    const userinitials = await currentuser.split(' ').map(userinitials => userinitials[0]).join('');
     let currentUserInitials = await document.getElementById('myaccount');
-    currentUserInitials.innerHTML = await `${userinitials}`;
+    if(currentUser) {  
+        currentUserInitials.innerHTML = await `${Contacts[currentUser].firstLetters}`;
+        } else {
+            currentUserInitials.innerHTML = await `G`;
+        }
+   
     //Klasse "active" dem aktuellen Menüpunkt geben
     let linkElement = [];
     linkElement = document.getElementById('menu').getElementsByTagName('a');
