@@ -47,10 +47,10 @@ function welcomeMsgTime() {
 }
 
 //Begrüßung des eingeloggten Nutzers mit Namen
-function welcomeMsgUser() {
-    let messageUser = document.getElementById('welcomemsguser');
-    getContactsFromStorage();
-    let user = Contacts[currentUser].name; 
+async function welcomeMsgUser() {
+    let messageUser = await document.getElementById('welcomemsguser');
+    await getContactsFromStorage();
+    let user = await Contacts[currentUser].name; 
     if(currentUser) {  
     messageUser.innerHTML = user;
     } else {
