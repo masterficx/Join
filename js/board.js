@@ -382,7 +382,7 @@ function renderSubtasksInBoardDetail(i) {
     if (cards[i]['subtasks'].length > 0) {
         for (let j = 0; j < cards[i]['subtasks'].length; j++) {
             document.getElementById(`cardDetailSubTasks${i}`).innerHTML += `
-                <div id="SubTaskHead${j}" class="subtaskAndCheckbox"><input class="SubTaskCheckbox" id="SubTaskCheckbox${i}${j}" ${cards[i]['subtasks'][j]['status']} type="checkbox" onclick="ChangeCheckboxSubtasks(${i}${j})"><div class="label-subtask">${cards[i]['subtasks'][j]['nameSub']}</div></div>
+                <div id="SubTaskHead${j}" class="subtaskAndCheckbox"><input class="SubTaskCheckbox" id="SubTaskCheckbox${i}${j}" ${cards[i]['subtasks'][j]['status']} type="checkbox" onclick="ChangeCheckboxSubtasks(${i},${j})"><div class="label-subtask">${cards[i]['subtasks'][j]['nameSub']}</div></div>
                 `;
         }
     } else {
@@ -392,13 +392,16 @@ function renderSubtasksInBoardDetail(i) {
 }
 
 function ChangeCheckboxSubtasks(i,j) {
-    if (cards[i]['subtasks'][j]['status'] = "checked") {
+    if (cards[i]['subtasks'][j]['status'] == "checked") {
         cards[i]['subtasks'][j]['status'] = "unchecked";
+        cards[i]['progress']--;
     } else {
-        if (cards[i]['subtasks'][j]['status'] = "unchecked") {
+        if (cards[i]['subtasks'][j]['status'] == "unchecked") {
             cards[i]['subtasks'][j]['status'] = "checked";
+            cards[i]['progress']++;
         }
     }
+    renderBoard();
 }
 
 function prioButtonStyle(i) {
