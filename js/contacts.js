@@ -434,6 +434,8 @@ function createNewContact() {
             target.click();
         }, "550");
     }, "550");
+}
+
 function sortContactsAlphabetically(contacts) {
     contacts.sort((a, b) => {
         const nameA = a.firstName.toLowerCase();

@@ -1,5 +1,5 @@
 let currentUser;
-loadcurrentUser(); 
+loadcurrentUser();
 
 // Function to check the login credentials
 function checkLogIn() {
@@ -14,17 +14,17 @@ function checkLogIn() {
 
         if (emailInput.value === email && passwordInput.value === password) {
             isLoggedIn = true;
-            
+
             currentUser = i;
             console.log(currentUser);
             localStorage.setItem('currentUser', currentUser);
-            window.location.href ='summary.html';
+            window.location.href = 'summary.html';
             break; // Exit the loop since no further checking is needed
-        }                                                       
+        }
     }
 
     if (!isLoggedIn) { // If the login check is successful, call the function test()
-    // If the login check fails, display an error message and highlight the password input field
+        // If the login check fails, display an error message and highlight the password input field
         passwordAlert.textContent = "Wrong password Ups! Try again";
         passwordInput.parentElement.classList.add('redInput');
 
@@ -47,5 +47,5 @@ function loadcurrentUser() {
 
 function guestLogIn() {
     localStorage.setItem('currentUser', 0);
-    window.location.href ='summary.html';
+    window.location.href = 'summary.html';
 }
