@@ -1,97 +1,97 @@
 let Contacts = [
-    {
-        "firstName": "Guest",
-        "lastName": "Guest",
-        "phone": 1234567890001,
-        "email": "guest@hotmail.com",
-        "color": "#02CF2F",
-        "firstLetters": "GG",
-        "name": "Guest",
-        "password": "1234",
-    },
-    {
-        "firstName": "Anja",
-        "lastName": "Schulz",
-        "phone": 1234567890001,
-        "email": "schulz@hotmail.com",
-        "color": "#02CF2F",
-        "firstLetters": "AS",
-        "name": "Anja Schulz",
-        "password": "1234",
-    },
-    {
-        "firstName": "Anton",
-        "lastName": "Mayer",
-        "phone": 987654321,
-        "email": "antom@gmail.com",
-        "color": "#9327FF",
-        "firstLetters": "AM",
-        "name": "Anton Mayer",
-        "password": "1234",
-    },
-    {
-        "firstName": "Benedikt",
-        "lastName": "Ziegler",
-        "phone": 5432167890,
-        "email": "benedikt@gmail.com",
-        "color": "#0190E0",
-        "firstLetters": "BZ",
-        "name": "Benedikt Ziegler",
-        "password": "1234",
-    },
-    {
-        "firstName": "David",
-        "lastName": "Eisenberg",
-        "phone": 6789054321,
-        "email": "davidberg@gmail.com",
-        "color": "#FF5C00",
-        "firstLetters": "DE",
-        "name": "David Eisenberg",
-        "password": "1234",
-    },
-    {
-        "firstName": "Eva",
-        "lastName": "Fischer",
-        "phone": 5432109876,
-        "email": "evag@gmail.com",
-        "color": "#EE00D6",
-        "firstLetters": "EF",
-        "name": "Eva Fischer",
-        "password": "1234",
-    },
-    {
-        "firstName": "Emmanuel",
-        "lastName": "Mauer",
-        "phone": 6789012345,
-        "email": "emmanuelma@gmail.com",
-        "color": "#32DAFF",
-        "firstLetters": "EM",
-        "name": "Emmanuel Mauer",
-        "password": "1234",
-    },
-    {
-        "firstName": "Marcel",
-        "lastName": "Bauer",
-        "phone": 1597532846,
-        "email": "bauer@gmail.com",
-        "color": "#EE00D6",
-        "firstLetters": "MB",
-        "name": "Marcel Bauer",
-        "password": "1234",
-    },
-    {
-        "firstName": "Tatjana",
-        "lastName": "Wolf",
-        "phone": 3579513264,
-        "email": "wolf@gmail.com",
-        "color": "#CB02CF",
-        "firstLetters": "TW",
-        "name": "Tatjana Wolf",
-        "password": "1234",
-    }
+    // {
+    //     "firstName": "Guest",
+    //     "lastName": "Guest",
+    //     "phone": 1234567890001,
+    //     "email": "guest@hotmail.com",
+    //     "color": "#02CF2F",
+    //     "firstLetters": "GG",
+    //     "name": "Guest",
+    //     "password": "1234",
+    // },
+    // {
+    //     "firstName": "Anja",
+    //     "lastName": "Schulz",
+    //     "phone": 1234567890001,
+    //     "email": "schulz@hotmail.com",
+    //     "color": "#02CF2F",
+    //     "firstLetters": "AS",
+    //     "name": "Anja Schulz",
+    //     "password": "1234",
+    // },
+    // {
+    //     "firstName": "Anton",
+    //     "lastName": "Mayer",
+    //     "phone": 987654321,
+    //     "email": "antom@gmail.com",
+    //     "color": "#9327FF",
+    //     "firstLetters": "AM",
+    //     "name": "Anton Mayer",
+    //     "password": "1234",
+    // },
+    // {
+    //     "firstName": "Benedikt",
+    //     "lastName": "Ziegler",
+    //     "phone": 5432167890,
+    //     "email": "benedikt@gmail.com",
+    //     "color": "#0190E0",
+    //     "firstLetters": "BZ",
+    //     "name": "Benedikt Ziegler",
+    //     "password": "1234",
+    // },
+    // {
+    //     "firstName": "David",
+    //     "lastName": "Eisenberg",
+    //     "phone": 6789054321,
+    //     "email": "davidberg@gmail.com",
+    //     "color": "#FF5C00",
+    //     "firstLetters": "DE",
+    //     "name": "David Eisenberg",
+    //     "password": "1234",
+    // },
+    // {
+    //     "firstName": "Eva",
+    //     "lastName": "Fischer",
+    //     "phone": 5432109876,
+    //     "email": "evag@gmail.com",
+    //     "color": "#EE00D6",
+    //     "firstLetters": "EF",
+    //     "name": "Eva Fischer",
+    //     "password": "1234",
+    // },
+    // {
+    //     "firstName": "Emmanuel",
+    //     "lastName": "Mauer",
+    //     "phone": 6789012345,
+    //     "email": "emmanuelma@gmail.com",
+    //     "color": "#32DAFF",
+    //     "firstLetters": "EM",
+    //     "name": "Emmanuel Mauer",
+    //     "password": "1234",
+    // },
+    // {
+    //     "firstName": "Marcel",
+    //     "lastName": "Bauer",
+    //     "phone": 1597532846,
+    //     "email": "bauer@gmail.com",
+    //     "color": "#EE00D6",
+    //     "firstLetters": "MB",
+    //     "name": "Marcel Bauer",
+    //     "password": "1234",
+    // },
+    // {
+    //     "firstName": "Tatjana",
+    //     "lastName": "Wolf",
+    //     "phone": 3579513264,
+    //     "email": "wolf@gmail.com",
+    //     "color": "#CB02CF",
+    //     "firstLetters": "TW",
+    //     "name": "Tatjana Wolf",
+    //     "password": "1234",
+    // }
 ]
 
-let nameTagsColors = ['#FF7A00', '#9327FF', '#29ABE2', '#FC71FF', '#02CF2F', '#AF1616', '#462F8A', '#FFC700', '#FF7A00', '#9327FF', '#29ABE2', '#FC71FF', '#02CF2F', '#AF1616', '#462F8A', '#FFC700'];
+let nameTagsColors = ['#FF7A00', '#9327FF', '#29ABE2', '#FC71FF', '#02CF2F', '#AF1616', '#462F8A', '#FFC700', '#FF7A00', '#9327FF', '#29ABE2', '#FC71FF', '#02CF2F', '#AF1616', '#462F8A', '#FFC700','#FF7A00', '#9327FF', '#29ABE2', '#FC71FF', '#02CF2F', '#AF1616', '#462F8A', '#FFC700','#FF7A00', '#9327FF', '#29ABE2', '#FC71FF', '#02CF2F', '#AF1616', '#462F8A', '#FFC700'];
 let firstLetters = [];
 let editSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 <mask id="mask0_73072_5024" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
@@ -192,6 +192,7 @@ function getFirstLetters() {
 
 }
 function renderContactsList() {
+    getContactsFromStorage();
     sortContactsAlphabetically(Contacts)
     let contactsList = document.getElementById('contacts_list');
     contactsList.innerHTML = "";
@@ -329,6 +330,7 @@ function deleteContact(x) {
 
     Contacts.splice(x, 1);
     document.getElementById('floating_contact').innerHTML = '';
+    saveContactsToStorage();
     renderContactsList();
 }
 
@@ -415,15 +417,25 @@ function createNewContact() {
     let lastName = nameArray[1];
     let emailInput = document.getElementById('add_contact_email').value;
     let phoneInput = document.getElementById('add_contact_phone').value;
+    let firstTwoLetters = firstName.charAt(0) + lastName.charAt(0);
+    let fullName = firstName+lastName;
     let newContact = {
                     "firstName":  firstName ,
                     "lastName":  lastName ,
                     "phone":  phoneInput,
                     "email":  emailInput ,
+                    "color": "black",
+                    "firstLetters": firstTwoLetters,
+                    "name": fullName,
+                    "password": '1234',
                     };
 
     Contacts.push(newContact);
     sortContactsAlphabetically(Contacts);
+    saveContactsToStorage();
+    let theIndex = Contacts.findIndex(x => x.email ===emailInput);
+    console.log(theIndex);
+    
     closeNewContact();
     renderContactsList();
     let theNewId = findContactIdByEmail(Contacts, emailInput);
@@ -535,6 +547,7 @@ document.getElementById('edit_phone').value = element['phone'];
 function deleteContactFromEdit(x){
     deleteContact(x);
     closeNewContact();
+    saveContactsToStorage();
 
 }
 
@@ -551,6 +564,7 @@ function editContact(x){
     element.lastName = newLastName;
     element.email = newEmail;
     element.phone = newPhone;
+    saveContactsToStorage();
     closeNewContact();
     renderContactsList();
     document.getElementById('floating_contact').innerHTML = "";
@@ -558,4 +572,17 @@ function editContact(x){
         showContactDetails(x)
     }, 500);
 
+}
+
+function saveContactsToStorage(){
+    let contactsAsString = JSON.stringify(Contacts);
+    localStorage.setItem('contacts', contactsAsString);
+}
+
+function getContactsFromStorage(){
+
+    let contactsAsString = localStorage.getItem('contacts');
+    Contacts = JSON.parse(contactsAsString);
+    sortContactsAlphabetically(Contacts);
+    
 }

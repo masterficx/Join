@@ -1,6 +1,7 @@
 /////////////////////// Function to initialize the page ///////////////////////////////////
 function init() {
     startAnimation();
+    getContactsFromStorage();
 }
 
 
@@ -176,6 +177,7 @@ function resetInputField(name, email, password1, password2) {
 
 
 function checkEmail(email) { // check if an email exists
+    getContactsFromStorage();
     for (let i = 0; i < users.length; i++) {
         let userEmail = users[i].email;
         if (email.value === userEmail) {

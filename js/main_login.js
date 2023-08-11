@@ -3,6 +3,7 @@ loadcurrentUser();
 
 // Function to check the login credentials
 function checkLogIn() {
+    getContactsFromStorage();
     let emailInput = document.getElementById('emailInput');
     let passwordInput = document.getElementById('passwordInput');
 

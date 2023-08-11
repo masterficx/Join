@@ -3,6 +3,8 @@ const mediaQueryMobile = window.matchMedia('(max-width: 992px)');
 
 
 async function init() {
+    getContactsFromStorage();
+    getCardsFromStorage();
     welcomeMsgTime();
     welcomeMsgUser();
     addClassMobile();
@@ -47,6 +49,7 @@ function welcomeMsgTime() {
 //Begrüßung des eingeloggten Nutzers mit Namen
 function welcomeMsgUser() {
     let messageUser = document.getElementById('welcomemsguser');
+    getContactsFromStorage();
     let user = Contacts[currentUser].name; 
     if(currentUser) {  
     messageUser.innerHTML = user;

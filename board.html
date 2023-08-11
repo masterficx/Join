@@ -10,13 +10,14 @@
     <script src="js/contacts.js"></script>
     <script src="js/board.js"></script>
     <script src="js/summary_script.js"></script>
+    <script src="js/main_login.js"></script>
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/add_task.css">
     <link rel="stylesheet" href="css/board.css">
     <link rel="stylesheet" href="assets/fonts/fonts.css">
 </head>
 
-<body onload="includeTemplates();init();renderBoard()">
+<body onload="includeTemplates();getContactsFromStorage();init();renderBoard()">
     <div w3-include-html="add_task.html" class="d-none" id="addTaskOverlay"></div>
     <div class="AllMainBoard">
         <div class="middle">

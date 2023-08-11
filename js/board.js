@@ -1,104 +1,104 @@
 let cards = [
-    {
-        "category": "Design",
-        "title": "Update Website Mainpage",
-        "description": 'Rework the general design and functions for better user experience. Optimize the buttons and links.',
-        "progress": 0,
-        "assignedUser": [Contacts[1]['firstLetters'], Contacts[2]['firstLetters'], Contacts[5]['firstLetters']],
-        "assignedUserFullName": [Contacts[1]['name'], Contacts[2]['name'], Contacts[5]['name']],
-        "prio": "High",
-        "dueDate": "2022-08-14",
-        "subtasks": [
-            { nameSub: "General Design", status: "unchecked" },
-            { nameSub: "Functions", status: "unchecked" },
-            { nameSub: "Buttons and Links", status: "unchecked" }
-        ],
-        "listType": "ToDo",
-    },
-    {
-        "category": "Backoffice",
-        "title": "Organize Financial Records",
-        "description": 'Review and organize financial records, including invoices, receipts, and expense reports, to ensure accurate bookkeeping and easy retrieval for auditing purposes.',
-        "progress": 1,
-        "assignedUser": [Contacts[3]['firstLetters'], Contacts[4]['firstLetters']],
-        "assignedUserFullName": [Contacts[3]['name'], Contacts[4]['name']],
-        "prio": "Low",
-        "dueDate": "2022-08-14",
-        "subtasks": [],
-        "listType": "InProgress"
-    },
-    {
-        "category": "Marketing",
-        "title": "Review project proposal",
-        "description": 'Thoroughly review the project proposal and provide feedback on its feasibility, strategic alignment, and potential impact. Assess the proposed budget, timeline, and resource allocation. Identify any areas of improvement or concerns and communicate them to the project team.',
-        "progress": 2,
-        "assignedUser": [Contacts[1]['firstLetters'], Contacts[6]['firstLetters']],
-        "assignedUserFullName": [Contacts[1]['name'], Contacts[6]['name']],
-        "prio": "Mid",
-        "dueDate": "2022-08-14",
-        "subtasks": [
-            { nameSub: "Test Subtask 1", status: "checked" },
-            { nameSub: "Test Subtask 2", status: "checked" }
-        ],
-        "listType": "Done"
-    },
-    {
-        "category": "Media",
-        "title": "Video cut",
-        "description": 'Edit latest company video and review further clips',
-        "progress": 1,
-        "assignedUser": [Contacts[2]['firstLetters'], Contacts[5]['firstLetters']],
-        "assignedUserFullName": [Contacts[2]['name'], Contacts[5]['name']],
-        "prio": "High",
-        "dueDate": "2022-08-14",
-        "subtasks": [
-            { nameSub: "Edit video", status: "checked" },
-            { nameSub: "Review clips", status: "unchecked" },
-        ],
-        "listType": "Awaitingfeedback"
-    },
-    {
-        "category": "Backoffice",
-        "title": "Prepare quarterly report",
-        "description": 'Compile financial data and analysis to create a comprehensive quarterly report for the management team. Include key performance indicators, budget analysis, and recommendations for improvement.',
-        "progress": 1,
-        "assignedUser": [Contacts[1]['firstLetters'], Contacts[4]['firstLetters']],
-        "assignedUserFullName": [Contacts[1]['name'], Contacts[4]['name']],
-        "prio": "Mid",
-        "dueDate": "2022-08-14",
-        "subtasks": [
-            { nameSub: "Compile Data", status: "checked" },
-            { nameSub: "Key performance indicators", status: "unchecked" }
-        ],
-        "listType": "InProgress"
-    },
-    {
-        "category": "Sales",
-        "title": "Call potential clients",
-        "description": 'Create product presentation and general portfolio.',
-        "progress": 0,
-        "assignedUser": [Contacts[2]['firstLetters'], Contacts[5]['firstLetters'], Contacts[1]['firstLetters'], Contacts[3]['firstLetters']],
-        "assignedUserFullName": [Contacts[2]['name'], Contacts[5]['name'], Contacts[1]['name'], Contacts[3]['name']],
-        "prio": "Mid",
-        "dueDate": "2022-08-14",
-        "subtasks": [
-            { nameSub: "Presentation", status: "unchecked" },
-            { nameSub: "Portfolio", status: "unchecked" }
-        ],
-        "listType": "ToDo"
-    },
-    {
-        "category": "Marketing",
-        "title": "Create advertising material for latest product linups",
-        "description": 'Create powerpoint presentation as well as flyer for all new products.',
-        "progress": 0,
-        "assignedUser": [Contacts[4]['firstLetters'], Contacts[5]['firstLetters'], Contacts[6]['firstLetters']],
-        "assignedUserFullName": [Contacts[4]['name'], Contacts[5]['name'], Contacts[6]['name']],
-        "prio": "Mid",
-        "dueDate": "2022-08-14",
-        "subtasks": [],
-        "listType": "InProgress"
-    }
+    // {
+    //     "category": "Design",
+    //     "title": "Update Website Mainpage",
+    //     "description": 'Rework the general design and functions for better user experience. Optimize the buttons and links.',
+    //     "progress": 0,
+    //     "assignedUser": [Contacts[1]['firstLetters'], Contacts[2]['firstLetters'], Contacts[5]['firstLetters']],
+    //     "assignedUserFullName": [Contacts[1]['name'], Contacts[2]['name'], Contacts[5]['name']],
+    //     "prio": "High",
+    //     "dueDate": "2022-08-14",
+    //     "subtasks": [
+    //         { nameSub: "General Design", status: "unchecked" },
+    //         { nameSub: "Functions", status: "unchecked" },
+    //         { nameSub: "Buttons and Links", status: "unchecked" }
+    //     ],
+    //     "listType": "ToDo",
+    // },
+    // {
+    //     "category": "Backoffice",
+    //     "title": "Organize Financial Records",
+    //     "description": 'Review and organize financial records, including invoices, receipts, and expense reports, to ensure accurate bookkeeping and easy retrieval for auditing purposes.',
+    //     "progress": 1,
+    //     "assignedUser": [Contacts[3]['firstLetters'], Contacts[4]['firstLetters']],
+    //     "assignedUserFullName": [Contacts[3]['name'], Contacts[4]['name']],
+    //     "prio": "Low",
+    //     "dueDate": "2022-08-14",
+    //     "subtasks": [],
+    //     "listType": "InProgress"
+    // },
+    // {
+    //     "category": "Marketing",
+    //     "title": "Review project proposal",
+    //     "description": 'Thoroughly review the project proposal and provide feedback on its feasibility, strategic alignment, and potential impact. Assess the proposed budget, timeline, and resource allocation. Identify any areas of improvement or concerns and communicate them to the project team.',
+    //     "progress": 2,
+    //     "assignedUser": [Contacts[1]['firstLetters'], Contacts[6]['firstLetters']],
+    //     "assignedUserFullName": [Contacts[1]['name'], Contacts[6]['name']],
+    //     "prio": "Mid",
+    //     "dueDate": "2022-08-14",
+    //     "subtasks": [
+    //         { nameSub: "Test Subtask 1", status: "checked" },
+    //         { nameSub: "Test Subtask 2", status: "checked" }
+    //     ],
+    //     "listType": "Done"
+    // },
+    // {
+    //     "category": "Media",
+    //     "title": "Video cut",
+    //     "description": 'Edit latest company video and review further clips',
+    //     "progress": 1,
+    //     "assignedUser": [Contacts[2]['firstLetters'], Contacts[5]['firstLetters']],
+    //     "assignedUserFullName": [Contacts[2]['name'], Contacts[5]['name']],
+    //     "prio": "High",
+    //     "dueDate": "2022-08-14",
+    //     "subtasks": [
+    //         { nameSub: "Edit video", status: "checked" },
+    //         { nameSub: "Review clips", status: "unchecked" },
+    //     ],
+    //     "listType": "Awaitingfeedback"
+    // },
+    // {
+    //     "category": "Backoffice",
+    //     "title": "Prepare quarterly report",
+    //     "description": 'Compile financial data and analysis to create a comprehensive quarterly report for the management team. Include key performance indicators, budget analysis, and recommendations for improvement.',
+    //     "progress": 1,
+    //     "assignedUser": [Contacts[1]['firstLetters'], Contacts[4]['firstLetters']],
+    //     "assignedUserFullName": [Contacts[1]['name'], Contacts[4]['name']],
+    //     "prio": "Mid",
+    //     "dueDate": "2022-08-14",
+    //     "subtasks": [
+    //         { nameSub: "Compile Data", status: "checked" },
+    //         { nameSub: "Key performance indicators", status: "unchecked" }
+    //     ],
+    //     "listType": "InProgress"
+    // },
+    // {
+    //     "category": "Sales",
+    //     "title": "Call potential clients",
+    //     "description": 'Create product presentation and general portfolio.',
+    //     "progress": 0,
+    //     "assignedUser": [Contacts[2]['firstLetters'], Contacts[5]['firstLetters'], Contacts[1]['firstLetters'], Contacts[3]['firstLetters']],
+    //     "assignedUserFullName": [Contacts[2]['name'], Contacts[5]['name'], Contacts[1]['name'], Contacts[3]['name']],
+    //     "prio": "Mid",
+    //     "dueDate": "2022-08-14",
+    //     "subtasks": [
+    //         { nameSub: "Presentation", status: "unchecked" },
+    //         { nameSub: "Portfolio", status: "unchecked" }
+    //     ],
+    //     "listType": "ToDo"
+    // },
+    // {
+    //     "category": "Marketing",
+    //     "title": "Create advertising material for latest product linups",
+    //     "description": 'Create powerpoint presentation as well as flyer for all new products.',
+    //     "progress": 0,
+    //     "assignedUser": [Contacts[4]['firstLetters'], Contacts[5]['firstLetters'], Contacts[6]['firstLetters']],
+    //     "assignedUserFullName": [Contacts[4]['name'], Contacts[5]['name'], Contacts[6]['name']],
+    //     "prio": "Mid",
+    //     "dueDate": "2022-08-14",
+    //     "subtasks": [],
+    //     "listType": "InProgress"
+    // }
 ];
 
 let categories = [{
@@ -156,6 +156,8 @@ function renderBoard() {
 }
 
 function renderBoardCards() {
+    getContactsFromStorage();
+    getCardsFromStorage();
     clearBoardCards();
     for (let i = 0; i < cards.length; i++) {
         if (cards[i]['listType'] == 'ToDo') {
@@ -429,6 +431,7 @@ function deleteCard(i) {
     console.log('deleted', i);
     cards.splice(i, 1);
     closeOverlay();
+    saveCardsToStorage();
 }
 
 function editCard(i) {
@@ -510,6 +513,7 @@ function saveEditedCard(i) {
     cards[i]['prio'] = prioValue;
     cards[i]['assignedUser'] = document.getElementById('editCardAssignedTo').value;
     cards.push();
+    saveCardsToStorage;
     openCard(i);
     document.getElementById('CardEditForm').style = "display:none;";
 }
@@ -523,6 +527,20 @@ function allowDrop(ev) {
 }
 
 function moveTo(listType) {
+    getCardsFromStorage();
     cards[currentDraggedElement]['listType'] = listType.slice(9);
+    saveCardsToStorage();
     renderBoard();
+}
+
+function saveCardsToStorage() {
+    let cardsAsString = JSON.stringify(cards);
+    localStorage.setItem('cards', cardsAsString);
+}
+
+function getCardsFromStorage(){
+
+    let cardsAsString = localStorage.getItem('cards');
+    cards = JSON.parse(cardsAsString);
+    
 }
