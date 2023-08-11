@@ -28,7 +28,7 @@ html::-webkit-scrollbar {
 
 .cardBoardAll {
     min-height: 240px;
-    min-width: 12vw;
+    width: 250px;
     margin-bottom: 0px;
 }
 
@@ -843,7 +843,9 @@ input#editCardDueDate {
     }
 
     .headBoardRight {
-        gap: 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
     }
 
     .middle .content {
@@ -932,9 +934,6 @@ input#editCardDueDate {
     }
 }
 
-@media(min-width: 2050px) {
-    .content {
-        padding-left: 100px !important;
-        padding-right: 0px !important;
-    }
-}
+/* @media(max-width: 3440px) {
+    
+} */
