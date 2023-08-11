@@ -485,7 +485,7 @@ for(b=0;b<cards[i]['subtasks'].length; b++){
 
 function editLoadedSubtasks(i,b){
     let editSubtaskInput = document.getElementById(`subtasklist`);
-    editSubtaskInput.innerHTML = `<input type="text" id='inputEditTask${b}'><div class="editactionlinks" style="display:none;" id="editsubtaskbtn"><a href="#" onclick="cancelEditedSubtask(${i},${b})">Del</a><a href="#" onclick="saveEditedSubtask(${i},${b})">Save</a></div>`;
+    editSubtaskInput.innerHTML = `<input type="text" id='inputEditTask${b}'><div class="editactionlinks" style="display:none;" id="editsubtaskbtn"><a href="#" onclick="cancelEditedSubtask(${i},${b})">Cancel</a><a href="#" onclick="saveEditedSubtask(${i},${b})">Save</a></div>`;
     document.getElementById('editsubtaskbtn').style.display = "block";
     let editSubtaskInputValue = document.getElementById(`inputEditTask${b}`);
     editSubtaskInputValue.value = `${cards[i]['subtasks'][b].nameSub}`;
