@@ -498,7 +498,7 @@ function prioValueForSaving(h) {
         prioValue = "High";
     } else
         if (h == 1) {
-            prioValue = "Medium";
+            prioValue = "Mid";
         } else
             if (h == 2) {
                 prioValue = "Low";
