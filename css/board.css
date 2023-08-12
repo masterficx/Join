@@ -409,7 +409,7 @@ div#subtask_main2 h5 {
 img.close-card {
     position: absolute;
     right: 30px;
-    top: 45px;
+    top: 25px;
 }
 
 img.close-card:hover {
