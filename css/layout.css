@@ -96,6 +96,9 @@ a.help {
 .title {
     display: flex;
     align-items: center;
+}
+
+.static-content .title {
     justify-content: space-between;
 }
 
