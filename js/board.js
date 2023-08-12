@@ -405,6 +405,7 @@ function ChangeCheckboxSubtasks(i,j) {
             cards[i]['progress']++;
         }
     }
+    saveCardsToStorage();
     renderBoard();
 }
 
