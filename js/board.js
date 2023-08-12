@@ -537,7 +537,7 @@ function addSubtask2(i) {
         <path d="M12.0011 12.0002L12.0018 19.4149M4.58641 12.0008L12.0011 12.0002L4.58641 12.0008ZM19.4159 11.9995L12.0004 11.9995L19.4159 11.9995ZM12.0004 11.9995L12.0005 4.58545L12.0004 11.9995Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>`;
     subtaskMain.innerHTML += `   <div class="boxes" id="boxes${b}">${addedSubtask}<div class="actionlinks"><a href="#" onclick="editLoadedSubtasks(${i},${b})" class="subTaskEdit"><img src="assets/img/board/edit-icon.svg"></a><a href="#" onclick="deleteEditedSubtasks(${i},${b})" class="subTaskDel"><img src="assets/img/board/trash-icon.svg"></a></div></div>`
-    cards[i]['subtasks'].push({ nameSub: addedSubtask, status: "checked" });
+    cards[i]['subtasks'].push({ nameSub: addedSubtask, status: "unchecked" });
     addedSubtasks.push(addedSubtask);
     console.log(addedSubtasks)
     window.subtasks = addedSubtasks;
@@ -603,7 +603,7 @@ function saveEditedCard(i) {
     cards[i]['prio'] = prioValue;
     cards[i]['assignedUser'] = document.getElementById('editCardAssignedTo').value;
     cards.push();
-    saveCardsToStorage;
+    saveCardsToStorage();
     openCard(i);
     document.getElementById('CardEditForm').style = "display:none;";
 }
