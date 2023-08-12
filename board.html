@@ -108,6 +108,7 @@
             <div id="CardContainer" style="display:none;" onclick="doNotClose(event)">
             </div>
             <div id="CardDetail" class="carddetail" style="display:none;" onclick="doNotClose(event)"><img src="assets/img/board/close.svg" alt="Close Icon" onclick="closeOverlay()" class="close-card">
+                <div class="carddetailinside">
                 <div class="cardBoardInsideCat" id="cardDetailCat"></div>
                 <div class="cardBoardInsideTitle" id="cardDetailTitle"></div>
                 <div class="cardBoardInsideDescription" id="cardDetailDesc"></div>
@@ -120,8 +121,10 @@
                     <div id="editCard"></div>
                 </div>
             </div>
+            </div>
 
             <div id="CardEditForm" class="carddetail" style="display:none;" onclick="doNotClose(event)"><img src="assets/img/board/close.svg" alt="Close Icon" onclick="closeOverlay()" class="close-card">
+                <div class="carddetailinside">
                 <div class="cardBoardInsideCatEdit" id="cardDetailCatEdit"><span class="editlabel">Title</span><input type="text" id="editCardTitle"></div>
                 <div class="cardBoardInsideCatEdit" id="cardDetailCatEdit"><span class="editlabel">Description</span><textarea type="text" id="editCardDescription"></textarea></div>
                 <div class="cardBoardInsideCatEdit" id="cardDetailCatEdit"><span class="editlabel">Due date</span><input type="date" id="editCardDueDate"></div>
@@ -131,6 +134,7 @@
                 <div class="cartdetailaction">
                     <div id="editCardSave">Ok</div>
                 </div>
+            </div>
             </div>
         </div>
 </body>
