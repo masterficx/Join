@@ -209,6 +209,11 @@ html::-webkit-scrollbar {
     cursor: pointer;
 }
 
+.dragging {
+    transform: rotate(15deg);
+    transition: all 125ms;
+}
+
 .cardBoardInside {
     width: 100%;
     display: flex;
