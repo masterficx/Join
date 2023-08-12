@@ -9,12 +9,13 @@
     <script src="js/include.js"></script>
     <script src="js/contacts.js"></script>
     <script src="js/board.js"></script>
+    <script src="js/main_login.js"></script>
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/summary_style.css">
     <link rel="stylesheet" href="assets/fonts/fonts.css">
 </head>
 
-<body onload="includeTemplates()" class="staticpage">
+<body onload="includeTemplates(1)" class="staticpage">
     <div class="main-content">
         <div class="middle">
             <div class="header" w3-include-html="templates/header.html">
@@ -22,7 +23,7 @@
             <div class="content">
                 <div class="static-content">
                     <div class="title">
-                        <h1>Legal Notice</h1>
+                        <h1>Legal Notice</h1><div onclick="window.close()" class="imgHeadingContainer backArrow"></div>
                     </div>
                     <h2>Imprint</h2>
                     <p>

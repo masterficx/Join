@@ -1,7 +1,7 @@
 let currentuser = "Jon Doe";
 
 //Initialen des eingeloggten Nutzers
-async function includeTemplates() {
+async function includeTemplates(a) {
     getContactsFromStorage();
     await includeHTML();
     let currentUserInitials = await document.getElementById('myaccount');
@@ -20,7 +20,9 @@ async function includeTemplates() {
             
         }
     }
-
+    if(a === 1) {
+        hideHeaderMenu();
+    }
 }
 
 async function includeHTML() {
@@ -50,3 +52,9 @@ function showMenu(){
         myAccountMenu.classList.remove('show');   
     };
     }
+
+
+function hideHeaderMenu() {
+    document.getElementById('menu').style.display = "none";
+    document.getElementById('headerRight').style.display = "none";
+}

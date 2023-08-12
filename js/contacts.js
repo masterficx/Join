@@ -587,6 +587,5 @@ function getContactsFromStorage(){
     let contactsAsString = localStorage.getItem('contacts');
     if(contactsAsString){
     Contacts = JSON.parse(contactsAsString);
-    sortContactsAlphabetically(Contacts);
 }
 }

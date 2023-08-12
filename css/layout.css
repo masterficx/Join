@@ -96,6 +96,7 @@ a.help {
 .title {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .title h1 {
@@ -296,6 +297,26 @@ div#headsubmenu a:last-child {
 .static-content ol {
     padding-left: 20px;
 }
+
+
+.imgHeadingContainer {
+    width: 32px;
+    height: 32px;
+}
+
+
+.backArrow {
+    background-image: url("../assets/img/logInSignUp/backArrow.svg");
+    background-repeat: no-repeat;
+    object-fit: fill;
+    background-position: center;
+}
+
+
+.backArrow:hover {
+    background-image: url("../assets/img/logInSignUp/backArrowHover.svg");
+}
+
 
 @media only screen and (max-width: 992px) {
 
