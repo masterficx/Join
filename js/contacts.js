@@ -91,7 +91,10 @@ let Contacts = [
     }
 ]
 
-let nameTagsColors = ['#FF7A00', '#9327FF', '#29ABE2', '#FC71FF', '#02CF2F', '#AF1616', '#462F8A', '#FFC700', '#FF7A00', '#9327FF', '#29ABE2', '#FC71FF', '#02CF2F', '#AF1616', '#462F8A', '#FFC700'];
+
+saveContactsToStorage(); 
+
+let nameTagsColors = ['#FF7A00', '#9327FF', '#29ABE2', '#FC71FF', '#02CF2F', '#AF1616', '#462F8A', '#FFC700', '#FF7A00', '#9327FF', '#29ABE2', '#FC71FF', '#02CF2F', '#AF1616', '#462F8A', '#FFC700','#FF7A00', '#9327FF', '#29ABE2', '#FC71FF', '#02CF2F', '#AF1616', '#462F8A', '#FFC700','#FF7A00', '#9327FF', '#29ABE2', '#FC71FF', '#02CF2F', '#AF1616', '#462F8A', '#FFC700'];
 let firstLetters = [];
 let editSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 <mask id="mask0_73072_5024" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
@@ -192,6 +195,7 @@ function getFirstLetters() {
 
 }
 function renderContactsList() {
+    getContactsFromStorage();
     sortContactsAlphabetically(Contacts)
     let contactsList = document.getElementById('contacts_list');
     contactsList.innerHTML = "";
@@ -329,6 +333,7 @@ function deleteContact(x) {
 
     Contacts.splice(x, 1);
     document.getElementById('floating_contact').innerHTML = '';
+    saveContactsToStorage();
     renderContactsList();
 }
 
@@ -415,15 +420,25 @@ function createNewContact() {
     let lastName = nameArray[1];
     let emailInput = document.getElementById('add_contact_email').value;
     let phoneInput = document.getElementById('add_contact_phone').value;
+    let firstTwoLetters = firstName.charAt(0) + lastName.charAt(0);
+    let fullName = firstName+lastName;
     let newContact = {
                     "firstName":  firstName ,
                     "lastName":  lastName ,
                     "phone":  phoneInput,
                     "email":  emailInput ,
+                    "color": "black",
+                    "firstLetters": firstTwoLetters,
+                    "name": fullName,
+                    "password": '1234',
                     };
 
     Contacts.push(newContact);
     sortContactsAlphabetically(Contacts);
+    saveContactsToStorage();
+    let theIndex = Contacts.findIndex(x => x.email ===emailInput);
+    console.log(theIndex);
+    
     closeNewContact();
     renderContactsList();
     let theNewId = findContactIdByEmail(Contacts, emailInput);
@@ -535,6 +550,7 @@ document.getElementById('edit_phone').value = element['phone'];
 function deleteContactFromEdit(x){
     deleteContact(x);
     closeNewContact();
+    saveContactsToStorage();
 
 }
 
@@ -551,6 +567,7 @@ function editContact(x){
     element.lastName = newLastName;
     element.email = newEmail;
     element.phone = newPhone;
+    saveContactsToStorage();
     closeNewContact();
     renderContactsList();
     document.getElementById('floating_contact').innerHTML = "";
@@ -558,4 +575,18 @@ function editContact(x){
         showContactDetails(x)
     }, 500);
 
+}
+
+function saveContactsToStorage(){
+    let contactsAsString = JSON.stringify(Contacts);
+    localStorage.setItem('contacts', contactsAsString);
+}
+
+function getContactsFromStorage(){
+
+    let contactsAsString = localStorage.getItem('contacts');
+    if(contactsAsString){
+    Contacts = JSON.parse(contactsAsString);
+    sortContactsAlphabetically(Contacts);
+}
 }

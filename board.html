@@ -9,14 +9,16 @@
     <script src="js/include.js"></script>
     <script src="js/contacts.js"></script>
     <script src="js/board.js"></script>
+    <script src="js/add_task.js"></script>
     <script src="js/summary_script.js"></script>
+    <script src="js/main_login.js"></script>
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/add_task.css">
     <link rel="stylesheet" href="css/board.css">
     <link rel="stylesheet" href="assets/fonts/fonts.css">
 </head>
 
-<body onload="includeTemplates();init();renderBoard()">
+<body onload="includeTemplates();getContactsFromStorage();init();renderBoard()">
     <div w3-include-html="add_task.html" class="d-none" id="addTaskOverlay"></div>
     <div class="AllMainBoard">
         <div class="middle">
@@ -125,6 +127,7 @@
                 <div class="cardBoardInsideCatEdit" id="cardDetailCatEdit"><span class="editlabel">Due date</span><input type="date" id="editCardDueDate"></div>
                 <div class="cardBoardInsideCatEdit" id="cardDetailCatEdit"><span class="editlabel">Prio</span><div type="text" id="editCardPrio"><span id="editCardPrio2"></span></div></div>
                 <div class="cardBoardInsideCatEdit" id="cardDetailCatEdit"><span class="editlabel">Assigned to</span><input type="text" id="editCardAssignedTo"></div>
+                <div class="cardBoardInsideCatEdit" id="cardDetailCatEdit"><div id="editCardSubtasks"></div></div>
                 <div class="cartdetailaction">
                     <div id="editCardSave">Ok</div>
                 </div>

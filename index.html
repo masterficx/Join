@@ -9,11 +9,12 @@
     <script src="js/index_script.js"></script>
     <script src="js/main_login.js"></script>
     <script src="js/contacts.js"></script>
+    <script src="js/board.js"></script>
     <link rel="stylesheet" href="css/index_style.css">
     <link rel="stylesheet" href="assets/fonts/fonts.css">
 </head>
 
-<body id="body" onload="renderLogIn(), init()">
+<body id="body" onload="renderLogIn(), init(), getContactsFromStorage()">
     <div id="startBackground" class="startBackground"></div>
     <div id="header" class="header">
         <div class="headerLeft"><img id="logo" class="logo" src="./img/logo.svg" alt="JoinLogo"></div>

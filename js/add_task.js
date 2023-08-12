@@ -226,6 +226,7 @@ function openDropdownContact() {
 function addContactToTask() {
     let addedContactsToTask = [];
     let addedIdsToTask = [];
+    getContactsFromStorage();
     for (let z = 0; z < Contacts.length; z++) {
         const checkbox = document.getElementById("checkBox_" + z);
         const contact = Contacts[z];

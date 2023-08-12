@@ -3,6 +3,8 @@ const mediaQueryMobile = window.matchMedia('(max-width: 992px)');
 
 
 async function init() {
+    getContactsFromStorage();
+    getCardsFromStorage();
     welcomeMsgTime();
     welcomeMsgUser();
     addClassMobile();
@@ -27,6 +29,7 @@ function welcomeMsgTime() {
     const nightend2 = 5;
     let messageTime = document.getElementById('welcomemsgtime');
 
+    if(messageTime){
     if (currenttime >= morningstart && currenttime <= morningend) {
         messageTime.innerHTML = "Good morning";
     };
@@ -43,22 +46,27 @@ function welcomeMsgTime() {
         messageTime.innerHTML = "Good night";
     };
 }
+}
 
 //Begrüßung des eingeloggten Nutzers mit Namen
-function welcomeMsgUser() {
-    let messageUser = document.getElementById('welcomemsguser');
-    let user = Contacts[currentUser].name; 
+async function welcomeMsgUser() {
+    let messageUser = await document.getElementById('welcomemsguser');
+    if(messageUser){
+    await getContactsFromStorage();
+    let user = await Contacts[currentUser].name; 
     if(currentUser) {  
     messageUser.innerHTML = user;
     } else {
         messageUser.innerHTML = '';
     } 
 }
+}
 
 
 //Fügt in der mobilen Version (nach 2 Sekunden) eine Klasse hinzu
 function addClassMobile() {
     let messageContainer = document.getElementById('welcomemsg');
+    if(messageContainer){
     setTimeout(function hideWelcome() {
         if (mediaQueryMobile.matches) {
             messageContainer.classList.add('remove');
@@ -74,6 +82,7 @@ function addClassMobile() {
         }
     }, 2000);
 }
+}
 
 
 //Prüft bei Veränderung die Media Query Conditions
@@ -84,6 +93,7 @@ function addClassMobile() {
 function summaryTasks(){
     //all
     let allBox = document.getElementById('sum-1');
+    if(allBox){
     allBox.innerHTML = `${cards.length}`;
     //progress
     let progressBox = document.getElementById('sum-2');
@@ -101,6 +111,7 @@ function summaryTasks(){
     let doneBox = document.getElementById('sum-6');
     const countDone = cards.filter(item => item.listType === 'Done').length; 
     doneBox.innerHTML = `${countDone}`;
+    }
 }
 
 
@@ -120,7 +131,9 @@ function sortCardsPrioHigh(){
     });
     console.log(filteredPrioHigh);
     let upComingDeadline = document.getElementById('upcomingDeadline');
+    if(upComingDeadline){
     upComingDeadline.innerHTML = filteredPrioHigh[0];
+    }
 }
 
 
