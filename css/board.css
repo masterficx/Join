@@ -817,7 +817,6 @@ div#editCardSubtasks button.add-category-btn {
     display: flex;
 }
 
-/* new! */
 
 div#selectbox input {
     background: url(/assets/img/board/arrow_drop_down.svg);

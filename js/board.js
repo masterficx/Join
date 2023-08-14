@@ -479,7 +479,7 @@ function editCard(i) {
     editCardSave.innerHTML = `<div onclick='saveEditedCard(${[i]})'>Ok`;
     loadActiveStatePrio(i);
     loadSubtasksEditform(i);
-    loadAssignedUserEditForm(i);//new!
+    loadAssignedUserEditForm(i);
 }
 
 function loadSubtasksEditform(i){
@@ -639,7 +639,6 @@ function getCardsFromStorage(){
     }
 }
 
-//new!
 
 // Assigned user in edit card form
 
