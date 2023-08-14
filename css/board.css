@@ -874,6 +874,8 @@ div#assignedUserEditForm {
 
 .addusertocard:hover {
     cursor: pointer;
+    background: #2A3647;
+    color: #fff;
 }
 
 .selectbox {
