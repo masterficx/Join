@@ -126,13 +126,16 @@ sortCardsPrioHigh();
 }
 
 function sortCardsPrioHigh(){
+    let urgentDate = new Date(filteredPrioHigh[0]);
+    let urgenDateFormatted = urgentDate.toLocaleString('en-US', { month: 'long', day: '2-digit', year: 'numeric'});
+
     filteredPrioHigh.forEach(function (role) {
         role = role.replace('-','');
     });
     console.log(filteredPrioHigh);
     let upComingDeadline = document.getElementById('upcomingDeadline');
     if(upComingDeadline){
-    upComingDeadline.innerHTML = filteredPrioHigh[0];
+    upComingDeadline.innerHTML = urgenDateFormatted;
     }
 }
 
