@@ -124,12 +124,13 @@
             </div>
 
             <div id="CardEditForm" class="carddetail" style="display:none;" onclick="doNotClose(event)"><img src="assets/img/board/close.svg" alt="Close Icon" onclick="closeOverlay()" class="close-card">
+                <div class="overlay-transparent" style="display:none;" id="overlaytransparent" onclick="closeTransparentOverlay()"></div>
                 <div class="carddetailinside">
                 <div class="cardBoardInsideCatEdit" id="cardDetailCatEdit"><span class="editlabel">Title</span><input type="text" id="editCardTitle"></div>
                 <div class="cardBoardInsideCatEdit" id="cardDetailCatEdit"><span class="editlabel">Description</span><textarea type="text" id="editCardDescription"></textarea></div>
                 <div class="cardBoardInsideCatEdit" id="cardDetailCatEdit"><span class="editlabel">Due date</span><input type="date" id="editCardDueDate"></div>
                 <div class="cardBoardInsideCatEdit" id="cardDetailCatEdit"><span class="editlabel">Prio</span><div type="text" id="editCardPrio"><span id="editCardPrio2"></span></div></div>
-                <div class="cardBoardInsideCatEdit" id="cardDetailCatEdit"><span class="editlabel">Assigned to</span><div id="assigned_to2"><div class="selectContainer" id="addContact2" onclick="openDropdownContact2()">Select Contacts to assign</div><div id="assignedUserEditForm"></div></div></div>
+                <div class="cardBoardInsideCatEdit" id="cardDetailCatEdit"><span class="editlabel">Assigned to</span><div id="assigned_to2"><div class="selectbox" id="selectbox"></div><div id="selectuser" style="display:none;"></div><div id="assignedUserEditForm"></div></div></div>
                 <div class="cardBoardInsideCatEdit" id="cardDetailCatEdit"><div id="editCardSubtasks"></div></div>
                 <div class="cartdetailaction">
                     <div id="editCardSave">Ok</div>

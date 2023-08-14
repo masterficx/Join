@@ -473,10 +473,13 @@ function editCard(i) {
         <div class="checkboxes" id="added_subtasks_main">
         </div>
     </div>`;
+    let addUserInput = document.getElementById('selectbox');
+    addUserInput.innerHTML = `<input type="text" placeholder="Select Contacts to assign" id="inputassigneduser" onclick="openDropdownContact2(${i})" onkeydown="openDropdownSearch(${i})">`;
     let editCardSave = document.getElementById('editCardSave');
     editCardSave.innerHTML = `<div onclick='saveEditedCard(${[i]})'>Ok`;
     loadActiveStatePrio(i);
     loadSubtasksEditform(i);
+    loadAssignedUserEditForm(i);//new!
 }
 
 function loadSubtasksEditform(i){
@@ -636,7 +639,113 @@ function getCardsFromStorage(){
     }
 }
 
+//new!
+
 // Assigned user in edit card form
-function openDropdownContact2(){
+
+let selectedUser = [];
+
+function openDropdownContact2(i){
+let addContactDropdown = document.getElementById('selectuser');
+let selectBoxActivated = document.getElementById('selectbox');
+let findContact = document.getElementById('inputassigneduser').value;
+let findContactFormatted = findContact.toLowerCase();
+addContactDropdown.innerHTML = "";
+if(addContactDropdown.style.display == "none"){
+    addContactDropdown.style = "display: flex;";
+    selectBoxActivated.classList.add('active');
+    }
+    else{
+        addContactDropdown.style = "display: none;";
+        selectBoxActivated.classList.remove('active');
+    };
+
+for(p=0; p < Contacts.length; p++){
+    if(Contacts[p]['name'].toLowerCase().includes(findContactFormatted)){
+    addContactDropdown.innerHTML += `
+    <div class="addusertocard" onclick="addUser(${i}, ${p})" id="addusercard${p}"><div class="label-card" style="background-color:${Contacts[p]['color']}">${Contacts[p]['firstLetters']}</div><div class="card-name">${Contacts[p]['name']}</div></div>`;
+};
+if(cards[i]['assignedUserFullName'].includes(Contacts[p]['name'])){
+    let addClassAssignedUser = document.getElementById(`addusercard${p}`);
+    addClassAssignedUser.classList.add('added');
+};
+}
+openTransparentOverlay();
+}
+
+function addUser(i,p){
+    let indexOfUser = cards[i]['assignedUserFullName'].indexOf(Contacts[p]['name']);
+    let addClassAssignedUser = document.getElementById(`addusercard${p}`);
+
+    if(indexOfUser == -1){
+    cards[i]['assignedUser'].push( Contacts[p]['firstLetters']);
+    cards[i]['assignedUserFullName'].push(Contacts[p]['name']);
+    selectedUser.push(Contacts[p]);
+    addClassAssignedUser.classList.add('added');
+    console.log(cards[i]['assignedUser']);
+    }
+    else if(cards[i]['assignedUserFullName'].includes(Contacts[p]['name'])){
+
+        cards[i]['assignedUser'].splice(indexOfUser,1);
+        cards[i]['assignedUserFullName'].splice(indexOfUser,1);
+        addClassAssignedUser.classList.remove('added');
+        console.log(cards[i]['assignedUser']);
+    };
 
 }
+
+function openDropdownSearch(i){
+    let addContactDropdown = document.getElementById('selectuser');
+    let findContact = document.getElementById('inputassigneduser').value;
+    let findContactFormatted = findContact.toLowerCase();
+    addContactDropdown.style = "display: flex;";
+    addContactDropdown.innerHTML = "";
+    openTransparentOverlay();
+    for(p=0; p < Contacts.length; p++){
+        if(Contacts[p]['name'].toLowerCase().includes(findContactFormatted)){
+        addContactDropdown.innerHTML += `
+        <div class="addusertocard" onclick="addUser(${i}, ${p})" id="addusercard${p}"><div class="label-card" style="background-color:${Contacts[p]['color']}">${Contacts[p]['firstLetters']}</div><div class="card-name">${Contacts[p]['name']}</div></div>`;
+        openTransparentOverlay();
+    };
+    if(cards[i]['assignedUserFullName'].includes(Contacts[p]['name'])){
+        let addClassAssignedUser = document.getElementById(`addusercard${p}`);
+        addClassAssignedUser.classList.add('added');
+    };
+    }
+
+}
+
+function openTransparentOverlay(){
+let transparentOverlay = document.getElementById('overlaytransparent');
+transparentOverlay.style.display = "block";
+}
+
+function closeTransparentOverlay(){
+    let transparentOverlay = document.getElementById('overlaytransparent');
+    transparentOverlay.style.display = "none";
+    removeDropDownClass();
+    }
+
+
+    function removeDropDownClass(){
+        let addContactDropdown = document.getElementById('selectuser');
+        addContactDropdown.style = "display: none;";
+    }        
+
+
+function loadAssignedUserEditForm(i){
+    let assignedUserEditForm = document.getElementById('assignedUserEditForm');
+    assignedUserEditForm.innerHTML = "";
+    for (let j = 0; j < cards[i]['assignedUser'].length; j++) {
+        assignedUserEditForm.innerHTML += `
+            <div class="label-card" style="background-color:${findUserColor(i, j)}">${cards[i]['assignedUser'][j]}</div>`;
+    }
+}
+
+/*
+function closeDropdownContact2(){
+    let addContactDropdown = document.getElementById('selectuser');
+    let addContactSelect = document.getElementById('addContact2');
+addContactSelect.outerHTML = `<div class="selectArrow" id="addContact2" onclick="openDropdownContact2()"></div>`;
+addContactDropdown.style.display = 'none';
+}*/
