@@ -459,7 +459,7 @@ function editCard(i) {
                                         src="/assets/img/addtask/prio-low.svg" alt="" class="default"><img
                                         src="/assets/img/addtask/prio-low-w.svg" alt="" class="active"></button>
                                 </div>`;
-    document.getElementById('editCardAssignedTo').value = `${cards[i]['assignedUser']}`;
+    //document.getElementById('editCardAssignedTo').value = `${cards[i]['assignedUser']}`;
     document.getElementById('editCardSubtasks').innerHTML = `
     <div class="subtask" id="subtask_main2">
         <h5>Subtasks</h5>
@@ -601,7 +601,7 @@ function saveEditedCard(i) {
     cards[i]['description'] = document.getElementById('editCardDescription').value;
     cards[i]['dueDate'] = document.getElementById('editCardDueDate').value;
     cards[i]['prio'] = prioValue;
-    cards[i]['assignedUser'] = document.getElementById('editCardAssignedTo').value;
+    //cards[i]['assignedUser'] = document.getElementById('editCardAssignedTo').value;
     cards.push();
     saveCardsToStorage();
     openCard(i);
@@ -634,4 +634,9 @@ function getCardsFromStorage(){
     if(cardsAsString){
     cards = JSON.parse(cardsAsString);
     }
+}
+
+// Assigned user in edit card form
+function openDropdownContact2(){
+
 }
