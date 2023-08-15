@@ -152,6 +152,7 @@ let listTypes = [{
 
 let currentDraggedElement;
 
+//Render cards in board by category
 function renderBoard() {
     clearAllListTypesAmount();
     renderBoardCards();
@@ -284,13 +285,13 @@ function renderNoCardsInCardBoard() {
     }
 }
 
+//Open cards detail view
 function clearBoardCards() {
     document.getElementById('cardBoardToDo').innerHTML = '';
     document.getElementById('cardBoardInProgress').innerHTML = '';
     document.getElementById('cardBoardAwaitingfeedback').innerHTML = '';
     document.getElementById('cardBoardDone').innerHTML = '';
 }
-
 
 function openAddTask() {
     document.getElementById('CardContainer').style = "display:block;";
@@ -334,8 +335,6 @@ function filterCards() {
     });
 }
 
-
-
 function openCard(i) {
     document.getElementById('overlay').classList.remove('d-none');
     document.getElementById('CardDetail').style = "display:block;";
@@ -362,7 +361,6 @@ function openCard(i) {
     prioButtonStyle(i);
 }
 
-
 function renderBackgroundColorCategoryDetail(i) {
     let cat = cards[i]['category'];
     let catClassDet = document.getElementById(`cardBoardInsideCategoryDetail${i}`);
@@ -372,7 +370,6 @@ function renderBackgroundColorCategoryDetail(i) {
         } else { }
     };
 }
-
 
 function renderAssignedUserInBoardDetail(i) {
     for (let j = 0; j < cards[i]['assignedUser'].length; j++) {
@@ -440,6 +437,7 @@ function deleteCard(i) {
     saveCardsToStorage();
 }
 
+//Edit cards
 function editCard(i) {
     console.log('edited', i);
     document.getElementById('CardDetail').style = "display:none;";
@@ -509,7 +507,6 @@ function openSubtaskInput2(i) {
     let addSubtaskContainer = document.getElementById('addNewSubtask2');
     addSubtaskContainer.innerHTML = "";
     addSubtaskContainer.innerHTML += `
-        
         <input type="text" placeholder="New subtask" id="added_subtask">
         <button class="close-category-input-btn" onclick="cancelSubtaskInput2()">${smallXSVG}</button>
         <svg height="40" width="3">
@@ -544,7 +541,6 @@ function addSubtask2(i) {
     addedSubtasks.push(addedSubtask);
     console.log(addedSubtasks)
     window.subtasks = addedSubtasks;
-
 }
 
 function deleteEditedSubtasks(i, b) {
@@ -611,6 +607,7 @@ function saveEditedCard(i) {
     document.getElementById('CardEditForm').style = "display:none;";
 }
 
+//Drag and Drop
 function startDragging(i) {
     currentDraggedElement = i;
 }
@@ -626,6 +623,7 @@ function moveTo(listType) {
     renderBoard();
 }
 
+//Save and load cards
 function saveCardsToStorage() {
     let cardsAsString = JSON.stringify(cards);
     localStorage.setItem('cards', cardsAsString);
@@ -639,9 +637,7 @@ function getCardsFromStorage() {
     }
 }
 
-
 // Assigned user in edit card form
-
 function openDropdownContact2(i) {
     let addContactDropdown = document.getElementById('selectuser');
     let selectBoxActivated = document.getElementById('selectbox');
@@ -667,7 +663,6 @@ function openDropdownContact2(i) {
     openTransparentOverlay();
 }
 
-
 function addUser(i, p) {
     let indexOfUser = cards[i]['assignedUserFullName'].indexOf(Contacts[p]['name']);
     let addClassAssignedUser = document.getElementById(`addusercard${p}`);
@@ -683,9 +678,7 @@ function addUser(i, p) {
         addClassAssignedUser.classList.remove('added');
         console.log(cards[i]['assignedUser']);
     };
-
 }
-
 
 function openDropdownSearch(i) {
     let addContactDropdown = document.getElementById('selectuser');
@@ -702,7 +695,6 @@ function openDropdownSearch(i) {
     }
 }
 
-
 function loadAssignedUserToForm(i, p) {
     let findContact = document.getElementById('inputassigneduser').value;
     let findContactFormatted = findContact.toLowerCase();
@@ -713,12 +705,10 @@ function loadAssignedUserToForm(i, p) {
     }
 }
 
-
 function openTransparentOverlay() {
     let transparentOverlay = document.getElementById('overlaytransparent');
     transparentOverlay.style.display = "block";
 }
-
 
 function closeTransparentOverlay() {
     let transparentOverlay = document.getElementById('overlaytransparent');
@@ -726,12 +716,10 @@ function closeTransparentOverlay() {
     removeDropDownClass();
 }
 
-
 function removeDropDownClass() {
     let addContactDropdown = document.getElementById('selectuser');
     addContactDropdown.style = "display: none;";
 }
-
 
 function loadAssignedUserEditForm(i) {
     let assignedUserEditForm = document.getElementById('assignedUserEditForm');
