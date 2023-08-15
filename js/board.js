@@ -395,7 +395,7 @@ function renderSubtasksInBoardDetail(i) {
     }
 }
 
-function ChangeCheckboxSubtasks(i,j) {
+function ChangeCheckboxSubtasks(i, j) {
     if (cards[i]['subtasks'][j]['status'] == "checked") {
         cards[i]['subtasks'][j]['status'] = "unchecked";
         cards[i]['progress']--;
@@ -482,15 +482,15 @@ function editCard(i) {
     loadAssignedUserEditForm(i);
 }
 
-function loadSubtasksEditform(i){
+function loadSubtasksEditform(i) {
     let subtaskMain = document.getElementById('subtasklist');
     subtaskMain.innerHTML = '';
-for(b=0;b<cards[i]['subtasks'].length; b++){
-    subtaskMain.innerHTML += `<div class="boxes" id="boxes${b}">• ${cards[i]['subtasks'][b].nameSub}<div class="actionlinks"><a href="#" onclick="editLoadedSubtasks(${i},${b})" class="subTaskEdit"><img src="assets/img/board/edit-icon.svg"></a><a href="#" onclick="deleteEditedSubtasks(${i},${b})" class="subTaskDel"><img src="assets/img/board/trash-icon.svg"></a></div></div>`;
-}
+    for (b = 0; b < cards[i]['subtasks'].length; b++) {
+        subtaskMain.innerHTML += `<div class="boxes" id="boxes${b}">• ${cards[i]['subtasks'][b].nameSub}<div class="actionlinks"><a href="#" onclick="editLoadedSubtasks(${i},${b})" class="subTaskEdit"><img src="assets/img/board/edit-icon.svg"></a><a href="#" onclick="deleteEditedSubtasks(${i},${b})" class="subTaskDel"><img src="assets/img/board/trash-icon.svg"></a></div></div>`;
+    }
 }
 
-function editLoadedSubtasks(i,b){
+function editLoadedSubtasks(i, b) {
     let editSubtaskInput = document.getElementById(`subtasklist`);
     editSubtaskInput.innerHTML = `<input type="text" id='inputEditTask${b}'><div class="editactionlinks" style="display:none;" id="editsubtaskbtn"><a href="#" onclick="cancelEditedSubtask(${i},${b})" class="subdellink"><img src="assets/img/board/trash-icon.svg"></a><a href="#" onclick="saveEditedSubtask(${i},${b})" class="subedilink"><img src="assets/img/board/check-icon.svg"></a></div>`;
     document.getElementById('editsubtaskbtn').style.display = "flex";
@@ -498,7 +498,7 @@ function editLoadedSubtasks(i,b){
     editSubtaskInputValue.value = `${cards[i]['subtasks'][b].nameSub}`;
 }
 
-function saveEditedSubtask(i,b){
+function saveEditedSubtask(i, b) {
     document.getElementById('editsubtaskbtn').style.display = "none";
     let editSubtaskInputValue = document.getElementById(`inputEditTask${b}`);
     cards[i]['subtasks'][b].nameSub = editSubtaskInputValue.value;
@@ -519,7 +519,7 @@ function openSubtaskInput2(i) {
         `;
 }
 
-function cancelEditedSubtask(i,b){
+function cancelEditedSubtask(i, b) {
     loadSubtasksEditform(i);
 }
 
@@ -534,7 +534,7 @@ function cancelSubtaskInput2() {
 function addSubtask2(i) {
     let subtaskMain = document.getElementById('subtasklist');
     let addSubtaskContainer = document.getElementById('addNewSubtask2');
-    let addedSubtask = document.getElementById('added_subtask').value; 
+    let addedSubtask = document.getElementById('added_subtask').value;
     addSubtaskContainer.innerHTML = `<p>Add new subtask</p>
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" onclick="openSubtaskInput2(${i})">
         <path d="M12.0011 12.0002L12.0018 19.4149M4.58641 12.0008L12.0011 12.0002L4.58641 12.0008ZM19.4159 11.9995L12.0004 11.9995L19.4159 11.9995ZM12.0004 11.9995L12.0005 4.58545L12.0004 11.9995Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -547,8 +547,8 @@ function addSubtask2(i) {
 
 }
 
-function deleteEditedSubtasks(i, b){
-    cards[i]['subtasks'].splice(b,1);
+function deleteEditedSubtasks(i, b) {
+    cards[i]['subtasks'].splice(b, 1);
     loadSubtasksEditform(i);
 }
 
@@ -631,108 +631,109 @@ function saveCardsToStorage() {
     localStorage.setItem('cards', cardsAsString);
 }
 
-function getCardsFromStorage(){
+function getCardsFromStorage() {
 
     let cardsAsString = localStorage.getItem('cards');
-    if(cardsAsString){
-    cards = JSON.parse(cardsAsString);
+    if (cardsAsString) {
+        cards = JSON.parse(cardsAsString);
     }
 }
 
 
 // Assigned user in edit card form
 
-let selectedUser = [];
-
-function openDropdownContact2(i){
-let addContactDropdown = document.getElementById('selectuser');
-let selectBoxActivated = document.getElementById('selectbox');
-let findContact = document.getElementById('inputassigneduser').value;
-let findContactFormatted = findContact.toLowerCase();
-addContactDropdown.innerHTML = "";
-if(addContactDropdown.style.display == "none"){
-    addContactDropdown.style = "display: flex;";
-    selectBoxActivated.classList.add('active');
+function openDropdownContact2(i) {
+    let addContactDropdown = document.getElementById('selectuser');
+    let selectBoxActivated = document.getElementById('selectbox');
+    let findContact = document.getElementById('inputassigneduser').value;
+    let findContactFormatted = findContact.toLowerCase();
+    addContactDropdown.innerHTML = "";
+    if (addContactDropdown.style.display == "none") {
+        addContactDropdown.style = "display: flex;";
+        selectBoxActivated.classList.add('active');
     }
-    else{
+    else {
         addContactDropdown.style = "display: none;";
         selectBoxActivated.classList.remove('active');
     };
 
-for(p=0; p < Contacts.length; p++){
-    if(Contacts[p]['name'].toLowerCase().includes(findContactFormatted)){
-    addContactDropdown.innerHTML += `
-    <div class="addusertocard" onclick="addUser(${i}, ${p})" id="addusercard${p}"><div class="label-card" style="background-color:${Contacts[p]['color']}">${Contacts[p]['firstLetters']}</div><div class="card-name">${Contacts[p]['name']}</div></div>`;
-};
-if(cards[i]['assignedUserFullName'].includes(Contacts[p]['name'])){
-    let addClassAssignedUser = document.getElementById(`addusercard${p}`);
-    addClassAssignedUser.classList.add('added');
-};
-}
-openTransparentOverlay();
+    for (p = 0; p < Contacts.length; p++) {
+        loadAssignedUserToForm(i, p);
+        if (cards[i]['assignedUserFullName'].includes(Contacts[p]['name'])) {
+            let addClassAssignedUser = document.getElementById(`addusercard${p}`);
+            addClassAssignedUser.classList.add('added');
+        };
+    }
+    openTransparentOverlay();
 }
 
-function addUser(i,p){
+
+function addUser(i, p) {
     let indexOfUser = cards[i]['assignedUserFullName'].indexOf(Contacts[p]['name']);
     let addClassAssignedUser = document.getElementById(`addusercard${p}`);
-
-    if(indexOfUser == -1){
-    cards[i]['assignedUser'].push( Contacts[p]['firstLetters']);
-    cards[i]['assignedUserFullName'].push(Contacts[p]['name']);
-    selectedUser.push(Contacts[p]);
-    addClassAssignedUser.classList.add('added');
-    console.log(cards[i]['assignedUser']);
+    if (indexOfUser == -1) {
+        cards[i]['assignedUser'].push(Contacts[p]['firstLetters']);
+        cards[i]['assignedUserFullName'].push(Contacts[p]['name']);
+        addClassAssignedUser.classList.add('added');
+        console.log(cards[i]['assignedUser']);
     }
-    else if(cards[i]['assignedUserFullName'].includes(Contacts[p]['name'])){
-
-        cards[i]['assignedUser'].splice(indexOfUser,1);
-        cards[i]['assignedUserFullName'].splice(indexOfUser,1);
+    else if (cards[i]['assignedUserFullName'].includes(Contacts[p]['name'])) {
+        cards[i]['assignedUser'].splice(indexOfUser, 1);
+        cards[i]['assignedUserFullName'].splice(indexOfUser, 1);
         addClassAssignedUser.classList.remove('added');
         console.log(cards[i]['assignedUser']);
     };
 
 }
 
-function openDropdownSearch(i){
+
+function openDropdownSearch(i) {
     let addContactDropdown = document.getElementById('selectuser');
-    let findContact = document.getElementById('inputassigneduser').value;
-    let findContactFormatted = findContact.toLowerCase();
     addContactDropdown.style = "display: flex;";
     addContactDropdown.innerHTML = "";
     openTransparentOverlay();
-    for(p=0; p < Contacts.length; p++){
-        if(Contacts[p]['name'].toLowerCase().includes(findContactFormatted)){
+    for (p = 0; p < Contacts.length; p++) {
+        loadAssignedUserToForm(i, p);
+        openTransparentOverlay();
+        if (cards[i]['assignedUserFullName'].includes(Contacts[p]['name'])) {
+            let addClassAssignedUser = document.getElementById(`addusercard${p}`);
+            addClassAssignedUser.classList.add('added');
+        };
+    }
+}
+
+
+function loadAssignedUserToForm(i, p) {
+    let findContact = document.getElementById('inputassigneduser').value;
+    let findContactFormatted = findContact.toLowerCase();
+    let addContactDropdown = document.getElementById('selectuser');
+    if (Contacts[p]['name'].toLowerCase().includes(findContactFormatted)) {
         addContactDropdown.innerHTML += `
         <div class="addusertocard" onclick="addUser(${i}, ${p})" id="addusercard${p}"><div class="label-card" style="background-color:${Contacts[p]['color']}">${Contacts[p]['firstLetters']}</div><div class="card-name">${Contacts[p]['name']}</div></div>`;
-        openTransparentOverlay();
-    };
-    if(cards[i]['assignedUserFullName'].includes(Contacts[p]['name'])){
-        let addClassAssignedUser = document.getElementById(`addusercard${p}`);
-        addClassAssignedUser.classList.add('added');
-    };
     }
-
 }
 
-function openTransparentOverlay(){
-let transparentOverlay = document.getElementById('overlaytransparent');
-transparentOverlay.style.display = "block";
+
+function openTransparentOverlay() {
+    let transparentOverlay = document.getElementById('overlaytransparent');
+    transparentOverlay.style.display = "block";
 }
 
-function closeTransparentOverlay(){
+
+function closeTransparentOverlay() {
     let transparentOverlay = document.getElementById('overlaytransparent');
     transparentOverlay.style.display = "none";
     removeDropDownClass();
-    }
+}
 
 
-    function removeDropDownClass(){
-        let addContactDropdown = document.getElementById('selectuser');
-        addContactDropdown.style = "display: none;";
-    }        
+function removeDropDownClass() {
+    let addContactDropdown = document.getElementById('selectuser');
+    addContactDropdown.style = "display: none;";
+}
 
 
-function loadAssignedUserEditForm(i){
+function loadAssignedUserEditForm(i) {
     let assignedUserEditForm = document.getElementById('assignedUserEditForm');
     assignedUserEditForm.innerHTML = "";
     for (let j = 0; j < cards[i]['assignedUser'].length; j++) {
@@ -740,11 +741,3 @@ function loadAssignedUserEditForm(i){
             <div class="label-card" style="background-color:${findUserColor(i, j)}">${cards[i]['assignedUser'][j]}</div>`;
     }
 }
-
-/*
-function closeDropdownContact2(){
-    let addContactDropdown = document.getElementById('selectuser');
-    let addContactSelect = document.getElementById('addContact2');
-addContactSelect.outerHTML = `<div class="selectArrow" id="addContact2" onclick="openDropdownContact2()"></div>`;
-addContactDropdown.style.display = 'none';
-}*/
