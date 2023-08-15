@@ -101,7 +101,8 @@ let cards = [
     }
 ];
 
-saveCardsToStorage();
+// saveCardsToStorage();
+getCardsFromStorage();
 
 let categories = [{
     name: "Sales",
@@ -202,7 +203,7 @@ function renderBoardCardsDone(i) {
 }
 
 function renderBoardTemplate(i) {
-    return `<div class="cardBoard" draggable="true" ondragstart="startDragging(${i})" onclick='openCard(${i})'>
+    return `<div class="cardBoard" draggable="true" id="card${i}" ondragstart="startDragging(${i})" onclick='openCard(${i})'>
     <div class="cardBoardInside">
         <div class="cardBoardInsideCategory"; id="cardBoardInsideCategory${i}">${cards[i]['category']}</div>
         <div class="cardBoardInsideTitleAndDescrption">
@@ -313,7 +314,7 @@ function closeOverlay() {
     document.getElementById('CardContainer').innerHTML = "";
     document.getElementById('CardDetail').style = "display:none;";
     document.getElementById('CardEditForm').style = "display:none;";
-    renderBoardCards();
+    renderBoard();
 }
 
 function doNotClose(event) {
@@ -433,8 +434,8 @@ function prioButtonStyle(i) {
 function deleteCard(i) {
     console.log('deleted', i);
     cards.splice(i, 1);
-    closeOverlay();
     saveCardsToStorage();
+    closeOverlay();
 }
 
 //Edit cards
@@ -610,6 +611,8 @@ function saveEditedCard(i) {
 //Drag and Drop
 function startDragging(i) {
     currentDraggedElement = i;
+    const cardElement = document.getElementById('card'+i);
+    cardElement.classList.add('dragging'); // Füge die Klasse 'dragging' hinzu
 }
 
 function allowDrop(ev) {

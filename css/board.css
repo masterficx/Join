@@ -27,8 +27,8 @@ html::-webkit-scrollbar {
 }
 
 .cardBoardAll {
-    min-height: 240px;
-    width: 250px;
+    min-height: 650px;
+    width: 275px;
     margin-bottom: 0px;
 }
 
@@ -94,13 +94,12 @@ html::-webkit-scrollbar {
     display: inline-flex;
     justify-content: center;
     align-items: flex-start;
-    gap: 26px;
     flex-shrink: 0;
 }
 
 .categoryBoardHead {
     display: flex;
-    width: 250px;
+    width: 275px;
     height: auto;
     flex-direction: column;
     align-items: center;
@@ -210,7 +209,7 @@ html::-webkit-scrollbar {
 }
 
 .dragging {
-    transform: rotate(15deg);
+    transform: rotate(10deg);
     transition: all 125ms;
 }
 
