@@ -37,8 +37,8 @@ let cards = [
         "prio": "Mid",
         "dueDate": "2022-08-14",
         "subtasks": [
-            { nameSub: "Test Subtask 1", status: "checked" },
-            { nameSub: "Test Subtask 2", status: "checked" }
+            { nameSub: "Review proposal", status: "checked" },
+            { nameSub: "Assess budget", status: "checked" }
         ],
         "listType": "Done"
     },
