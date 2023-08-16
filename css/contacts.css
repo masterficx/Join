@@ -758,3 +758,26 @@ body {
     line-height: 120%;
     /* 25.2px */
 }
+
+@media only screen and (max-width: 992px) {
+
+    .frame-97 {
+        padding-right: 0px;
+        padding-left: 0px;
+        width: 100%;
+        box-shadow: unset;
+    }
+
+    .frame-112 {
+        width: calc(100% - 72px);
+    }
+    
+    .contacts-content {
+        margin-top: 80px;
+    }
+    
+    div#contacts_list {
+        padding-bottom: 100px;
+    }
+
+}
