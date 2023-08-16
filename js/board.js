@@ -448,13 +448,13 @@ function editCard(i) {
     document.getElementById('editCardDueDate').value = `${cards[i]['dueDate']}`;
     document.getElementById('editCardPrio2').innerHTML = `
     <div class="addTaskPrios" id="prioButtons2">
-                                    <button class="SubTaskPrios2 red" id="prioSelect0" onclick="addActiveState2(0)">Urgent<img
+                                    <button class="SubTaskPrios2 red" id="prioSelect0" onclick="addActiveState2(${i},0)">Urgent<img
                                             src="/assets/img/addtask/prio-high.svg" alt="" class="default"><img
                                             src="/assets/img/addtask/prio-high-w.svg" alt="" class="active"></button>
-                                    <button class="SubTaskPrios2 yellow" id="prioSelect1" onclick="addActiveState2(1)">Medium<img
+                                    <button class="SubTaskPrios2 yellow" id="prioSelect1" onclick="addActiveState2(${i},1)">Medium<img
                                         src="/assets/img/addtask/prio-medium.svg" alt="" class="default"><img
                                         src="/assets/img/addtask/prio-medium-w.svg" alt="" class="active"></button>
-                                    <button class="SubTaskPrios2 green" id="prioSelect2" onclick="addActiveState2(2)">Low<img
+                                    <button class="SubTaskPrios2 green" id="prioSelect2" onclick="addActiveState2(${i},2)">Low<img
                                         src="/assets/img/addtask/prio-low.svg" alt="" class="default"><img
                                         src="/assets/img/addtask/prio-low-w.svg" alt="" class="active"></button>
                                 </div>`;
@@ -566,24 +566,24 @@ function loadActiveStatePrio(i) {
     console.log(currentPrioSelection);
 }
 
-function addActiveState2(j) {
+function addActiveState2(i, j) {
     let btnsTip = document.getElementById('prioButtons2').getElementsByClassName('SubTaskPrios2');
     if (btnsTip[j].classList.contains('active-state')) {
         btnsTip[j].classList.remove('active-state');
     }
     else {
-        for (i = 0; i < btnsTip.length; i++) {
-            btnsTip[i].classList.remove('active-state');
+        for (f = 0; f < btnsTip.length; f++) {
+            btnsTip[f].classList.remove('active-state');
         };
         btnsTip[j].classList.add('active-state');
     }
     let priorityNumber = j;
     window.priority = priorityNumber;
-    prioValueForSaving(j);
+    prioValueForSaving(i, j);
 }
 
 let prioValue;
-function prioValueForSaving(h) {
+function prioValueForSaving(i, h) {
     if (h == 0) {
         prioValue = "High";
     } else
@@ -594,13 +594,14 @@ function prioValueForSaving(h) {
                 prioValue = "Low";
             }
     console.log(prioValue);
+    cards[i]['prio'] = prioValue;
 }
 
 function saveEditedCard(i) {
     cards[i]['title'] = document.getElementById('editCardTitle').value;
     cards[i]['description'] = document.getElementById('editCardDescription').value;
     cards[i]['dueDate'] = document.getElementById('editCardDueDate').value;
-    cards[i]['prio'] = prioValue;
+
     //cards[i]['assignedUser'] = document.getElementById('editCardAssignedTo').value;
     cards.push();
     saveCardsToStorage();
