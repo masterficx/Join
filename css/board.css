@@ -396,15 +396,17 @@ html::-webkit-scrollbar {
     background: #fff;
     margin-top: 80px;
     margin-bottom: 80px;
-    padding: 50px 30px 50px 50px;
+    padding: 10px 30px 10px 50px;
     border-right: 20px solid #fff;
+    border-top: 40px solid #fff;
+    border-bottom: 40px solid #fff;
     box-shadow: 0px 0px 4px 0px #0000001A;
     border-radius: 30px;
 }
 
 .carddetail::-webkit-scrollbar-track {
-    margin-top: 35px;
-    margin-bottom: 35px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 .carddetail::-webkit-scrollbar {
@@ -412,20 +414,18 @@ html::-webkit-scrollbar {
 }
 
 .carddetail::-webkit-scrollbar-thumb {
-    background: #A8A8A8!important;
-    border-radius: 10px!important;
+    background: #A8A8A8 !important;
+    border-radius: 10px !important;
 }
 
 div#subtask_main2 h5 {
     font-size: 16px;
 }
 
-
-
 img.close-card {
     position: absolute;
     right: 20px;
-    top: 25px;
+    top: -5px;
 }
 
 img.close-card:hover {
@@ -485,7 +485,7 @@ button.SubTaskPrios2 {
 }
 
 button.SubTaskPrios2:hover {
-    transform: none!important;
+    transform: none !important;
 }
 
 .prio-high-btn {
@@ -698,7 +698,7 @@ div#addNewSubtask2 {
 }
 
 .boxes:hover {
-    background: #eee; 
+    background: #eee;
 }
 
 .boxes .actionlinks {
@@ -750,7 +750,7 @@ div#subtasklist input {
 }
 
 div#subtasklist input:focus-visible {
-    outline: none!important;
+    outline: none !important;
     border-bottom: 1px solid #29ABE2;
 }
 
@@ -836,18 +836,18 @@ div#selectbox input {
 }
 
 .selectbox.active input {
-    background: url(/assets/img/board/arrow_drop_down_close.svg)!important;
-    background-repeat: no-repeat!important;
-    background-position: right!important;
+    background: url(/assets/img/board/arrow_drop_down_close.svg) !important;
+    background-repeat: no-repeat !important;
+    background-position: right !important;
 }
 
-.selectbox.active  {
-    border: 1px solid #29ABE2!important;
+.selectbox.active {
+    border: 1px solid #29ABE2 !important;
 }
 
 input#inputassigneduser:focus-visible {
-    outline: none!important;
-    border: 0px!important;
+    outline: none !important;
+    border: 0px !important;
 }
 
 .cartdetailaction {
@@ -1059,13 +1059,22 @@ div#addContact2 {
     }
 
     .carddetail {
-        padding: 30px 20px;
+        padding: 0px 15px 0px 20px;
+        max-height: calc(100% - 285px);
+        margin-top: 35px;
+        width: calc(100% - 80px);
     }
 
     img.close-card {
         position: absolute;
         right: 15px;
-        top: 20px;
+    }
+
+    button.SubTaskPrios2, 
+    button.SubTaskPrios {
+       font-size: 16px!important;
+       padding: 13px 5px!important;
+       gap: 5px!important;
     }
 }
 
