@@ -759,6 +759,70 @@ body {
     /* 25.2px */
 }
 
+
+@media only screen and (min-width: 993px) and (max-width: 1300px) {
+
+.frame-40 {
+    margin-right: 50px;
+}
+
+.contacts-title {
+    font-size: 48px;
+}
+
+.contacts-slogan {
+    font-size: 25px;
+}
+
+.frame-64 {
+    font-size: 37px;
+}
+
+.frame-105 {
+    gap: 25px;
+}
+
+.frame_99 {
+    width: 80px;
+    height: 80px;
+}
+
+.frame_99 p {
+    font-size: 35px;
+}
+
+.frame_99 svg {
+    width: 80px;
+    height: 80px;
+}
+
+.frame-97 {
+    width: calc(390px - 56px);
+    padding-left: 28px;
+    padding-right: 28px;
+}
+
+div#contacts_list {
+    padding: 32px 0px;
+}
+
+div#contacts_list svg {
+    width: 100%;
+}
+
+button.new-contact svg {
+    width: auto!important;
+}
+
+.contact_name {
+    gap: 20px;
+    padding: 15px 18px;
+}
+
+}
+
+
+
 @media only screen and (max-width: 992px) {
 
     .frame-97 {

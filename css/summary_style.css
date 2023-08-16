@@ -125,6 +125,14 @@ span#welcomemsguser {
 }
 
 
+@media only screen and (min-width: 993px) and (max-width: 1300px) {
+
+    .middle .content {
+        width: calc(100% - 90px);
+        padding: 100px 25px 100px 40px;
+    }
+
+}
 
 @media only screen and (max-width: 992px) {
 

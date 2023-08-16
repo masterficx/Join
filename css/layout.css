@@ -321,6 +321,23 @@ div#headsubmenu a:last-child {
 }
 
 
+@media only screen and (min-width: 993px) and (max-width: 1300px) {
+
+    span#slogan {
+        margin-left: 40px;
+    }
+
+    .title h1 {
+        font-size: 48px;
+    }
+
+    .title span {
+        font-size: 25px;
+    }
+    
+    }
+
+
 @media only screen and (max-width: 992px) {
 
     div#headsubmenu {
