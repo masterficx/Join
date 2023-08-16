@@ -1,7 +1,7 @@
 let Contacts = [
     {
         "firstName": "Guest",
-        "lastName": "Guest",
+        "lastName": "",
         "phone": 1234567890001,
         "email": "guest@hotmail.com",
         "color": "#02CF2F",
@@ -92,7 +92,7 @@ let Contacts = [
 ]
 
 
-saveContactsToStorage(); 
+saveContactsToStorage();
 
 let nameTagsColors = ['#FF7A00', '#9327FF', '#29ABE2', '#FC71FF', '#02CF2F', '#AF1616', '#462F8A', '#FFC700', '#FF7A00', '#9327FF', '#29ABE2', '#FC71FF', '#02CF2F', '#AF1616', '#462F8A', '#FFC700','#FF7A00', '#9327FF', '#29ABE2', '#FC71FF', '#02CF2F', '#AF1616', '#462F8A', '#FFC700','#FF7A00', '#9327FF', '#29ABE2', '#FC71FF', '#02CF2F', '#AF1616', '#462F8A', '#FFC700'];
 let firstLetters = [];
@@ -438,7 +438,7 @@ function createNewContact() {
     saveContactsToStorage();
     let theIndex = Contacts.findIndex(x => x.email ===emailInput);
     console.log(theIndex);
-    
+
     closeNewContact();
     renderContactsList();
     let theNewId = findContactIdByEmail(Contacts, emailInput);
@@ -463,6 +463,16 @@ function sortContactsAlphabetically(contacts) {
         }
         return 0;
     });
+    deleteCurrentUser();
+}
+
+function deleteCurrentUser() {
+    let position = Contacts.findIndex(contact => contact.firstName === 'Guest');
+    Contacts.splice(position, 1);
+    if(currentUser !== 0) {
+    let user = Contacts.findIndex(contact => contact.firstName === Contacts[currentUser-1].firstName);
+    Contacts.splice(user, 1);
+    }
 }
 
 function findContactIdByEmail(contacts, emailToBeFound) {
