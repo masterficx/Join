@@ -463,7 +463,6 @@ function sortContactsAlphabetically(contacts) {
         }
         return 0;
     });
-    deleteCurrentUser();
 }
 
 function deleteCurrentUser() {
