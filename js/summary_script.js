@@ -120,6 +120,7 @@ function filterCardsPrioHigh(){
 for(f=0; f<cards.length;f++){
     if (cards[f].prio == 'High') {
         filteredPrioHigh.push(cards[f].dueDate);
+        console.log(filteredPrioHigh);
 }
 };
 sortCardsPrioHigh();
@@ -134,8 +135,10 @@ function sortCardsPrioHigh(){
     });
     console.log(filteredPrioHigh);
     let upComingDeadline = document.getElementById('upcomingDeadline');
-    if(upComingDeadline){
+    if(filteredPrioHigh.length > 0){
     upComingDeadline.innerHTML = urgenDateFormatted;
+    } else {
+        upComingDeadline.innerHTML = "No urgent tasks";
     }
 }
 
