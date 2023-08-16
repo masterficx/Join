@@ -1,4 +1,4 @@
-let currentUser;
+let currentUser = 0;
 loadcurrentUser();
 
 // Function to check the login credentials

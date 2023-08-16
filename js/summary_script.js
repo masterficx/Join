@@ -136,12 +136,14 @@ function sortCardsPrioHigh(){
     console.log(filteredPrioHigh);
     let upComingDeadline = document.getElementById('upcomingDeadline');
     let upComingDeadlineTitle = document.getElementById('upcomingDeadlineTitle');
+    if(upComingDeadline && upComingDeadlineTitle){
     if(filteredPrioHigh.length > 0){
     upComingDeadline.innerHTML = urgenDateFormatted;
     } else {
         upComingDeadline.innerHTML = "No urgent tasks";
         upComingDeadlineTitle.innerHTML = "";
     }
+}
 }
 
 
