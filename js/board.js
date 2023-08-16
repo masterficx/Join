@@ -473,7 +473,7 @@ function editCard(i) {
         </div>
     </div>`;
     let addUserInput = document.getElementById('selectbox');
-    addUserInput.innerHTML = `<input type="text" placeholder="Select Contacts to assign" id="inputassigneduser" onclick="openDropdownContact2(${i})" onkeydown="openDropdownSearch(${i})">`;
+    addUserInput.innerHTML = `<input type="text" placeholder="Select Contacts to assign" id="inputassigneduser" onclick="openDropdownContact2(${i})" onkeyup="openDropdownSearch(${i})">`;
     let editCardSave = document.getElementById('editCardSave');
     editCardSave.innerHTML = `<div onclick='saveEditedCard(${[i]})'>Ok`;
     loadActiveStatePrio(i);
@@ -685,18 +685,23 @@ function addUser(i, p) {
 }
 
 function openDropdownSearch(i) {
+    let findContact = document.getElementById('inputassigneduser').value;
+    let findContactFormatted = findContact.toLowerCase();
     let addContactDropdown = document.getElementById('selectuser');
     addContactDropdown.style = "display: flex;";
     addContactDropdown.innerHTML = "";
     openTransparentOverlay();
     for (p = 0; p < Contacts.length; p++) {
+        if (Contacts[p]['name'].toLowerCase().includes(findContactFormatted)) {
         loadAssignedUserToForm(i, p);
         openTransparentOverlay();
         if (cards[i]['assignedUserFullName'].includes(Contacts[p]['name'])) {
             let addClassAssignedUser = document.getElementById(`addusercard${p}`);
             addClassAssignedUser.classList.add('added');
+            console.log(addClassAssignedUser);
         };
     }
+}
 }
 
 function loadAssignedUserToForm(i, p) {
