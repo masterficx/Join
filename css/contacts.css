@@ -779,6 +779,15 @@ body {
     div#contacts_list {
         padding-bottom: 100px;
     }
+
+    div#contact-page {
+        position: absolute!important;
+        width: calc(100% - 40px);
+        height: calc(100% - 40px);
+        padding: 20px;
+        background: #f6f7f8;
+        display: none;
+    }
     
 
 }
