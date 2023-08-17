@@ -372,6 +372,7 @@ button.SubTaskPrios:hover {
     width: 25px;
     box-sizing: border-box;
     border: none;
+    padding-left: 2px;
 }
 
 .added-category-name:focus {
@@ -530,6 +531,13 @@ input[type="checkbox"]:checked{
     background: url(/assets/img/addtask/checkbox-checked.svg) 0px center no-repeat;
 }
 
+
+@media(max-width: 1240px) {
+    .mainAddTask {
+        width: 800px;
+    }
+}
+
 @media only screen and (max-width: 992px) {
 
     .left-right-split {
@@ -562,4 +570,8 @@ input[type="checkbox"]:checked{
         font-size: 16px;
     }
 
+    .mainAddTask {
+        width: auto;
+        padding: 20px 30px;
+    }
 }

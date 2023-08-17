@@ -295,9 +295,17 @@ function clearBoardCards() {
 }
 
 function openAddTask() {
+    const screenHeight = window.innerHeight
+    if(screenHeight < 1100) {
+        document.getElementById('mobileAddTask').innerHTML = `<div class="includeTaskForm" w3-include-html="templates/task_form2.html"></div>`;
+        main();
+        includeTemplates();
+    } else {
     document.getElementById('CardContainer').style = "display:block;";
     document.getElementById('overlay').classList.remove('d-none');
+    main();
     // renderAddTask();
+    }
 }
 
 
