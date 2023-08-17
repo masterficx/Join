@@ -52,10 +52,13 @@ function addTaskToBoard() {
     let description = document.getElementById('descriptionTextArea').value;
     let dueDate = document.getElementById('date').value;
     let addedUsers = [];
+    let addedUsersFullNames = [];
     for (let t = 0; t < addedIds.length; t++) {
         const element = addedIds[t];
         let addedUser = Contacts[element]['firstLetters'];
         addedUsers.push(addedUser);
+        let addedUserFullName = Contacts[element]['name'];
+        addedUsersFullNames.push(addedUserFullName);
     };
     if (priority == '0') { window.prio = "Urgent" };
     if (priority == '1') { window.prio = "Medium" };
@@ -67,14 +70,17 @@ function addTaskToBoard() {
         "description": description,
         "progress": "0",
         "assignedUser": addedUsers,
+        "assignedUserFullName": addedUsersFullNames,
         "prio": prio,
         "dueDate": dueDate,
         "subtasks": subtasks,
         "listType": "ToDo",
     }
+    getCardsFromStorage();
 
     cards.push(theNewTask);
     console.log(cards);
+    saveCardsToStorage();
 }
 
 function checkForInput() {
@@ -111,16 +117,17 @@ function checkForInput() {
 function openCategoryDropDown() {
     let categoryMainContainer = document.getElementById('category');
     categoryMainContainer.innerHTML = "";
-    categoryMainContainer.innerHTML += `<h5>Category</h5><div class="selectContainer" id="addCategory"> </div>`;
+    categoryMainContainer.innerHTML += `<h5>Category</h5><div class="selectContainer" onclick="closeCategoryInput()"> Select task category</div>
+                                                         <div class="selectCategoryContainer" id="addCategory"> </div>`;
     let categoryContainer = document.getElementById('addCategory');
     categoryContainer.innerHTML = "";
     ;
     categoryContainer.innerHTML += `<div class="category-selection" onclick="openCategoryInput()">Add category</div>`;
     for (let i = 0; i < categories.length; i++) {
         const element = categories[i];
-        categoryContainer.innerHTML += `<div class="category-selection" onclick="selectedCategory(${i})">${element['name']} <svg class="new-category-color">
-        <circle cx="12" cy="12" r="10" stroke="black" stroke-width="0" fill="${element['color']}" />
-        </svg></div>`;
+        categoryContainer.innerHTML += `<div class="category-selection" onclick="selectedCategory(${i})">${element['name']}<svg class="new-category-color">
+        <circle cx="50%" cy="50%" r="12" stroke="black" stroke-width="0" fill="${element['color']}" />
+        </svg> </div>`;
     }
 
 
@@ -236,7 +243,7 @@ function openDropdownContact() {
                     ${element['firstName']} ${element['lastName']}
                 </div>
             </div>
-            <div class="add-task-contact-checkbox"><input type="checkbox" id="checkBox_${j}" checked></div>
+            <div class="add-task-contact-checkbox"><input type="checkbox" id="checkBox_${j}" onclick="selectedContact(${j})" checked></div>
         </div>`;
         }
         else {
@@ -253,7 +260,7 @@ function openDropdownContact() {
             ${element['firstName']} ${element['lastName']}
         </div>
     </div>
-            <div class="add-task-contact-checkbox"><input type="checkbox" id="checkBox_${j}" ></div>
+            <div class="add-task-contact-checkbox"><input type="checkbox" id="checkBox_${j}" onclick="selectedContact(${j})"></div>
         </div>`;
         }
     }
@@ -394,9 +401,10 @@ function cancelSubtaskInput() {
 }
 
 function addSubtask() {
+    
     let subtaskMain = document.getElementById('subtask_main');
     let addSubtaskContainer = document.getElementById('addNewSubtask');
-    let addedSubtask = document.getElementById('added_subtask').value;
+    let addedSubtaskNameInput = document.getElementById('added_subtask').value;
     addSubtaskContainer.innerHTML = "";
     addSubtaskContainer.innerHTML = `<p>Add new subtask</p>
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" onclick="openSubtaskInput()">
@@ -414,8 +422,11 @@ function addSubtask() {
                 <stop offset="1" stop-color="#F0F0F0" />
             </linearGradient>
         </defs>
-    </svg>${addedSubtask}
+    </svg>${addedSubtaskNameInput}
 </div>`
+
+    let addedSubtask = { "nameSub": addedSubtaskNameInput, 
+                         "status": "unchecked" };
     addedSubtasks.push(addedSubtask);
     console.log(addedSubtasks)
     window.subtasks = addedSubtasks;
