@@ -297,21 +297,21 @@ function clearBoardCards() {
 function openAddTask() {
     document.getElementById('CardContainer').style = "display:block;";
     document.getElementById('overlay').classList.remove('d-none');
-    renderAddTask();
+    // renderAddTask();
 }
 
 
 function renderAddTask() {
-    document.getElementById('CardContainer').innerHTML = `
-    <div class="includeTaskForm" w3-include-html="templates/task_form.html">
-    `;
+    // document.getElementById('CardContainer').innerHTML = `
+    // <div class="includeTaskForm" w3-include-html="templates/task_form2.html">
+    // `;
     includeTemplates();
 }
 
 function closeOverlay() {
     document.getElementById('overlay').classList.add('d-none');
     document.getElementById('CardContainer').style = "display:none;";
-    document.getElementById('CardContainer').innerHTML = "";
+    // document.getElementById('CardContainer').innerHTML = "";
     document.getElementById('CardDetail').style = "display:none;";
     document.getElementById('CardEditForm').style = "display:none;";
     renderBoard();

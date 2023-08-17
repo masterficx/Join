@@ -4,7 +4,7 @@
 }
 
 .mainAddTask {
-    max-width: 930px;
+    width: 1000px;
 }
 
 .left-right-split {
@@ -244,6 +244,7 @@ input {
 
 button.clearBtn img.hover {
     display: none;
+    width: 16px;
 }
 
 button.clearBtn:hover img.hover {
