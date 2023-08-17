@@ -302,9 +302,15 @@ function openAddTask() {
 
 
 function renderAddTask() {
-    // document.getElementById('CardContainer').innerHTML = `
-    // <div class="includeTaskForm" w3-include-html="templates/task_form2.html">
-    // `;
+// <<<<<<< Updated upstream
+//     // document.getElementById('CardContainer').innerHTML = `
+//     // <div class="includeTaskForm" w3-include-html="templates/task_form2.html">
+//     // `;
+// =======
+//     document.getElementById('CardContainer').innerHTML = `
+//     <div class="includeTaskForm" w3-include-html="templates/task_form2.html">
+//     `;
+// >>>>>>> Stashed changes
     includeTemplates();
 }
 
