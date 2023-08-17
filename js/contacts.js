@@ -92,7 +92,7 @@ let Contacts = [
 ]
 
 
-saveContactsToStorage();
+// saveContactsToStorage();
 
 let nameTagsColors = ['#FF7A00', '#9327FF', '#29ABE2', '#FC71FF', '#02CF2F', '#AF1616', '#462F8A', '#FFC700', '#FF7A00', '#9327FF', '#29ABE2', '#FC71FF', '#02CF2F', '#AF1616', '#462F8A', '#FFC700','#FF7A00', '#9327FF', '#29ABE2', '#FC71FF', '#02CF2F', '#AF1616', '#462F8A', '#FFC700','#FF7A00', '#9327FF', '#29ABE2', '#FC71FF', '#02CF2F', '#AF1616', '#462F8A', '#FFC700'];
 let firstLetters = [];
@@ -241,7 +241,7 @@ function renderContactsList() {
                 <circle cx="21" cy="21" r="20.5" fill="${nameTagsColors[i]}" stroke="white"/>
                 </svg>
                 <p>${firstTwoLetters}</p>
-            </div>
+                </div>
             <div type="button" class="frame_81">
                 <span id="contact_name_${[i]}">
                     ${element['firstName']} ${element['lastName']}
@@ -421,7 +421,6 @@ function createNewContact() {
     let emailInput = document.getElementById('add_contact_email').value;
     let phoneInput = document.getElementById('add_contact_phone').value;
     let firstTwoLetters = firstName.charAt(0) + lastName.charAt(0);
-    let fullName = firstName+lastName;
     let newContact = {
                     "firstName":  firstName ,
                     "lastName":  lastName ,
@@ -429,7 +428,7 @@ function createNewContact() {
                     "email":  emailInput ,
                     "color": "black",
                     "firstLetters": firstTwoLetters,
-                    "name": fullName,
+                    "name": nameInput,
                     "password": '1234',
                     };
 
@@ -576,6 +575,7 @@ function editContact(x){
     element.lastName = newLastName;
     element.email = newEmail;
     element.phone = newPhone;
+    element.name = nameInput;
     saveContactsToStorage();
     closeNewContact();
     renderContactsList();

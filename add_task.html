@@ -44,17 +44,12 @@
                                 <h5>Description</h5>
                                 <textarea required name="" id="descriptionTextArea" cols="30" rows="4" style="resize: none;" placeholder="Enter a Description"></textarea>
                             </div>
-                            <div class="category" id="category">
-                                <h5>Category</h5>
-                                <div class="selectContainer" id="addCategory" onclick="openCategoryDropDown()">
-                                    <div>Select Task Category</div>
-                                </div>
-                            </div>
+                            
                             <div class="assignedTo" id="assigned_to">
                                 <h5>Assigned to</h5>
-                                <div class="selectContainer" id="addContact" onclick="openDropdownContact()">
-                                    Select Contacts to assign
-                                    </div>
+                                <input type="text" class="selectContainer" placeholder="Select contacts to assign" id="addContact" onclick="openDropdownContact()">
+                                    
+                                    </input>
                             </div>
                         </div>
                         <div class="separator"></div>
@@ -75,6 +70,12 @@
                                     <button class="SubTaskPrios green" onclick="addActiveState(2)">Low<img
                                         src="/assets/img/addtask/prio-low.svg" alt="" class="default"><img
                                         src="/assets/img/addtask/prio-low-w.svg" alt="" class="active"></button>
+                                </div>
+                            </div>
+                            <div class="category" id="category">
+                                <h5>Category</h5>
+                                <div class="selectContainer" id="addCategory" onclick="openCategoryDropDown()">
+                                    <div>Select Task Category</div>
                                 </div>
                             </div>
                             <div class="subtask" id="subtask_main">
