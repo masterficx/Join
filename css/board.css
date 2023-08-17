@@ -1192,6 +1192,12 @@ div#addContact2 {
     }
 }
 
+@media(max-height: 1100px) {
+    .mainAddTask {
+        border-radius: 0;
+    }
+}
+
 /* @media(max-width: 3440px) {
     
 } */
