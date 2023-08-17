@@ -220,6 +220,7 @@ input {
     justify-content: end;
     align-items: center;
     gap: 25px;
+    margin-top: 100px;
 }
 
 .clearBtn {
