@@ -316,7 +316,25 @@ function showContactDetails(x) {
                 <span class="details-phone">+${element['phone']}</span>
             </div>  
         </div>
+        <div class="onlymob">
+        <a href="#" onclick="" id="editcontact"><img src="assets/img/contacts/edit-contact.svg" class="default"><img src="assets/img/contacts/edit-contact-lightblue.svg" class="hover"></a>
+          <div class="contact-edit" id="edit-contact"> 
+           <div class="edit-contact" onclick="renderEditContact(${x})"> ${editSVG} Edit </div>
+           <div class="delete-contact" onclick="deleteContact(${x})"> ${deleteSVG} Delete </div>
+          </div>
+        </div>
             `;
+            displayContact();
+}
+
+function displayContact(){
+    let displayContacts = document.getElementById('contact-page');
+    displayContacts.style = "display:block; position:relative;";
+}
+
+function backToContacts(){
+    let displayContacts = document.getElementById('contact-page');
+    displayContacts.style = "display:none; position:relative;";
 }
 
 function deleteContact(x) {

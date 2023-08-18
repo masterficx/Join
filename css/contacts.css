@@ -847,10 +847,20 @@ button.new-contact svg {
     div#contact-page {
         position: absolute!important;
         width: calc(100% - 40px);
-        height: calc(100% - 40px);
+        height: calc(100% - 210px);
         padding: 20px;
         background: #f6f7f8;
         display: none;
+    }
+
+    a#editcontact {
+        position: absolute;
+        right: 20px;
+        bottom: 20px;
+        margin: 0px;
+        padding: 0px;
+        width: 56px;
+        height: 56px;
     }
 
     .new-contact-main {
