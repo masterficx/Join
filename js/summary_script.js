@@ -3,8 +3,8 @@ const mediaQueryMobile = window.matchMedia('(max-width: 992px)');
 
 
 async function init() {
-    getContactsFromStorage();
-    getCardsFromStorage();
+    await getContactsFromStorage();
+    await getCardsFromStorage();
     welcomeMsgTime();
     welcomeMsgUser();
     addClassMobile();

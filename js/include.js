@@ -2,7 +2,7 @@ let currentuser = "Jon Doe";
 
 //Initialen des eingeloggten Nutzers
 async function includeTemplates(a) {
-    getContactsFromStorage();
+    await getContactsFromStorage();
     await includeHTML();
     let currentUserInitials = await document.getElementById('myaccount');
     if(currentUser !== 1000) {

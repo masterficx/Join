@@ -1,84 +1,84 @@
 let Contacts = [
-    {
-        "firstName": "Anja",
-        "lastName": "Schulz",
-        "phone": 1234567890001,
-        "email": "schulz@hotmail.com",
-        "color": "#02CF2F",
-        "firstLetters": "AS",
-        "name": "Anja Schulz",
-        "password": "1234",
-    },
-    {
-        "firstName": "Anton",
-        "lastName": "Mayer",
-        "phone": 987654321,
-        "email": "antom@gmail.com",
-        "color": "#9327FF",
-        "firstLetters": "AM",
-        "name": "Anton Mayer",
-        "password": "1234",
-    },
-    {
-        "firstName": "Benedikt",
-        "lastName": "Ziegler",
-        "phone": 5432167890,
-        "email": "benedikt@gmail.com",
-        "color": "#0190E0",
-        "firstLetters": "BZ",
-        "name": "Benedikt Ziegler",
-        "password": "1234",
-    },
-    {
-        "firstName": "David",
-        "lastName": "Eisenberg",
-        "phone": 6789054321,
-        "email": "davidberg@gmail.com",
-        "color": "#FF5C00",
-        "firstLetters": "DE",
-        "name": "David Eisenberg",
-        "password": "1234",
-    },
-    {
-        "firstName": "Eva",
-        "lastName": "Fischer",
-        "phone": 5432109876,
-        "email": "evag@gmail.com",
-        "color": "#EE00D6",
-        "firstLetters": "EF",
-        "name": "Eva Fischer",
-        "password": "1234",
-    },
-    {
-        "firstName": "Emmanuel",
-        "lastName": "Mauer",
-        "phone": 6789012345,
-        "email": "emmanuelma@gmail.com",
-        "color": "#32DAFF",
-        "firstLetters": "EM",
-        "name": "Emmanuel Mauer",
-        "password": "1234",
-    },
-    {
-        "firstName": "Marcel",
-        "lastName": "Bauer",
-        "phone": 1597532846,
-        "email": "bauer@gmail.com",
-        "color": "#EE00D6",
-        "firstLetters": "MB",
-        "name": "Marcel Bauer",
-        "password": "1234",
-    },
-    {
-        "firstName": "Tatjana",
-        "lastName": "Wolf",
-        "phone": 3579513264,
-        "email": "wolf@gmail.com",
-        "color": "#CB02CF",
-        "firstLetters": "TW",
-        "name": "Tatjana Wolf",
-        "password": "1234",
-    }
+    // {
+    //     "firstName": "Anja",
+    //     "lastName": "Schulz",
+    //     "phone": 1234567890001,
+    //     "email": "schulz@hotmail.com",
+    //     "color": "#02CF2F",
+    //     "firstLetters": "AS",
+    //     "name": "Anja Schulz",
+    //     "password": "1234",
+    // },
+    // {
+    //     "firstName": "Anton",
+    //     "lastName": "Mayer",
+    //     "phone": 987654321,
+    //     "email": "antom@gmail.com",
+    //     "color": "#9327FF",
+    //     "firstLetters": "AM",
+    //     "name": "Anton Mayer",
+    //     "password": "1234",
+    // },
+    // {
+    //     "firstName": "Benedikt",
+    //     "lastName": "Ziegler",
+    //     "phone": 5432167890,
+    //     "email": "benedikt@gmail.com",
+    //     "color": "#0190E0",
+    //     "firstLetters": "BZ",
+    //     "name": "Benedikt Ziegler",
+    //     "password": "1234",
+    // },
+    // {
+    //     "firstName": "David",
+    //     "lastName": "Eisenberg",
+    //     "phone": 6789054321,
+    //     "email": "davidberg@gmail.com",
+    //     "color": "#FF5C00",
+    //     "firstLetters": "DE",
+    //     "name": "David Eisenberg",
+    //     "password": "1234",
+    // },
+    // {
+    //     "firstName": "Eva",
+    //     "lastName": "Fischer",
+    //     "phone": 5432109876,
+    //     "email": "evag@gmail.com",
+    //     "color": "#EE00D6",
+    //     "firstLetters": "EF",
+    //     "name": "Eva Fischer",
+    //     "password": "1234",
+    // },
+    // {
+    //     "firstName": "Emmanuel",
+    //     "lastName": "Mauer",
+    //     "phone": 6789012345,
+    //     "email": "emmanuelma@gmail.com",
+    //     "color": "#32DAFF",
+    //     "firstLetters": "EM",
+    //     "name": "Emmanuel Mauer",
+    //     "password": "1234",
+    // },
+    // {
+    //     "firstName": "Marcel",
+    //     "lastName": "Bauer",
+    //     "phone": 1597532846,
+    //     "email": "bauer@gmail.com",
+    //     "color": "#EE00D6",
+    //     "firstLetters": "MB",
+    //     "name": "Marcel Bauer",
+    //     "password": "1234",
+    // },
+    // {
+    //     "firstName": "Tatjana",
+    //     "lastName": "Wolf",
+    //     "phone": 3579513264,
+    //     "email": "wolf@gmail.com",
+    //     "color": "#CB02CF",
+    //     "firstLetters": "TW",
+    //     "name": "Tatjana Wolf",
+    //     "password": "1234",
+    // }
 ]
 
 
@@ -184,9 +184,9 @@ function getFirstLetters() {
     firstLetters.push(uniqueChars);
 
 }
-function renderContactsList() {
-    getContactsFromStorage();
-    sortContactsAlphabetically(Contacts)
+async function renderContactsList() {
+    await getContactsFromStorage();
+    sortContactsAlphabetically(Contacts);
     let contactsList = document.getElementById('contacts_list');
     contactsList.innerHTML = "";
     contactsList.innerHTML += `
