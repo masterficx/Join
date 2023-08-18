@@ -879,6 +879,7 @@ body {
     }
 
     div#contacts_list {
+        width: calc(100% - -17px);
         padding-bottom: 100px;
     }
 

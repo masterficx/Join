@@ -210,6 +210,18 @@ p.img-white {
     display: none;
 }
 
+a:hover .default {
+    display: none;
+}
+
+a .hover {
+    display: none;
+}
+
+a:hover .hover {
+    display: block;
+}
+
 a.active p.img-white {
     display: inline-block;
 }
