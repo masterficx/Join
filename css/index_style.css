@@ -559,7 +559,26 @@ footer a:hover {
 }
 
 
-/* max-height: 830px */
+@media(max-height: 650px) {
+    .header {
+        margin: 20px 80px !important;
+    }
+}
+
+
+@media(max-height: 800px) {
+    .front-main-content {
+        margin-top: 0px !important;
+    }
+    .imgLogo {
+        height: 45px !important;
+        width: 50px !important;
+    }
+}
+
+
+
+/* max-height: 860px */
 
 @media(max-height: 860px) {
     .front-main-content {
@@ -567,8 +586,8 @@ footer a:hover {
     }
 
     .imgLogo {
-        width: 50px !important;
-        height: 80px !important;
+        width: 75px;
+        height: 80px; 
     }
 
     .logInButtonBox {
@@ -604,6 +623,6 @@ footer a:hover {
 
 @media(max-height: 930px) {
     .front-main-content {
-        margin-top: 100px;
+        margin-top: 40px;
     }
 }
