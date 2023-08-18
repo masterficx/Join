@@ -32,15 +32,35 @@ function getCardsFromStorage() {
 
 
 //Save and load contacts in remoteStorage
-async function saveRemoteStorage() {
+async function saveRemoteStorage() { // Name muss dann angepasst werden
     let key = contacts;
     let value = Contacts;
     let payload = { key, value, token: STORAGE_TOKEN };
     return fetch(STORAGE_URL, {method: 'POST', body: JSON.stringify(payload)}).then(res => res.json());
 }
 
-async function loadRemoteStorage() {
+async function loadRemoteStorage() { // Name muss dann angepasst werden
     let key = contacts;
+    let url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
+    return fetch(url).then(res => res.json()).then(res => {
+        // Verbesserter code
+        if (res.data) { 
+            return res.data.value;
+        } throw `Could not find data with key "${key}".`;
+    });
+}
+
+
+//Save and load cards in remoteStorage
+async function saveRemoteStorage() { // Name muss dann angepasst werden
+    let key = cards;
+    let value = cards;
+    let payload = { key, value, token: STORAGE_TOKEN };
+    return fetch(STORAGE_URL, {method: 'POST', body: JSON.stringify(payload)}).then(res => res.json());
+}
+
+async function loadRemoteStorage() { // Name muss dann angepasst werden
+    let key = cards;
     let url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
     return fetch(url).then(res => res.json()).then(res => {
         // Verbesserter code
