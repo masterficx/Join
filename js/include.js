@@ -5,9 +5,11 @@ async function includeTemplates(a) {
     getContactsFromStorage();
     await includeHTML();
     let currentUserInitials = await document.getElementById('myaccount');
-    if(currentUser) {  
+    if(currentUser !== 1000) {
+    if(currentUser || '0') {  
         currentUserInitials.innerHTML = await `${Contacts[currentUser].firstLetters}`;
-        } else {
+        } 
+    } else {
             currentUserInitials.innerHTML = await `G`;
         }
    

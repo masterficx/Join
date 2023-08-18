@@ -636,18 +636,18 @@ function moveTo(listType) {
 }
 
 //Save and load cards
-function saveCardsToStorage() {
-    let cardsAsString = JSON.stringify(cards);
-    localStorage.setItem('cards', cardsAsString);
-}
+// function saveCardsToStorage() {
+//     let cardsAsString = JSON.stringify(cards);
+//     localStorage.setItem('cards', cardsAsString);
+// }
 
-function getCardsFromStorage() {
+// function getCardsFromStorage() {
 
-    let cardsAsString = localStorage.getItem('cards');
-    if (cardsAsString) {
-        cards = JSON.parse(cardsAsString);
-    }
-}
+//     let cardsAsString = localStorage.getItem('cards');
+//     if (cardsAsString) {
+//         cards = JSON.parse(cardsAsString);
+//     }
+// }
 
 // Assigned user in edit card form
 function openDropdownContact2(i) {

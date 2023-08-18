@@ -1,4 +1,4 @@
-let currentUser = 0;
+let currentUser;
 loadcurrentUser();
 
 // Function to check the login credentials
@@ -47,6 +47,6 @@ function loadcurrentUser() {
 
 
 function guestLogIn() {
-    localStorage.setItem('currentUser', 0);
+    localStorage.setItem('currentUser', 1000);
     window.location.href = 'summary.html';
 }

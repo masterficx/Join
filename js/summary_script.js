@@ -53,9 +53,11 @@ async function welcomeMsgUser() {
     let messageUser = await document.getElementById('welcomemsguser');
     if(messageUser){
     await getContactsFromStorage();
+    if(currentUser !== 1000) {
     let user = await Contacts[currentUser].name; 
-    if(currentUser) {  
-    messageUser.innerHTML = user;
+    if(currentUser || '0') {  
+        messageUser.innerHTML = user;
+        } 
     } else {
         messageUser.innerHTML = '';
     } 

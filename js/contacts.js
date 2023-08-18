@@ -1,15 +1,5 @@
 let Contacts = [
     {
-        "firstName": "Guest",
-        "lastName": "",
-        "phone": 1234567890001,
-        "email": "guest@hotmail.com",
-        "color": "#02CF2F",
-        "firstLetters": "GG",
-        "name": "Guest",
-        "password": "1234",
-    },
-    {
         "firstName": "Anja",
         "lastName": "Schulz",
         "phone": 1234567890001,
@@ -586,15 +576,15 @@ function editContact(x){
 
 }
 
-function saveContactsToStorage(){
-    let contactsAsString = JSON.stringify(Contacts);
-    localStorage.setItem('contacts', contactsAsString);
-}
+// function saveContactsToStorage(){
+//     let contactsAsString = JSON.stringify(Contacts);
+//     localStorage.setItem('contacts', contactsAsString);
+// }
 
-function getContactsFromStorage(){
+// function getContactsFromStorage(){
 
-    let contactsAsString = localStorage.getItem('contacts');
-    if(contactsAsString){
-    Contacts = JSON.parse(contactsAsString);
-}
-}
+//     let contactsAsString = localStorage.getItem('contacts');
+//     if(contactsAsString){
+//     Contacts = JSON.parse(contactsAsString);
+// }
+// }
