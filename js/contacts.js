@@ -317,8 +317,8 @@ function showContactDetails(x) {
             </div>  
         </div>
         <div class="onlymob">
-        <a href="#" onclick="" id="editcontact"><img src="assets/img/contacts/edit-contact.svg" class="default"><img src="assets/img/contacts/edit-contact-lightblue.svg" class="hover"></a>
-          <div class="contact-edit" id="edit-contact"> 
+        <a href="#" onclick="showContactEditMenu()" id="editcontact"><img src="assets/img/contacts/edit-contact.svg" class="default"><img src="assets/img/contacts/edit-contact-lightblue.svg" class="hover"></a>
+          <div class="contact-edit" id="edit-contact" style="display:none;"> 
            <div class="edit-contact" onclick="renderEditContact(${x})"> ${editSVG} Edit </div>
            <div class="delete-contact" onclick="deleteContact(${x})"> ${deleteSVG} Delete </div>
           </div>
@@ -335,6 +335,25 @@ function displayContact(){
 function backToContacts(){
     let displayContacts = document.getElementById('contact-page');
     displayContacts.style = "display:none; position:relative;";
+}
+
+function showContactEditMenu(){
+    let subMenu = document.getElementById('edit-contact');
+    let editOverlay = document.getElementById('editcontactoverlay');
+    if(subMenu.style.display == "none"){
+    subMenu.style = "display: block;";
+    editOverlay.style = "display: block;";
+    }
+    else{
+        subMenu.style = "display: none;";  
+    };
+    }
+
+function closeEditOverlay(){
+    let subMenu = document.getElementById('edit-contact');
+    let editOverlay = document.getElementById('editcontactoverlay');
+    editOverlay.style = "display: none;";
+    subMenu.style = "display: none;";  
 }
 
 function deleteContact(x) {
@@ -560,6 +579,8 @@ function renderEditContact(x) {
 document.getElementById('edit_name').value = element['firstName'] + " " + element['lastName'];
 document.getElementById('edit_email').value = element['email'];
 document.getElementById('edit_phone').value = element['phone'];
+let subMenu = document.getElementById('edit-contact');
+subMenu.style = "display: none;";
 
 }
 

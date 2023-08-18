@@ -23,34 +23,35 @@ body {
     box-sizing: border-box;
 }
 
-.frame-97::-webkit-scrollbar{
+.frame-97::-webkit-scrollbar {
     background: transparent;
 }
 
 .frame-97::-webkit-scrollbar-thumb {
     background: url('/assets/img/contacts/scrollbar_thumb.svg');
-    background-repeat: no-repeat; 
+    background-repeat: no-repeat;
     background-position-x: center;
 }
 
 
 
 
-.frame-97::-webkit-scrollbar-button:vertical:decrement{
+.frame-97::-webkit-scrollbar-button:vertical:decrement {
 
     background: url('/assets/img/contacts/scrollbar_button_decrement.svg') no-repeat;
     background-position: center;
     height: 20px;
     margin: top 20px;
-    
+
 }
-.frame-97::-webkit-scrollbar-button:vertical:increment{
+
+.frame-97::-webkit-scrollbar-button:vertical:increment {
 
     background: url('/assets/img/contacts/scrollbar_button_increment.svg') no-repeat;
     background-position: center;
     height: 20px;
     margin: top 20px;
-    
+
 }
 
 .contacts-list {
@@ -470,7 +471,7 @@ body {
     align-items: center;
     z-index: 99;
     background: rgb(0 0 0 / 39%);
-    
+
 }
 
 .new-contact-main {
@@ -653,7 +654,7 @@ body {
 }
 
 .frame-157 input {
-    
+
 
     /* Version 2/t6 */
     font-family: Inter;
@@ -711,11 +712,11 @@ body {
     border: 3px solid var(--version-2-main-color, #29ABE2);
 }
 
-.add-contact-cancel:hover span{
+.add-contact-cancel:hover span {
     color: #29ABE2;
 }
 
-.add-contact-cancel:hover path{
+.add-contact-cancel:hover path {
     stroke: #29ABE2;
 }
 
@@ -743,9 +744,9 @@ body {
     box-sizing: border-box;
 }
 
-.add-contact-create:hover{
+.add-contact-create:hover {
     cursor: pointer;
-    background-color: #29ABE2 ;
+    background-color: #29ABE2;
 }
 
 .add-contact-create span {
@@ -762,68 +763,105 @@ body {
 
 @media only screen and (min-width: 993px) and (max-width: 1300px) {
 
-.frame-40 {
-    margin-right: 50px;
-}
+    .frame-40 {
+        margin-right: 50px;
+    }
 
-.contacts-title {
-    font-size: 48px;
-}
+    .contacts-title {
+        font-size: 48px;
+    }
 
-.contacts-slogan {
-    font-size: 25px;
-}
+    .contacts-slogan {
+        font-size: 25px;
+    }
 
-.frame-64 {
-    font-size: 37px;
-}
+    .frame-64 {
+        font-size: 37px;
+    }
 
-.frame-105 {
-    gap: 25px;
-}
+    .frame-105 {
+        gap: 25px;
+    }
 
-.frame_99 {
-    width: 80px;
-    height: 80px;
-}
+    .frame_99 {
+        width: 80px;
+        height: 80px;
+    }
 
-.frame_99 p {
-    font-size: 35px;
-}
+    .frame_99 p {
+        font-size: 35px;
+    }
 
-.frame_99 svg {
-    width: 80px;
-    height: 80px;
-}
+    .frame_99 svg {
+        width: 80px;
+        height: 80px;
+    }
 
-.frame-97 {
-    width: calc(390px - 56px);
-    padding-left: 28px;
-    padding-right: 28px;
-}
+    .frame-97 {
+        width: calc(390px - 56px);
+        padding-left: 28px;
+        padding-right: 28px;
+    }
 
-div#contacts_list {
-    padding: 32px 0px;
-}
+    div#contacts_list {
+        padding: 32px 0px;
+    }
 
-div#contacts_list svg {
-    width: 100%;
-}
+    div#contacts_list svg {
+        width: 100%;
+    }
 
-button.new-contact svg {
-    width: auto!important;
-}
+    button.new-contact svg {
+        width: auto !important;
+    }
 
-.contact_name {
-    gap: 20px;
-    padding: 15px 18px;
-}
+    .contact_name {
+        gap: 20px;
+        padding: 15px 18px;
+    }
 
 }
 
 
 
 @media only screen and (max-width: 992px) {
+
+    .frame-64 {
+        font-size: 36px;
+        font-weight: 700;
+    }
+
+    .frame_99 {
+        width: 80px;
+        height: 80px;
+    }
+
+    .frame_99 svg {
+        width: 80px;
+        height: 80px;
+        border: 1px solid #fff;
+    }
+
+    .frame_99 p {
+        font-size: 24px;
+    }
+
+    div#floating_contact {
+        padding-left: 0px;
+    }
+
+    .frame-105 {
+        gap: 25px;
+    }
+
+    .frame-40 {
+        margin-top: 25px;
+        margin-bottom: 70px;
+    }
+
+    .frame-204 {
+        display: none;
+    }
 
     .frame-97 {
         padding-right: 0px;
@@ -835,22 +873,60 @@ button.new-contact svg {
     .frame-112 {
         width: calc(100% - 72px);
     }
-    
+
     .contacts-content {
         margin-top: 80px;
     }
-    
+
     div#contacts_list {
         padding-bottom: 100px;
     }
 
     div#contact-page {
-        position: absolute!important;
+        position: absolute !important;
         width: calc(100% - 40px);
         height: calc(100% - 210px);
         padding: 20px;
         background: #f6f7f8;
         display: none;
+    }
+
+    div#editcontactoverlay {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    div#edit-contact {
+        position: relative;
+        z-index: 888;
+        background: #fff;
+        float: right;
+        width: 82px;
+        padding: 20px 20px;
+        border-radius: 20px 20px 0px 20px;
+        box-shadow: 0px 4px 4px 0px #00000040;
+        position: absolute;
+        right: 0;
+        bottom: 14px;
+    }
+
+    a#backtocontacts {
+        position: absolute;
+        right: 20px;
+        margin-top: -30px;
+    }
+
+    div#edit-contact .edit-contact {
+        justify-content: flex-start;
+    }
+
+    div#edit-contact .delete-contact {
+        justify-content: flex-start;
+        margin-top: 10px;
     }
 
     a#editcontact {
@@ -866,55 +942,55 @@ button.new-contact svg {
     .new-contact-main {
         flex-direction: column;
     }
-    
+
     .capa2 {
         display: none;
     }
-    
+
     .frame-194 {
         width: 100%;
         height: auto;
         border-radius: 30px 30px 0px 0px;
     }
-    
+
     .new-contact-main {
         flex-direction: column;
         width: calc(100% - 30px);
         max-width: 590px;
         height: auto;
     }
-    
+
     .frame-79 {
         margin-top: -62px;
         z-index: 777;
     }
-    
+
     .frame-211 {
         font-size: 47px;
     }
-    
+
     .frame-215 {
         width: calc(100% - 40px);
         margin-right: 0px;
         padding: 20px;
     }
-    
+
     .frame-14 {
         width: 100%;
     }
-    
+
     .frame-157 {
         width: 100%;
     }
-    
+
     .frame-157 input {
         width: 100%;
     }
-    
+
     .add-contact-buttons-main {
         justify-content: center;
     }
-    
-    
+
+
 
 }
