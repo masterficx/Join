@@ -256,10 +256,17 @@ function renderAssignedUserInBoard(i) {
 }
 
 function renderAssignedUserFullName(i) {
+    const currentUserNumber = parseInt(currentUser);
     for (let j = 0; j < cards[i]['assignedUserFullName'].length; j++) {
+        if (cards[i]['assignedUserFullName'][j] == Contacts[currentUserNumber]['name']) {
+            document.getElementById(`InsideUserFullName${i}`).innerHTML += `
+            <div class="label-name">${cards[i]['assignedUserFullName'][j]} (You)</div>
+            `;
+        } else {
         document.getElementById(`InsideUserFullName${i}`).innerHTML += `
             <div class="label-name">${cards[i]['assignedUserFullName'][j]}</div>
             `;
+        }
     }
 }
 
