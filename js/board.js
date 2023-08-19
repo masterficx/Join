@@ -726,7 +726,7 @@ function loadAssignedUserToForm(i, p) {
     let addContactDropdown = document.getElementById('selectuser');
     if (Contacts[p]['name'].toLowerCase().includes(findContactFormatted)) {
         addContactDropdown.innerHTML += `
-        <div class="addusertocard" onclick="addUser(${i}, ${p})" id="addusercard${p}"><div class="label-card" style="background-color:${Contacts[p]['color']}">${Contacts[p]['firstLetters']}</div><div class="card-name">${Contacts[p]['name']}</div></div>`;
+        <div class="addusertocard" onclick="addUser(${i}, ${p})" id="addusercard${p}"><div class="label-card" style="background-color:${Contacts[p]['color']}">${Contacts[p]['firstLetters']}</div><div class="card-name" id="contactsname${i}${p}">${Contacts[p]['name']}</div></div>`;
     }
 }
 
