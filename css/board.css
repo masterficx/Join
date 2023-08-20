@@ -884,10 +884,24 @@ div#assignedUserEditForm {
     margin-bottom: 20px;
 }
 
+
 .addusertocard:hover {
     cursor: pointer;
     background: #2A3647;
     color: #fff;
+}
+
+.addusertocard:hover .hover {
+    display: block;
+}
+
+.addusertocard:hover .default {
+    display: none;
+}
+
+.usercheckb {
+    position: absolute;
+    right: 15px;
 }
 
 .selectbox {
