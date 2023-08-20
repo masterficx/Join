@@ -904,6 +904,10 @@ div#assignedUserEditForm {
     right: 15px;
 }
 
+.addusertocard:hover img {
+    width: 24px;
+}
+
 .selectbox {
     font-size: 16px;
     border-radius: 10px;

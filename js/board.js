@@ -678,6 +678,8 @@ function openDropdownContact2(i) {
         if (cards[i]['assignedUserFullName'].includes(Contacts[p]['name'])) {
             let addClassAssignedUser = document.getElementById(`addusercard${p}`);
             addClassAssignedUser.classList.add('added');
+            let changeCheckboxImg = document.getElementById(`userchecked${p}`);
+            changeCheckboxImg.src ="assets/img/board/checkbox-checked.svg";
         };
     }
     openTransparentOverlay();
@@ -686,16 +688,18 @@ function openDropdownContact2(i) {
 function addUser(i, p) {
     let indexOfUser = cards[i]['assignedUserFullName'].indexOf(Contacts[p]['name']);
     let addClassAssignedUser = document.getElementById(`addusercard${p}`);
+    let changeCheckboxImg = document.getElementById(`userchecked${p}`);
     if (indexOfUser == -1) {
         cards[i]['assignedUser'].push(Contacts[p]['firstLetters']);
         cards[i]['assignedUserFullName'].push(Contacts[p]['name']);
         addClassAssignedUser.classList.add('added');
-        console.log(cards[i]['assignedUser']);
+        changeCheckboxImg.src ="assets/img/board/checkbox-checked.svg";
     }
     else if (cards[i]['assignedUserFullName'].includes(Contacts[p]['name'])) {
         cards[i]['assignedUser'].splice(indexOfUser, 1);
         cards[i]['assignedUserFullName'].splice(indexOfUser, 1);
         addClassAssignedUser.classList.remove('added');
+        changeCheckboxImg.src ="assets/img/board/checkbox-unchecked.svg";
         console.log(cards[i]['assignedUser']);
     };
 }
@@ -715,6 +719,8 @@ function openDropdownSearch(i) {
             let addClassAssignedUser = document.getElementById(`addusercard${p}`);
             addClassAssignedUser.classList.add('added');
             console.log(addClassAssignedUser);
+            let changeCheckboxImg = document.getElementById(`userchecked${p}`);
+            changeCheckboxImg.src ="assets/img/board/checkbox-checked.svg";
         };
     }
 }
@@ -726,7 +732,7 @@ function loadAssignedUserToForm(i, p) {
     let addContactDropdown = document.getElementById('selectuser');
     if (Contacts[p]['name'].toLowerCase().includes(findContactFormatted)) {
         addContactDropdown.innerHTML += `
-        <div class="addusertocard" onclick="addUser(${i}, ${p})" id="addusercard${p}"><div class="label-card" style="background-color:${Contacts[p]['color']}">${Contacts[p]['firstLetters']}</div><div class="card-name" id="contactsname${i}${p}">${Contacts[p]['name']}</div><img src="assets/img/board/checkbox-unchecked.svg" class="usercheckb default" id="userchecked${i}${p}"><img src="assets/img/board/checkbox-checked-hover.svg" class="usercheckb hover"></div>`;
+        <div class="addusertocard" onclick="addUser(${i}, ${p})" id="addusercard${p}"><div class="label-card" style="background-color:${Contacts[p]['color']}">${Contacts[p]['firstLetters']}</div><div class="card-name" id="contactsname${i}${p}">${Contacts[p]['name']}</div><img src="assets/img/board/checkbox-unchecked.svg" class="usercheckb default" id="userchecked${p}"><img src="assets/img/board/checkbox-checked.svg" class="usercheckb hover"></div>`;
     }
 }
 
