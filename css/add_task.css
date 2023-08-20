@@ -4,7 +4,8 @@
 }
 
 .mainAddTask {
-    width: 1000px;
+    width: 100%;
+    max-width: 1000px;
 }
 
 .left-right-split {
@@ -97,17 +98,20 @@ input#date {
     background-position-x: 95%;
 }
 
-.selectContainer image{
+.selectContainer image {
     border-radius: 15px;
 }
-.selectContainer image:hover{
+
+.selectContainer image:hover {
     background-color: #e9e9e9;
     cursor: pointer;
 }
-.selectContainer:hover{
+
+.selectContainer:hover {
     border: 1px solid #a1a1a1;
 }
-.selectCategoryContainer{
+
+.selectCategoryContainer {
     background-color: white;
     box-sizing: border-box;
     font-size: 20px;
@@ -121,6 +125,7 @@ input#date {
     overflow-y: auto;
 
 }
+
 input {
     box-sizing: border-box;
     width: 100%;
@@ -147,7 +152,7 @@ input {
     justify-content: center;
 }
 
-.subtask{
+.subtask {
     margin-top: 24px;
 }
 
@@ -422,7 +427,7 @@ button.SubTaskPrios:hover {
 }
 
 .add-task-contact:hover {
-    background: #475b77 ;
+    background: #475b77;
     color: white;
 }
 
@@ -453,7 +458,7 @@ button.SubTaskPrios:hover {
     color: white;
 }
 
-.added-contact-name-tag svg{
+.added-contact-name-tag svg {
     border: 3px solid white !important;
     border-radius: 22px !important;
 }
@@ -527,15 +532,31 @@ button.SubTaskPrios:hover {
     overflow-y: auto;
 }
 
-input[type="checkbox"]:checked{
+input[type="checkbox"]:checked {
     background: url(/assets/img/addtask/checkbox-checked.svg) 0px center no-repeat;
 }
 
 
 @media(max-width: 1240px) {
     .mainAddTask {
-        width: 800px;
+        width: 100%;
+        max-width: 800px;
     }
+}
+
+
+@media only screen and (min-width: 993px) and (max-width: 1200px) {
+
+    button.SubTaskPrios2,
+    button.SubTaskPrios {
+        font-size: 18px;
+    }
+
+    .SubTaskPrios2,
+    .SubTaskPrios {
+        padding: 13px 6px;
+    }
+
 }
 
 @media only screen and (max-width: 992px) {
