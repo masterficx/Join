@@ -162,7 +162,7 @@ async function renderBoard() {
 
 async function renderBoardCards() {
     await getContactsFromStorage();
-    getCardsFromStorage();
+    await getCardsFromStorage();
     clearBoardCards();
     for (let i = 0; i < cards.length; i++) {
         if (cards[i]['listType'] == 'ToDo') {

@@ -28,8 +28,9 @@ let downArrow = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
 </g>
 </svg>`;
 let addedSubtasks = [];
-function main() {
+async function main() {
     let contactsInTask = [];
+    await getContactsFromStorage();
     for (let j = 0; j < Contacts.length; j++) {
         const contact = Contacts[j];
         let addedContactFirstName = contact['firstName'];
@@ -46,7 +47,7 @@ function main() {
     window.addedContacts = contactsInTask;
 };
 
-function addTaskToBoard() {
+async function addTaskToBoard() {
     checkForInput();
     let inputTitle = document.getElementById('addTaskTitle').value;
     let description = document.getElementById('descriptionTextArea').value;
@@ -76,7 +77,7 @@ function addTaskToBoard() {
         "subtasks": subtasks,
         "listType": "ToDo",
     }
-    getCardsFromStorage();
+    await getCardsFromStorage();
 
     cards.push(theNewTask);
     console.log(cards);
