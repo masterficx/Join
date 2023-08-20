@@ -578,6 +578,7 @@ input[type="checkbox"]:checked {
     .selectContainer select {
         font-size: 16px;
         padding: 10px 21px 10px 21px;
+        cursor: pointer;
     }
 
     #addTaskTitle {
