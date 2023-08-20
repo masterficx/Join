@@ -133,7 +133,7 @@ function openCategoryDropDown() {
 
 
 }
-                // Removed due to design change. //
+// Removed due to design change. //
 // function openCategoryInput() {
 //     let categoryContainer = document.getElementById('addCategory');
 //     categoryContainer.innerHTML = "";
@@ -150,17 +150,17 @@ function openCategoryDropDown() {
 //     <button class="add-category-btn" onclick="addCategory()">${checkedSmallSVG}</button>
 //     </div>
 //     <div class="selectable-category-colors" id="selectable_category_colors">
-    
+
 //     </div>
 //     `;
 //     renderSelectableCategoryColors();
 
 // }
 
- function closeCategoryInput() {
-     document.getElementById('category').innerHTML = "";
-     document.getElementById('category').innerHTML = `<h5>Category</h5><div class="selectContainer" id="addCategory" onclick="openCategoryDropDown()">Select task category</div>`;
- }
+function closeCategoryInput() {
+    document.getElementById('category').innerHTML = "";
+    document.getElementById('category').innerHTML = `<h5>Category</h5><div class="selectContainer" id="addCategory" onclick="openCategoryDropDown()">Select task category</div>`;
+}
 
 function selectedCategory(x) {
     console.log(x);
@@ -239,11 +239,12 @@ function openDropdownContact() {
                     <p>${firstTwoLetters}</p>
                 </div>    
                 <div class="add-task-contact-name">
-                    ${element['firstName']} ${element['lastName']}
+                    ${element['firstName']} ${element['lastName']} <span id="currentUserCheck${j}"></span>
                 </div>
             </div>
             <div class="add-task-contact-checkbox"><input type="checkbox" id="checkBox_${j}" onclick="selectedContact(${j})" checked></div>
         </div>`;
+            currentUserCheck(j);
         }
         else {
             addContactContainer.innerHTML += `
@@ -256,11 +257,21 @@ function openDropdownContact() {
             <p>${firstTwoLetters}</p>
         </div>    
         <div class="add-task-contact-name">
-            ${element['firstName']} ${element['lastName']}
+            ${element['firstName']} ${element['lastName']} <span id="currentUserCheck${j}"></span>
         </div>
     </div>
             <div class="add-task-contact-checkbox"><input type="checkbox" id="checkBox_${j}" onclick="selectedContact(${j})"></div>
         </div>`;
+            currentUserCheck(j);
+        }
+    }
+}
+
+function currentUserCheck(j) {
+    let currentUserLabel = document.getElementById(`currentUserCheck${j}`);
+    if (currentUser < Contacts.length) {
+        if (Contacts[currentUser]['name'] == Contacts[j]['name']) {
+            currentUserLabel.innerHTML = "(You)";
         }
     }
 }
@@ -343,7 +354,7 @@ function selectedContact(y) {
     if (hasTheClass) {
         selectedBox.classList.remove('col_2A3647');
     } else {
-        selectedBox.classList.add('col_2A3647'); 
+        selectedBox.classList.add('col_2A3647');
     }
 }
 
@@ -400,7 +411,7 @@ function cancelSubtaskInput() {
 }
 
 function addSubtask() {
-    
+
     let subtaskMain = document.getElementById('subtask_main');
     let addSubtaskContainer = document.getElementById('addNewSubtask');
     let addedSubtaskNameInput = document.getElementById('added_subtask').value;
@@ -424,8 +435,10 @@ function addSubtask() {
     </svg>${addedSubtaskNameInput}
 </div>`
 
-    let addedSubtask = { "nameSub": addedSubtaskNameInput, 
-                         "status": "unchecked" };
+    let addedSubtask = {
+        "nameSub": addedSubtaskNameInput,
+        "status": "unchecked"
+    };
     addedSubtasks.push(addedSubtask);
     console.log(addedSubtasks)
     window.subtasks = addedSubtasks;
