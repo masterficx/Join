@@ -123,7 +123,7 @@ function openCategoryDropDown() {
     let categoryContainer = document.getElementById('addCategory');
     categoryContainer.innerHTML = "";
     ;
-    categoryContainer.innerHTML += `<div class="category-selection" onclick="openCategoryInput()">Add category</div>`;
+    // categoryContainer.innerHTML += `<div class="category-selection" onclick="openCategoryInput()">Add category</div>`;          Removed due to design change.
     for (let i = 0; i < categories.length; i++) {
         const element = categories[i];
         categoryContainer.innerHTML += `<div class="category-selection" onclick="selectedCategory(${i})">${element['name']}<svg class="new-category-color">
@@ -133,34 +133,34 @@ function openCategoryDropDown() {
 
 
 }
-
-function openCategoryInput() {
-    let categoryContainer = document.getElementById('addCategory');
-    categoryContainer.innerHTML = "";
-    let categoryMainContainer = document.getElementById('category');
-    categoryMainContainer.innerHTML = "";
-    categoryMainContainer.innerHTML = `
-    <h5>Category</h5>
-    <div class="add-category-container">
-    <input class="added-category-name" id="added_category_name" type="text" placeholder="New category name">
-    <button class="close-category-input-btn" onclick="closeCategoryInput()">${smallXSVG}</button>
-    <svg height="40" width="3">
-        <line x1="2" y1="8" x2="2" y2="32" style="stroke:#d1d1d1;stroke-width:2" />
-    </svg>
-    <button class="add-category-btn" onclick="addCategory()">${checkedSmallSVG}</button>
-    </div>
-    <div class="selectable-category-colors" id="selectable_category_colors">
+                // Removed due to design change. //
+// function openCategoryInput() {
+//     let categoryContainer = document.getElementById('addCategory');
+//     categoryContainer.innerHTML = "";
+//     let categoryMainContainer = document.getElementById('category');
+//     categoryMainContainer.innerHTML = "";
+//     categoryMainContainer.innerHTML = `
+//     <h5>Category</h5>
+//     <div class="add-category-container">
+//     <input class="added-category-name" id="added_category_name" type="text" placeholder="New category name">
+//     <button class="close-category-input-btn" onclick="closeCategoryInput()">${smallXSVG}</button>
+//     <svg height="40" width="3">
+//         <line x1="2" y1="8" x2="2" y2="32" style="stroke:#d1d1d1;stroke-width:2" />
+//     </svg>
+//     <button class="add-category-btn" onclick="addCategory()">${checkedSmallSVG}</button>
+//     </div>
+//     <div class="selectable-category-colors" id="selectable_category_colors">
     
-    </div>
-    `;
-    renderSelectableCategoryColors();
+//     </div>
+//     `;
+//     renderSelectableCategoryColors();
 
-}
+// }
 
-function closeCategoryInput() {
-    document.getElementById('category').innerHTML = "";
-    document.getElementById('category').innerHTML = `<h5>Category</h5><div class="selectContainer" id="addCategory" onclick="openCategoryDropDown()">Select task category</div>`;
-}
+ function closeCategoryInput() {
+     document.getElementById('category').innerHTML = "";
+     document.getElementById('category').innerHTML = `<h5>Category</h5><div class="selectContainer" id="addCategory" onclick="openCategoryDropDown()">Select task category</div>`;
+ }
 
 function selectedCategory(x) {
     console.log(x);
@@ -203,8 +203,6 @@ function selectedCategoryColor(x) {
 
 function addCategory() {
     let categoryNameInput = document.getElementById('added_category_name').value;
-    categoryNameInput
-    newCategoryColor
     categoryValue = categoryNameInput.toLowerCase();
     let newCategory = {
         name: categoryNameInput,
