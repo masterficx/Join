@@ -105,7 +105,7 @@ function summaryTasks(){
     const countAwait = cards.filter(item => item.listType === 'Awaitingfeedback').length; 
     awaitBox.innerHTML = `${countAwait}`;
     let prioBox = document.getElementById('sum-4');
-    const countPrio = cards.filter(item => item.prio === 'High').length; 
+    const countPrio = cards.filter(item => item.prio === 'Urgent').length; 
     prioBox.innerHTML = `${countPrio}`;
     let toDoBox = document.getElementById('sum-5');
     const countToDo = cards.filter(item => item.listType === 'ToDo').length; 
@@ -120,7 +120,7 @@ function summaryTasks(){
 let filteredPrioHigh = [];
 function filterCardsPrioHigh(){
 for(f=0; f<cards.length;f++){
-    if (cards[f].prio == 'High') {
+    if (cards[f].prio == 'Urgent') {
         filteredPrioHigh.push(cards[f].dueDate);
         console.log(filteredPrioHigh);
 }
