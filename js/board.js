@@ -278,7 +278,8 @@ function renderAssignedUserFullName(i) {
 function findUserColor(i, j) {
     for (let k = 0; k < Contacts.length; k++) {
         if (Contacts[k]['name'] == cards[i]['assignedUserFullName'][j]) {
-            return `${Contacts[k]['color']}`;
+            // return `${Contacts[k]['color']}`;
+            return `${nameTagsColors[k]}`;
         } else { }
     }
 }
