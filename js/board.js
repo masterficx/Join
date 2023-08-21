@@ -573,7 +573,7 @@ function deleteEditedSubtasks(i, b) {
 
 function loadActiveStatePrio(i) {
     let currentPrioSelection = cards[i]['prio'];
-    if (currentPrioSelection == "High") {
+    if (currentPrioSelection == "Urgent") {
         let prioSelect0 = document.getElementById('prioSelect0');
         prioSelect0.classList.add('active-state');
     } else
