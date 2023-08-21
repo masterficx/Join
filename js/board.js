@@ -331,7 +331,12 @@ function renderAddTask() {
 }
 
 function closeOverlay() {
-    document.getElementById('overlay').classList.add('d-none');
+    let overlayClose = document.getElementById('overlay');
+    overlayClose.classList.add('overlay-close');
+    setTimeout(() => {
+        document.getElementById('overlay').classList.add('d-none');
+        overlayClose.classList.remove('overlay-close');
+    }, 0);
     document.getElementById('CardContainer').style = "display:none;";
     // document.getElementById('CardContainer').innerHTML = "";
     document.getElementById('CardDetail').style = "display:none;";

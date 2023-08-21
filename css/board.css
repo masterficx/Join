@@ -376,6 +376,26 @@ html::-webkit-scrollbar {
     background: rgb(0 0 0 / 39%);
 }
 
+@keyframes slideInmainAddTask {
+    0% {
+        transform: translateX(1500px);
+    }
+    100% {}
+}
+
+.overlay-close {
+
+    animation: slideOutmainAddTask 0.4s ease-in;
+
+}
+
+@keyframes slideOutmainAddTask {
+    100% {
+        transform: translateX(1500px);
+    }
+    0% {}
+}
+
 #CardContainer .mainAddTask {
     border-radius: 30px;
     box-shadow: 0px 0px 4px 0px #00000029;
@@ -385,8 +405,9 @@ html::-webkit-scrollbar {
     background: #fff;
     padding: 40px 60px;
     border-radius: 40px;
-    animation: slide-in 1s both;
+    animation: slide-in 1s ease-in;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.10);
+    animation: slideInmainAddTask 0.4s ease-in;
 }
 
 .carddetail {
@@ -994,6 +1015,7 @@ div#addContact2 {
     z-index: 99;
     width: 100%;
     height: 100%;
+    animation: slideIn 1s ease-in;
 }
 
 
