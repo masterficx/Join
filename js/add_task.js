@@ -118,7 +118,7 @@ function checkForInput() {
 function openCategoryDropDown() {
     let categoryMainContainer = document.getElementById('category');
     categoryMainContainer.innerHTML = "";
-    categoryMainContainer.innerHTML += `<h5>Category</h5><div class="selectContainer" onclick="closeCategoryInput()"> Select task category</div>
+    categoryMainContainer.innerHTML += `<h5>Category</h5><div class="selectContainer addcatph" onclick="closeCategoryInput()"> Select task category</div>
                                                          <div class="selectCategoryContainer" id="addCategory"> </div>`;
     let categoryContainer = document.getElementById('addCategory');
     categoryContainer.innerHTML = "";
@@ -159,7 +159,7 @@ function openCategoryDropDown() {
 
 function closeCategoryInput() {
     document.getElementById('category').innerHTML = "";
-    document.getElementById('category').innerHTML = `<h5>Category</h5><div class="selectContainer" id="addCategory" onclick="openCategoryDropDown()">Select task category</div>`;
+    document.getElementById('category').innerHTML = `<h5>Category</h5><div class="selectContainer addcatph" id="addCategory" onclick="openCategoryDropDown()">Select task category</div>`;
 }
 
 function selectedCategory(x) {

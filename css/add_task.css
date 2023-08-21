@@ -364,12 +364,20 @@ button.SubTaskPrios:hover {
     stroke-width: 2;
 }
 
+.addcatph {
+    padding: 12px 21px 12px 21px!important;
+}
+
 .selectable-category-colors {
 
     gap: 5px;
     display: flex;
     box-sizing: border-box;
     margin-top: 10px;
+}
+
+div#addCategory {
+    padding: 0px;
 }
 
 .selected-category-color {
