@@ -82,6 +82,10 @@ async function addTaskToBoard() {
     cards.push(theNewTask);
     console.log(cards);
     saveCardsToStorage();
+    showTaskCreationSuccess();
+    setTimeout(() => {
+        document.location.href = "board.html";
+    }, 1500);
 }
 
 function checkForInput() {
@@ -442,4 +446,13 @@ function addSubtask() {
     addedSubtasks.push(addedSubtask);
     console.log(addedSubtasks)
     window.subtasks = addedSubtasks;
+}
+
+function showTaskCreationSuccess(){
+
+    //  let theContainerToShowItIn = document.getElementById('add_task_main');
+    let theContainerToShow = document.getElementById('task_creation_success');
+    theContainerToShow.classList.remove('d-none');
+    theContainerToShow.classList.add('frame_73_animate');
+
 }

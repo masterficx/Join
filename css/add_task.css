@@ -553,6 +553,49 @@ input[type="checkbox"]:checked {
     background: url(/assets/img/addtask/checkbox-checked.svg) 0px center no-repeat;
 }
 
+.frame_73 {
+    display: flex;
+    width: 326px;
+    height: 74px;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    border-radius: 20px;
+    background: #2A3647;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.15);
+    position: absolute;
+    top: 50%;
+    left: 40%
+}
+
+.frame_73 p {
+    color: #FFF;
+    /* Version 2/t6 */
+    font-family: Inter;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    /* 24px */
+}
+
+.frame_73_animate {
+
+    animation: slideFrame73 0.250s ease-in;
+}
+
+@keyframes slideFrame73 {
+    0% {
+        transform: translateY(1000px);
+    }
+
+    100% {}
+}
+
+.d-none {
+    display: none;
+}
+
 
 @media(max-width: 1240px) {
     .mainAddTask {
