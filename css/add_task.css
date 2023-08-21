@@ -368,6 +368,10 @@ button.SubTaskPrios:hover {
     padding: 12px 21px 12px 21px!important;
 }
 
+svg.new-category-color circle {
+    cx: 7!important;
+    cy: 7!important;
+}
 .selectable-category-colors {
 
     gap: 5px;
