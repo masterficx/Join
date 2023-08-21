@@ -438,7 +438,7 @@ function prioButtonStyle(i) {
         prioBtnDetail.classList.remove('prio-low-btn');
         prioBtnDetailImg.src = "";
     };
-    if (cards[i]['prio'] == "High") {
+    if (cards[i]['prio'] == "Urgent") {
         prioBtnDetail.classList.add('prio-high-btn');
         prioBtnDetailImg.src = "assets/img/addtask/prio-high-w.svg";
 
