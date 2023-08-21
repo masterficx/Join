@@ -561,7 +561,7 @@ footer a:hover {
 
 @media(max-height: 650px) {
     .header {
-        margin: 20px 80px !important;
+        margin: 20px 80px;
     }
 }
 
@@ -570,24 +570,20 @@ footer a:hover {
     .front-main-content {
         margin-top: 0px !important;
     }
+
     .imgLogo {
-        height: 45px !important;
+        height: 50px !important;
         width: 50px !important;
+        top: 50px !important;
+        left: 40px !important;
     }
-}
 
+    .header {
+        margin: 50px 40px;
+    }
 
-
-/* max-height: 860px */
-
-@media(max-height: 860px) {
     .front-main-content {
         margin-top: 80px;
-    }
-
-    .imgLogo {
-        width: 75px;
-        height: 80px; 
     }
 
     .logInButtonBox {
@@ -613,10 +609,12 @@ footer a:hover {
 
     .inputField {
         width: 305px;
+        height: 42px;
     }
 
     input {
         width: 270px;
+        height: 40px;
     }
 }
 

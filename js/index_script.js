@@ -113,12 +113,6 @@ function checkBox() {
     }
 }
 
-
-// Function used for testing
-function test() {
-    console.log('Passt!');
-}
-
 /////////////////////////////////////////// Log In //////////////////////////////////////////////////
 
 // Function to render the LogIn form
@@ -149,20 +143,30 @@ function renderSignUp() {
 
 
 // Function to handle SignUp form submission
-function signUpForm() {
-    let name = document.getElementById('nameInput');
-    let email = document.getElementById('emailInput');
+async function signUpForm() {
+    let nameInput = document.getElementById('nameInput');
+    let nameArray = nameInput.value.split(' ');
+    let firstName = nameArray[0];
+    let lastName = nameArray[1];
+    let firstTwoLetters = firstName.charAt(0) + lastName.charAt(0);
+    let emailInput = document.getElementById('emailInput');
     let password1 = document.getElementById('passwordInput');
     let password2 = document.getElementById('passwordInput2');
 
-    if (checkSamePasswort(password1, password2) && checkEmail(email)) {
+    if (checkSamePasswort(password1, password2) && checkEmail(emailInput.value)) {
         let user = {
-            "name": name.value,
-            "email": email.value,
-            "password": password1.value,
-        }
-        users.push(user);
-        resetInputField(name, email, password1, password2);
+                    "firstName":  firstName,
+                    "lastName":  lastName,
+                    "phone":  'Please add phonenumber',
+                    "email":  emailInput.value,
+                    "color": "black",
+                    "firstLetters": firstTwoLetters,
+                    "name": nameInput.value,
+                    "password": password1.value,
+        };
+        Contacts.push(user);
+        await saveContactsToStorage();
+        resetInputField(nameInput, emailInput, password1, password2);
         show();
         setTimeout(() => { renderLogIn() }, 2000)
     }
@@ -176,10 +180,10 @@ function resetInputField(name, email, password1, password2) {
 }
 
 
-function checkEmail(email) { // check if an email exists
-    getContactsFromStorage();
-    for (let i = 0; i < users.length; i++) {
-        let userEmail = users[i].email;
+async function checkEmail(email) { // check if an email exists
+    await getContactsFromStorage();
+    for (let i = 0; i < Contacts.length; i++) {
+        let userEmail = Contacts[i].email;
         if (email.value === userEmail) {
             emailAlert.textContent = "E-Mail bereits vorhanden";
             email.parentElement.classList.add('redInput');
@@ -357,7 +361,7 @@ function returnSignUpHTML() {
             <div>
                 <div class="inputBox">
                     <div class="inputField">
-                        <input required id="nameInput" class="" type="text" placeholder="Name">
+                        <input required id="nameInput" class="" type="text" placeholder="Vor- und Nachname">
                         <img src="./assets/img/logInSignUp/person.svg" alt="">
                     </div>
                     <div class="inputField">
