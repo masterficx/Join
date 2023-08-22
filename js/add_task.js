@@ -47,7 +47,8 @@ async function main() {
     window.addedContacts = contactsInTask;
 };
 
-async function addTaskToBoard() {
+async function addTaskToBoard(currentListType) {
+    currentListType = currentListType;
     checkForInput();
     let inputTitle = document.getElementById('addTaskTitle').value;
     let description = document.getElementById('descriptionTextArea').value;

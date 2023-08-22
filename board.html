@@ -47,8 +47,8 @@
                     </div>
                     <div class="categoryBoardAll">
                         <div class="categoryBoardHead">
-                            <div class="categoryBoardSub"><span>To do</span>
-                                <div onclick="openAddTask()" class="headBoardRightImage"><img
+                            <div class="categoryBoardSub"><span>To Do</span>
+                                <div onclick="openAddTask(0)" class="headBoardRightImage"><img
                                         src="assets/img/board/plusDark.png" alt="add"></div>
                             </div>
                             <div class="cardBoardAll drag-area" ondrop="moveTo('cardBoardToDo')" ondragover="allowDrop(event)" id="cardBoardToDo">
@@ -73,7 +73,7 @@
                         </div>
                         <div class="categoryBoardHead">
                             <div class="categoryBoardSub"><span>In Progress</span>
-                                <div onclick="openAddTask()" class="headBoardRightImage"><img
+                                <div onclick="openAddTask(1)" class="headBoardRightImage"><img
                                         src="assets/img/board/plusDark.png" alt="add"></div>
                             </div>
                             <div class="cardBoardAll drag-area" ondrop="moveTo('cardBoardInProgress')" ondragover="allowDrop(event)" id="cardBoardInProgress">
@@ -83,7 +83,7 @@
                         <div class="categoryBoardHead">
                             <div class="categoryBoardSub"><span>Awaiting
                                     Feedback</span>
-                                <div onclick="openAddTask()" class="headBoardRightImage"><img
+                                <div onclick="openAddTask(2)" class="headBoardRightImage"><img
                                         src="assets/img/board/plusDark.png" alt="add"></div>
                             </div>
                             <div class="cardBoardAll cardBoardAllAWFB drag-area" ondrop="moveTo('cardBoardAwaitingfeedback')" ondragover="allowDrop(event)" id="cardBoardAwaitingfeedback">

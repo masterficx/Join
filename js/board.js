@@ -136,20 +136,26 @@ let categoryColors = ['#FFC701', '#1FD7C1', '#0038FF', '#FF7A00', '#FF0000', '#E
 let listTypes = [{
     name: "ToDo",
     amount: 0,
+    textName: "To Do",
 },
 {
     name: "InProgress",
     amount: 0,
+    textName: "In Progress",
 },
 {
     name: "Awaitingfeedback",
     amount: 0,
+    textName: "Awaiting Feedback",
 },
 {
     name: "Done",
     amount: 0,
+    textName: "Done",
 }
 ];
+
+let currentListType = "";
 
 let currentDraggedElement;
 
@@ -308,18 +314,24 @@ function clearBoardCards() {
     document.getElementById('cardBoardDone').innerHTML = '';
 }
 
-function openAddTask() {
+function openAddTask(i) {
     const screenWidth = window.innerWidth;
     if(screenWidth < 993) {
         document.getElementById('mobileAddTask').innerHTML = `<div class="includeTaskForm" w3-include-html="templates/task_form2.html"></div>`;
+        returnListType(i);
         main();
         includeTemplates();
     } else {
     document.getElementById('CardContainer').style = "display:block;";
     document.getElementById('overlay').classList.remove('d-none');
+    returnListType(i);
     main();
     // renderAddTask();
     }
+}
+
+function returnListType(i) {
+    currentListType = `${[listTypes][i][textName]}`;
 }
 
 
