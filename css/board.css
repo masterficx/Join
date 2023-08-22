@@ -1188,9 +1188,15 @@ div#addContact2 {
     .cardBoardAllAWFB {
         margin-bottom: 128px;
     }
+    .headBoard h1 {
+        font-size: 32px !important;
+    }
+    .headBoard {
+        padding-top: 0px !important;
+    }
 }
 
-@media(max-width: 585px) {
+@media(max-width: 601px) {
     .categoryBoardAll {
         gap: 32px;
         padding-left: 0px;
@@ -1203,8 +1209,9 @@ div#addContact2 {
         display: flex;
         flex-direction: column;
         gap: 8px;
-    }
 
+    }
+    
     .headBoard {
         width: 100%;
         gap: 8px;
@@ -1248,10 +1255,6 @@ div#addContact2 {
 
     .headBoard h1 {
         font-size: 32px !important;
-    }
-
-    .headBoard {
-        padding-top: 0px !important;
     }
 
     .categoryBoardSub {
