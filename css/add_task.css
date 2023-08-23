@@ -365,13 +365,14 @@ button.SubTaskPrios:hover {
 }
 
 .addcatph {
-    padding: 12px 21px 12px 21px!important;
+    padding: 12px 21px 12px 21px !important;
 }
 
 svg.new-category-color circle {
-    cx: 7!important;
-    cy: 7!important;
+    cx: 7 !important;
+    cy: 7 !important;
 }
+
 .selectable-category-colors {
 
     gap: 5px;
@@ -652,11 +653,43 @@ input[type="checkbox"]:checked {
         font-size: 16px;
     }
 
-    .mainAddTask {
+    .AllMainBoard .mainAddTask {
         width: auto;
         padding: 20px 30px;
     }
+
+    div.SubTaskPrios2,
+    div.SubTaskPrios,
+    button.SubTaskPrios2,
+    button.SubTaskPrios {
+        width: 150px;
+        font-size: 16px !important;
+        padding: 13px 5px !important;
+        gap: 5px !important;
+    }
 }
+
+@media only screen and (max-width: 550px) {
+
+    .createBtn {
+        font-size: 17px;
+    }
+
+    .addTaskPrios {
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    div.SubTaskPrios2,
+    div.SubTaskPrios,
+    button.SubTaskPrios2,
+    button.SubTaskPrios {
+        width: 100%;
+    }
+
+}
+
+
 
 @media(max-height: 1100px) {
     .clearCreateButtons {
