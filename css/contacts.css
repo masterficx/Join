@@ -972,12 +972,31 @@ body {
     }
 
     .frame-211 {
-        font-size: 42px;
+        font-size: 41px;
+    }
+
+    .frame-212 {
+        font-size: 18px;
     }
 
     .group-9 {
         width: 80px;
         height: 80px;
+    }
+
+    .group-9 .person {
+        left: unset;
+        top: unset;
+        width: unset;
+        height: unset;
+    }
+
+    .add-contact-text-main {
+        gap: 18px;
+    }
+
+    .frame-215 {
+        gap: 25px;
     }
 
     .group-9 svg {
@@ -1009,6 +1028,13 @@ body {
 
     .add-contact-buttons-main {
         justify-content: center;
+    }
+
+    .add-contact-create span {
+        font-size: 17px;
+        line-height: 1.1em;
+        color: #FFF;
+        font-family: Inter;
     }
 
 
