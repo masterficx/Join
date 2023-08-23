@@ -58,7 +58,9 @@ function showMenu(){
 
 function dateValidation(){
         let dateInput = document.getElementById('date');
+        if(dateInput){
         dateInput.setAttribute("min", `${new Date().toISOString().split('T')[0]}`);
+    }
         }
 
 function hideHeaderMenu() {
