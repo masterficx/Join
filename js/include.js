@@ -25,6 +25,7 @@ async function includeTemplates(a) {
     if(a === 1) {
         hideHeaderMenu();
     }
+    await dateValidation();
 }
 
 async function includeHTML() {
@@ -55,6 +56,10 @@ function showMenu(){
     };
     }
 
+function dateValidation(){
+        let dateInput = document.getElementById('date');
+        dateInput.setAttribute("min", `${new Date().toISOString().split('T')[0]}`);
+        }
 
 function hideHeaderMenu() {
     document.getElementById('menu').style.display = "none";
