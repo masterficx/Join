@@ -136,22 +136,18 @@ let categoryColors = ['#FFC701', '#1FD7C1', '#0038FF', '#FF7A00', '#FF0000', '#E
 let listTypes = [{
     name: "ToDo",
     amount: 0,
-    textName: "To Do",
 },
 {
     name: "InProgress",
     amount: 0,
-    textName: "In Progress",
 },
 {
     name: "Awaitingfeedback",
     amount: 0,
-    textName: "Awaiting Feedback",
 },
 {
     name: "Done",
     amount: 0,
-    textName: "Done",
 }
 ];
 
@@ -331,9 +327,12 @@ function openAddTask(i) {
 }
 
 function returnListType(i) {
-    currentListType = `${[listTypes][i][textName]}`;
+    currentListType = `${i}`;
 }
 
+function addTaskToBoardMain() {
+    addTaskToBoard(currentListType);
+}
 
 function renderAddTask() {
 //     document.getElementById('CardContainer').innerHTML = `
