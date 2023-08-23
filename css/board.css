@@ -214,6 +214,18 @@ html::-webkit-scrollbar {
     transition: all 125ms;
 }
 
+.cardHeadMain {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.svgImage {
+    display: flex;
+    gap: 4px;
+}
+
 .cardBoardInside {
     width: 100%;
     display: flex;

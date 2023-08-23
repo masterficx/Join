@@ -155,6 +155,16 @@ let currentListType = "";
 
 let currentDraggedElement;
 
+let svgArrowRight = `<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+<rect width="16" height="16" rx="10" ry="10" fill="#D3D3D3" />
+<path d="M2 8L12 8M12 8L8 4M12 8L8 12" stroke="#696969" stroke-width="2" />
+</svg>`;
+let svgArrowLeft = `<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
+<rect width="16" height="16" rx="10" ry="10" fill="#D3D3D3" />
+<path d="M14 8L4 8M4 8L8 4M4 8L8 12" stroke="#696969" stroke-width="2" />
+</svg>
+`;
+
 //Render cards in board by category
 async function renderBoard() {
     await getCardsFromStorage();
@@ -208,7 +218,10 @@ function renderBoardCardsDone(i) {
 function renderBoardTemplate(i) {
     return `<div class="cardBoard" draggable="true" id="card${i}" ondragstart="startDragging(${i})" onclick='openCard(${i})'>
     <div class="cardBoardInside">
+        <div class="cardHeadMain">
         <div class="cardBoardInsideCategory"; id="cardBoardInsideCategory${i}">${cards[i]['category']}</div>
+        <div class="svgImage"><div id="svgToLeft" onclick="${ListTypeToLeft(i)}">${svgArrowLeft}</div><div id="svgToRight" onclick="${ListTypeToRight(i)}">${svgArrowRight}</div></div>
+        </div>
         <div class="cardBoardInsideTitleAndDescrption">
             <div class="cardBoardInsideTitle">${cards[i]['title']}</div>
             <div class="cardBoardInsideDescription">${cards[i]['description']}</div>
@@ -429,6 +442,14 @@ function renderSubtasksInBoardDetail(i) {
         subHead = document.getElementById(`SubtaskHeader${i}`);
         subHead.classList.add('d-none');
     }
+}
+
+function ListTypeToLeft() {
+
+}
+
+function ListTypeToRight() {
+    
 }
 
 async function ChangeCheckboxSubtasks(i, j) {
