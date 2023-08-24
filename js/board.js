@@ -220,7 +220,7 @@ function renderBoardTemplate(i) {
     <div class="cardBoardInside">
         <div class="cardHeadMain">
         <div class="cardBoardInsideCategory"; id="cardBoardInsideCategory${i}">${cards[i]['category']}</div>
-        <div class="svgImage"><div id="svgToLeft" onclick="${ListTypeToLeft(i)}">${svgArrowLeft}</div><div id="svgToRight" onclick="${ListTypeToRight(i)}">${svgArrowRight}</div></div>
+        <div class="svgImage"><div id="svgToLeft${i}" onclick="listTypeToLeft(${i})">${svgArrowLeft}</div><div id="svgToRight${i}" onclick="listTypeToRight(${i})">${svgArrowRight}</div></div>
         </div>
         <div class="cardBoardInsideTitleAndDescrption">
             <div class="cardBoardInsideTitle">${cards[i]['title']}</div>
@@ -240,6 +240,7 @@ function renderBoardFunctionsTemplate(i) {
     renderProgressBar(i);
     renderAssignedUserInBoard(i);
     renderBackgroundColorCategory(i);
+    renderListTypeArrows(i);
 }
 
 function renderBackgroundColorCategory(i) {
@@ -444,12 +445,38 @@ function renderSubtasksInBoardDetail(i) {
     }
 }
 
-function ListTypeToLeft() {
-
+function renderListTypeArrows(i) {
+    if (cards[i].listType == "ToDo") {
+        document.getElementById(`svgToLeft${i}`).classList.add('d-none');
+    } else {
+        if (cards[i].listType == 'Done') {
+            document.getElementById(`svgToRight${i}`).classList.add('d-none');
+        }
+    }
 }
 
-function ListTypeToRight() {
-    
+function listTypeToLeft(i) {
+    for (let j = 0; j < listTypes.length; j++) {
+        if (cards[i].listType === listTypes[j].name) {
+            const nextListTypeIndex = (j + 1) % listTypes.length;
+            cards[i].listType = listTypes[nextListTypeIndex].name;
+            break;
+        }
+    }
+    // await saveCardsToStorage();
+    // renderBoard();
+}
+
+function listTypeToRight(i) {
+    for (let j = 0; j < listTypes.length; j++) {
+        if (cards[i].listType === listTypes[j].name) {
+            const nextListTypeIndex = (j - 1) % listTypes.length;
+            cards[i].listType = listTypes[nextListTypeIndex].name;
+            break;
+        }
+    }
+//     await saveCardsToStorage();
+//     renderBoard();
 }
 
 async function ChangeCheckboxSubtasks(i, j) {
