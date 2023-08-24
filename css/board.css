@@ -1210,7 +1210,7 @@ div#addContact2 {
 
 @media(max-width: 601px) {
     .categoryBoardAll {
-        gap: 32px;
+        gap: 56px;
         padding-left: 0px;
         padding-right: 0px;
         display: flex;
@@ -1251,6 +1251,22 @@ div#addContact2 {
 
     .middle .content {
         width: 100% !important;
+    }
+
+    .svgPlus90Degree {
+        -webkit-transform: rotate(90deg);
+        -moz-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
+    }
+
+    .svgMinus90Degree {
+        -webkit-transform: rotate(90deg);
+        -moz-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
     }
 }
 

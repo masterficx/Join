@@ -220,7 +220,7 @@ function renderBoardTemplate(i) {
     <div class="cardBoardInside">
         <div class="cardHeadMain">
         <div class="cardBoardInsideCategory"; id="cardBoardInsideCategory${i}">${cards[i]['category']}</div>
-        <div class="svgImage"><div id="svgToLeft${i}" onclick="listTypeToLeft(${i})">${svgArrowLeft}</div><div id="svgToRight${i}" onclick="listTypeToRight(${i})">${svgArrowRight}</div></div>
+        <div class="svgImage"><div class="svgMinus90Degree" id="svgToLeft${i}" onclick="listTypeToLeft(${i})">${svgArrowLeft}</div><div class="svgPlus90Degree" id="svgToRight${i}" onclick="listTypeToRight(${i})">${svgArrowRight}</div></div>
         </div>
         <div class="cardBoardInsideTitleAndDescrption">
             <div class="cardBoardInsideTitle">${cards[i]['title']}</div>
@@ -274,20 +274,20 @@ function renderAssignedUserInBoard(i) {
 function renderAssignedUserFullName(i) {
     const currentUserNumber = parseInt(currentUser);
     for (let j = 0; j < cards[i]['assignedUserFullName'].length; j++) {
-        if(currentUser < Contacts.length){
-        if (cards[i]['assignedUserFullName'][j] == Contacts[currentUserNumber]['name']) {
-            document.getElementById(`InsideUserFullName${i}`).innerHTML += `
+        if (currentUser < Contacts.length) {
+            if (cards[i]['assignedUserFullName'][j] == Contacts[currentUserNumber]['name']) {
+                document.getElementById(`InsideUserFullName${i}`).innerHTML += `
             <div class="label-name">${cards[i]['assignedUserFullName'][j]} (You)</div>
             `;
-        } else {
-        document.getElementById(`InsideUserFullName${i}`).innerHTML += `
+            } else {
+                document.getElementById(`InsideUserFullName${i}`).innerHTML += `
             <div class="label-name">${cards[i]['assignedUserFullName'][j]}</div>
             `;
-        }
-    }else {
-        document.getElementById(`InsideUserFullName${i}`).innerHTML += `
+            }
+        } else {
+            document.getElementById(`InsideUserFullName${i}`).innerHTML += `
         <div class="label-name">${cards[i]['assignedUserFullName'][j]}</div>`;
-    }
+        }
     }
 }
 
@@ -326,17 +326,17 @@ function clearBoardCards() {
 
 function openAddTask(i) {
     const screenWidth = window.innerWidth;
-    if(screenWidth < 993) {
+    if (screenWidth < 993) {
         document.getElementById('mobileAddTask').innerHTML = `<div class="includeTaskForm" w3-include-html="templates/task_form2.html"></div>`;
         returnListType(i);
         main();
         includeTemplates();
     } else {
-    document.getElementById('CardContainer').style = "display:block;";
-    document.getElementById('overlay').classList.remove('d-none');
-    returnListType(i);
-    main();
-    // renderAddTask();
+        document.getElementById('CardContainer').style = "display:block;";
+        document.getElementById('overlay').classList.remove('d-none');
+        returnListType(i);
+        main();
+        // renderAddTask();
     }
 }
 
@@ -349,9 +349,9 @@ function addTaskToBoardMain() {
 }
 
 function renderAddTask() {
-//     document.getElementById('CardContainer').innerHTML = `
-//     <div class="includeTaskForm" w3-include-html="templates/task_form2.html">
-//     `;
+    //     document.getElementById('CardContainer').innerHTML = `
+    //     <div class="includeTaskForm" w3-include-html="templates/task_form2.html">
+    //     `;
     includeTemplates();
 }
 
@@ -700,7 +700,7 @@ async function saveEditedCard(i) {
 //Drag and Drop
 function startDragging(i) {
     currentDraggedElement = i;
-    const cardElement = document.getElementById('card'+i);
+    const cardElement = document.getElementById('card' + i);
     cardElement.classList.add('dragging'); // Füge die Klasse 'dragging' hinzu
 }
 
@@ -751,7 +751,7 @@ function openDropdownContact2(i) {
             let addClassAssignedUser = document.getElementById(`addusercard${p}`);
             addClassAssignedUser.classList.add('added');
             let changeCheckboxImg = document.getElementById(`userchecked${p}`);
-            changeCheckboxImg.src ="assets/img/board/checkbox-checked.svg";
+            changeCheckboxImg.src = "assets/img/board/checkbox-checked.svg";
         };
     }
     openTransparentOverlay();
@@ -765,13 +765,13 @@ function addUser(i, p) {
         cards[i]['assignedUser'].push(Contacts[p]['firstLetters']);
         cards[i]['assignedUserFullName'].push(Contacts[p]['name']);
         addClassAssignedUser.classList.add('added');
-        changeCheckboxImg.src ="assets/img/board/checkbox-checked.svg";
+        changeCheckboxImg.src = "assets/img/board/checkbox-checked.svg";
     }
     else if (cards[i]['assignedUserFullName'].includes(Contacts[p]['name'])) {
         cards[i]['assignedUser'].splice(indexOfUser, 1);
         cards[i]['assignedUserFullName'].splice(indexOfUser, 1);
         addClassAssignedUser.classList.remove('added');
-        changeCheckboxImg.src ="assets/img/board/checkbox-unchecked.svg";
+        changeCheckboxImg.src = "assets/img/board/checkbox-unchecked.svg";
         console.log(cards[i]['assignedUser']);
     };
 }
@@ -785,17 +785,17 @@ function openDropdownSearch(i) {
     openTransparentOverlay();
     for (p = 0; p < Contacts.length; p++) {
         if (Contacts[p]['name'].toLowerCase().includes(findContactFormatted)) {
-        loadAssignedUserToForm(i, p);
-        openTransparentOverlay();
-        if (cards[i]['assignedUserFullName'].includes(Contacts[p]['name'])) {
-            let addClassAssignedUser = document.getElementById(`addusercard${p}`);
-            addClassAssignedUser.classList.add('added');
-            console.log(addClassAssignedUser);
-            let changeCheckboxImg = document.getElementById(`userchecked${p}`);
-            changeCheckboxImg.src ="assets/img/board/checkbox-checked.svg";
-        };
+            loadAssignedUserToForm(i, p);
+            openTransparentOverlay();
+            if (cards[i]['assignedUserFullName'].includes(Contacts[p]['name'])) {
+                let addClassAssignedUser = document.getElementById(`addusercard${p}`);
+                addClassAssignedUser.classList.add('added');
+                console.log(addClassAssignedUser);
+                let changeCheckboxImg = document.getElementById(`userchecked${p}`);
+                changeCheckboxImg.src = "assets/img/board/checkbox-checked.svg";
+            };
+        }
     }
-}
 }
 
 function loadAssignedUserToForm(i, p) {
