@@ -388,7 +388,7 @@ function filterCards() {
     });
 }
 
-function openCard(i) {
+function openCard(i, event) {
     document.getElementById('overlay').classList.remove('d-none');
     document.getElementById('CardDetail').style = "display:block;";
     let cardDetailCat = document.getElementById('cardDetailCat');
@@ -455,19 +455,7 @@ function renderListTypeArrows(i) {
     }
 }
 
-function listTypeToLeft(i) {
-    for (let j = 0; j < listTypes.length; j++) {
-        if (cards[i].listType === listTypes[j].name) {
-            const nextListTypeIndex = (j + 1) % listTypes.length;
-            cards[i].listType = listTypes[nextListTypeIndex].name;
-            break;
-        }
-    }
-    // await saveCardsToStorage();
-    // renderBoard();
-}
-
-function listTypeToRight(i) {
+async function listTypeToLeft(i) {
     for (let j = 0; j < listTypes.length; j++) {
         if (cards[i].listType === listTypes[j].name) {
             const nextListTypeIndex = (j - 1) % listTypes.length;
@@ -475,8 +463,22 @@ function listTypeToRight(i) {
             break;
         }
     }
-//     await saveCardsToStorage();
-//     renderBoard();
+    event.stopPropagation();
+    await saveCardsToStorage();
+    renderBoard();
+}
+
+async function listTypeToRight(i) {
+    for (let j = 0; j < listTypes.length; j++) {
+        if (cards[i].listType === listTypes[j].name) {
+            const nextListTypeIndex = (j + 1) % listTypes.length;
+            cards[i].listType = listTypes[nextListTypeIndex].name;
+            break;
+        }
+    }
+    event.stopPropagation();
+    await saveCardsToStorage();
+    renderBoard();
 }
 
 async function ChangeCheckboxSubtasks(i, j) {
