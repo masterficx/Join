@@ -259,6 +259,9 @@ function renderProgressBar(i) {
     if (cards[i]['subtasks'].length == 0) {
         document.getElementById(`cardBoardInsideProgress${i}`).classList.add("d-none");
     } else {
+        console.log(`Progress: ${cards[i]['progress']}`);
+console.log(`Subtask length: ${cards[i]['subtasks'].length}`);
+
         progressBar.style.width = progressValue + '%';
     }
 }
@@ -328,21 +331,21 @@ function openAddTask(i) {
     const screenWidth = window.innerWidth;
     if (screenWidth < 993) {
         document.getElementById('mobileAddTask').innerHTML = `<div class="includeTaskForm" w3-include-html="templates/task_form2.html"></div>`;
-        returnListType(i);
+        currentListType = `${i}`;
         main();
         includeTemplates();
     } else {
         document.getElementById('CardContainer').style = "display:block;";
         document.getElementById('overlay').classList.remove('d-none');
-        returnListType(i);
+        currentListType = `${i}`;
         main();
         // renderAddTask();
     }
 }
 
-function returnListType(i) {
-    currentListType = `${i}`;
-}
+// function returnListType(i) {
+//     currentListType = `${i}`;
+// }
 
 function addTaskToBoardMain() {
     addTaskToBoard(currentListType);

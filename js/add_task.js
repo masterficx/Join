@@ -48,7 +48,6 @@ async function main() {
 };
 
 async function addTaskToBoard(currentListType) {
-    let addCurrentListType = currentListType;
     checkForInput();
     let inputTitle = document.getElementById('addTaskTitle').value;
     let description = document.getElementById('descriptionTextArea').value;
@@ -76,7 +75,7 @@ async function addTaskToBoard(currentListType) {
         "prio": prio,
         "dueDate": dueDate,
         "subtasks": subtasks,
-        "listType": addCurrentListType,
+        "listType": currentListType,
     }
     await getCardsFromStorage();
 
