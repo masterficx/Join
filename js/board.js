@@ -259,9 +259,6 @@ function renderProgressBar(i) {
     if (cards[i]['subtasks'].length == 0) {
         document.getElementById(`cardBoardInsideProgress${i}`).classList.add("d-none");
     } else {
-        console.log(`Progress: ${cards[i]['progress']}`);
-console.log(`Subtask length: ${cards[i]['subtasks'].length}`);
-
         progressBar.style.width = progressValue + '%';
     }
 }
