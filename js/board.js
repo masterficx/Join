@@ -101,9 +101,6 @@ let cards = [
     // }
 ];
 
-// saveCardsToStorage();
-// getCardsFromStorage();
-
 let categories = [{
     name: "Sales",
     color: "#FFC701",
@@ -339,10 +336,6 @@ function openAddTask(i) {
     }
 }
 
-function addTaskToBoardMain() {
-    addTaskToBoard(currentListType);
-}
-
 function renderAddTask() {
     //     document.getElementById('CardContainer').innerHTML = `
     //     <div class="includeTaskForm" w3-include-html="templates/task_form2.html">
@@ -440,6 +433,12 @@ function renderSubtasksInBoardDetail(i) {
     }
 }
 
+//help function for addTask to transfer currentListType to add task in correct column
+function addTaskToBoardMain() {
+    addTaskToBoard(currentListType);
+}
+
+//render arrows to transfer cards to next or previous column
 function renderListTypeArrows(i) {
     if (cards[i].listType == "ToDo") {
         document.getElementById(`svgToLeft${i}`).classList.add('d-none');
