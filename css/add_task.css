@@ -276,16 +276,16 @@ input {
     box-shadow: 0px 4px 4px 0px #00000040;
 }
 
-button.clearBtn img.hover {
+.clearBtn img.hover {
     display: none;
     width: 16px;
 }
 
-button.clearBtn:hover img.hover {
+.clearBtn:hover img.hover {
     display: block;
 }
 
-button.clearBtn:hover img.default {
+.clearBtn:hover img.default {
     display: none;
 }
 
