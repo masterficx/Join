@@ -218,6 +218,8 @@ function addCategory() {
 }
 
 function openDropdownContact() {
+    openTranspOverlay();
+    removeClassTranspOverlay();
     let addContactMainContainer = document.getElementById('assigned_to');
     addContactMainContainer.innerHTML = "";
     addContactMainContainer.innerHTML += `<h5>Assigned to</h5>
@@ -269,6 +271,30 @@ function openDropdownContact() {
             currentUserCheck(j);
         }
     }
+}
+
+
+function openTranspOverlay() {
+    let transparentOverlay = document.getElementById('transparentoverlay');
+    transparentOverlay.style.display = "block";
+}
+
+function closeTranspOverlay() {
+    let transparentOverlay = document.getElementById('transparentoverlay');
+    transparentOverlay.style.display = "none";
+    if(!transparentOverlay.classList.contains("dropdownclosed")){
+        closeDropdownContact();
+    }   
+}
+
+function classToTranspOverlay() {
+    let transparentOverlay = document.getElementById('transparentoverlay');
+    transparentOverlay.classList.add("dropdownclosed");
+}
+
+function removeClassTranspOverlay() {
+    let transparentOverlay = document.getElementById('transparentoverlay');
+    transparentOverlay.classList.remove("dropdownclosed");
 }
 
 function currentUserCheck(j) {
@@ -326,8 +352,10 @@ function closeDropdownContact() {
     <input type="text" class="selectContainer" placeholder="Select contacts to assign" onclick="openDropdownContact()">
         </input>`;
     renderAddedContactLabels();
-
+    classToTranspOverlay();
+    //closeTranspOverlay();
 }
+
 
 function renderAddedContactLabels() {
     let addContactMainContainer = document.getElementById('assigned_to');
