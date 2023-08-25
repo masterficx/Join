@@ -64,7 +64,7 @@ async function addTaskToBoard(currentListType) {
     if (priority == '0') { window.prio = "Urgent" };
     if (priority == '1') { window.prio = "Medium" };
     if (priority == '2') { window.prio = "Low" };
-    if (addedSubtasks.length == '0') { subtasks = ['0'] }
+    if (addedSubtasks.length == '0') { subtasks = [] }
     let theNewTask = {
         "category": `${categories[theChosenCategory]['name']}`,
         "title": inputTitle,
