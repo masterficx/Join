@@ -845,6 +845,7 @@ div#subtasklist input:focus-visible {
     background: #e6dddd;
     box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.16);
     margin-bottom: 12px;
+    margin-left: 28px;
 }
 
 .cardDetailSubTasks {

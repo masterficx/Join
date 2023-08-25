@@ -211,7 +211,7 @@ function renderBoardCardsDone(i) {
         listTypes[3]['amount']++;
         document.getElementById('cardBoardDone').innerHTML +=
             renderBoardTemplate(i);
-    } else { };
+    } else {  }
     renderBoardFunctionsTemplate(i);
 }
 
@@ -329,23 +329,18 @@ function clearBoardCards() {
 
 function openAddTask(i) {
     const screenWidth = window.innerWidth;
+    currentListType = `${i}`;
     if (screenWidth < 993) {
         document.getElementById('mobileAddTask').innerHTML = `<div class="includeTaskForm" w3-include-html="templates/task_form2.html"></div>`;
-        currentListType = `${i}`;
         main();
         includeTemplates();
     } else {
         document.getElementById('CardContainer').style = "display:block;";
         document.getElementById('overlay').classList.remove('d-none');
-        currentListType = `${i}`;
         main();
         // renderAddTask();
     }
 }
-
-// function returnListType(i) {
-//     currentListType = `${i}`;
-// }
 
 function addTaskToBoardMain() {
     addTaskToBoard(currentListType);
