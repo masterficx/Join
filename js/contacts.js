@@ -548,13 +548,13 @@ function renderEditContact(x) {
                                             <div class="add-contact-text-main">
                                                 <div class="frame-14"> 
                                                     <div class="frame-157">
-                                                        <input type="text" id="edit_name" placeholder="Name" onkeydown="return /[a-z, ]/i.test(event.key)">
+                                                        <input type="text" id="edit_name" required placeholder="Name" onkeydown="return /[a-z, ]/i.test(event.key)">
                                                         ${personSmallSVG}
                                                     </div>
                                                 </div>
                                                 <div class="frame-14"> 
                                                     <div class="frame-157">
-                                                        <input type="email" id="edit_email" placeholder="Email">
+                                                        <input type="email" id="edit_email" required placeholder="Email">
                                                         ${emailSmallSVG}
                                                     </div>
                                                 </div>
