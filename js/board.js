@@ -434,7 +434,7 @@ function renderSubtasksInBoardDetail(i) {
 }
 
 //help function for addTask to transfer currentListType to add task in correct column
-function addTaskToBoardMain() {
+function addTaskToBoardMain(currentListType) {
     addTaskToBoard(currentListType);
 }
 
