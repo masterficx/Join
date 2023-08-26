@@ -624,7 +624,7 @@ body {
 
 }
 
-.frame-215 {
+.frame-215 form {
     margin-right: 48px;
     gap: 48px;
     display: flex;
@@ -1008,7 +1008,7 @@ body {
         font-size: 29px;
     }
 
-    .frame-215 {
+    .frame-215 form {
         width: calc(100% - 40px);
         margin-right: 0px;
         padding: 20px;
