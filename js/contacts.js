@@ -84,7 +84,7 @@ let Contacts = [
 
 // saveContactsToStorage();
 
-let nameTagsColors = ['#FF7A00', '#9327FF', '#29ABE2', '#FC71FF', '#02CF2F', '#AF1616', '#462F8A', '#FFC700', '#FF7A00', '#9327FF', '#29ABE2', '#FC71FF', '#02CF2F', '#AF1616', '#462F8A', '#FFC700','#FF7A00', '#9327FF', '#29ABE2', '#FC71FF', '#02CF2F', '#AF1616', '#462F8A', '#FFC700','#FF7A00', '#9327FF', '#29ABE2', '#FC71FF', '#02CF2F', '#AF1616', '#462F8A', '#FFC700'];
+let nameTagsColors = ['#FF7A00', '#9327FF', '#29ABE2', '#FC71FF', '#02CF2F', '#AF1616', '#462F8A', '#FFC700', '#FF7A00', '#9327FF', '#29ABE2', '#FC71FF', '#02CF2F', '#AF1616', '#462F8A', '#FFC700', '#FF7A00', '#9327FF', '#29ABE2', '#FC71FF', '#02CF2F', '#AF1616', '#462F8A', '#FFC700', '#FF7A00', '#9327FF', '#29ABE2', '#FC71FF', '#02CF2F', '#AF1616', '#462F8A', '#FFC700'];
 let firstLetters = [];
 let editSVG = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 <mask id="mask0_73072_5024" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="24" height="24">
@@ -324,36 +324,36 @@ function showContactDetails(x) {
           </div>
         </div>
             `;
-            displayContact();
+    displayContact();
 }
 
-function displayContact(){
+function displayContact() {
     let displayContacts = document.getElementById('contact-page');
     displayContacts.style = "display:block; position:relative;";
 }
 
-function backToContacts(){
+function backToContacts() {
     let displayContacts = document.getElementById('contact-page');
     displayContacts.style = "display:none; position:relative;";
 }
 
-function showContactEditMenu(){
+function showContactEditMenu() {
     let subMenu = document.getElementById('edit-contact');
     let editOverlay = document.getElementById('editcontactoverlay');
-    if(subMenu.style.display == "none"){
-    subMenu.style = "display: block;";
-    editOverlay.style = "display: block;";
+    if (subMenu.style.display == "none") {
+        subMenu.style = "display: block;";
+        editOverlay.style = "display: block;";
     }
-    else{
-        subMenu.style = "display: none;";  
+    else {
+        subMenu.style = "display: none;";
     };
-    }
+}
 
-function closeEditOverlay(){
+function closeEditOverlay() {
     let subMenu = document.getElementById('edit-contact');
     let editOverlay = document.getElementById('editcontactoverlay');
     editOverlay.style = "display: none;";
-    subMenu.style = "display: none;";  
+    subMenu.style = "display: none;";
 }
 
 function deleteContact(x) {
@@ -385,16 +385,17 @@ function renderAddNewContact() {
                                         </div>
                                         
                                         <div class="frame-215">
+                                        <form  onsubmit="createNewContact(); return false;">
                                             <div class="add-contact-text-main">
                                                 <div class="frame-14"> 
                                                     <div class="frame-157">
-                                                        <input type="text" id="add_contact_name" placeholder="Name" onkeydown="return /[a-z, ]/i.test(event.key)">
+                                                        <input type="text" required id="add_contact_name" placeholder="Name" onkeydown="return /[a-z, ]/i.test(event.key)">
                                                         ${personSmallSVG}
                                                     </div>
                                                 </div>
                                                 <div class="frame-14"> 
                                                     <div class="frame-157">
-                                                        <input type="email" id="add_contact_email" placeholder="Email">
+                                                        <input type="email" required id="add_contact_email" placeholder="Email">
                                                         ${emailSmallSVG}
                                                     </div>
                                                 </div>
@@ -410,12 +411,13 @@ function renderAddNewContact() {
                                                         <span>Cancel</span> 
                                                         ${xSmallSVG}
                                                     </div>
-                                                    <div class="add-contact-create" onclick="createNewContact()"> 
+                                                    <button type="submit" class="add-contact-create"> 
                                                         <span>Create contact</span>
                                                         ${checkSmallSVG}
-                                                    </div>
+                                                    </button>
                                                 
                                             </div>
+                                            </form>
                                         </div>
     
                                     </div>`;
@@ -449,20 +451,20 @@ function createNewContact() {
     let phoneInput = document.getElementById('add_contact_phone').value;
     let firstTwoLetters = firstName.charAt(0) + lastName.charAt(0);
     let newContact = {
-                    "firstName":  firstName ,
-                    "lastName":  lastName ,
-                    "phone":  phoneInput,
-                    "email":  emailInput ,
-                    "color": "black",
-                    "firstLetters": firstTwoLetters,
-                    "name": nameInput,
-                    "password": '1234',
-                    };
+        "firstName": firstName,
+        "lastName": lastName,
+        "phone": phoneInput,
+        "email": emailInput,
+        "color": "black",
+        "firstLetters": firstTwoLetters,
+        "name": nameInput,
+        "password": '1234',
+    };
 
     Contacts.push(newContact);
     sortContactsAlphabetically(Contacts);
     saveContactsToStorage();
-    let theIndex = Contacts.findIndex(x => x.email ===emailInput);
+    let theIndex = Contacts.findIndex(x => x.email === emailInput);
     console.log(theIndex);
 
     closeNewContact();
@@ -494,9 +496,9 @@ function sortContactsAlphabetically(contacts) {
 function deleteCurrentUser() {
     let position = Contacts.findIndex(contact => contact.firstName === 'Guest');
     Contacts.splice(position, 1);
-    if(currentUser !== 0) {
-    let user = Contacts.findIndex(contact => contact.firstName === Contacts[currentUser-1].firstName);
-    Contacts.splice(user, 1);
+    if (currentUser !== 0) {
+        let user = Contacts.findIndex(contact => contact.firstName === Contacts[currentUser - 1].firstName);
+        Contacts.splice(user, 1);
     }
 }
 
@@ -542,6 +544,7 @@ function renderEditContact(x) {
                                         </div>
                                         
                                         <div class="frame-215">
+                                        <form  onsubmit="editContact(${x}); return false;">
                                             <div class="add-contact-text-main">
                                                 <div class="frame-14"> 
                                                     <div class="frame-157">
@@ -566,32 +569,33 @@ function renderEditContact(x) {
                                                     <div class="add-contact-cancel" onclick="deleteContactFromEdit(${x})">
                                                         <span>Delete</span> 
                                                     </div>
-                                                    <div class="add-contact-create" onclick="editContact(${x})"> 
+                                                    <button type="submit" class="add-contact-create"> 
                                                         <span> Save </span>
                                                         ${checkSmallSVG}
-                                                    </div>
+                                                    </button>
                                                 
                                             </div>
+                                            </form>
                                         </div>
     
                                     </div>`;
 
-document.getElementById('edit_name').value = element['firstName'] + " " + element['lastName'];
-document.getElementById('edit_email').value = element['email'];
-document.getElementById('edit_phone').value = element['phone'];
-let subMenu = document.getElementById('edit-contact');
-subMenu.style = "display: none;";
+    document.getElementById('edit_name').value = element['firstName'] + " " + element['lastName'];
+    document.getElementById('edit_email').value = element['email'];
+    document.getElementById('edit_phone').value = element['phone'];
+    let subMenu = document.getElementById('edit-contact');
+    subMenu.style = "display: none;";
 
 }
 
-function deleteContactFromEdit(x){
+function deleteContactFromEdit(x) {
     deleteContact(x);
     closeNewContact();
     saveContactsToStorage();
 
 }
 
-function editContact(x){
+function editContact(x) {
     let nameInput = document.getElementById('edit_name').value;
     let nameArray = nameInput.split(' ');
     let newFirstName = nameArray[0];
