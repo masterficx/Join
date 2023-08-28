@@ -270,6 +270,10 @@ body {
     animation: slideFloatingContact 0.125s ease-in;
 }
 
+.contact_name.background-color-2A3647.pointer-events-none {
+    color: #fff;
+}
+
 @keyframes slideFloatingContact {
     0% {
         transform: translateX(1000px);

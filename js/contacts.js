@@ -275,7 +275,7 @@ function animateContactCard() {
 }
 
 function showContactDetails(x) {
-    renderContactsList();
+    markActiveContact(x);
     let contact = document.getElementById(`contact_${[x]}`);
     let contactNameContainer = document.getElementById(`contact_name_${[x]}`);
     let contactCardContainer = document.getElementById('floating_contact');
@@ -325,6 +325,12 @@ function showContactDetails(x) {
         </div>
             `;
     displayContact();
+}
+
+async function markActiveContact(x){
+    await renderContactsList();
+    let contact = await document.getElementById(`contact_${[x]}`);
+        await contact.classList.add('background-color-2A3647', 'pointer-events-none');
 }
 
 function displayContact() {
