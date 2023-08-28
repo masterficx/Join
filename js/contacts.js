@@ -395,7 +395,7 @@ function renderAddNewContact() {
                                             <div class="add-contact-text-main">
                                                 <div class="frame-14"> 
                                                     <div class="frame-157">
-                                                        <input type="text" required id="add_contact_name" placeholder="Name" onkeydown="return /[a-z, ]/i.test(event.key)">
+                                                        <input type="text" required id="add_contact_name" placeholder="Name">
                                                         ${personSmallSVG}
                                                     </div>
                                                 </div>
@@ -554,7 +554,7 @@ function renderEditContact(x) {
                                             <div class="add-contact-text-main">
                                                 <div class="frame-14"> 
                                                     <div class="frame-157">
-                                                        <input type="text" id="edit_name" required placeholder="Name" onkeydown="return /[a-z, ]/i.test(event.key)">
+                                                        <input type="text" id="edit_name" required placeholder="Name">
                                                         ${personSmallSVG}
                                                     </div>
                                                 </div>
