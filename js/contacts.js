@@ -619,9 +619,8 @@ function editContact(x) {
     closeNewContact();
     renderContactsList();
     document.getElementById('floating_contact').innerHTML = "";
-    setTimeout(() => {
-        showContactDetails(x)
-    }, 500);
+    showContactDetails(x)
+ 
 
 }
 
