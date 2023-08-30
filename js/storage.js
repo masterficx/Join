@@ -81,3 +81,29 @@ async function getCardsFromStorage() { // Name muss dann angepasst werden
         throw new Error(`Error fetching data: ${error}`);
     }
 }
+
+
+//Save and load categories in remoteStorage
+async function saveCategoriesToStorage() { // Name muss dann angepasst werden
+    let key = 'categories';
+    let value = categories;
+    let payload = { key, value, token: STORAGE_TOKEN };
+    return fetch(STORAGE_URL, {method: 'POST', body: JSON.stringify(payload)}).then(res => res.json());
+}
+
+async function getCategoriesFromStorage() { // Name muss dann angepasst werden
+    let key = 'categories';
+    let url = `${STORAGE_URL}?key=${key}&token=${STORAGE_TOKEN}`;
+    try {
+        const response = await fetch(url);
+        const data = await response.json();
+
+        if (data.data) {
+            categories = JSON.parse(data.data.value);
+        } else {
+            throw new Error(`Could not find data with key "${key}".`);
+        }
+    } catch (error) {
+        throw new Error(`Error fetching data: ${error}`);
+    }
+}

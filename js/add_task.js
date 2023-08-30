@@ -205,7 +205,7 @@ function selectedCategoryColor(x) {
     selectedColorContainer.classList.add('stroke-width-2');
 }
 
-function addCategory() {
+async function addCategory() {
     let categoryNameInput = document.getElementById('added_category_name').value;
     categoryValue = categoryNameInput.toLowerCase();
     let newCategory = {
@@ -215,6 +215,8 @@ function addCategory() {
     };
     categories.push(newCategory);
     openCategoryDropDown();
+    saveCategoriesToStorage()
+    await getCardsFromStorage()
 }
 
 function openDropdownContact() {
