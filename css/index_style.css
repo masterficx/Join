@@ -623,4 +623,8 @@ footer a:hover {
     .front-main-content {
         margin-top: 40px;
     }
+    .responsivSignUp {
+        gap: 10px !important;
+        height: 530px !important;
+    }
 }

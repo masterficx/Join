@@ -351,7 +351,7 @@ function returnLogInHTML() {
 
 function returnSignUpHTML() {
     return /* html */ `
-        <form onsubmit="signUpForm(); return false;" class="content">
+        <form onsubmit="signUpForm(); return false;" class="content responsivSignUp">
             <div class="headingContainer">
                 <div onclick="renderLogIn()" class="imgHeadingContainer backArrow"></div>
                 <h1>Sign Up</h1>
