@@ -274,8 +274,8 @@ function animateContactCard() {
     contactCardContainer.classList.add('floating-contact-animate');
 }
 
-function showContactDetails(x) {
-    markActiveContact(x);
+async function showContactDetails(x) {
+    await markActiveContact(x);
     let contact = document.getElementById(`contact_${[x]}`);
     let contactNameContainer = document.getElementById(`contact_name_${[x]}`);
     let contactCardContainer = document.getElementById('floating_contact');
