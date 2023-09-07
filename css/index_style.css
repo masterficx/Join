@@ -196,7 +196,7 @@ form {
     height: 48px;
     border-radius: 10px;
     border: 1px solid #D1D1D1;
-    padding-left: 21px;
+    padding-left: 15px;
     padding-top: 5px;
     font-size: 20px;
 }
@@ -408,6 +408,26 @@ footer a:hover {
 
 
 #emailAlert {
+    color: rgb(255, 129, 144);
+    margin-top: -30px;
+    margin-right: 270px;
+    margin-bottom: -40px;
+    font-size: 13px;
+    height: 25px;
+}
+
+
+#nameAlert {
+    color: rgb(255, 129, 144);
+    margin-top: -30px;
+    margin-right: 210px;
+    margin-bottom: -40px;
+    font-size: 13px;
+    height: 25px;
+}
+
+
+#freeAlert {
     color: rgb(255, 129, 144);
     margin-top: -30px;
     margin-right: 270px;
