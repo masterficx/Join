@@ -451,12 +451,21 @@ function openCard(i, event) {
     cardDetailAssignedUser.innerHTML = `<div class="cardBoardInsideUserAndPrio FullNameSplit"><div class="InsideUser" id="InsideUserDetail${i}"></div><div id=InsideUserFullName${i}></div></div><div class="cardDetailSubtasksAll"><div class="detlabel" id="SubtaskHeader${i}">Subtasks:</div><div class="cardDetailSubTasks" id="cardDetailSubTasks${i}"></div></div>`;
     cardDetailDelete.innerHTML = `<div onclick='deleteCard(${[i]})'><img src="assets/img/board/delete.svg" class="default"><img src="assets/img/board/delete-blue.svg" class="hover">`;
     cardDetailEdit.innerHTML = `<div onclick='editCard(${[i]})'><img src="assets/img/board/edit.svg">`;
+    renderCategoriesAndUser(i);
+}
+
+
+/**
+ * Render Categorie and user details
+ */
+function renderCategoriesAndUser(i){
     renderBackgroundColorCategoryDetail(i);
     renderAssignedUserInBoardDetail(i);
     renderAssignedUserFullName(i);
     renderSubtasksInBoardDetail(i);
     prioButtonStyle(i);
 }
+
 
 /**
  * render background color for category in detailed card view
