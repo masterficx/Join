@@ -606,7 +606,6 @@ function prioButtonStyle(i) {
  * @param {number} i - index of the Cards array 
  */
 async function deleteCard(i) {
-    console.log('deleted', i);
     cards.splice(i, 1);
     await saveCardsToStorage();
     closeOverlay();
@@ -617,7 +616,6 @@ async function deleteCard(i) {
  * @param {number} i - index of the Cards array
  */
 function editCard(i) {
-    console.log('edited', i);
     document.getElementById('CardDetail').style = "display:none;";
     document.getElementById('CardEditForm').style = "display:block;";
     document.getElementById('editCardTitle').value = `${cards[i]['title']}`;
@@ -747,7 +745,6 @@ function addSubtask2(i) {
     subtaskMain.innerHTML += `   <div class="boxes" id="boxes${b}">• ${addedSubtask}<div class="actionlinks"><a href="#" onclick="editLoadedSubtasks(${i},${b})" class="subTaskEdit"><img src="assets/img/board/edit-icon.svg"></a><a href="#" onclick="deleteEditedSubtasks(${i},${b})" class="subTaskDel"><img src="assets/img/board/trash-icon.svg"></a></div></div>`
     cards[i]['subtasks'].push({ nameSub: addedSubtask, status: "unchecked" });
     addedSubtasks.push(addedSubtask);
-    console.log(addedSubtasks)
     window.subtasks = addedSubtasks;
 }
 
@@ -779,7 +776,6 @@ function loadActiveStatePrio(i) {
                 let prioSelect2 = document.getElementById('prioSelect2');
                 prioSelect2.classList.add('active-state');
             }
-    console.log(currentPrioSelection);
 }
 
 /**
@@ -819,7 +815,6 @@ function prioValueForSaving(i, h) {
             if (h == 2) {
                 prioValue = "Low";
             }
-    console.log(prioValue);
     cards[i]['prio'] = prioValue;
 }
 
@@ -931,7 +926,6 @@ function addUser(i, p) {
         cards[i]['assignedUserFullName'].splice(indexOfUser, 1);
         addClassAssignedUser.classList.remove('added');
         changeCheckboxImg.src = "assets/img/board/checkbox-unchecked.svg";
-        console.log(cards[i]['assignedUser']);
     };
 }
 
@@ -953,7 +947,6 @@ function openDropdownSearch(i) {
             if (cards[i]['assignedUserFullName'].includes(Contacts[p]['name'])) {
                 let addClassAssignedUser = document.getElementById(`addusercard${p}`);
                 addClassAssignedUser.classList.add('added');
-                console.log(addClassAssignedUser);
                 let changeCheckboxImg = document.getElementById(`userchecked${p}`);
                 changeCheckboxImg.src = "assets/img/board/checkbox-checked.svg";
             };
