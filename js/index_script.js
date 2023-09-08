@@ -193,14 +193,14 @@ async function signUpForm() {
         let firstTwoLetters = firstName.charAt(0) + lastName.charAt(0);
 
         let user = {
-                    "firstName":  firstName,
-                    "lastName":  lastName,
-                    "phone":  'Please add a phonenumber',
-                    "email":  emailInput.value,
-                    "color": "black",
-                    "firstLetters": firstTwoLetters,
-                    "name": nameInput.value,
-                    "password": password1.value,
+            "firstName": firstName,
+            "lastName": lastName,
+            "phone": 'Please add a phonenumber',
+            "email": emailInput.value,
+            "color": "black",
+            "firstLetters": firstTwoLetters,
+            "name": nameInput.value,
+            "password": password1.value,
         };
         Contacts.push(user);
         sortContactsAlphabetically(Contacts);
@@ -232,13 +232,13 @@ function resetInputField(name, email, password1, password2) {
  */
 function checkTwoWords(nameInput) {
     let words = nameInput.value.trim().split(' ');
-    if(words.length !== 2){
+    if (words.length !== 2) {
         nameAlert.textContent = "Bitte Vor- und Nachname eingeben";
-            nameInput.parentElement.classList.add('redInput');
-            setTimeout(() => { nameAlert.textContent = ""; nameInput.parentElement.classList.remove('redInput'); }, 3000)
-            return false;
+        nameInput.parentElement.classList.add('redInput');
+        setTimeout(() => { nameAlert.textContent = ""; nameInput.parentElement.classList.remove('redInput'); }, 3000)
+        return false;
     } else {
-        return true; 
+        return true;
     }
 }
 
@@ -307,17 +307,17 @@ function checkResetpassword() {
     for (let i = 0; i < Contacts.length; i++) {
         let userEmail = Contacts[i].email;
         if (emailInput.value === userEmail) {
-            renderResetPassword(i);
+            show();
             emailFound = true;
+            setTimeout(() => { renderResetPassword(i) }, 2000);
             break;
         }
-    } if (emailFound) {
-        console.log('Email wurde versendet');
-    } else {
+    } if (!emailFound) {
         emailAlert.textContent = "E-Mail nicht vorhanden";
         emailInput.parentElement.classList.add('redInput');
         setTimeout(() => { emailAlert.textContent = ""; emailInput.parentElement.classList.remove('redInput'); }, 3000);
     }
+
 }
 
 /**
@@ -343,11 +343,11 @@ async function setNewPassword(i) {
     let password1 = document.getElementById('passwordInput');
     let password2 = document.getElementById('passwordInput2');
 
-    if(checkSamePasswort(password1, password2)) {
+    if (checkSamePasswort(password1, password2)) {
         user.password = password1.value;
         show();
         await saveContactsToStorage();
-        setTimeout(()=> {renderLogIn()}, 2000);
+        setTimeout(() => { renderLogIn() }, 2000);
     }
 }
 
