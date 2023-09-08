@@ -17,7 +17,6 @@ function checkLogIn() {
             isLoggedIn = true;
 
             currentUser = i;
-            console.log(currentUser);
             localStorage.setItem('currentUser', currentUser);
             window.location.href = 'summary.html';
             break; // Exit the loop since no further checking is needed
@@ -41,7 +40,6 @@ function loadcurrentUser() {
     let storedCurrentUser = localStorage.getItem('currentUser');
     if (storedCurrentUser !== null) {
         currentUser = parseInt(storedCurrentUser);
-        console.log(currentUser);
     }
 }
 

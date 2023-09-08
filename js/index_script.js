@@ -203,6 +203,7 @@ async function signUpForm() {
                     "password": password1.value,
         };
         Contacts.push(user);
+        sortContactsAlphabetically(Contacts);
         await saveContactsToStorage();
         resetInputField(nameInput, emailInput, password1, password2);
         show();
