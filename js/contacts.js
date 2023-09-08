@@ -367,8 +367,10 @@ function deleteContact(x) {
         alert('Du kannst dich nicht selber löschen')
     } else {
     Contacts.splice(x, 1);
-    currentUser--;
+    if(currentUser > x) {
+    currentUser--
     localStorage.setItem('currentUser', currentUser);
+};
     document.getElementById('floating_contact').innerHTML = '';
     saveContactsToStorage();
     renderContactsList();
