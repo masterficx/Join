@@ -128,6 +128,9 @@ let currentListType = "";
 
 let currentDraggedElement;
 
+/**
+ * svg graphics which shows arrows for mobile view to move cards to other status
+ */
 let svgArrowRight = `<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg">
 <rect width="16" height="16" rx="10" ry="10" fill="#D3D3D3" />
 <path d="M2 8L12 8M12 8L8 4M12 8L8 12" stroke="#696969" stroke-width="2" />
@@ -138,7 +141,9 @@ let svgArrowLeft = `<svg width="16" height="16" xmlns="http://www.w3.org/2000/sv
 </svg>
 `;
 
-//Render cards in board by category
+/**
+ * Render all cards in board by loading from remote storage
+ */
 async function renderBoard() {
     await getCardsFromStorage();
     clearAllListTypesAmount();
@@ -146,6 +151,9 @@ async function renderBoard() {
     getCategoriesFromStorage();
 }
 
+/**
+ * Render all ToDo cards in board
+ */
 async function renderBoardCards() {
     await getContactsFromStorage();
     await getCardsFromStorage();
@@ -162,6 +170,10 @@ async function renderBoardCards() {
     } renderNoCardsInCardBoard();
 }
 
+/**
+ * Render all InProgress cards in board
+ * @param {number} i - index of the Cards array
+ */
 function renderBoardCardsInProgress(i) {
     if (cards[i]['listType'] == 'InProgress') {
         listTypes[1]['amount']++;
@@ -171,6 +183,10 @@ function renderBoardCardsInProgress(i) {
     } else { renderBoardCardsAwaitingFeedback(i) };
 }
 
+/**
+ * Render all AwaitingFeedback cards in board
+ * @param {number} i - index of the Cards array
+ */
 function renderBoardCardsAwaitingFeedback(i) {
     if (cards[i]['listType'] == 'Awaitingfeedback') {
         listTypes[2]['amount']++;
@@ -180,6 +196,10 @@ function renderBoardCardsAwaitingFeedback(i) {
     } else { renderBoardCardsDone(i) };
 }
 
+/**
+ * Render all Done cards in board
+ * @param {number} i - index of the Cards array
+ */
 function renderBoardCardsDone(i) {
     if (cards[i]['listType'] == 'Done') {
         listTypes[3]['amount']++;
@@ -189,6 +209,11 @@ function renderBoardCardsDone(i) {
     renderBoardFunctionsTemplate(i);
 }
 
+/**
+ * HTML temnplate for render functions
+ * @param {number} i 
+ * @returns html content
+ */
 function renderBoardTemplate(i) {
     return `<div class="cardBoard" draggable="true" id="card${i}" ondragstart="startDragging(${i})" onclick='openCard(${i})'>
     <div class="cardBoardInside">
@@ -210,6 +235,10 @@ function renderBoardTemplate(i) {
 </div>`;
 }
 
+/**
+ * collection of other functions which are needed when render cards in board
+ * @param {number} i - index of the Cards array
+ */
 function renderBoardFunctionsTemplate(i) {
     renderProgressBar(i);
     renderAssignedUserInBoard(i);
@@ -217,6 +246,10 @@ function renderBoardFunctionsTemplate(i) {
     renderListTypeArrows(i);
 }
 
+/**
+ * assign the correct color of the card category by compare category of the card with category array
+ * @param {number} i - index of the Cards array
+ */
 function renderBackgroundColorCategory(i) {
     let cat = cards[i]['category'];
     let catClass = document.getElementById(`cardBoardInsideCategory${i}`);
@@ -227,6 +260,10 @@ function renderBackgroundColorCategory(i) {
     };
 }
 
+/**
+ * render progressbar in card by update the bar according to amount of subtasks and checked subtasks
+ * @param {number} i - index of the Cards array
+ */
 function renderProgressBar(i) {
     let progressValue = cards[i]['progress'] * 100 / cards[i]['subtasks'].length;
     let progressBar = document.getElementById(`progressBar${i}`);
@@ -237,6 +274,10 @@ function renderProgressBar(i) {
     }
 }
 
+/**
+ * render assigned user icon with initials in card
+ * @param {number} i - index of the Cards array
+ */
 function renderAssignedUserInBoard(i) {
     for (let j = 0; j < cards[i]['assignedUser'].length; j++) {
         document.getElementById(`InsideUser${i}`).innerHTML += `
@@ -245,6 +286,10 @@ function renderAssignedUserInBoard(i) {
     }
 }
 
+/**
+ * render assigned user full name in card detailed view
+ * @param {number} i - index of the Cards array
+ */
 function renderAssignedUserFullName(i) {
     const currentUserNumber = parseInt(currentUser);
     for (let j = 0; j < cards[i]['assignedUserFullName'].length; j++) {
@@ -265,6 +310,12 @@ function renderAssignedUserFullName(i) {
     }
 }
 
+/**
+ * render color of user icon according to assigned color in contacts array
+ * @param {number} i - index of the Cards array
+ * @param {number} j - index of assigned user in Cards JSON
+ * @returns 
+ */
 function findUserColor(i, j) {
     for (let k = 0; k < Contacts.length; k++) {
         if (Contacts[k]['name'] == cards[i]['assignedUserFullName'][j]) {
@@ -274,12 +325,18 @@ function findUserColor(i, j) {
     }
 }
 
+/**
+ * set list type 0 to clear value
+ */
 function clearAllListTypesAmount() {
     for (let k = 0; k < listTypes.length; k++) {
         listTypes[k]['amount'] = 0;
     }
 }
 
+/**
+ * render 'no cards in board' placeholder for all columns
+ */
 function renderNoCardsInCardBoard() {
     for (let k = 0; k < listTypes.length; k++) {
         if (listTypes[k]['amount'] == 0) {
@@ -290,7 +347,9 @@ function renderNoCardsInCardBoard() {
     }
 }
 
-//Open cards detail view
+/**
+ * clear all columns in board
+ */
 function clearBoardCards() {
     document.getElementById('cardBoardToDo').innerHTML = '';
     document.getElementById('cardBoardInProgress').innerHTML = '';
@@ -298,6 +357,9 @@ function clearBoardCards() {
     document.getElementById('cardBoardDone').innerHTML = '';
 }
 
+/**
+ * open addTask overlay in board
+ */
 function openAddTask(i) {
     const screenWidth = window.innerWidth;
     currentListType = `${i}`;
@@ -313,6 +375,9 @@ function openAddTask(i) {
     }
 }
 
+/**
+ * render addTask overlay by loading template
+ */
 function renderAddTask() {
     //     document.getElementById('CardContainer').innerHTML = `
     //     <div class="includeTaskForm" w3-include-html="templates/task_form2.html">
@@ -320,6 +385,9 @@ function renderAddTask() {
     includeTemplates();
 }
 
+/**
+ * close addTask overlay in board
+ */
 function closeOverlay() {
     let overlayClose = document.getElementById('overlay');
     overlayClose.classList.add('overlay-close');
@@ -334,14 +402,19 @@ function closeOverlay() {
     renderBoard();
 }
 
+/**
+ * stop other function when multiple functions called the same time
+ */
 function doNotClose(event) {
     event.stopPropagation();
 }
 
+/**
+ * filter cards and show or hide depending on title and description
+ */
 function filterCards() {
     const query = document.getElementById("inputSearchBoard").value.toLowerCase();
     const cards = document.querySelectorAll(".cardBoard");
-
     cards.forEach((card) => {
         const title = card.querySelector(".cardBoardInsideTitle").innerHTML.toLowerCase();
         const description = card.querySelector(".cardBoardInsideDescription").innerHTML.toLowerCase();
@@ -353,6 +426,11 @@ function filterCards() {
     });
 }
 
+/**
+ * open card in detailed view in board
+ * @param {number} i - index of the Cards array
+ * @param {*} event - help function to prevent from call unwanted function
+ */
 function openCard(i, event) {
     document.getElementById('overlay').classList.remove('d-none');
     document.getElementById('CardDetail').style = "display:block;";
@@ -379,6 +457,10 @@ function openCard(i, event) {
     prioButtonStyle(i);
 }
 
+/**
+ * render background color for category in detailed card view
+ * @param {number} i - index of the Cards array
+ */
 function renderBackgroundColorCategoryDetail(i) {
     let cat = cards[i]['category'];
     let catClassDet = document.getElementById(`cardBoardInsideCategoryDetail${i}`);
@@ -389,6 +471,10 @@ function renderBackgroundColorCategoryDetail(i) {
     };
 }
 
+/**
+ * render assigned user in card detailed view
+ * @param {number} i - index of the Cards array
+ */
 function renderAssignedUserInBoardDetail(i) {
     for (let j = 0; j < cards[i]['assignedUser'].length; j++) {
         document.getElementById(`InsideUserDetail${i}`).innerHTML += `
@@ -397,6 +483,10 @@ function renderAssignedUserInBoardDetail(i) {
     }
 }
 
+/**
+ * render subtasks in detailed view of card
+ * @param {number} i - index of the Cards array
+ */
 function renderSubtasksInBoardDetail(i) {
     if (cards[i]['subtasks'].length > 0) {
         for (let j = 0; j < cards[i]['subtasks'].length; j++) {
@@ -410,12 +500,18 @@ function renderSubtasksInBoardDetail(i) {
     }
 }
 
-//help function for addTask to transfer currentListType to add task in correct column
+/**
+ * help function for addTask to transfer currentListType to add task in correct column
+ * @param {string} currentListType - current list type to create card to correct board column
+ */
 function addTaskToBoardMain(currentListType) {
     addTaskToBoard(currentListType);
 }
 
-//render arrows to transfer cards to next or previous column
+/**
+ * render arrows to transfer cards to next or previous column
+ * @param {number} i - index of the Cards array
+ */
 function renderListTypeArrows(i) {
     if (cards[i].listType == "ToDo") {
         document.getElementById(`svgToLeft${i}`).classList.add('d-none');
@@ -426,6 +522,10 @@ function renderListTypeArrows(i) {
     }
 }
 
+/**
+ * change list type of card to previous type in board
+ * @param {number} i - index of the Cards array
+ */
 async function listTypeToLeft(i) {
     for (let j = 0; j < listTypes.length; j++) {
         if (cards[i].listType === listTypes[j].name) {
@@ -439,6 +539,10 @@ async function listTypeToLeft(i) {
     renderBoard();
 }
 
+/**
+ * change list type of card to next type in board
+ * @param {number} i - index of the Cards array 
+ */
 async function listTypeToRight(i) {
     for (let j = 0; j < listTypes.length; j++) {
         if (cards[i].listType === listTypes[j].name) {
@@ -452,6 +556,9 @@ async function listTypeToRight(i) {
     renderBoard();
 }
 
+/**
+ * check and uncheck subtask checkbox of card
+ */
 async function ChangeCheckboxSubtasks(i, j) {
     if (cards[i]['subtasks'][j]['status'] == "checked") {
         cards[i]['subtasks'][j]['status'] = "unchecked";
@@ -466,6 +573,9 @@ async function ChangeCheckboxSubtasks(i, j) {
     renderBoard();
 }
 
+/**
+ * set style of priority button according to choosen priority
+ */
 function prioButtonStyle(i) {
     let prioBtnDetail = document.getElementById('priobtndetail');
     let prioBtnDetailImg = document.getElementById('prioImg');
@@ -490,6 +600,10 @@ function prioButtonStyle(i) {
             }
 }
 
+/**
+ * delete card from board
+ * @param {number} i - index of the Cards array 
+ */
 async function deleteCard(i) {
     console.log('deleted', i);
     cards.splice(i, 1);
@@ -497,7 +611,10 @@ async function deleteCard(i) {
     closeOverlay();
 }
 
-//Edit cards
+/**
+ * edit card function in card detailed view
+ * @param {number} i - index of the Cards array
+ */
 function editCard(i) {
     console.log('edited', i);
     document.getElementById('CardDetail').style = "display:none;";
@@ -540,6 +657,10 @@ function editCard(i) {
     loadAssignedUserEditForm(i);
 }
 
+/**
+ * load form to edit subtasks in detailed view of card
+ * @param {number} i - index of the Cards array
+ */
 function loadSubtasksEditform(i) {
     let subtaskMain = document.getElementById('subtasklist');
     subtaskMain.innerHTML = '';
@@ -548,6 +669,11 @@ function loadSubtasksEditform(i) {
     }
 }
 
+/**
+ * edit subtasks in form 
+ * @param {number} i - index of the Cards array
+ * @param {number*} b - index of subtask in Cards JSON
+ */
 function editLoadedSubtasks(i, b) {
     let editSubtaskInput = document.getElementById(`subtasklist`);
     editSubtaskInput.innerHTML = `<input type="text" id='inputEditTask${b}'><div class="editactionlinks" style="display:none;" id="editsubtaskbtn"><a href="#" onclick="cancelEditedSubtask(${i},${b})" class="subdellink"><img src="assets/img/board/trash-icon.svg"></a><a href="#" onclick="saveEditedSubtask(${i},${b})" class="subedilink"><img src="assets/img/board/check-icon.svg"></a></div>`;
@@ -556,6 +682,11 @@ function editLoadedSubtasks(i, b) {
     editSubtaskInputValue.value = `${cards[i]['subtasks'][b].nameSub}`;
 }
 
+/**
+ * save edited subtasks to card
+ * @param {number} i - index of the Cards array 
+ * @param {number} b - index of subtask in Cards JSON
+ */
 function saveEditedSubtask(i, b) {
     document.getElementById('editsubtaskbtn').style.display = "none";
     let editSubtaskInputValue = document.getElementById(`inputEditTask${b}`);
@@ -563,6 +694,10 @@ function saveEditedSubtask(i, b) {
     loadSubtasksEditform(i);
 }
 
+/**
+ * open subtask input form
+ * @param {number} i - index of subtask in Cards JSON
+ */
 function openSubtaskInput2(i) {
     let addSubtaskContainer = document.getElementById('addNewSubtask2');
     addSubtaskContainer.innerHTML = "";
@@ -576,10 +711,18 @@ function openSubtaskInput2(i) {
         `;
 }
 
+/**
+ * cancel edit subtask
+ * @param {number} i - index of the Cards array 
+ * @param {number} b - index of subtask in Cards JSON
+ */
 function cancelEditedSubtask(i, b) {
     loadSubtasksEditform(i);
 }
 
+/**
+ * cancel edit subtask form
+ */
 function cancelSubtaskInput2() {
     let addSubtaskContainer = document.getElementById('addNewSubtask2');
     addSubtaskContainer.innerHTML = `<p>Add new subtask</p>
@@ -588,6 +731,10 @@ function cancelSubtaskInput2() {
     </svg>`;
 }
 
+/**
+ * add new subtask to card in edit card view
+ * @param {number} i - index of the Cards array
+ */
 function addSubtask2(i) {
     let subtaskMain = document.getElementById('subtasklist');
     let addSubtaskContainer = document.getElementById('addNewSubtask2');
@@ -603,11 +750,20 @@ function addSubtask2(i) {
     window.subtasks = addedSubtasks;
 }
 
+/**
+ * delete subtask in edit view
+ * @param {number} i - index of the Cards array 
+ * @param {number} b - index of subtask in Cards JSON
+ */
 function deleteEditedSubtasks(i, b) {
     cards[i]['subtasks'].splice(b, 1);
     loadSubtasksEditform(i);
 }
 
+/**
+ * load current priority state
+ * @param {number} i - index of the Cards array
+ */
 function loadActiveStatePrio(i) {
     let currentPrioSelection = cards[i]['prio'];
     if (currentPrioSelection == "Urgent") {
@@ -625,6 +781,11 @@ function loadActiveStatePrio(i) {
     console.log(currentPrioSelection);
 }
 
+/**
+ * remove or add prio state
+ * @param {number} i - index of the Cards array
+ * @param {number} j - index of priority number
+ */
 function addActiveState2(i, j) {
     let btnsTip = document.getElementById('prioButtons2').getElementsByClassName('SubTaskPrios2');
     if (btnsTip[j].classList.contains('active-state')) {
@@ -642,6 +803,11 @@ function addActiveState2(i, j) {
 }
 
 let prioValue;
+/**
+ * set prio depending on value 
+ * @param {*} i - index of the Cards array
+ * @param {*} h - priority number value
+ */
 function prioValueForSaving(i, h) {
     if (h == 0) {
         prioValue = "High";
@@ -656,6 +822,10 @@ function prioValueForSaving(i, h) {
     cards[i]['prio'] = prioValue;
 }
 
+/**
+ * save edited card to board
+ * @param {number} i - index of the Cards array 
+ */
 async function saveEditedCard(i) {
     cards[i]['title'] = document.getElementById('editCardTitle').value;
     cards[i]['description'] = document.getElementById('editCardDescription').value;
@@ -668,17 +838,27 @@ async function saveEditedCard(i) {
     document.getElementById('CardEditForm').style = "display:none;";
 }
 
-//Drag and Drop
+/**
+ * drag and drop function, start dragging element 
+ * @param {number} i - index of the Cards array
+ */
 function startDragging(i) {
     currentDraggedElement = i;
     const cardElement = document.getElementById('card' + i);
     cardElement.classList.add('dragging'); // Füge die Klasse 'dragging' hinzu
 }
 
+/**
+ * allow elements to drop in area with event
+ */
 function allowDrop(ev) {
     ev.preventDefault();
 }
 
+/**
+ * set new list type for card after dropped in new column of board
+ * @param {string} listType - name of list type
+ */
 async function moveTo(listType) {
     getCardsFromStorage();
     cards[currentDraggedElement]['listType'] = listType.slice(9);
@@ -700,7 +880,10 @@ async function moveTo(listType) {
 //     }
 // }
 
-// Assigned user in edit card form
+/**
+ * open dropdown menu for contacts in board card
+ * @param {number} i - index of the Cards array
+ */
 function openDropdownContact2(i) {
     let addContactDropdown = document.getElementById('selectuser');
     let selectBoxActivated = document.getElementById('selectbox');
@@ -715,7 +898,6 @@ function openDropdownContact2(i) {
         addContactDropdown.style = "display: none;";
         selectBoxActivated.classList.remove('active');
     };
-
     for (p = 0; p < Contacts.length; p++) {
         loadAssignedUserToForm(i, p);
         if (cards[i]['assignedUserFullName'].includes(Contacts[p]['name'])) {
@@ -728,6 +910,11 @@ function openDropdownContact2(i) {
     openTransparentOverlay();
 }
 
+/**
+ * add user to card
+ * @param {number} i - index of the Cards array
+ * @param {*} p 
+ */
 function addUser(i, p) {
     let indexOfUser = cards[i]['assignedUserFullName'].indexOf(Contacts[p]['name']);
     let addClassAssignedUser = document.getElementById(`addusercard${p}`);
@@ -747,6 +934,10 @@ function addUser(i, p) {
     };
 }
 
+/**
+ * open dropdown search menu 
+ * @param {number} i - index of the Cards array 
+ */
 function openDropdownSearch(i) {
     let findContact = document.getElementById('inputassigneduser').value;
     let findContactFormatted = findContact.toLowerCase();
@@ -769,6 +960,11 @@ function openDropdownSearch(i) {
     }
 }
 
+/**
+ * load assigned user to form
+ * @param {number} i - index of the Cards array
+ * @param {*} p 
+ */
 function loadAssignedUserToForm(i, p) {
     let findContact = document.getElementById('inputassigneduser').value;
     let findContactFormatted = findContact.toLowerCase();
@@ -779,22 +975,35 @@ function loadAssignedUserToForm(i, p) {
     }
 }
 
+/**
+ * 
+ */
 function openTransparentOverlay() {
     let transparentOverlay = document.getElementById('overlaytransparent');
     transparentOverlay.style.display = "block";
 }
 
+/**
+ * 
+ */
 function closeTransparentOverlay() {
     let transparentOverlay = document.getElementById('overlaytransparent');
     transparentOverlay.style.display = "none";
     removeDropDownClass();
 }
 
+/**
+ * 
+ */
 function removeDropDownClass() {
     let addContactDropdown = document.getElementById('selectuser');
     addContactDropdown.style = "display: none;";
 }
 
+/**
+ * 
+ * @param {number} i - index of the Cards array
+ */
 function loadAssignedUserEditForm(i) {
     let assignedUserEditForm = document.getElementById('assignedUserEditForm');
     assignedUserEditForm.innerHTML = "";
