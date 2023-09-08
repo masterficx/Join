@@ -454,7 +454,7 @@ function doNotClose(event) {
     event.stopPropagation();
 }
 
-function createNewContact() {
+async function createNewContact() {
 
     let nameInput = document.getElementById('add_contact_name').value;
     let nameArray = nameInput.split(' ');
@@ -476,12 +476,12 @@ function createNewContact() {
 
     Contacts.push(newContact);
     sortContactsAlphabetically(Contacts);
-    saveContactsToStorage();
+    await saveContactsToStorage();
     let theIndex = Contacts.findIndex(x => x.email === emailInput);
     console.log(theIndex);
 
     closeNewContact();
-    renderContactsList();
+    await renderContactsList();
     let theNewId = findContactIdByEmail(Contacts, emailInput);
     target = document.getElementById(`contact_${theNewId}`);
     setTimeout(() => {
