@@ -400,6 +400,7 @@ function closeOverlay() {
     document.getElementById('CardDetail').style = "display:none;";
     document.getElementById('CardEditForm').style = "display:none;";
     renderBoard();
+    removeDropDownClass();
 }
 
 /**
@@ -987,9 +988,9 @@ function openTransparentOverlay() {
  * 
  */
 function closeTransparentOverlay() {
+    removeDropDownClass();
     let transparentOverlay = document.getElementById('overlaytransparent');
     transparentOverlay.style.display = "none";
-    removeDropDownClass();
 }
 
 /**
