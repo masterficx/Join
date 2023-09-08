@@ -205,7 +205,7 @@ function renderBoardCardsDone(i) {
         listTypes[3]['amount']++;
         document.getElementById('cardBoardDone').innerHTML +=
             renderBoardTemplate(i);
-    } else {  }
+    } else { }
     renderBoardFunctionsTemplate(i);
 }
 
@@ -621,7 +621,22 @@ function editCard(i) {
     document.getElementById('editCardTitle').value = `${cards[i]['title']}`;
     document.getElementById('editCardDescription').value = `${cards[i]['description']}`;
     document.getElementById('editCardDueDate').value = `${cards[i]['dueDate']}`;
-    document.getElementById('editCardPrio2').innerHTML = `
+    document.getElementById('editCardPrio2').innerHTML = renderPrioState(i);
+    document.getElementById('editCardSubtasks').innerHTML = renderSubTaskMask(i);
+    let addUserInput = document.getElementById('selectbox');
+    addUserInput.innerHTML = `<input type="text" placeholder="Select Contacts to assign" id="inputassigneduser" onclick="openDropdownContact2(${i})" onkeyup="openDropdownSearch(${i})">`;
+    let editCardSave = document.getElementById('editCardSave');
+    editCardSave.innerHTML = `<div onclick='saveEditedCard(${[i]})'>Ok`;
+    loadActiveStatePrio(i);
+    loadSubtasksEditform(i);
+    loadAssignedUserEditForm(i);
+}
+
+/**
+ * Render the current prio state of card
+ */
+function renderPrioState(i) {
+    return `
     <div class="addTaskPrios" id="prioButtons2">
                                     <button class="SubTaskPrios2 red" id="prioSelect0" onclick="addActiveState2(${i},0)">Urgent<img
                                             src="/assets/img/addtask/prio-high.svg" alt="" class="default"><img
@@ -633,8 +648,13 @@ function editCard(i) {
                                         src="/assets/img/addtask/prio-low.svg" alt="" class="default"><img
                                         src="/assets/img/addtask/prio-low-w.svg" alt="" class="active"></button>
                                 </div>`;
-    //document.getElementById('editCardAssignedTo').value = `${cards[i]['assignedUser']}`;
-    document.getElementById('editCardSubtasks').innerHTML = `
+}
+
+/**
+ * Render sub task mask
+ */
+function renderSubTaskMask(i){
+    return `
     <div class="subtask" id="subtask_main2">
         <h5>Subtasks</h5>
         <div id="addNewSubtask2" class="subtask-input">
@@ -647,13 +667,6 @@ function editCard(i) {
         <div class="checkboxes" id="added_subtasks_main">
         </div>
     </div>`;
-    let addUserInput = document.getElementById('selectbox');
-    addUserInput.innerHTML = `<input type="text" placeholder="Select Contacts to assign" id="inputassigneduser" onclick="openDropdownContact2(${i})" onkeyup="openDropdownSearch(${i})">`;
-    let editCardSave = document.getElementById('editCardSave');
-    editCardSave.innerHTML = `<div onclick='saveEditedCard(${[i]})'>Ok`;
-    loadActiveStatePrio(i);
-    loadSubtasksEditform(i);
-    loadAssignedUserEditForm(i);
 }
 
 /**
@@ -807,7 +820,7 @@ let prioValue;
  */
 function prioValueForSaving(i, h) {
     if (h == 0) {
-        prioValue = "High";
+        prioValue = "Urgent";
     } else
         if (h == 1) {
             prioValue = "Mid";
@@ -894,6 +907,15 @@ function openDropdownContact2(i) {
         addContactDropdown.style = "display: none;";
         selectBoxActivated.classList.remove('active');
     };
+    showAssignedUserOfCard(i);
+    openTransparentOverlay();
+}
+
+
+/**
+ * Render assigned user in dropdown and add class
+ */
+function showAssignedUserOfCard(i) {
     for (p = 0; p < Contacts.length; p++) {
         loadAssignedUserToForm(i, p);
         if (cards[i]['assignedUserFullName'].includes(Contacts[p]['name'])) {
@@ -903,8 +925,8 @@ function openDropdownContact2(i) {
             changeCheckboxImg.src = "assets/img/board/checkbox-checked.svg";
         };
     }
-    openTransparentOverlay();
 }
+
 
 /**
  * add user to card
@@ -916,17 +938,33 @@ function addUser(i, p) {
     let addClassAssignedUser = document.getElementById(`addusercard${p}`);
     let changeCheckboxImg = document.getElementById(`userchecked${p}`);
     if (indexOfUser == -1) {
-        cards[i]['assignedUser'].push(Contacts[p]['firstLetters']);
-        cards[i]['assignedUserFullName'].push(Contacts[p]['name']);
-        addClassAssignedUser.classList.add('added');
-        changeCheckboxImg.src = "assets/img/board/checkbox-checked.svg";
+        addNewUser(i, p, addClassAssignedUser, changeCheckboxImg);
     }
     else if (cards[i]['assignedUserFullName'].includes(Contacts[p]['name'])) {
-        cards[i]['assignedUser'].splice(indexOfUser, 1);
-        cards[i]['assignedUserFullName'].splice(indexOfUser, 1);
-        addClassAssignedUser.classList.remove('added');
-        changeCheckboxImg.src = "assets/img/board/checkbox-unchecked.svg";
+        removeUser(i, p, indexOfUser, addClassAssignedUser, changeCheckboxImg);
     };
+}
+
+
+/**
+ * Assigned user dropdown: Add selected user to card.
+ */
+function addNewUser(i, p, addClassAssignedUser, changeCheckboxImg) {
+    cards[i]['assignedUser'].push(Contacts[p]['firstLetters']);
+    cards[i]['assignedUserFullName'].push(Contacts[p]['name']);
+    addClassAssignedUser.classList.add('added');
+    changeCheckboxImg.src = "assets/img/board/checkbox-checked.svg";
+}
+
+
+/**
+ * Assigned user dropdown: Remove selected user from card.
+ */
+function removeUser(i, p, indexOfUser, addClassAssignedUser, changeCheckboxImg) {
+    cards[i]['assignedUser'].splice(indexOfUser, 1);
+    cards[i]['assignedUserFullName'].splice(indexOfUser, 1);
+    addClassAssignedUser.classList.remove('added');
+    changeCheckboxImg.src = "assets/img/board/checkbox-unchecked.svg";
 }
 
 /**
@@ -940,6 +978,13 @@ function openDropdownSearch(i) {
     addContactDropdown.style = "display: flex;";
     addContactDropdown.innerHTML = "";
     openTransparentOverlay();
+    findContacts(i, findContactFormatted);
+}
+
+/**
+ * Assigned user search
+ */
+function findContacts(i, findContactFormatted) {
     for (p = 0; p < Contacts.length; p++) {
         if (Contacts[p]['name'].toLowerCase().includes(findContactFormatted)) {
             loadAssignedUserToForm(i, p);
@@ -965,12 +1010,16 @@ function loadAssignedUserToForm(i, p) {
     let addContactDropdown = document.getElementById('selectuser');
     if (Contacts[p]['name'].toLowerCase().includes(findContactFormatted)) {
         addContactDropdown.innerHTML += `
-        <div class="addusertocard" onclick="addUser(${i}, ${p})" id="addusercard${p}"><div class="label-card" style="background-color:${Contacts[p]['color']}">${Contacts[p]['firstLetters']}</div><div class="card-name" id="contactsname${i}${p}">${Contacts[p]['name']}</div><img src="assets/img/board/checkbox-unchecked.svg" class="usercheckb default" id="userchecked${p}"><img src="assets/img/board/checkbox-checked.svg" class="usercheckb hover"></div>`;
+        <div class="addusertocard" onclick="addUser(${i}, ${p})" id="addusercard${p}">
+        <div class="label-card" style="background-color:${Contacts[p]['color']}">${Contacts[p]['firstLetters']}</div>
+        <div class="card-name" id="contactsname${i}${p}">${Contacts[p]['name']}</div>
+        <img src="assets/img/board/checkbox-unchecked.svg" class="usercheckb default" id="userchecked${p}">
+        <img src="assets/img/board/checkbox-checked.svg" class="usercheckb hover"></div>`;
     }
 }
 
 /**
- * 
+ * Creates a transparent overlay on card
  */
 function openTransparentOverlay() {
     let transparentOverlay = document.getElementById('overlaytransparent');
@@ -978,7 +1027,7 @@ function openTransparentOverlay() {
 }
 
 /**
- * 
+ * Close dropdown by click on transparent overlay
  */
 function closeTransparentOverlay() {
     removeDropDownClass();
@@ -987,7 +1036,7 @@ function closeTransparentOverlay() {
 }
 
 /**
- * 
+ * Closes the dropdown
  */
 function removeDropDownClass() {
     let addContactDropdown = document.getElementById('selectuser');
@@ -995,7 +1044,7 @@ function removeDropDownClass() {
 }
 
 /**
- * 
+ * Render assigned user in edit card form.
  * @param {number} i - index of the Cards array
  */
 function loadAssignedUserEditForm(i) {
