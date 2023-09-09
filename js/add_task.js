@@ -216,7 +216,7 @@ async function addCategory() {
     };
     categories.push(newCategory);
     openCategoryDropDown();
-    saveCategoriesToStorage()
+    await saveCategoriesToStorage()
     await getCardsFromStorage()
 }
 
