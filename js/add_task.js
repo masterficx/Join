@@ -31,6 +31,7 @@ let addedSubtasks = [];
 async function main() {
     let contactsInTask = [];
     await getContactsFromStorage();
+    await getCategoriesFromStorage();
     for (let j = 0; j < Contacts.length; j++) {
         const contact = Contacts[j];
         let addedContactFirstName = contact['firstName'];

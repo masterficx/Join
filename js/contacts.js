@@ -400,12 +400,13 @@ function renderAddNewContact() {
                                         <div class="frame-215">
                                         <form  onsubmit="createNewContact(); return false;">
                                             <div class="add-contact-text-main">
-                                                <div class="frame-14"> 
+                                                <div id="name_Frame" class="frame-14"> 
                                                     <div class="frame-157">
-                                                        <input type="text" required id="add_contact_name" placeholder="Name">
+                                                        <input type="text" required id="add_contact_name" placeholder="Vor- und Nachname">
                                                         ${personSmallSVG}
                                                     </div>
                                                 </div>
+                                                <div id="name_Alert"></div>
                                                 <div class="frame-14"> 
                                                     <div class="frame-157">
                                                         <input type="email" required id="add_contact_email" placeholder="Email">
@@ -457,6 +458,7 @@ function doNotClose(event) {
 async function createNewContact() {
 
     let nameInput = document.getElementById('add_contact_name').value;
+    if(checkTwoWords(nameInput)) {
     let nameArray = nameInput.split(' ');
     let firstName = nameArray[0];
     let lastName = nameArray[1];
@@ -490,6 +492,24 @@ async function createNewContact() {
             target.click();
         }, "550");
     }, "550");
+}
+}
+
+/**
+ * Check if the input field contains 2 words
+ * @param {string} nameInput 
+ * @returns {boolean}
+ */
+function checkTwoWords(nameInput) {
+    let words = nameInput.trim().split(' ');
+    if (words.length !== 2) {
+        name_Alert.textContent = "Bitte Vor- und Nachname eingeben";
+        name_Frame.classList.add('redBorder');
+        setTimeout(() => { name_Alert.textContent = ""; name_Frame.classList.remove('redBorder'); }, 3000)
+        return false;
+    } else {
+        return true;
+    }
 }
 
 function sortContactsAlphabetically(contacts) {
@@ -601,11 +621,11 @@ function renderEditContact(x) {
 
 }
 
-function deleteContactFromEdit(x) {
+async function deleteContactFromEdit(x) {
     deleteContact(x);
     closeNewContact();
-    saveContactsToStorage();
-
+    await saveContactsToStorage();
+    renderContactsList();
 }
 
 function editContact(x) {
