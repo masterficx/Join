@@ -515,6 +515,9 @@ function renderSubtasksInBoardDetail(i) {
  * @param {string} currentListType - current list type to create card to correct board column
  */
 function addTaskToBoardMain(currentListType) {
+    if (currentListType == "") {
+        currentListType = "ToDo";
+    }
     addTaskToBoard(currentListType);
 }
 
