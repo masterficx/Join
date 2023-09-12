@@ -327,10 +327,10 @@ async function showContactDetails(x) {
     displayContact();
 }
 
-async function markActiveContact(x){
+async function markActiveContact(x) {
     await renderContactsList();
     let contact = await document.getElementById(`contact_${[x]}`);
-        await contact.classList.add('background-color-2A3647', 'pointer-events-none');
+    await contact.classList.add('background-color-2A3647', 'pointer-events-none');
 }
 
 function displayContact() {
@@ -363,17 +363,17 @@ function closeEditOverlay() {
 }
 
 function deleteContact(x) {
-    if(x === currentUser){
+    if (x === currentUser) {
         alert('Du kannst dich nicht selber löschen')
     } else {
-    Contacts.splice(x, 1);
-    if(currentUser > x && currentUser !== 1000) {
-        currentUser--
-        localStorage.setItem('currentUser', currentUser);
-    };
-    document.getElementById('floating_contact').innerHTML = '';
-    saveContactsToStorage();
-    renderContactsList();
+        Contacts.splice(x, 1);
+        if (currentUser > x && currentUser !== 1000) {
+            currentUser--
+            localStorage.setItem('currentUser', currentUser);
+        };
+        document.getElementById('floating_contact').innerHTML = '';
+        saveContactsToStorage();
+        renderContactsList();
     }
 }
 
@@ -398,6 +398,7 @@ function renderAddNewContact() {
                                         </div>
                                         
                                         <div class="frame-215">
+                                        <p id="messageExistingContact" style="display: none;">This contact already exists. Please use other e-mail address!</p>
                                         <form  onsubmit="createNewContact(); return false;">
                                             <div class="add-contact-text-main">
                                                 <div id="name_Frame" class="frame-14"> 
@@ -458,41 +459,50 @@ function doNotClose(event) {
 async function createNewContact() {
 
     let nameInput = document.getElementById('add_contact_name').value;
-    if(checkTwoWords(nameInput)) {
-    let nameArray = nameInput.split(' ');
-    let firstName = nameArray[0];
-    let lastName = nameArray[1];
-    let emailInput = document.getElementById('add_contact_email').value;
-    let phoneInput = document.getElementById('add_contact_phone').value;
-    let firstTwoLetters = firstName.charAt(0) + lastName.charAt(0);
-    let newContact = {
-        "firstName": firstName,
-        "lastName": lastName,
-        "phone": phoneInput,
-        "email": emailInput,
-        "color": "black",
-        "firstLetters": firstTwoLetters,
-        "name": nameInput,
-        "password": '1234',
-    };
+    if (checkTwoWords(nameInput)) {
+        let nameArray = nameInput.split(' ');
+        let firstName = nameArray[0];
+        let lastName = nameArray[1];
+        let emailInput = document.getElementById('add_contact_email').value;
+        let phoneInput = document.getElementById('add_contact_phone').value;
+        let firstTwoLetters = firstName.charAt(0) + lastName.charAt(0);
+        let newContact = {
+            "firstName": firstName,
+            "lastName": lastName,
+            "phone": phoneInput,
+            "email": emailInput,
+            "color": "black",
+            "firstLetters": firstTwoLetters,
+            "name": nameInput,
+            "password": '1234',
+        };
+        let alreadyUser = 0;
+        for (let m = 0; m < Contacts.length; m++) {
+            if (Contacts[m]["email"] == emailInput) {
+                document.getElementById('messageExistingContact').style.display = 'block';
+                alreadyUser = 1;
+                break;
+            } else { break }
+        }
+        if (alreadyUser != 1) {
+            Contacts.push(newContact);
+            sortContactsAlphabetically(Contacts);
+            await saveContactsToStorage();
+            let theIndex = Contacts.findIndex(x => x.email === emailInput);
+            console.log(theIndex);
 
-    Contacts.push(newContact);
-    sortContactsAlphabetically(Contacts);
-    await saveContactsToStorage();
-    let theIndex = Contacts.findIndex(x => x.email === emailInput);
-    console.log(theIndex);
-
-    closeNewContact();
-    await renderContactsList();
-    let theNewId = findContactIdByEmail(Contacts, emailInput);
-    target = document.getElementById(`contact_${theNewId}`);
-    setTimeout(() => {
-        scrollToNewContact('contacts_list', `contact_${theNewId}`);
-        setTimeout(() => {
-            target.click();
-        }, "550");
-    }, "550");
-}
+            closeNewContact();
+            await renderContactsList();
+            let theNewId = findContactIdByEmail(Contacts, emailInput);
+            target = document.getElementById(`contact_${theNewId}`);
+            setTimeout(() => {
+                scrollToNewContact('contacts_list', `contact_${theNewId}`);
+                setTimeout(() => {
+                    target.click();
+                }, "550");
+            }, "550");
+        }
+    }
 }
 
 /**
@@ -647,7 +657,7 @@ function editContact(x) {
     renderContactsList();
     document.getElementById('floating_contact').innerHTML = "";
     showContactDetails(x)
- 
+
 
 }
 

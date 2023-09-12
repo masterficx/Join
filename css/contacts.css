@@ -507,6 +507,14 @@ body {
     animation: slideInNewContactMain 0.225s ease-in;
 }
 
+#messageExistingContact {
+    font-family: 'Inter';
+    font-size: small;
+    margin-top: 2px;
+    padding-left: 8px;
+    color: red;
+}
+
 @keyframes slideInNewContactMain {
     0% {
         transform: translateX(1500px);
