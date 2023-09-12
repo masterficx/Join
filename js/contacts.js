@@ -457,7 +457,6 @@ function doNotClose(event) {
 }
 
 async function createNewContact() {
-
     let nameInput = document.getElementById('add_contact_name').value;
     if (checkTwoWords(nameInput)) {
         let nameArray = nameInput.split(' ');
