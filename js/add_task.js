@@ -26,6 +26,7 @@ let downArrow = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
 </g>
 </svg>`;
 let addedSubtasks = [];
+let isFormValidated = false;
 async function main() {
     let contactsInTask = [];
     await getContactsFromStorage();
@@ -47,42 +48,44 @@ async function main() {
 
 async function addTaskToBoard(currentListType) {
     checkForInput();
-    let inputTitle = document.getElementById('addTaskTitle').value;
-    let description = document.getElementById('descriptionTextArea').value;
-    let dueDate = document.getElementById('date').value;
-    let addedUsers = [];
-    let addedUsersFullNames = [];
-    for (let t = 0; t < addedIds.length; t++) {
-        const element = addedIds[t];
-        let addedUser = Contacts[element]['firstLetters'];
-        addedUsers.push(addedUser);
-        let addedUserFullName = Contacts[element]['name'];
-        addedUsersFullNames.push(addedUserFullName);
-    };
-    if (priority == '0') { window.prio = "Urgent" };
-    if (priority == '1') { window.prio = "Medium" };
-    if (priority == '2') { window.prio = "Low" };
-    if (addedSubtasks.length == '0') { subtasks = [] }
-    let theNewTask = {
-        "category": `${categories[theChosenCategory]['name']}`,
-        "title": inputTitle,
-        "description": description,
-        "progress": "0",
-        "assignedUser": addedUsers,
-        "assignedUserFullName": addedUsersFullNames,
-        "prio": prio,
-        "dueDate": dueDate,
-        "subtasks": subtasks,
-        "listType": currentListType,
+    if (isFormValidated) {
+        let inputTitle = document.getElementById('addTaskTitle').value;
+        let description = document.getElementById('descriptionTextArea').value;
+        let dueDate = document.getElementById('date').value;
+        let addedUsers = [];
+        let addedUsersFullNames = [];
+        for (let t = 0; t < addedIds.length; t++) {
+            const element = addedIds[t];
+            let addedUser = Contacts[element]['firstLetters'];
+            addedUsers.push(addedUser);
+            let addedUserFullName = Contacts[element]['name'];
+            addedUsersFullNames.push(addedUserFullName);
+        };
+        if (priority == '0') { window.prio = "Urgent" };
+        if (priority == '1') { window.prio = "Medium" };
+        if (priority == '2') { window.prio = "Low" };
+        if (addedSubtasks.length == '0') { subtasks = [] }
+        let theNewTask = {
+            "category": `${categories[theChosenCategory]['name']}`,
+            "title": inputTitle,
+            "description": description,
+            "progress": "0",
+            "assignedUser": addedUsers,
+            "assignedUserFullName": addedUsersFullNames,
+            "prio": prio,
+            "dueDate": dueDate,
+            "subtasks": subtasks,
+            "listType": currentListType,
+        }
+        await getCardsFromStorage();
+        cards.push(theNewTask);
+        console.log(cards);
+        saveCardsToStorage();
+        showTaskCreationSuccess();
+        setTimeout(() => {
+            document.location.href = "board.html";
+        }, 1500);
     }
-    await getCardsFromStorage();
-    cards.push(theNewTask);
-    console.log(cards);
-    saveCardsToStorage();
-    showTaskCreationSuccess();
-    setTimeout(() => {
-        document.location.href = "board.html";
-    }, 1500);
 }
 
 function checkForInput() {
@@ -93,25 +96,27 @@ function checkForInput() {
         alert("Please enter a title");
         return 0;
     }
-    if (!description) {
+    else if (!description) {
         alert("Please enter a description");
         return 0;
     }
-    if (!dueDate) {
+    else if (!dueDate) {
         alert("Please set due date");
         return 0;
     }
-    if (typeof theChosenCategory === 'undefined') {
+    else if (typeof theChosenCategory === 'undefined') {
         document.getElementById('FieldCategory').style.display = 'block';
         return 0;
     }
-    if (typeof addedIds === 'undefined') {
+    else if (typeof addedIds === 'undefined') {
         document.getElementById('FieldContact').style.display = 'block';
         return 0;
     }
-    if (typeof priority === 'undefined') {
+    else if (typeof priority === 'undefined') {
         document.getElementById('PrioCategory').style.display = 'block';
         return 0;
+    } else {
+        isFormValidated = true;
     }
 }
 
@@ -123,7 +128,7 @@ function openCategoryDropDown() {
     let categoryContainer = document.getElementById('addCategory');
     categoryContainer.innerHTML = "";
     ;
-    categoryContainer.innerHTML += `<div class="category-selection" onclick="openCategoryInput()">Add category</div>`;       
+    categoryContainer.innerHTML += `<div class="category-selection" onclick="openCategoryInput()">Add category</div>`;
     for (let i = 0; i < categories.length; i++) {
         const element = categories[i];
         categoryContainer.innerHTML += `<div class="category-selection" onclick="selectedCategory(${i})">${element['name']}<svg class="new-category-color">
@@ -132,12 +137,12 @@ function openCategoryDropDown() {
     }
 }
 
- function openCategoryInput() {
-     let categoryContainer = document.getElementById('addCategory');
-     categoryContainer.innerHTML = "";
-     let categoryMainContainer = document.getElementById('category');
-     categoryMainContainer.innerHTML = "";
-     categoryMainContainer.innerHTML = `
+function openCategoryInput() {
+    let categoryContainer = document.getElementById('addCategory');
+    categoryContainer.innerHTML = "";
+    let categoryMainContainer = document.getElementById('category');
+    categoryMainContainer.innerHTML = "";
+    categoryMainContainer.innerHTML = `
      <h5>Category</h5>
      <div class="add-category-container">
      <input class="added-category-name" id="added_category_name" type="text" placeholder="New category name">
@@ -150,8 +155,8 @@ function openCategoryDropDown() {
      <div class="selectable-category-colors" id="selectable_category_colors">
      </div>
      `;
-     renderSelectableCategoryColors();
- }
+    renderSelectableCategoryColors();
+}
 
 function closeCategoryInput() {
     document.getElementById('category').innerHTML = "";
@@ -272,9 +277,9 @@ function openTranspOverlay() {
 function closeTranspOverlay() {
     let transparentOverlay = document.getElementById('transparentoverlay');
     transparentOverlay.style.display = "none";
-    if(!transparentOverlay.classList.contains("dropdownclosed")){
+    if (!transparentOverlay.classList.contains("dropdownclosed")) {
         closeDropdownContact();
-    }   
+    }
 }
 
 function classToTranspOverlay() {
@@ -458,7 +463,7 @@ function addSubtask() {
     window.subtasks = addedSubtasks;
 }
 
-function showTaskCreationSuccess(){
+function showTaskCreationSuccess() {
     //  let theContainerToShowItIn = document.getElementById('add_task_main');
     let theContainerToShow = document.getElementById('task_creation_success');
     theContainerToShow.classList.remove('d-none');
