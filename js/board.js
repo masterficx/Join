@@ -1023,7 +1023,7 @@ function loadAssignedUserToForm(i, p) {
     if (Contacts[p]['name'].toLowerCase().includes(findContactFormatted)) {
         addContactDropdown.innerHTML += `
         <div class="addusertocard" onclick="addUser(${i}, ${p})" id="addusercard${p}">
-        <div class="label-card" style="background-color:${Contacts[p]['color']}">${Contacts[p]['firstLetters']}</div>
+        <div class="label-card" style="background-color:${nameTagsColors[p]}">${Contacts[p]['firstLetters']}</div>
         <div class="card-name" id="contactsname${i}${p}">${Contacts[p]['name']}</div>
         <img src="assets/img/board/checkbox-unchecked.svg" class="usercheckb default" id="userchecked${p}">
         <img src="assets/img/board/checkbox-checked.svg" class="usercheckb hover"></div>`;
