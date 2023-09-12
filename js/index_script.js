@@ -186,7 +186,7 @@ async function signUpForm() {
     let password1 = document.getElementById('passwordInput');
     let password2 = document.getElementById('passwordInput2');
 
-    if (checkSamePasswort(password1, password2) && await checkEmail(emailInput.value) && checkTwoWords(nameInput)) {
+    if (checkSamePasswort(password1, password2) && await checkEmail(emailInput.value) && checkTwoWordsforSignUp(nameInput)) {
         let nameArray = nameInput.value.split(' ');
         let firstName = nameArray[0];
         let lastName = nameArray[1];
@@ -230,7 +230,7 @@ function resetInputField(name, email, password1, password2) {
  * @param {string} nameInput 
  * @returns {boolean}
  */
-function checkTwoWords(nameInput) {
+function checkTwoWordsforSignUp(nameInput) {
     let words = nameInput.value.trim().split(' ');
     if (words.length !== 2) {
         nameAlert.textContent = "Bitte Vor- und Nachname eingeben";
