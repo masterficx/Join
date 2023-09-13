@@ -25,6 +25,8 @@ let downArrow = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" 
 <path d="M11.3 14.3L8.69998 11.7C8.38331 11.3833 8.31248 11.0208 8.48748 10.6125C8.66248 10.2042 8.97498 10 9.42498 10H14.575C15.025 10 15.3375 10.2042 15.5125 10.6125C15.6875 11.0208 15.6166 11.3833 15.3 11.7L12.7 14.3C12.6 14.4 12.4916 14.475 12.375 14.525C12.2583 14.575 12.1333 14.6 12 14.6C11.8666 14.6 11.7416 14.575 11.625 14.525C11.5083 14.475 11.4 14.4 11.3 14.3Z" fill="#2A3647"/>
 </g>
 </svg>`;
+
+
 let addedSubtasks = [];
 let isFormValidated = false;
 async function main() {
@@ -46,48 +48,73 @@ async function main() {
     window.addedContacts = contactsInTask;
 };
 
+// Checks for assigned users to the task and makes them a global variable to later be added to the array "Cards".
+function addTheUsers() {
+    let usersToBeAdded = [];
+    let fullNamesToBeAdded = [];
+    for (let t = 0; t < addedIds.length; t++) {
+        const element = addedIds[t];
+        let addedUser = Contacts[element]['firstLetters'];
+        usersToBeAdded.push(addedUser);
+        let addedUserFullName = Contacts[element]['name'];
+        fullNamesToBeAdded.push(addedUserFullName);
+    };
+    window.addedUsers = usersToBeAdded;
+    window.addedUsersFullNames = fullNamesToBeAdded;
+}
+
+// Makes the priority a global variable to later be added to the array "Cards".
+function setPriority() {
+    if (priority == '0') { window.prio = "Urgent" };
+    if (priority == '1') { window.prio = "Medium" };
+    if (priority == '2') { window.prio = "Low" };
+}
+
+// Gets all the values from the input fields and generates an object that is later going to be added to the array "Cards".
+function generateNewTaskObject(currentListType) {
+    let inputTitle = document.getElementById('addTaskTitle').value;
+    let description = document.getElementById('descriptionTextArea').value;
+    let dueDate = document.getElementById('date').value;
+    let theTaskToBeAdded = {
+        "category": `${categories[theChosenCategory]['name']}`,
+        "title": inputTitle,
+        "description": description,
+        "progress": "0",
+        "assignedUser": addedUsers,
+        "assignedUserFullName": addedUsersFullNames,
+        "prio": prio,
+        "dueDate": dueDate,
+        "subtasks": subtasks,
+        "listType": currentListType,
+    };
+    window.theNewTask = theTaskToBeAdded;
+}
+
+// Navigates to board.html with a timer of 1500 milliseconds.
+function navigateToBoard() {
+    setTimeout(() => {
+        document.location.href = "board.html";
+    }, 1500);
+
+}
+
+// Generates and saves the card in to the remote storage with help of all the small help-functions that are called inside of it. 
 async function addTaskToBoard(currentListType) {
     checkForInput();
     if (isFormValidated) {
-        let inputTitle = document.getElementById('addTaskTitle').value;
-        let description = document.getElementById('descriptionTextArea').value;
-        let dueDate = document.getElementById('date').value;
-        let addedUsers = [];
-        let addedUsersFullNames = [];
-        for (let t = 0; t < addedIds.length; t++) {
-            const element = addedIds[t];
-            let addedUser = Contacts[element]['firstLetters'];
-            addedUsers.push(addedUser);
-            let addedUserFullName = Contacts[element]['name'];
-            addedUsersFullNames.push(addedUserFullName);
-        };
-        if (priority == '0') { window.prio = "Urgent" };
-        if (priority == '1') { window.prio = "Medium" };
-        if (priority == '2') { window.prio = "Low" };
-        if (addedSubtasks.length == '0') { subtasks = [] }
-        let theNewTask = {
-            "category": `${categories[theChosenCategory]['name']}`,
-            "title": inputTitle,
-            "description": description,
-            "progress": "0",
-            "assignedUser": addedUsers,
-            "assignedUserFullName": addedUsersFullNames,
-            "prio": prio,
-            "dueDate": dueDate,
-            "subtasks": subtasks,
-            "listType": currentListType,
-        }
+        addTheUsers();
+        setPriority();
+        if (addedSubtasks.length == '0') { subtasks = [] };
+        generateNewTaskObject(currentListType);
         await getCardsFromStorage();
         cards.push(theNewTask);
-        console.log(cards);
         saveCardsToStorage();
         showTaskCreationSuccess();
-        setTimeout(() => {
-            document.location.href = "board.html";
-        }, 1500);
+        navigateToBoard();
     }
 }
 
+// Validates the input before allowing the card to be saved to remote storage.
 function checkForInput() {
     let inputTitle = document.getElementById('addTaskTitle').value;
     let description = document.getElementById('descriptionTextArea').value;
@@ -120,6 +147,7 @@ function checkForInput() {
     }
 }
 
+// Generates the drop down menu with the avaliable categories.
 function openCategoryDropDown() {
     let categoryMainContainer = document.getElementById('category');
     categoryMainContainer.innerHTML = "";
@@ -137,6 +165,7 @@ function openCategoryDropDown() {
     }
 }
 
+//Generates the input field and color choice for an addition of a category.
 function openCategoryInput() {
     let categoryContainer = document.getElementById('addCategory');
     categoryContainer.innerHTML = "";
@@ -145,26 +174,24 @@ function openCategoryInput() {
     categoryMainContainer.innerHTML = `
      <h5>Category</h5>
      <div class="add-category-container">
-     <input class="added-category-name" id="added_category_name" type="text" placeholder="New category name">
-     <button class="close-category-input-btn" onclick="closeCategoryInput()">${smallXSVG}</button>
-     <svg height="40" width="3">
-         <line x1="2" y1="8" x2="2" y2="32" style="stroke:#d1d1d1;stroke-width:2" />
-     </svg>
-     <button class="add-category-btn" onclick="addCategory()">${checkedSmallSVG}</button>
+        <input class="added-category-name" id="added_category_name" type="text" placeholder="New category name">
+        <button class="close-category-input-btn" onclick="closeCategoryInput()">${smallXSVG}</button>
+        <svg height="40" width="3"> <line x1="2" y1="8" x2="2" y2="32" style="stroke:#d1d1d1;stroke-width:2" /> </svg>
+        <button class="add-category-btn" onclick="addCategory()">${checkedSmallSVG}</button>
      </div>
-     <div class="selectable-category-colors" id="selectable_category_colors">
-     </div>
+     <div class="selectable-category-colors" id="selectable_category_colors"> </div>
      `;
     renderSelectableCategoryColors();
 }
 
+//Closes the category input field without selecting a category.
 function closeCategoryInput() {
     document.getElementById('category').innerHTML = "";
     document.getElementById('category').innerHTML = `<h5>Category</h5><div class="selectContainer addcatph" id="addCategory" onclick="openCategoryDropDown()">Select task category</div>`;
 }
 
+//Closes the category input field and returns a global variable of the chosen category.
 function selectedCategory(x) {
-    console.log(x);
     let element = categories[x];
     document.getElementById('category').innerHTML = `
     <h5>Category</h5>
@@ -178,6 +205,7 @@ function selectedCategory(x) {
     window.theChosenCategory = x;
 }
 
+// Renders the available colors to assign to the newly created category.
 function renderSelectableCategoryColors() {
     let selectableColorsMainDIV = document.getElementById('selectable_category_colors');
     selectableColorsMainDIV.innerHTML = "";
@@ -192,6 +220,7 @@ function renderSelectableCategoryColors() {
     }
 }
 
+//Returns a global variable of the selected color for the new category.
 function selectedCategoryColor(x) {
     renderSelectableCategoryColors();
     window.newCategoryColor = x;
@@ -199,6 +228,7 @@ function selectedCategoryColor(x) {
     selectedColorContainer.classList.add('stroke-width-2');
 }
 
+//Creates and adds the new category to remote storage.
 async function addCategory() {
     let categoryNameInput = document.getElementById('added_category_name').value;
     categoryValue = categoryNameInput.toLowerCase();
@@ -213,24 +243,63 @@ async function addCategory() {
     await getCardsFromStorage()
 }
 
+//Generates the selectable contacts drop down list.
 function openDropdownContact() {
     openTranspOverlay();
     removeClassTranspOverlay();
-    let addContactMainContainer = document.getElementById('assigned_to');
-    addContactMainContainer.innerHTML = "";
-    addContactMainContainer.innerHTML += `<h5>Assigned to</h5>
-    <input type="text" class="selectContainer" placeholder="Select contacts to assign" onclick="closeDropdownContact()">
-        </input>`;
-    addContactMainContainer.innerHTML += `<div class="contacts_list_add_task" id="addContact"></div>`;
+    generateOpenAddContactMainContainer();
     let addContactContainer = document.getElementById('addContact');
     addContactContainer.innerHTML = "";
     for (let j = 0; j < Contacts.length; j++) {
         const element = Contacts[j];
         const element2 = addedContacts[j];
-        let firstTwoLetters = element['firstName'].charAt(0) + element['lastName'].charAt(0);
         const theValue = 'yes';
         if (element2['added'] == theValue) {
-            addContactContainer.innerHTML += `
+            generateSelectedContact(j, element);
+            currentUserCheck(j);
+        }
+        else {
+            generateUnselectedContact(j, element);
+            currentUserCheck(j);
+        }
+    }
+}
+
+// Generates the empty body of the selectable contacts list.
+function generateOpenAddContactMainContainer(){
+    let addContactMainContainer = document.getElementById('assigned_to');
+    addContactMainContainer.innerHTML = "";
+    addContactMainContainer.innerHTML += `<h5>Assigned to</h5>
+    <input type="text" class="selectContainer" placeholder="Select contacts to assign" onclick="closeDropdownContact()"> </input>
+    <div class="contacts_list_add_task" id="addContact"></div>`;
+}
+
+// Generates the contacts that have not been added to the selected contacts list.
+function generateUnselectedContact(j, element) {
+    let addContactContainer = document.getElementById('addContact');
+    let firstTwoLetters = element['firstName'].charAt(0) + element['lastName'].charAt(0);
+    addContactContainer.innerHTML += `
+    <div class="add-task-contact" id="addTaskContact_${j}" onclick="selectedContact(${j})">
+        <div class="frame_212">
+            <div class="frame_79">
+                <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 42 42" fill="none">
+                <circle cx="50%" cy="50%" r="20" fill="${nameTagsColors[j]}" stroke="white" stroke-width="3px"/>
+                </svg>
+                <p>${firstTwoLetters}</p>
+            </div>    
+            <div class="add-task-contact-name">
+                ${element['firstName']} ${element['lastName']} <span id="currentUserCheck${j}"></span>
+            </div>
+        </div>
+        <div class="add-task-contact-checkbox"><input type="checkbox" id="checkBox_${j}" onclick="selectedContact(${j})"></div>
+    </div>`
+}
+
+// Generates the contacts that have been added to the selected contacts list.
+function generateSelectedContact(j, element) {
+    let addContactContainer = document.getElementById('addContact');
+    let firstTwoLetters = element['firstName'].charAt(0) + element['lastName'].charAt(0);
+    addContactContainer.innerHTML += `
         <div class="add-task-contact col_2A3647" id="addTaskContact_${j}" onclick="selectedContact(${j})">
             <div class="frame_212">
                 <div class="frame_79">
@@ -244,28 +313,7 @@ function openDropdownContact() {
                 </div>
             </div>
             <div class="add-task-contact-checkbox"><input type="checkbox" id="checkBox_${j}" onclick="selectedContact(${j})" checked></div>
-        </div>`;
-            currentUserCheck(j);
-        }
-        else {
-            addContactContainer.innerHTML += `
-        <div class="add-task-contact" id="addTaskContact_${j}" onclick="selectedContact(${j})">
-        <div class="frame_212">
-        <div class="frame_79">
-            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 42 42" fill="none">
-            <circle cx="50%" cy="50%" r="20" fill="${nameTagsColors[j]}" stroke="white" stroke-width="3px"/>
-            </svg>
-            <p>${firstTwoLetters}</p>
-        </div>    
-        <div class="add-task-contact-name">
-            ${element['firstName']} ${element['lastName']} <span id="currentUserCheck${j}"></span>
-        </div>
-    </div>
-            <div class="add-task-contact-checkbox"><input type="checkbox" id="checkBox_${j}" onclick="selectedContact(${j})"></div>
-        </div>`;
-            currentUserCheck(j);
-        }
-    }
+        </div>`
 }
 
 
@@ -292,6 +340,7 @@ function removeClassTranspOverlay() {
     transparentOverlay.classList.remove("dropdownclosed");
 }
 
+// Finds the currently logged in user in the contacts list, and adds the word (You) next to the same contact when generating the contacts
 function currentUserCheck(j) {
     let currentUserLabel = document.getElementById(`currentUserCheck${j}`);
     if (currentUser < Contacts.length) {
@@ -301,6 +350,8 @@ function currentUserCheck(j) {
     }
 }
 
+// Generates two arrays from the added contacts to the task. The first array is for the first and last name of the added contact, 
+//  and the second array is for the ids from the array Contacts, of the added contacts to the task. 
 function addContactToTask() {
     let addedContactsToTask = [];
     let addedIdsToTask = [];
@@ -309,35 +360,50 @@ function addContactToTask() {
         const checkbox = document.getElementById("checkBox_" + z);
         const contact = Contacts[z];
         if (checkbox.checked) {
-            let addedContactFirstName = contact['firstName'];
-            let addedContactLastName = contact['lastName'];
-            let added = 'yes';
-            let addedContactToTask = {
-                "firstName": addedContactFirstName,
-                "lastName": addedContactLastName,
-                "added": added,
-            };
+            generateTheAddedContact(contact);
             addedContactsToTask.push(addedContactToTask);
             addedIdsToTask.push(z);
         }
         else {
-            let addedContactFirstName = contact['firstName'];
-            let addedContactLastName = contact['lastName'];
-            let added = 'no';
-            let addedContactToTask = {
-                "firstName": addedContactFirstName,
-                "lastName": addedContactLastName,
-                "added": added,
-            };
+            generateTheNotAddedContact(contact);
             addedContactsToTask.push(addedContactToTask);
         }
     }
     window.addedContacts = addedContactsToTask;
     window.addedIds = addedIdsToTask;
-    console.log(addedContacts);
-    console.log(addedIds);
 }
 
+//Generates the object to be added to the addedContactsToTask array from the assigned contact.
+function generateTheAddedContact(contact){
+    let addedContactFirstName = contact['firstName'];
+            let addedContactLastName = contact['lastName'];
+            let added = 'yes';
+            let theAddedContact = {
+                "firstName": addedContactFirstName,
+                "lastName": addedContactLastName,
+                "added": added,
+            };
+            window.addedContactToTask = theAddedContact;
+
+}
+
+//Generates the object to be added to the addedContactsToTask array from the unassigned contact.
+function generateTheNotAddedContact(contact){
+    let addedContactFirstName = contact['firstName'];
+            let addedContactLastName = contact['lastName'];
+            let added = 'no';
+            let theAddedContact = {
+                "firstName": addedContactFirstName,
+                "lastName": addedContactLastName,
+                "added": added,
+            };
+            window.addedContactToTask = theAddedContact;
+
+}
+
+
+
+// Closes the drop down menu and generates the button for openning the same menu for the selection of a contact from the contact list.
 function closeDropdownContact() {
     addContactToTask();
     let addContactMainContainer = document.getElementById('assigned_to');
@@ -350,7 +416,7 @@ function closeDropdownContact() {
     //closeTranspOverlay();
 }
 
-
+// Renders the nametags of the selected contacts.
 function renderAddedContactLabels() {
     let addContactMainContainer = document.getElementById('assigned_to');
     addContactMainContainer.innerHTML += `<div class="added-contacts-name-tags-main" id="added_contacts_name_tags_main"> </div>`;
@@ -371,6 +437,7 @@ function renderAddedContactLabels() {
     }
 }
 
+// Checks the checkbox and changes the appearance of the contact in the contact list depending on if the contact has been added to the task or not.
 function selectedContact(y) {
     let checkBox = document.getElementById(`checkBox_${y}`);
     checkBox.click();
@@ -399,15 +466,7 @@ function addActiveState(j) {
     window.priority = priorityNumber;
 };
 
-function getDueDate() {
-    let dueDateInput = document.getElementById('date').value;
-    console.log(dueDateInput);
-}
-
-function createTask() {
-    getDueDate();
-}
-
+//Generates the input field for the creation of new subtask.
 function openSubtaskInput() {
     let addSubtaskContainer = document.getElementById('addNewSubtask');
     addSubtaskContainer.innerHTML = "";
@@ -421,6 +480,7 @@ function openSubtaskInput() {
         `;
 }
 
+// Closes the subtask input field and generates the button for the opening of the addition of a new subtask.
 function cancelSubtaskInput() {
     let addSubtaskContainer = document.getElementById('addNewSubtask');
     addSubtaskContainer.innerHTML = "";
@@ -430,9 +490,9 @@ function cancelSubtaskInput() {
     </svg>`;
 }
 
+//Generates the container with the added subtask, also creates an entry in the addedSubtasks array with the newly added subtask.
 function addSubtask() {
 
-    let subtaskMain = document.getElementById('subtask_main');
     let addSubtaskContainer = document.getElementById('addNewSubtask');
     let addedSubtaskNameInput = document.getElementById('added_subtask').value;
     addSubtaskContainer.innerHTML = "";
@@ -440,6 +500,18 @@ function addSubtask() {
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" onclick="openSubtaskInput()">
         <path d="M12.0011 12.0002L12.0018 19.4149M4.58641 12.0008L12.0011 12.0002L4.58641 12.0008ZM19.4159 11.9995L12.0004 11.9995L19.4159 11.9995ZM12.0004 11.9995L12.0005 4.58545L12.0004 11.9995Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>`;
+    generateTheNewSubtask(addedSubtaskNameInput);
+    let addedSubtask = {
+        "nameSub": addedSubtaskNameInput,
+        "status": "unchecked"
+    };
+    addedSubtasks.push(addedSubtask);
+    window.subtasks = addedSubtasks;
+}
+
+//Generates the container with the added subtask.
+function generateTheNewSubtask(addedSubtaskNameInput){
+    let subtaskMain = document.getElementById('subtask_main');
     subtaskMain.innerHTML += `<div class="boxes">
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
         viewBox="0 0 18 17" fill="none">
@@ -453,18 +525,11 @@ function addSubtask() {
             </linearGradient>
         </defs>
     </svg>${addedSubtaskNameInput}
-</div>`
-    let addedSubtask = {
-        "nameSub": addedSubtaskNameInput,
-        "status": "unchecked"
-    };
-    addedSubtasks.push(addedSubtask);
-    console.log(addedSubtasks)
-    window.subtasks = addedSubtasks;
+</div>`;
 }
 
+// Generates and animates the small floating info-box at the task creation success.
 function showTaskCreationSuccess() {
-    //  let theContainerToShowItIn = document.getElementById('add_task_main');
     let theContainerToShow = document.getElementById('task_creation_success');
     theContainerToShow.classList.remove('d-none');
     theContainerToShow.classList.add('frame_73_animate');
