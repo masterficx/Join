@@ -154,7 +154,7 @@ async function checkRememberMe() {
     let emailInput = document.getElementById('emailInput');
     let passwordInput = document.getElementById('passwordInput');
 
-    if(rememberMe === 1) {
+    if(rememberMe === 1 && currentUser !== 1000) {
         rememberMeCheckBox.click();
         emailInput.value = Contacts[currentUser].email;
         passwordInput.value = Contacts[currentUser].password;
