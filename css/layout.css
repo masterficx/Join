@@ -321,7 +321,7 @@ div#headsubmenu a:last-child {
 
 
 .backArrow {
-    background-image: url("../assets/img/logInSignUp/backArrow.svg");
+    background-image: url("/assets/img/logInSignUp/backArrow.svg");
     background-repeat: no-repeat;
     object-fit: fill;
     background-position: center;
@@ -329,7 +329,12 @@ div#headsubmenu a:last-child {
 
 
 .backArrow:hover {
-    background-image: url("../assets/img/logInSignUp/backArrowHover.svg");
+    background-image: url("/assets/img/logInSignUp/backArrowHover.svg");
+}
+
+.highlight_sidebar{
+    background-color: #091931 !important;
+    color: white !important;
 }
 
 
@@ -476,4 +481,10 @@ div#headsubmenu a:last-child {
         font-size: 20px;
     }
 
+}
+
+@media(max-width: 400px){
+    .menu{
+        gap: 2px !important;
+    }
 }

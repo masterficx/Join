@@ -8,9 +8,15 @@
 
     <script src="js/storage.js"></script>
     <script src="js/index_script.js"></script>
+    <script src="js/index_script_templates.js"></script>
     <script src="js/main_login.js"></script>
-    <script src="js/contacts.js"></script>
-    <script src="js/board.js"></script>
+    <script src="js/contacts_main_and_help.js"></script>
+    <script src="js/contacts_add_and_edit.js"></script>
+    <script src="js/board_main_and_help.js"></script>
+    <script src="js/board_dragg_and_move.js"></script>
+    <script src="js/board_subtask.js"></script>
+    <script src="js/board_prio.js"></script>
+    <script src="js/board_contacts.js"></script>
     <link rel="stylesheet" href="css/index_style.css">
     <link rel="stylesheet" href="assets/fonts/fonts.css">
     <link rel="icon" type="image/x-icon" href="img/joinlogo.png">
@@ -19,7 +25,9 @@
 <body id="body" onload="init(), renderLogIn()">
     <div id="startBackground" class="startBackground"></div>
     <div id="header" class="header">
-        <div class="headerLeft"><img id="logo" class="logo" src="./img/logo.svg" alt="JoinLogo"></div>
+        <div class="headerLeft">
+            <img id="logo" class="logo" src="img/logo.svg" alt="JoinLogo">
+        </div>
         <div id="headerRight" class="headerRight">
             <span>Not a Join user?</span>
             <button onclick="renderSignUp()">Sign up</button>
@@ -36,4 +44,5 @@
     <div id="banner" class="banner">
     </div>
 </body>
+
 </html>

@@ -105,7 +105,9 @@ let addNewContactButton = `<button class="new-contact" onclick="renderAddNewCont
 </button>`;
 
 
-/** This function goes through the entire length of the array Contacts and gets the initials of the saved contact. */
+/** 
+ * This function goes through the entire length of the array Contacts and gets the initials of the saved contact. 
+ */
 function getFirstLetters() {
     let allFirstLetters = [];
     for (let j = 0; j < Contacts.length; j++) {
@@ -118,7 +120,6 @@ function getFirstLetters() {
     });
 
     firstLetters.push(uniqueChars);
-
 }
 
 /**
@@ -133,14 +134,14 @@ function getFirstLetters() {
  *                              The value is the first letter of the name from the person in the corresponding object from the array Contacts.
  *                              It is used to generate the letter tab separator.
  * 
- * @param {*} firstTwoLetters This parameter is the variable that is defined and used in the other function that is calling this function. 
- *                              The value is first letter of the name and surname from the person in the corresponding object from the array Contacts.
+ * @param {string} firstTwoLetters This parameter is the variable that is defined and used in the other function that is calling this function. 
+ *                              The value is the first letter of the name and surname from the person in the corresponding object from the array Contacts.
  *                              It is used to generate the name tag of the person in the contact list.  
  * 
- * @param {*} contactsList  This parameter is the variable that is defined and used in the other function that is calling this function. 
+ * @param {string} contactsList  This parameter is the variable that is defined and used in the other function that is calling this function. 
  *                              It is used to address a certain html element with the corresponding id.
  * 
- * @param {*} i This parameter is the index that corresponds to the sequence number in a for loop that runs in the function that is calling this function.
+ * @param {number} i This parameter is the index that corresponds to the sequence number in a for loop that runs in the function that is calling this function.
  *              It is used to generate certain elements from the same index in the array Contacts.
  */
 function renderContactWithLetterSeparator(element, firstLetter, firstTwoLetters, contactsList, i) {
@@ -214,7 +215,9 @@ function renderContactWithoutLetterSeparator(element, firstTwoLetters, contactsL
         </div>`
 }
 
-/** This function is being used to generate and display the contacts list and all of its inside elements, including the add new contact button, letter tab separators etc..*/
+/** 
+ * This function is being used to generate and display the contacts list and all of its inside elements, including the add new contact button, letter tab separators etc..
+ */
 async function renderContactsList() {
     await getContactsFromStorage();
     sortContactsAlphabetically(Contacts);
@@ -234,7 +237,9 @@ async function renderContactsList() {
     }
 }
 
-/** This function is being used for the animation of the detailed contact card. */
+/** 
+ * This function is being used for the animation of the detailed contact card. 
+ */
 function animateContactCard() {
     let contactCardContainer = document.getElementById('floating_contact');
     contactCardContainer.classList.remove('floating-contact-animate');
@@ -242,7 +247,10 @@ function animateContactCard() {
     contactCardContainer.classList.add('floating-contact-animate');
 }
 
-/** This function is used for the display of the detailed contact card. */
+/** 
+ * This function is used for the display of the detailed contact card. 
+ * @param {number} x This parameter is the corresponding index number of the object in the array Contacts.
+ */
 async function showContactDetails(x) {
     await markActiveContact(x);
     let contact = document.getElementById(`contact_${[x]}`);
@@ -312,7 +320,6 @@ function renderContactDetails(x, element, contactCardContainer, firstTwoLetters)
           </div>
         </div>
             `;
-
 }
 
 /**
@@ -330,174 +337,56 @@ function displayContact() {
     let displayContacts = document.getElementById('contact-page');
     displayContacts.style = "display:block; position:relative;";
 }
-/** This function closes the contact details and returns to the contacts list in the mobile version of the webpage */
+
+/** 
+ * This function closes the contact details and returns to the contacts list in the mobile version of the webpage 
+ */
 function backToContacts() {
     let displayContacts = document.getElementById('contact-page');
     displayContacts.style = "display:none; position:relative;";
 }
-/** This function opens the edit contact menu in the mobile version of the webpage */
-function showContactEditMenu() {
-    let subMenu = document.getElementById('edit-contact');
-    let editOverlay = document.getElementById('editcontactoverlay');
-    if (subMenu.style.display == "none") {
-        subMenu.style = "display: block;";
-        editOverlay.style = "display: block;";
-    }
-    else {
-        subMenu.style = "display: none;";
-    };
-}
-/** This function closes the edit contact menu in the mobile version of the webpage */
-function closeEditOverlay() {
-    let subMenu = document.getElementById('edit-contact');
-    let editOverlay = document.getElementById('editcontactoverlay');
-    editOverlay.style = "display: none;";
-    subMenu.style = "display: none;";
-}
-/**This function is used to delete a contact from the contacts list */
-function deleteContact(x) {
-    if (x === currentUser) {
-        alert('Du kannst dich nicht selber löschen')
+
+/**
+ * Small help function that checks if the empty contact card should be closed after deleting a contact from the contact list in the mobile view
+ * @returns boolean
+ */
+function shouldCloseEmptyContactCard() {
+    let element = document.getElementById('contact-page');
+    let computedStyles = getComputedStyle(element);
+    let position = computedStyles.position;
+    if (position === "relative") {
+        return false;
     } else {
-        Contacts.splice(x, 1);
-        if (currentUser > x && currentUser !== 1000) {
-            currentUser--
-            localStorage.setItem('currentUser', currentUser);
-        };
-        document.getElementById('floating_contact').innerHTML = '';
-        saveContactsToStorage();
-        renderContactsList();
+        return true;
     }
 }
 
-/** This function generates the HTML code used to display the add new contact overlay container.  */
-function renderAddNewContact() {
-    let overlayNewContact = document.getElementById('overlay_new_contact');
-    overlayNewContact.classList.remove('d-none');
-    overlayNewContact.innerHTML = `<div class="new-contact-main new-contact-main-animate" onclick="doNotClose(event)" id="new_contact_main">
-                                        <div class="frame-194">
-                                            <div class="capa2">${capa2}</div>
-                                            <div class="frame-210">
-                                                <div class="frame-211">Add contact</div>
-                                                <div class="frame-212">Tasks are better with a team!</div>
-                                                <div class="vector-5">${vector5}</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="frame-79">
-                                            <div class="group-9">
-                                                    ${group9SVG}
-                                                <div class="person">${personSVG} </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="frame-215">
-                                        <p id="messageExistingContact" style="display: none;">This contact already exists. Please use other e-mail address!</p>
-                                        <form  onsubmit="createNewContact(); return false;">
-                                            <div class="add-contact-text-main">
-                                                <div id="name_Frame" class="frame-14"> 
-                                                    <div class="frame-157">
-                                                        <input type="text" required id="add_contact_name" placeholder="Vor- und Nachname">
-                                                        ${personSmallSVG}
-                                                    </div>
-                                                </div>
-                                                <div id="name_Alert"></div>
-                                                <div class="frame-14"> 
-                                                    <div class="frame-157">
-                                                        <input type="email" required id="add_contact_email" placeholder="Email">
-                                                        ${emailSmallSVG}
-                                                    </div>
-                                                </div>
-                                                <div class="frame-14"> 
-                                                    <div class="frame-157">
-                                                        <input type="tel" id="add_contact_phone" placeholder="Phone" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
-                                                        ${phoneSmallSVG}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="add-contact-buttons-main">                                                
-                                                    <div class="add-contact-cancel" onclick="closeNewContact()">
-                                                        <span>Cancel</span> 
-                                                        ${xSmallSVG}
-                                                    </div>
-                                                    <button type="submit" class="add-contact-create"> 
-                                                        <span>Create contact</span>
-                                                        ${checkSmallSVG}
-                                                    </button>
-                                                
-                                            </div>
-                                            </form>
-                                        </div>
-    
-                                    </div>`;
-
-}
-
-/** This function closes the add new contact overlay without saving the changes anywhere. */
-function closeNewContact() {
-    let newContactOverlayDiv = document.getElementById('overlay_new_contact');
-    let newContactMainDiv = document.getElementById('new_contact_main');
-    newContactMainDiv.classList.add('close-new-contact-animate');
-
-    setTimeout(() => {
-        void newContactOverlayDiv.offsetWidth;
-        newContactOverlayDiv.classList.add('d-none');
-        newContactMainDiv.classList.remove('close-new-contact-animate')
-    }, "220");
-
-}
-
-/** This is a generic all-purpose function that is used to stop the propagation of a certain function  */
-function doNotClose(event) {
-    event.stopPropagation();
-}
-
-/** This function gets all values from the input fields and does certain checks before saving the new contact in the Contacts array*/
-async function createNewContact() {
-    let nameInput = document.getElementById('add_contact_name').value;
-    if (checkTwoWords(nameInput)) {
-        let nameArray = nameInput.split(' ');
-        let firstName = nameArray[0];
-        let lastName = nameArray[1];
-        let emailInput = document.getElementById('add_contact_email').value;
-        let phoneInput = document.getElementById('add_contact_phone').value;
-        let firstTwoLetters = firstName.charAt(0) + lastName.charAt(0);
-        let newContact = {
-            "firstName": firstName,
-            "lastName": lastName,
-            "phone": phoneInput,
-            "email": emailInput,
-            "color": "black",
-            "firstLetters": firstTwoLetters,
-            "name": nameInput,
-            "password": '1234',
-        };
-        let alreadyUser = 0;
-        for (let m = 0; m < Contacts.length; m++) {
-            if (Contacts[m]["email"] == emailInput) {
-                document.getElementById('messageExistingContact').style.display = 'block';
-                alreadyUser = 1;
-                break;
-            } else { break }
+/** 
+ * This function goes through the entire array Contacts and finds the correspondig object id by comparing the email address against the entries in the array 
+ * @param {JSON} contacts
+ * @param {string} emailToBeFound  
+ * 
+ * */
+function findContactIdByEmail(contacts, emailToBeFound) {
+    for (let i = 0; i < contacts.length; i++) {
+        if (contacts[i].email === emailToBeFound) {
+            return i;
         }
-        if (alreadyUser != 1) {
-            Contacts.push(newContact);
-            sortContactsAlphabetically(Contacts);
-            await saveContactsToStorage();
-            let theIndex = Contacts.findIndex(x => x.email === emailInput);
-            console.log(theIndex);
+    }
+    return -1;
+}
 
-            closeNewContact();
-            await renderContactsList();
-            let theNewId = findContactIdByEmail(Contacts, emailInput);
-            target = document.getElementById(`contact_${theNewId}`);
-            setTimeout(() => {
-                scrollToNewContact('contacts_list', `contact_${theNewId}`);
-                setTimeout(() => {
-                    target.click();
-                }, "550");
-            }, "550");
-        }
+/** 
+ * This function is used to scroll to the corresponding container id in the contacts list 
+ * @param {string} childId The id of the child container to scroll to
+ * @param {string} parentId  The id of the parrent container to scroll to
+ * */
+function scrollToNewContact(parentId, childId) {
+    const parentElement = document.getElementById(parentId);
+    const childElement = document.getElementById(childId);
+
+    if (parentElement && childElement) {
+        childElement.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
     }
 }
 
@@ -509,16 +398,19 @@ async function createNewContact() {
 function checkTwoWords(nameInput) {
     let words = nameInput.trim().split(' ');
     if (words.length !== 2) {
-        name_Alert.textContent = "Bitte Vor- und Nachname eingeben";
+        name_popup.classList.add('show');
         name_Frame.classList.add('redBorder');
-        setTimeout(() => { name_Alert.textContent = ""; name_Frame.classList.remove('redBorder'); }, 3000)
+        setTimeout(() => { name_Frame.classList.remove('redBorder'); name_popup.classList.remove('show'); }, 3000)
         return false;
     } else {
         return true;
     }
 }
 
-/** This function goes sorts the entries in the array contacts alphabetically. It is usualy called from other functions before displaying the contacts list. */
+/** 
+ * This function goes sorts the entries in the array contacts alphabetically. It is usualy called from other functions before displaying the contacts list. 
+ * @param {JSON} contacts 
+ */
 function sortContactsAlphabetically(contacts) {
     contacts.sort((a, b) => {
         const nameA = a.firstName.toLowerCase();
@@ -533,133 +425,10 @@ function sortContactsAlphabetically(contacts) {
     });
 }
 
-/**This function is used to delete the current user. */
-function deleteCurrentUser() {
-    let position = Contacts.findIndex(contact => contact.firstName === 'Guest');
-    Contacts.splice(position, 1);
-    if (currentUser !== 0) {
-        let user = Contacts.findIndex(contact => contact.firstName === Contacts[currentUser - 1].firstName);
-        Contacts.splice(user, 1);
-    }
+/** 
+ * This is a generic all-purpose function that is used to stop the propagation of a certain function  
+ */
+function doNotClose(event) {
+    event.stopPropagation();
 }
 
-/** This function goes through the entire array Contacts and finds the correspondig object id by comparing the email address against the entries in the array */
-function findContactIdByEmail(contacts, emailToBeFound) {
-    for (let i = 0; i < contacts.length; i++) {
-        if (contacts[i].email === emailToBeFound) {
-            return i;
-        }
-    }
-    return -1;
-}
-
-/**This function is used to scroll to the corresponding container id in the contacts list */
-function scrollToNewContact(parentId, childId) {
-    const parentElement = document.getElementById(parentId);
-    const childElement = document.getElementById(childId);
-
-    if (parentElement && childElement) {
-        childElement.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
-    }
-}
-
-/** This function generates the HTML code that is used to display the edit contact overlay container */
-function renderEditContact(x) {
-    let element = Contacts[x];
-    let firstTwoLetters = element['firstName'].charAt(0) + element['lastName'].charAt(0);
-    let overlayNewContact = document.getElementById('overlay_new_contact');
-    overlayNewContact.classList.remove('d-none');
-    overlayNewContact.innerHTML = `<div class="new-contact-main new-contact-main-animate" onclick="doNotClose(event)" id="new_contact_main">
-                                        <div class="frame-194">
-                                            <div class="capa2">${capa2}</div>
-                                            <div class="frame-210">
-                                                <div class="frame-211">Edit contact</div>
-                                                <div class="vector-5">${vector5}</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="frame-79">
-                                            <div class="group-9">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120" fill="none">
-                                            <circle cx="60" cy="60" r="60" fill="${nameTagsColors[x]}"/>
-                                            </svg>
-                                            <p>${firstTwoLetters}</p>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="frame-215">
-                                        <form  onsubmit="editContact(${x}); return false;">
-                                            <div class="add-contact-text-main">
-                                                <div class="frame-14"> 
-                                                    <div class="frame-157">
-                                                        <input type="text" id="edit_name" required placeholder="Name">
-                                                        ${personSmallSVG}
-                                                    </div>
-                                                </div>
-                                                <div class="frame-14"> 
-                                                    <div class="frame-157">
-                                                        <input type="email" id="edit_email" required placeholder="Email">
-                                                        ${emailSmallSVG}
-                                                    </div>
-                                                </div>
-                                                <div class="frame-14"> 
-                                                    <div class="frame-157">
-                                                        <input type="tel" id="edit_phone" placeholder="Phone" onkeypress="return (event.charCode !=8 && event.charCode ==0 || (event.charCode >= 48 && event.charCode <= 57))">
-                                                        ${phoneSmallSVG}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="add-contact-buttons-main">                                                
-                                                    <div class="add-contact-cancel" onclick="deleteContactFromEdit(${x})">
-                                                        <span>Delete</span> 
-                                                    </div>
-                                                    <button type="submit" class="add-contact-create"> 
-                                                        <span> Save </span>
-                                                        ${checkSmallSVG}
-                                                    </button>
-                                                
-                                            </div>
-                                            </form>
-                                        </div>
-    
-                                    </div>`;
-
-    document.getElementById('edit_name').value = element['firstName'] + " " + element['lastName'];
-    document.getElementById('edit_email').value = element['email'];
-    document.getElementById('edit_phone').value = element['phone'];
-    let subMenu = document.getElementById('edit-contact');
-    subMenu.style = "display: none;";
-
-}
-
-/** This function deletes a contact from the array Contacts with the corresponding object id that is transferred as the "x" parameter */
-async function deleteContactFromEdit(x) {
-    deleteContact(x);
-    closeNewContact();
-    await saveContactsToStorage();
-    renderContactsList();
-}
-
-/**This function gets all the needed input values from the edit contact overlay container, and saves the changes to the correspondig object in the array Container  */
-function editContact(x) {
-    let nameInput = document.getElementById('edit_name').value;
-    let nameArray = nameInput.split(' ');
-    let newFirstName = nameArray[0];
-    let newLastName = nameArray[1];
-    let newEmail = document.getElementById('edit_email').value;
-    let newPhone = document.getElementById('edit_phone').value;
-    let element = Contacts[x];
-
-    element.firstName = newFirstName;
-    element.lastName = newLastName;
-    element.email = newEmail;
-    element.phone = newPhone;
-    element.name = nameInput;
-    saveContactsToStorage();
-    closeNewContact();
-    renderContactsList();
-    document.getElementById('floating_contact').innerHTML = "";
-    showContactDetails(x)
-
-
-}

@@ -147,6 +147,7 @@ button:hover {
     width: 100%;
     background-color: #F6F7F8;
     transition: 500ms;
+    z-index: 3;
 }
 
 
@@ -182,7 +183,14 @@ form {
 }
 
 
-.inputBox {
+.LoginInputBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px
+}
+
+.SignUpInputBox {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -353,7 +361,7 @@ input[type="checkbox"] {
 
 /* Styling für die Checkbox hinzu */
 input[type="checkbox"] {
-    background-image: url("../assets/img/logInSignUp/uncheckButton.svg");
+    background-image: url('../assets/img/logInSignUp/uncheckButton.svg');
     background-repeat: no-repeat;
     background-position: center;
     width: 24px;
@@ -364,7 +372,7 @@ input[type="checkbox"] {
 
 /* Benutzerdefiniertes Styling für die Checkbox, wenn sie ausgewählt ist */
 input[type="checkbox"]:checked {
-    background-image: url("../assets/img/logInSignUp/checkedButton.svg");
+    background-image: url('../assets/img/logInSignUp/checkedButton.svg');
     width: 24px !important;
     height: 24px !important;
     background-position: center !important;
@@ -461,6 +469,71 @@ footer a:hover {
     transition: transform 0.5s ease-in-out;
 }
 
+#name_Frame{
+    position: relative;
+}
+
+#name_popup{
+    visibility: hidden;
+    position: absolute;
+    box-sizing: border-box;
+    top: 115%;
+    left: calc(50% - 130px);
+    background-color: #2a3647;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px;
+    width: 260px;
+}
+
+#name_popup::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color:  transparent transparent #2a3647 transparent;
+  }
+
+  #wrong_password_popup{
+    visibility: hidden;
+    position: absolute;
+    box-sizing: border-box;
+    top: 115%;
+    left: calc(50% - 130px);
+    background-color: #2a3647;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px;
+    width: 260px;
+}
+
+#wrong_password_popup::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color:  transparent transparent #2a3647 transparent;
+  }
+
+  .show {
+    visibility: visible !important;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+  }
+  
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+  }
+
 
 /* max-width: 810px */
 
@@ -477,11 +550,14 @@ footer a:hover {
 @media(max-width: 680px) {
     .headingContainer {
         width: 85%;
+        margin-top: 0px;
     }
 
     .content {
-        width: 396px;
-        gap: 20px;
+        height: fit-content !important;
+        width: 95%;
+        gap: 15px;
+        padding: 20px 0px 20px 0px;
     }
 
     .forgotPW {
@@ -492,22 +568,35 @@ footer a:hover {
         flex-direction: column;
         align-items: center;
         gap: 45px;
+        width: 100%;
+
     }
 
     .imgLogo {
-        width: 64px !important;
-        height: 78px !important;
-        top: 16px !important;
-        left: 38px !important;
+        width: 50px !important;
+        height: 60px !important;
+        top: 20px !important;
+        left: 35px !important;
     }
 
     .inputField {
-        width: 346px;
+        width: 95%;
+        box-sizing: border-box;
+        display: flex;
+        padding: 12px 21px;
+        align-items: center;
+        gap: 10px;
 
     }
 
+    .inputField img {
+        height: 24px;
+        width: 24px;
+    }
+
     input {
-        width: 300px;
+        width: 80%;
+        height: 24px !important;
     }
 
     h1 {
@@ -521,21 +610,26 @@ footer a:hover {
     .mobilView {
         flex-direction: column-reverse;
         gap: 16px;
-        margin-right: 170px;
+        padding-left: 10px;
         align-items: start;
+        width: 95%;
+        box-sizing: border-box;
     }
 
     .logInButtonBox {
         flex-direction: column;
-        gap: 20px;
+        gap: 10px;
+        margin-bottom: 0 !important;
     }
 
     .logInButton {
-        width: 180px;
+        width: 150px;
+        height: 40px;
     }
 
     button {
         font-size: 16px;
+        height: 40px;
     }
 
     .header {
@@ -579,9 +673,13 @@ footer a:hover {
 }
 
 
-@media(max-height: 650px) {
+@media(max-height: 670px) {
     .header {
         margin: 20px 80px;
+    }
+    .front-main-content {
+        margin-top: 15px;
+        padding-top: 20px !important;
     }
 }
 
@@ -592,20 +690,16 @@ footer a:hover {
     }
 
     .imgLogo {
-        height: 90px !important;
-        width: 80px !important;
-        top: 40px !important;
-        left: 40px !important;
+        height: 60px !important;
+        width: 50px !important;
+        top: 20px !important;
+        left: 36px !important;
     }
 
     .header {
         margin: 40px 40px;
     }
 
-
-    .logInButtonBox {
-        gap: 10px;
-    }
 
     .content {
         height: 496px;
@@ -618,15 +712,44 @@ footer a:hover {
     input {
         height: 40px;
     }
+
+    .LoginInputBox{
+        gap: 10px;
+    }
+
+    .SignUpInputBox{
+        gap: 30px;
+    }
 }
 
 
 @media(max-height: 930px) {
     .front-main-content {
         margin-top: 15px;
+        padding-top: 50px;
     }
+
     .responsivSignUp {
-        gap: 10px !important;
-        height: 530px !important;
+        gap: 15px !important;
+        height: 400px !important;
+    }
+}
+
+@media(max-width: 400px) {
+.imgHeadingContainer{
+    width: 30px;
+    height: 30px;
+}
+
+    .forgotPW{
+        width: 95% !important;
+    }
+
+    .forgotPWH1{
+        font-size: 36px;
+    }
+
+    .banner{
+        width: 320px !important;
     }
 }

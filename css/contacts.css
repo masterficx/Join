@@ -41,7 +41,7 @@ body {
 }
 
 .frame-97::-webkit-scrollbar-thumb {
-    background: url('/assets/img/contacts/scrollbar_thumb.svg');
+    background: url('../assets/img/contacts/scrollbar_thumb.svg');
     background-repeat: no-repeat;
     background-position-x: center;
 }
@@ -51,7 +51,7 @@ body {
 
 .frame-97::-webkit-scrollbar-button:vertical:decrement {
 
-    background: url('/assets/img/contacts/scrollbar_button_decrement.svg') no-repeat;
+    background: url('../assets/img/contacts/scrollbar_button_decrement.svg') no-repeat;
     background-position: center;
     height: 20px;
     margin: top 20px;
@@ -60,7 +60,7 @@ body {
 
 .frame-97::-webkit-scrollbar-button:vertical:increment {
 
-    background: url('/assets/img/contacts/scrollbar_button_increment.svg') no-repeat;
+    background: url('../assets/img/contacts/scrollbar_button_increment.svg') no-repeat;
     background-position: center;
     height: 20px;
     margin: top 20px;
@@ -785,6 +785,46 @@ body {
     /* 25.2px */
 }
 
+#name_Frame{
+    position: relative;
+}
+
+#name_popup{
+    visibility: hidden;
+    position: absolute;
+    box-sizing: border-box;
+    top: 115%;
+    left: calc(50% - 130px);
+    background-color: #2a3647;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px;
+    width: 260px;
+}
+
+#name_popup::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color:  transparent transparent #2a3647 transparent;
+  }
+
+  .show {
+    visibility: visible !important;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+  }
+  
+  @keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+  }
+
 
 @media only screen and (min-width: 993px) and (max-width: 1300px) {
 
@@ -1005,8 +1045,8 @@ body {
     }
 
     .group-9 {
-        width: 80px;
-        height: 80px;
+        width: 70px;
+        height: 70px;
     }
 
     .group-9 .person {
@@ -1017,7 +1057,7 @@ body {
     }
 
     .add-contact-text-main {
-        gap: 18px;
+        gap: 15px;
     }
 
     .frame-215 {
@@ -1025,8 +1065,8 @@ body {
     }
 
     .group-9 svg {
-        width: 80px;
-        height: 80px;
+        width: 70px;
+        height: 70px;
     }
 
     .group-9 p {
@@ -1062,6 +1102,75 @@ body {
         font-family: Inter;
     }
 
-
+    .overlay-new-contact{
+        overflow-y: scroll ;
+    }
 
 }
+
+@media only screen and (max-height: 667px){
+    .frame-210{
+        gap: 0px;
+    }
+
+    .frame-194{
+        padding: 30px 35px 68px 35px;
+    }
+
+    .frame-215 form{
+        gap: 30px;
+    }
+
+    .frame-14{
+        padding: 10px 21px;
+    }
+
+    .add-contact-create{
+        height:45px !important;
+    }
+    .add-contact-cancel{
+        height:45px !important;
+    }
+}
+
+@media(max-width: 400px){
+    .frame-211{
+        font-size: 36px;
+    }
+
+    .group-9{
+        width: 60px;
+        height: 60px;
+    }
+    .group-9 svg{
+        width: 60px;
+        height: 60px;
+    }
+
+    .frame-79{
+        margin-top: -55px;
+    }
+    .frame-14 {
+        padding: 10px 21px !important;
+    }
+    .add-contact-create {
+        padding: 18px 5px;
+        height: 50px;
+    }
+    .add-contact-cancel {
+        height: 50px;
+    }
+    .menu a {
+        width: 70px;
+        height: 70px;  
+    }
+}
+
+@media(max-height: 720px){
+    .new-contact-main {
+        margin-top: -50px;
+    }
+}
+
+    
+

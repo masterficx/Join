@@ -8,9 +8,17 @@
 
     <script src="js/storage.js"></script>
     <script src="js/include.js"></script>
-    <script src="js/contacts.js"></script>
-    <script src="js/board.js"></script>
-    <script src="js/add_task.js"></script>
+    <script src="js/contacts_main_and_help.js"></script>
+    <script src="js/contacts_add_and_edit.js"></script>
+    <script src="js/board_main_and_help.js"></script>
+    <script src="js/board_dragg_and_move.js"></script>
+    <script src="js/board_subtask.js"></script>
+    <script src="js/board_prio.js"></script>
+    <script src="js/board_contacts.js"></script>
+    <script src="js/add_task_main_and_help.js"></script>
+    <script src="js/add_task_contacts.js"></script>
+    <script src="js/add_task_category.js"></script>
+    <script src="js/add_task_prio_and_subtask.js"></script>
     <script src="js/summary_script.js"></script>
     <script src="js/main_login.js"></script>
     <link rel="stylesheet" href="css/layout.css">
@@ -37,12 +45,12 @@
                             <div class="inputSearchBoardContainer">
                                 <input id="inputSearchBoard" onkeyup="filterCards()" autocomplete="off" type="search" placeholder="Find Task">
                                 <div class="searchImage" style="display: flex;">
-                                    <img src="/assets/img/board/searchSeparator.png" alt="">
-                                    <img src="/assets/img/board/search.png" alt="">
+                                    <img src="assets/img/board/searchSeparator.png" alt="">
+                                    <img src="assets/img/board/search.png" alt="">
                                 </div>
                             </div>
                             <button onclick="openAddTask('ToDo')" class="addTaskButton">Add Task<img
-                                    src="/assets/img/board/plusWhite.png" alt=""></button>
+                                    src="assets/img/board/plusWhite.png" alt=""></button>
                         </div>
                     </div>
                     <div class="categoryBoardAll">
@@ -60,12 +68,12 @@
                                             <div class="cardBoardInsideDescription">Beschreibung des jeweiligen Tasks
                                             </div>
                                         </div>
-                                        <div class="cardBoardInsideProgress"><img src="/assets/img/board/loadingBar.png"
+                                        <div class="cardBoardInsideProgress"><img src="assets/img/board/loadingBar.png"
                                                 alt="">
                                             <p>1/2 Done</p>
                                         </div>
                                         <div class="cardBoardInsideUserAndPrio">
-                                            <p>Users</p><img src="/assets/img/board/PrioHigh.png" alt="">
+                                            <p>Users</p><img src="assets/img/board/PrioHigh.png" alt="">
                                         </div>
                                     </div>
                                 </div>

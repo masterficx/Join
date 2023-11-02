@@ -8,7 +8,6 @@ function init() {
     getContactsFromStorage();
 }
 
-
 //////////////////////// Function to start the animation //////////////////////////////////
 
 /**
@@ -17,13 +16,13 @@ function init() {
  */
 function startAnimation() {
     if (window.innerWidth < 510) {
-        logo.src = "../img/joinlogomobil.png";
+        logo.src = "img/joinlogomobil.png";
     }
     setTimeout(() => {
         let logo = document.getElementById("logo");
         let background = document.getElementById('startBackground');
 
-        setTimeout(() => { logo.src = "../img/joinlogo.png"; }, 80)
+        setTimeout(() => { logo.src = "img/joinlogo.png"; }, 80)
 
         logo.classList.add('imgLogo');
 
@@ -40,7 +39,6 @@ function startAnimation() {
     }, 500); // Wait for 0.5 seconds before starting the animation
 }
 
-
 //////////////////////////////////// Function to toggle password visibility ////////////////////////////////
 
 /**
@@ -55,29 +53,28 @@ function togglePasswordVisibility(i) {
     let passwordImage2 = document.getElementById('passwordImage2');
 
     if (passwordInput && i === 1) {
-        if (!passwordImage.src.includes('/assets/img/logInSignUp/lock.svg')) {
+        if (!passwordImage.src.includes('assets/img/logInSignUp/lock.svg')) {
             if (passwordInput.type === 'password') {
                 passwordInput.type = 'text'; // Show password
-                passwordImage.src = './assets/img/logInSignUp/eye.svg';
+                passwordImage.src = 'assets/img/logInSignUp/eye.svg';
             } else {
                 passwordInput.type = 'password'; // Hide password
-                passwordImage.src = './assets/img/logInSignUp/hiddeneye.svg';
+                passwordImage.src = 'assets/img/logInSignUp/hiddeneye.svg';
             }
         }
     }
     if (passwordInput2 && i === 2) {
-        if (!passwordImage2.src.includes('/assets/img/logInSignUp/lock.svg')) {
+        if (!passwordImage2.src.includes('assets/img/logInSignUp/lock.svg')) {
             if (passwordInput2.type === 'password') {
                 passwordInput2.type = 'text'; // Show password
-                passwordImage2.src = './assets/img/logInSignUp/eye.svg';
+                passwordImage2.src = 'assets/img/logInSignUp/eye.svg';
             } else {
                 passwordInput2.type = 'password'; // Hide password
-                passwordImage2.src = './assets/img/logInSignUp/hiddeneye.svg';
+                passwordImage2.src = 'assets/img/logInSignUp/hiddeneye.svg';
             }
         }
     }
 }
-
 
 /////////////////////////////////// Function to add event listeners for the password field ////////////////////////
 
@@ -97,9 +94,9 @@ function setupPasswordInputEventListeners() {
      */
     function updatePasswordImageSrc(passwordInput, passwordImage) {
         if (passwordInput.value.trim().length > 0 && passwordInput.type === 'password' || 'text') {
-            passwordImage.src = './assets/img/logInSignUp/hiddeneye.svg';
+            passwordImage.src = 'assets/img/logInSignUp/hiddeneye.svg';
         } else {
-            passwordImage.src = './assets/img/logInSignUp/lock.svg';
+            passwordImage.src = 'assets/img/logInSignUp/lock.svg';
         }
     }
 
@@ -120,12 +117,10 @@ function setupPasswordInputEventListeners() {
     });
 }
 
-
 ////////////////////// Function to add event listeners after the DOM has loaded ////////////////////////
 function setupEventListenersAfterDOMLoaded() {
     setupPasswordInputEventListeners();
 }
-
 
 ///////////////////// Function called when the "Remember Me" button is clicked /////////////////////////
 
@@ -161,7 +156,6 @@ async function checkRememberMe() {
     }
 }
 
-
 /////////////////////////////////////////// Log In //////////////////////////////////////////////////
 
 /**
@@ -177,10 +171,6 @@ function renderLogIn() {
     document.getElementById('footer').classList.remove('d-none');
 }
 
-
-
-
-
 /////////////////////////////////////////// Sign Up //////////////////////////////////////////////////
 
 /**
@@ -194,7 +184,6 @@ function renderSignUp() {
     document.getElementById('headerRight').classList.add('d-none');
     document.getElementById('banner').innerHTML = 'You Signed Up succeccfully';
 }
-
 
 /**
  * Function to handle SignUp form submission
@@ -252,15 +241,14 @@ function resetInputField(name, email, password1, password2) {
 function checkTwoWordsforSignUp(nameInput) {
     let words = nameInput.value.trim().split(' ');
     if (words.length !== 2) {
-        nameAlert.textContent = "Bitte Vor- und Nachname eingeben";
-        nameInput.parentElement.classList.add('redInput');
-        setTimeout(() => { nameAlert.textContent = ""; nameInput.parentElement.classList.remove('redInput'); }, 3000)
+        name_popup.classList.add('show');
+        name_Frame.classList.add('redBorder');
+        setTimeout(() => {name_Frame.classList.remove('redBorder'); name_popup.classList.remove('show'); }, 3000)
         return false;
     } else {
         return true;
     }
 }
-
 
 /**
  * Checks if an email already exists in the Contacts list.
@@ -280,7 +268,6 @@ async function checkEmail(email) { // check if an email exists
     }
     return true;
 }
-
 
 /**
  * Checks if two password inputs have the same value.
@@ -313,7 +300,7 @@ function renderForgotPW() {
     contentbox.innerHTML = returnForgotPWHTML();
     document.getElementById('headerRight').classList.add('d-none');
     document.getElementById('footer').classList.add('d-none');
-    document.getElementById('banner').innerHTML = '<img style="width: 32px" src="../assets/img/logInSignUp/sendCheck.svg">An E-Mail has been sent to you';
+    document.getElementById('banner').innerHTML = '<img style="width: 32px" src="assets/img/logInSignUp/sendCheck.svg">An E-Mail has been sent to you';
 }
 
 /**
@@ -336,7 +323,6 @@ function checkResetpassword() {
         emailInput.parentElement.classList.add('redInput');
         setTimeout(() => { emailAlert.textContent = ""; emailInput.parentElement.classList.remove('redInput'); }, 3000);
     }
-
 }
 
 /**
@@ -388,7 +374,6 @@ function show() {
 document.addEventListener('DOMContentLoaded', init);
 document.addEventListener('DOMContentLoaded', handleMaxWidthChange);
 
-
 /////////////////////////////////////// moveElementbyMedia max-width 510px for SignUp Button ///////////////////////////
 
 /**
@@ -403,7 +388,6 @@ function moveElementToNewPosition(newParent) {
         newParent.insertAdjacentElement('beforebegin', elementToMove);
     }
 }
-
 
 /**
  * Handles the change in maximum width of the window.
@@ -424,160 +408,3 @@ function handleMaxWidthChange() {
 }
 
 window.addEventListener('resize', handleMaxWidthChange);
-
-
-/////////////////////////////////////////////// return HTML //////////////////////////////////////////////////
-
-/**
- * Returns HTML code for a login form.
- * @returns {string} The HTML code for the login form.
- */
-function returnLogInHTML() {
-    return /* html */ `
-        <form onsubmit="checkLogIn(); return false;" class="content">
-            <div class="headingContainer">
-                <h1>Log in</h1>
-            </div>
-            <div class="blueSeperator"></div>
-            <div>
-                <div class="inputBox">
-                    <div class="inputField">
-                        <input required id="emailInput" class="" type="email" placeholder="Email">
-                        <img src="./assets/img/logInSignUp/mail.svg" alt="">
-                    </div>
-                    <div class="inputField">
-                        <input required id="passwordInput" class="passwordInput" type="password" placeholder="Password">
-                        <img id="passwordImage" class="passwordImage" src="./assets/img/logInSignUp/lock.svg" alt="" onclick="togglePasswordVisibility(1)">
-                    </div>
-                    <div id="passwordAlert"></div>
-                    <div class="rememberMeForgetBox mobilView">
-                        <div class="checkBoxLogIn">
-                            <div onclick="checkBox()" id="rememberMe" class="uncheckBox"></div>
-                            <span>Remember me</span>
-                        </div>
-                        <a id="fmp" href="#" onclick="renderForgotPW()"> Forget my password</a>
-                    </div>
-                </div>
-            </div>
-            <div class="logInButtonBox">
-                <button type="onsubmit" class="logInButton">Log in</button>
-                <button type="button" onclick="guestLogIn()" class="logInButton guestLogIn">Guest Log in</button>
-            </div>
-        </form>
-    `;
-}
-
-/**
- * Returns HTML code for a sign-up form.
- * @returns {string} The HTML code for the sign-up form.
- */
-function returnSignUpHTML() {
-    return /* html */ `
-        <form onsubmit="signUpForm(); return false;" class="content responsivSignUp">
-            <div class="headingContainer">
-                <div onclick="renderLogIn()" class="imgHeadingContainer backArrow"></div>
-                <h1>Sign Up</h1>
-                <div class="imgHeadingContainer"></div>
-            </div>
-            <div class="blueSeperator"></div>
-            <div>
-                <div class="inputBox">
-                    <div class="inputField">
-                        <input required id="nameInput" class="" type="text" placeholder="Vor- und Nachname">
-                        <img src="./assets/img/logInSignUp/person.svg" alt="">
-                    </div>
-                    <div id="nameAlert"></div>
-                    <div class="inputField">
-                        <input required id="emailInput" class="" type="email" placeholder="Email">
-                        <img src="./assets/img/logInSignUp/mail.svg" alt="">
-                    </div>
-                    <div id="emailAlert"></div>
-                    <div class="inputField">
-                        <input required id="passwordInput" class="passwordInput" type="password" placeholder="Password">
-                        <img id="passwordImage" class="passwordImage" src="./assets/img/logInSignUp/lock.svg" alt="" onclick="togglePasswordVisibility(1)">
-                    </div>
-                    <div id="freeAlert"></div>
-                    <div class="inputField">
-                        <input required id="passwordInput2" class="passwordInput" type="password" placeholder="Password">
-                        <img id="passwordImage2" class="passwordImage" src="./assets/img/logInSignUp/lock.svg" alt="" onclick="togglePasswordVisibility(2)">
-                    </div>
-                    <div id="passwordAlert"></div>
-                    <div class="rememberMeForgetBox">
-                        <div class="checkBoxSignIn">
-                            <input type="checkbox" id="rememberMe" class="uncheckBox" required>
-                            <span>I accept the </span>
-                        </div>
-                        <a id="fmp" href="#"> Privacy policy</a>
-                    </div>
-                </div>
-            </div>
-            <div class="logInButtonBox">
-                <button id="signUp" type="onsubmit" class="logInButton">Sign up</button>
-            </div>
-        </form>
-    `;
-}
-
-/**
- * Returns HTML content for the 'Forgot Password' form.
- * @returns {string} The HTML content.
- */
-function returnForgotPWHTML() {
-    return /* html */ `
-        <form onsubmit="checkResetpassword(); return false;" class="content forgotPW">
-            <div class="headingContainer">
-                <div onclick="renderLogIn()" class="imgHeadingContainer backArrow"></div>
-                <h1>I forgot my password</h1>
-                <div class="imgHeadingContainer"></div>
-            </div>
-            <div class="blueSeperator"></div>
-            <h2>Don't worry! We will send you an email with the instructions to reset your password.</h2>
-            <div>
-                <div class="inputBox">
-                    <div class="inputField">
-                        <input required id="emailInput" class="" type="email" placeholder="Email">
-                        <img src="./assets/img/logInSignUp/mail.svg" alt="">
-                    </div>
-                    <div id="emailAlert"></div>
-                </div>
-            </div>
-            <div class="logInButtonBox">
-                <button id="signUp" type="onsubmit" class="sendEmailButton">Send me the email</button>
-            </div>
-        </form>
-    `;
-}
-
-/**
- * Returns HTML content for the 'Reset Password' form.
- * @returns {string} The HTML content.
- */
-function returnResetPasswordHTML(i) {
-    return /* html */ `
-        <form onsubmit="setNewPassword('${i}'); return false;" class="content forgotPW">
-            <div class="headingContainer">
-                <div onclick="renderLogIn()" class="imgHeadingContainer backArrow"></div>
-                <h1>Reset your password</h1>
-                <div class="imgHeadingContainer"></div>
-            </div>
-            <div class="blueSeperator"></div>
-            <h2>Change your account password</h2>
-            <div>
-                <div class="inputBox">
-                    <div class="inputField">
-                        <input required id="passwordInput" class="passwordInput" type="password" placeholder="Password">
-                        <img id="passwordImage" class="passwordImage" src="./assets/img/logInSignUp/lock.svg" alt="" onclick="togglePasswordVisibility(1)">
-                    </div>
-                    <div class="inputField">
-                        <input required id="passwordInput2" class="passwordInput" type="password" placeholder="Password">
-                        <img id="passwordImage2" class="passwordImage" src="./assets/img/logInSignUp/lock.svg" alt="" onclick="togglePasswordVisibility(2)">
-                    </div>
-                    <div id="passwordAlert"></div>
-                </div>
-            </div>
-            <div class="logInButtonBox">
-                <button id="signUp" type="onsubmit" class="continueButton">Continue</button>
-            </div>
-        </form>
-    `;
-}
