@@ -43,7 +43,8 @@
                         </div>
                         <div class="headBoardRight">
                             <div class="inputSearchBoardContainer">
-                                <input id="inputSearchBoard" onkeyup="filterCards()" autocomplete="off" type="search" placeholder="Find Task">
+                                <input id="inputSearchBoard" onkeyup="filterCards()" autocomplete="off" type="search"
+                                    placeholder="Find Task">
                                 <div class="searchImage" style="display: flex;">
                                     <img src="assets/img/board/searchSeparator.png" alt="">
                                     <img src="assets/img/board/search.png" alt="">
@@ -54,12 +55,14 @@
                         </div>
                     </div>
                     <div class="categoryBoardAll">
-                        <div class="categoryBoardHead">
-                            <div class="categoryBoardSub"><span>To Do</span>
-                                <div onclick="openAddTask('ToDo')" class="headBoardRightImage"><img
-                                        src="assets/img/board/plusDark.png" alt="add"></div>
+                        <div class="categoryBoardHead" id="toDoMain" ondragenter="markMe('toDoMain')"
+                            ondragover="allowDrop(event)"
+                            ondrop="moveTo('cardBoardToDo')">
+                            <div class="categoryBoardSub"><span id="toDoMainTitle">To Do</span>
+                                <div onclick="openAddTask('ToDo')" id="toDoMainImgDiv" class="headBoardRightImage"><img
+                                        id="toDoMainPlus" src="assets/img/board/plusDark.png" alt="add"></div>
                             </div>
-                            <div class="cardBoardAll drag-area" ondrop="moveTo('cardBoardToDo')" ondragover="allowDrop(event)" id="cardBoardToDo">
+                            <div class="cardBoardAll drag-area" id="cardBoardToDo">
                                 <div class="cardBoard">
                                     <div class="cardBoardInside">
                                         <div class="cardBoardInsideCategory">Kategorie</div>
@@ -79,32 +82,40 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="categoryBoardHead">
-                            <div class="categoryBoardSub"><span>In Progress</span>
-                                <div onclick="openAddTask('InProgress')" class="headBoardRightImage"><img
+                        <div class="categoryBoardHead" id="inProgressMain" ondragenter="markMe('inProgressMain')"
+                            ondragover="allowDrop(event)"
+                            ondrop="moveTo('cardBoardInProgress')">
+                            <div class="categoryBoardSub"><span id="inProgressMainTitle">In Progress</span>
+                                <div onclick="openAddTask('InProgress')" id="inProgressMainImgDiv"
+                                    class="headBoardRightImage"><img id="inProgressMainPlus"
                                         src="assets/img/board/plusDark.png" alt="add"></div>
                             </div>
-                            <div class="cardBoardAll drag-area" ondrop="moveTo('cardBoardInProgress')" ondragover="allowDrop(event)" id="cardBoardInProgress">
+                            <div class="cardBoardAll drag-area" id="cardBoardInProgress">
                                 <div class="cardBoard">Test Card</div>
                             </div>
                         </div>
-                        <div class="categoryBoardHead">
-                            <div class="categoryBoardSub"><span>Awaiting
+                        <div class="categoryBoardHead" id="awaitingFeedbackMain"
+                            ondragenter="markMe('awaitingFeedbackMain')" ondragover="allowDrop(event)"
+                         ondrop="moveTo('cardBoardAwaitingfeedback')">
+                            <div class="categoryBoardSub"><span id="awaitingFeedbackMainTitle">Awaiting
                                     Feedback</span>
-                                <div onclick="openAddTask('Awaitingfeedback')" class="headBoardRightImage"><img
+                                <div onclick="openAddTask('Awaitingfeedback')" id="awaitingFeedbackMainImgDiv"
+                                    class="headBoardRightImage"><img id="awaitingFeedbackMainPlus"
                                         src="assets/img/board/plusDark.png" alt="add"></div>
                             </div>
-                            <div class="cardBoardAll cardBoardAllAWFB drag-area" ondrop="moveTo('cardBoardAwaitingfeedback')" ondragover="allowDrop(event)" id="cardBoardAwaitingfeedback">
+                            <div class="cardBoardAll cardBoardAllAWFB drag-area" id="cardBoardAwaitingfeedback">
                                 <div class="cardBoard">Test Card</div>
                             </div>
                         </div>
-                        <div class="categoryBoardHead">
-                            <div class="categoryBoardSub"><span>Done</span>
-                                <div class="headBoardRightImageBlind"><img src="assets/img/board/plusDark.png"
-                                        alt="add">
+                        <div class="categoryBoardHead" id="doneMain" ondragenter="markMe('doneMain')"
+                            ondragover="allowDrop(event)"
+                            ondrop="moveTo('cardBoardDone')">
+                            <div class="categoryBoardSub"><span id="doneMainTitle">Done</span>
+                                <div class="headBoardRightImageBlind" id="doneMainImgDiv"><img id="doneMainPlus"
+                                        src="assets/img/board/plusDark.png" alt="add">
                                 </div>
                             </div>
-                            <div class="cardBoardAll cardBoardAllDone drag-area" ondrop="moveTo('cardBoardDone')" ondragover="allowDrop(event)" id="cardBoardDone">
+                            <div class="cardBoardAll cardBoardAllDone drag-area" id="cardBoardDone">
                                 <div class="cardBoard">Test Card</div>
                             </div>
                         </div>
@@ -114,39 +125,57 @@
         </div>
         <div class="sidebar" w3-include-html="templates/sidebar.html">
         </div>
-        <div class="overlay d-none"  id="overlay" onclick="closeOverlay()">
+        <div class="overlay d-none" id="overlay" onclick="closeOverlay()">
             <div id="CardContainer" style="display:none;" onclick="doNotClose(event)">
                 <div class="includeTaskForm" w3-include-html="templates/task_form2.html"></div>
             </div>
-            <div id="CardDetail" class="carddetail" style="display:none;" onclick="doNotClose(event)"><img src="assets/img/board/close.svg" alt="Close Icon" onclick="closeOverlay()" class="close-card">
+            <div id="CardDetail" class="carddetail" style="display:none;" onclick="doNotClose(event)"><img
+                    src="assets/img/board/close.svg" alt="Close Icon" onclick="closeOverlay()" class="close-card">
                 <div class="carddetailinside">
-                <div class="cardBoardInsideCat" id="cardDetailCat"></div>
-                <div class="cardBoardInsideTitle" id="cardDetailTitle"></div>
-                <div class="cardBoardInsideDescription" id="cardDetailDesc"></div>
-                <div class="cardBoardInsideDueDate" id="cardDetailDueDate"></div>
-                <div class="cardBoardInsidePrio" id="cardDetailPrio"></div>
-                <div class="detlabel">Assigned To:</div>
-                <div class="cardBoardInsideAssignedUser" id="cardDetailAssignedUser"></div>
-                <div class="cartdetailaction">
-                    <div id="deleteCard"></div>
-                    <div id="editCard"></div>
+                    <div class="cardBoardInsideCat" id="cardDetailCat"></div>
+                    <div class="cardBoardInsideTitle" id="cardDetailTitle"></div>
+                    <div class="cardBoardInsideDescription" id="cardDetailDesc"></div>
+                    <div class="cardBoardInsideDueDate" id="cardDetailDueDate"></div>
+                    <div class="cardBoardInsidePrio" id="cardDetailPrio"></div>
+                    <div class="detlabel">Assigned To:</div>
+                    <div class="cardBoardInsideAssignedUser" id="cardDetailAssignedUser"></div>
+                    <div class="cartdetailaction">
+                        <div id="deleteCard"></div>
+                        <div id="editCard"></div>
+                    </div>
                 </div>
-            </div>
             </div>
 
-            <div id="CardEditForm" class="carddetail" style="display:none;" onclick="doNotClose(event)"><img src="assets/img/board/close.svg" alt="Close Icon" onclick="closeOverlay()" class="close-card">
-                <div class="overlay-transparent" style="display:none;" id="overlaytransparent" onclick="closeTransparentOverlay()"></div>
+            <div id="CardEditForm" class="carddetail" style="display:none;" onclick="doNotClose(event)"><img
+                    src="assets/img/board/close.svg" alt="Close Icon" onclick="closeOverlay()" class="close-card">
+                <div class="overlay-transparent" style="display:none;" id="overlaytransparent"
+                    onclick="closeTransparentOverlay()"></div>
                 <div class="carddetailinside">
-                <div class="cardBoardInsideCatEdit" id="cardDetailCatEdit"><span class="editlabel">Title</span><input type="text" id="editCardTitle"></div>
-                <div class="cardBoardInsideCatEdit" id="cardDetailCatEdit"><span class="editlabel">Description</span><textarea type="text" id="editCardDescription"></textarea></div>
-                <div class="cardBoardInsideCatEdit" id="cardDetailCatEdit"><span class="editlabel">Due date</span><input type="date" id="editCardDueDate"></div>
-                <div class="cardBoardInsideCatEdit" id="cardDetailCatEdit"><span class="editlabel">Prio</span><div type="text" id="editCardPrio"><span id="editCardPrio2"></span></div></div>
-                <div class="cardBoardInsideCatEdit" id="cardDetailCatEdit"><span class="editlabel">Assigned to</span><div id="assigned_to2"><div class="selectbox" id="selectbox"></div><div id="selectuser" style="display:none;"></div><div id="assignedUserEditForm"></div></div></div>
-                <div class="cardBoardInsideCatEdit" id="cardDetailCatEdit"><div id="editCardSubtasks"></div></div>
-                <div class="cartdetailaction">
-                    <div id="editCardSave">Ok</div>
+                    <div class="cardBoardInsideCatEdit" id="cardDetailCatEdit"><span
+                            class="editlabel">Title</span><input type="text" id="editCardTitle"></div>
+                    <div class="cardBoardInsideCatEdit" id="cardDetailCatEdit"><span
+                            class="editlabel">Description</span><textarea type="text"
+                            id="editCardDescription"></textarea></div>
+                    <div class="cardBoardInsideCatEdit" id="cardDetailCatEdit"><span class="editlabel">Due
+                            date</span><input type="date" id="editCardDueDate"></div>
+                    <div class="cardBoardInsideCatEdit" id="cardDetailCatEdit"><span class="editlabel">Prio</span>
+                        <div type="text" id="editCardPrio"><span id="editCardPrio2"></span></div>
+                    </div>
+                    <div class="cardBoardInsideCatEdit" id="cardDetailCatEdit"><span class="editlabel">Assigned
+                            to</span>
+                        <div id="assigned_to2">
+                            <div class="selectbox" id="selectbox"></div>
+                            <div id="selectuser" style="display:none;"></div>
+                            <div id="assignedUserEditForm"></div>
+                        </div>
+                    </div>
+                    <div class="cardBoardInsideCatEdit" id="cardDetailCatEdit">
+                        <div id="editCardSubtasks"></div>
+                    </div>
+                    <div class="cartdetailaction">
+                        <div id="editCardSave">Ok</div>
+                    </div>
                 </div>
-            </div>
             </div>
         </div>
 </body>

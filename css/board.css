@@ -92,10 +92,12 @@ html::-webkit-scrollbar {
 }
 
 .categoryBoardAll {
+    padding-top: 10px;
     display: inline-flex;
     justify-content: center;
     align-items: flex-start;
     flex-shrink: 0;
+    gap: 10px;
 }
 
 .categoryBoardHead {
@@ -105,6 +107,7 @@ html::-webkit-scrollbar {
     flex-direction: column;
     align-items: center;
     gap: 15px;
+    border-radius: 10px;
 }
 
 .categoryBoard {
@@ -115,6 +118,23 @@ html::-webkit-scrollbar {
     align-items: center;
     margin-left: 16px;
     margin-right: 16px;
+}
+
+.hover_before_drop{
+    color: #fff;
+    background: #2A3647 !important;
+    transition: all 0.3s ease;
+    transform: scale(1.02);
+    /* background-color: #091931 !important; */
+}
+
+.mark_available_drop_area{
+    background: #29ABE2;
+    
+}
+
+.white_text{
+    color: white !important;
 }
 
 .categoryBoardSub {
@@ -149,6 +169,10 @@ html::-webkit-scrollbar {
     cursor: pointer;
 }
 
+.white_border{
+    border: 2px solid #ffffff !important;
+}
+
 .headBoardRightImage:hover {
     display: flex;
     width: 12px;
@@ -174,6 +198,7 @@ html::-webkit-scrollbar {
 }
 
 .headBoardRightImageBlind {
+    visibility: hidden;
     display: flex;
     width: 12px;
     height: 12px;
